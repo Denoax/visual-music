@@ -13,5 +13,6 @@
     "src/show/choreography.ts": "3e66467a8a6081c21d407eaf82c6145bb617364d889cbcf5620a62d4f8a88ed1",
     "src/show/cues.ts": "aee1bb4d38f3cabf8eefe64d687d60628930a34221c1f6c32fbb97d269af0856",
     "src/style.css": "ae2e38fd2155e40489b05849e057575196e1299a54c7f96268fd991a76263a1f"
-  }
+  },
+  "verified_source_and_tests_sha": "8098486d3bdba1e541662c2c945621f413468af7"
 }

@@ -2,7 +2,7 @@
 
 2026-10-09. Status: **working scene/transport implementation; exact-song release blocked**.
 
-Implementation SHA: `3b0388436596a8c64c671704fda229e33482910f`. Captures were taken in the new project's working tree before its first commit. No prior approved BUMER.EXE visual baseline exists. Human acceptance has not been given.
+Verified source and test SHA: `8098486d3bdba1e541662c2c945621f413468af7`. Render capture source: `3b0388436596a8c64c671704fda229e33482910f`; runtime source files are identical between these commits. Captures were taken in the new project's working tree before its first commit. No prior approved BUMER.EXE visual baseline exists. Human acceptance has not been given.
 
 ## Build and behaviour — supported
 
