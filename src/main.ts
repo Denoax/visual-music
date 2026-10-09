@@ -1,390 +1,458 @@
 import "./style.css";
 import { AudioTransport } from "./audio/transport";
-import { createEditor } from "./audio/editor";
-import { createWorld } from "./scene/world";
+import { createWorld, type Quality } from "./scene/world";
+import { validateScore, TRACK_HASH } from "./show/cues";
 import {
-  activeSection,
-  validateCues,
-  validateTrackIdentity,
-  type CueSheet,
-} from "./show/cues";
-import { STUDY_DURATION, studyAt, labels } from "./show/choreography";
+  evaluateShow,
+  sampleFeatures,
+  type FeatureData,
+  type ShowFrame,
+} from "./show/choreography";
+import rawScore from "../show/score.json";
+const score = validateScore(rawScore),
+  query = new URLSearchParams(location.search),
+  development = query.get("dev") === "1";
 const get = <T extends HTMLElement>(id: string) =>
   document.getElementById(id) as T;
-const button = (id: string) => get<HTMLButtonElement>(id);
-const input = (id: string) => get<HTMLInputElement>(id);
-const message = (text: string) => {
-  get("status").textContent = text;
-};
-const transport = new AudioTransport();
-let cues: CueSheet | null = null,
-  mode: "entrance" | "study" | "audio" = "entrance";
-let world: Awaited<ReturnType<typeof createWorld>> | null = null,
-  ready = false,
-  sceneAvailable = false;
-let studyPlaying = false,
-  studyOffset = 0,
-  studyStart = 0,
-  frame = 0;
-const pointer = { x: 0, y: 0 };
+const button = (id: string) => get<HTMLButtonElement>(id),
+  input = (id: string) => get<HTMLInputElement>(id);
+const canvas = get<HTMLCanvasElement>("world"),
+  transport = new AudioTransport();
 const reduced = input("reduced");
 reduced.checked = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const seek = input("seek");
-const editor = createEditor(transport, message);
-const format = (time: number) =>
-  `${Math.floor(time / 60)}:${String(Math.floor(time % 60)).padStart(2, "0")}`;
-function studyTime() {
-  return Math.min(
-    STUDY_DURATION,
-    studyOffset + (studyPlaying ? (performance.now() - studyStart) / 1000 : 0),
-  );
+const quality = get<HTMLSelectElement>("quality");
+quality.value = innerWidth < 700 ? "low" : "high";
+let world: Awaited<ReturnType<typeof createWorld>> | null = null,
+  features: FeatureData | null = null;
+let featureError = "",
+  audioReady = false,
+  sceneGeneration = 0,
+  loadGeneration = 0,
+  sceneError = "",
+  audioError = "",
+  started = false,
+  contextLost = false;
+let frame: ShowFrame | null = null,
+  dirty = true,
+  lastFrame = 0,
+  lastUi = 0,
+  previousSong = 0,
+  hideControls = 0;
+const pointer = { x: 0, y: 0 },
+  targetPointer = { x: 0, y: 0 };
+const metrics = {
+  intervals: [] as number[],
+  anchors: [] as {
+    id: string;
+    scheduled_seconds: number;
+    observed_seconds: number;
+    lateness_ms: number;
+  }[],
+  clock: transport.clockSamples,
+};
+const observed = new Set<string>();
+const format = (s: number) =>
+  `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+function status(message: string) {
+  get("status").textContent = message;
 }
-function currentTime() {
-  return mode === "study" ? studyTime() : transport.position();
+function revealControls() {
+  if (!started) return;
+  document.body.classList.add("controls-visible");
+  window.clearTimeout(hideControls);
+  hideControls = window.setTimeout(() => {
+    if (transport.state === "playing")
+      document.body.classList.remove("controls-visible");
+  }, 2800);
 }
-function showPlayback() {
-  get("entrance").hidden = true;
-  get("scene-caption").hidden = false;
-  button("play").disabled = button("replay").disabled = seek.disabled = false;
+function resetInteraction() {
+  world?.resetInteractions();
+  pointer.x = pointer.y = targetPointer.x = targetPointer.y = 0;
+  dirty = true;
 }
 function updateControls() {
-  const playing =
-    mode === "study" ? studyPlaying : transport.state === "playing";
-  button("play").textContent = playing ? "Ⅱ" : "▶";
+  const playing = transport.state === "playing";
+  const prepared =
+    audioReady &&
+    Boolean(world || sceneError) &&
+    Boolean(features || featureError);
+  button("play").disabled = !prepared;
+  button("start").disabled = !prepared;
+  button("play").textContent = playing ? "Ⅱ" : "▷";
   button("play").setAttribute("aria-label", playing ? "Pause" : "Play");
-  seek.max = String(
-    mode === "study" ? STUDY_DURATION : transport.duration || STUDY_DURATION,
-  );
-  get("duration").textContent =
-    mode === "study"
-      ? format(STUDY_DURATION)
-      : transport.duration
-        ? format(transport.duration)
-        : "—:—";
-  button("play").disabled =
-    button("replay").disabled =
-    seek.disabled =
-      !ready || (mode !== "study" && !transport.duration);
-  button("study").disabled = !sceneAvailable;
-  input("volume").value = input("volume-settings").value = String(
-    transport.volumeLevel,
-  );
-  button("mute").setAttribute("aria-pressed", String(transport.isMuted));
+  button("mute").textContent = transport.isMuted ? "×" : "♪";
   button("mute").setAttribute(
     "aria-label",
     transport.isMuted ? "Unmute" : "Mute",
   );
-  button("mute").textContent = transport.isMuted ? "×" : "♪";
-  button("ignition").disabled = !ready;
-  get("ignition-label").textContent = transport.duration
-    ? "Start ignition"
-    : "Load recording & start";
+  button("mute").setAttribute("aria-pressed", String(transport.isMuted));
+  input("seek").disabled = !audioReady;
+  input("seek").max = String(transport.duration || score.duration_seconds);
+  input("volume").value = String(transport.volumeLevel);
+  get("duration").textContent = format(
+    transport.duration || score.duration_seconds,
+  );
+  get("start-label").textContent =
+    audioReady && (world || sceneError) ? "Play" : "Preparing the light…";
+  get("ending").hidden = transport.state !== "ended";
+  if (!playing) revealControls();
+  dirty = true;
 }
 transport.onChange = updateControls;
-function pause() {
-  if (mode === "study") {
-    studyOffset = studyTime();
-    studyPlaying = false;
-  } else transport.pause();
-  updateControls();
+function recovery() {
+  const error = audioError || sceneError;
+  get("recovery").hidden = !error;
+  get("recovery-message").textContent = error;
+  get("recovery-title").textContent = audioError
+    ? "The recording couldn’t load."
+    : "The light field is unavailable.";
+  button("retry-audio").hidden = !audioError;
+  button("choose-file").hidden = !audioError;
+  button("retry-scene").hidden = !sceneError;
 }
-async function togglePlay() {
+async function loadAudio(file?: File) {
+  const request = ++loadGeneration;
+  audioReady = false;
+  audioError = "";
+  status("Verifying and preparing the recording…");
+  updateControls();
+  recovery();
   try {
-    if (mode === "study") {
-      if (studyPlaying) pause();
-      else {
-        if (studyOffset >= STUDY_DURATION) studyOffset = 0;
-        studyStart = performance.now();
-        studyPlaying = true;
-        updateControls();
+    if (!file) {
+      const controller = new AbortController(),
+        timeout = window.setTimeout(() => controller.abort(), 30000);
+      try {
+        const response = await fetch(
+          `${import.meta.env.BASE_URL}audio/chernyy-bumer.mp3`,
+          { signal: controller.signal },
+        );
+        if (!response.ok)
+          throw new Error(`Song returned HTTP ${response.status}.`);
+        file = new File([await response.arrayBuffer()], "chernyy-bumer.mp3", {
+          type: "audio/mpeg",
+        });
+      } finally {
+        clearTimeout(timeout);
       }
-    } else if (transport.state === "playing") pause();
-    else if (transport.duration) await transport.play();
-    else input("audio-file").click();
+    }
+    if (request !== loadGeneration) return;
+    const accepted = await transport.load(file, TRACK_HASH);
+    if (!accepted || request !== loadGeneration) return;
+    if (Math.abs(transport.duration - score.duration_seconds) > 0.1)
+      throw new Error(
+        "The browser decode differs from the measured recording by more than 100 ms. Check the recording and decoder.",
+      );
+    audioReady = true;
+    transport.calibrationOffsetMs = score.calibration_offset_ms;
+    if (development && query.has("t")) transport.seek(Number(query.get("t")));
+    status("");
   } catch (e) {
-    message(
-      `Playback could not start: ${e instanceof Error ? e.message : String(e)}. Press play to retry.`,
+    if (request === loadGeneration) {
+      audioError = `${e instanceof Error ? e.message : String(e)} Retry, or choose the supplied MP3.`;
+      status("");
+    }
+  }
+  updateControls();
+  recovery();
+  dirty = true;
+}
+async function loadScene() {
+  const request = ++sceneGeneration;
+  sceneError = "";
+  recovery();
+  try {
+    world?.dispose();
+    world = null;
+    const built = await createWorld(canvas, score, quality.value as Quality);
+    if (request !== sceneGeneration) {
+      built.dispose();
+      return;
+    }
+    world = built;
+    contextLost = false;
+  } catch (e) {
+    if (request === sceneGeneration)
+      sceneError = `${e instanceof Error ? e.message : String(e)} Audio and playback controls remain available.`;
+  }
+  updateControls();
+  recovery();
+  dirty = true;
+}
+async function play() {
+  try {
+    if (!audioReady || (!world && !sceneError) || (!features && !featureError))
+      return;
+    if (transport.state === "playing") {
+      transport.pause();
+      return;
+    }
+    if (transport.state === "ended") {
+      resetInteraction();
+      transport.seek(0);
+      previousSong = 0;
+      observed.clear();
+    }
+    await transport.play();
+    started = true;
+    get("entrance").classList.add("leaving");
+    window.setTimeout(() => {
+      if (started) get("entrance").hidden = true;
+    }, 900);
+    status("");
+    revealControls();
+  } catch (e) {
+    status(
+      `${e instanceof Error ? e.message : String(e)} Press Play to retry.`,
     );
   }
 }
-button("ignition").onclick = async () => {
-  if (!transport.duration) {
-    input("audio-file").click();
-    return;
-  }
-  mode = "audio";
-  showPlayback();
-  get("study-tag").textContent = cues
-    ? "LOCAL RECORDING"
-    : "CUE REVIEW PENDING";
-  get("mode-label").textContent = "Seryoga · local recording";
-  message(
-    cues
-      ? "Recording and reviewed scene share the audio clock."
-      : "Audio plays locally. Song choreography stays at ignition until its cues are reviewed.",
-  );
-  await togglePlay();
-};
-button("study").onclick = () => {
-  if (!ready) return;
-  transport.pause();
-  mode = "study";
-  studyOffset = 0;
-  studyStart = performance.now();
-  studyPlaying = true;
-  showPlayback();
-  get("study-tag").textContent = "SILENT SCENE STUDY";
-  get("mode-label").textContent = "Scene study · no soundtrack";
-  get("track-title").textContent = "BUMER.EXE";
-  message("A silent tour of the compositions. These are not song timings.");
-  updateControls();
-};
-button("play").onclick = () => void togglePlay();
+button("start").onclick = () => void play();
+button("play").onclick = () => void play();
 button("replay").onclick = () => {
-  if (mode === "study") {
-    studyOffset = 0;
-    studyStart = performance.now();
-    studyPlaying = true;
-    updateControls();
-  } else void transport.replay().catch((e) => message(String(e)));
+  resetInteraction();
+  previousSong = 0;
+  observed.clear();
+  transport.seek(0);
+  void play();
 };
-seek.oninput = () => {
-  const t = Number(seek.value);
-  if (mode === "study") {
-    studyOffset = t;
-    studyStart = performance.now();
-  } else transport.seek(t);
+function seek(seconds: number) {
+  transport.seek(seconds);
+  previousSong = seconds;
+  resetInteraction();
+  observed.clear();
+  revealControls();
+}
+input("seek").oninput = () => seek(Number(input("seek").value));
+input("volume").oninput = () => {
+  transport.setVolume(Number(input("volume").value));
+  revealControls();
 };
-for (const id of ["volume", "volume-settings"])
-  input(id).oninput = () => {
-    transport.setVolume(Number(input(id).value));
-    updateControls();
-  };
 button("mute").onclick = () => {
   transport.setMuted(!transport.isMuted);
   updateControls();
 };
-button("load-audio").onclick = () => input("audio-file").click();
-let fileLoad = 0;
-input("audio-file").onchange = async () => {
-  const file = input("audio-file").files?.[0];
-  if (!file) return;
-  const request = ++fileLoad;
-  pause();
-  cues = null;
-  message("Reading local bytes and decoding the recording…");
-  try {
-    const applied = await transport.load(file);
-    if (!applied || request !== fileLoad) return;
-    mode = "audio";
-    showPlayback();
-    get("study-tag").textContent = "CUE REVIEW PENDING";
-    get("mode-label").textContent = "Local recording · cues pending";
-    get("track-title").textContent = transport.filename;
-    message(
-      "Recording decoded. Press play to listen, or load a reviewed cue sheet in settings.",
-    );
-    editor.refresh();
-    updateControls();
-  } catch (e) {
-    if (request === fileLoad)
-      message(
-        `${e instanceof Error ? e.message : String(e)} Use “Load local recording” to retry.`,
-      );
-  }
-  input("audio-file").value = "";
-};
-for (const name of ["settings", "credits"]) {
-  button(`${name}-button`).onclick = () =>
-    get<HTMLDialogElement>(name).showModal();
-}
-for (const dialog of document.querySelectorAll<HTMLDialogElement>("dialog")) {
-  dialog.querySelector<HTMLButtonElement>(".close")!.onclick = () =>
-    dialog.close();
-  dialog.addEventListener("click", (event) => {
-    if (event.target !== dialog) return;
-    const r = dialog.getBoundingClientRect();
-    if (
-      event.clientX < r.left ||
-      event.clientX > r.right ||
-      event.clientY < r.top ||
-      event.clientY > r.bottom
-    )
-      dialog.close();
-  });
-}
-button("open-editor").onclick = () => {
-  get<HTMLDialogElement>("settings").close();
-  pause();
-  editor.refresh();
-  get<HTMLDialogElement>("editor").showModal();
-};
-button("import-cues").onclick = () => input("cue-file").click();
-input("cue-file").onchange = async () => {
-  const file = input("cue-file").files?.[0];
-  if (!file) return;
-  pause();
-  try {
-    if (!transport.hash) throw new Error("Load the intended recording first.");
-    if (file.size > 1024 * 1024)
-      throw new Error("Cue sheets must be smaller than 1 MiB.");
-    const imported = JSON.parse(await file.text());
-    const reviewedCues = validateCues(
-      imported.cues ?? imported,
-      transport.hash,
-      transport.duration,
-    );
-    validateTrackIdentity(
-      imported.track,
-      transport.hash,
-      transport.duration,
-      transport.sampleRate,
-    );
-    cues = reviewedCues;
-    get("track-title").textContent = "ЧЁРНЫЙ БУМЕР";
-    mode = "audio";
-    get("study-tag").textContent = "LOCAL RECORDING";
-    message("Reviewed cue sheet matches the loaded audio bytes. Press play.");
-    get<HTMLDialogElement>("settings").close();
-  } catch (e) {
-    cues = null;
-    message(e instanceof Error ? e.message : String(e));
-  }
-  input("cue-file").value = "";
-};
-button("fullscreen").onclick = async () => {
+async function fullscreen() {
   try {
     if (document.fullscreenElement) await document.exitFullscreen();
     else await document.documentElement.requestFullscreen();
-  } catch {
-    message(
-      "Fullscreen is unavailable in this browser. The show works in the window.",
+  } catch (e) {
+    status(
+      `Fullscreen unavailable: ${e instanceof Error ? e.message : String(e)}`,
     );
   }
+}
+button("fullscreen").onclick = () => void fullscreen();
+button("settings-button").onclick = () => {
+  revealControls();
+  get<HTMLDialogElement>("settings").showModal();
 };
-addEventListener("fullscreenchange", () =>
-  button("fullscreen").setAttribute(
-    "aria-label",
-    document.fullscreenElement ? "Exit fullscreen" : "Enter fullscreen",
-  ),
+get<HTMLDialogElement>("settings").addEventListener("close", () =>
+  canvas.focus({ preventScroll: true }),
 );
-addEventListener("pointermove", (event) => {
-  pointer.x = (event.clientX / innerWidth - 0.5) * 2;
-  pointer.y = (event.clientY / innerHeight - 0.5) * 2;
-});
+reduced.onchange = () => {
+  dirty = true;
+  resetInteraction();
+};
+quality.onchange = () => {
+  transport.pause();
+  void loadScene();
+};
+button("retry-audio").onclick = () => void loadAudio();
+button("retry-scene").onclick = () => {
+  if (contextLost) world?.restoreContext();
+  else void loadScene();
+};
+button("choose-file").onclick = () => input("audio-file").click();
+input("audio-file").onchange = () => {
+  const file = input("audio-file").files?.[0];
+  if (file) void loadAudio(file);
+  input("audio-file").value = "";
+};
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
-    pause();
-    message("Paused while the tab was hidden. Press play to resume.");
+    transport.pause();
+    resetInteraction();
   }
 });
-document.addEventListener("keydown", (event) => {
+canvas.addEventListener("webglcontextlost", (e) => {
+  e.preventDefault();
+  contextLost = true;
+  transport.pause();
+  sceneError =
+    "Graphics context was lost. Retry the scene; the recording stays loaded.";
+  recovery();
+});
+canvas.addEventListener("webglcontextrestored", () => void loadScene());
+window.addEventListener("resize", () => {
+  world?.resize();
+  dirty = true;
+});
+window.addEventListener("pointermove", (e) => {
+  if (e.target === canvas) {
+    targetPointer.x = Math.max(
+      -1,
+      Math.min(1, (e.clientX / innerWidth) * 2 - 1),
+    );
+    targetPointer.y = Math.max(
+      -1,
+      Math.min(1, 1 - (e.clientY / innerHeight) * 2),
+    );
+    dirty = true;
+  }
+  revealControls();
+});
+canvas.addEventListener("pointerleave", () => {
+  targetPointer.x = targetPointer.y = 0;
+  dirty = true;
+});
+let press: { x: number; y: number } | null = null;
+canvas.addEventListener("pointerdown", (e) => {
+  press = { x: e.clientX, y: e.clientY };
+});
+canvas.addEventListener("pointerup", (e) => {
   if (
-    event.code !== "Space" ||
-    event.target instanceof HTMLInputElement ||
-    event.target instanceof HTMLTextAreaElement ||
-    document.querySelector("dialog[open]") ||
-    event.target instanceof HTMLButtonElement ||
-    event.target instanceof HTMLAnchorElement
+    press &&
+    Math.hypot(e.clientX - press.x, e.clientY - press.y) < 15 &&
+    frame &&
+    transport.state === "playing"
+  ) {
+    world?.tap(
+      (e.clientX / innerWidth) * 2 - 1,
+      1 - (e.clientY / innerHeight) * 2,
+      frame,
+    );
+    dirty = true;
+  }
+  press = null;
+});
+document.addEventListener("focusin", revealControls);
+document.addEventListener("keydown", (e) => {
+  const target = e.target as HTMLElement;
+  if (
+    ["INPUT", "SELECT", "TEXTAREA", "BUTTON", "A"].includes(target.tagName) ||
+    get<HTMLDialogElement>("settings").open
   )
     return;
-  event.preventDefault();
-  void togglePlay();
-});
-let lastRenderKey = "";
-function render() {
-  const t = currentTime();
-  if (mode === "study" && t >= STUDY_DURATION && studyPlaying) {
-    studyOffset = STUDY_DURATION;
-    studyPlaying = false;
-    message("Back in the courtyard. Replay the study, or load the recording.");
-    updateControls();
+  if (e.code === "Space") {
+    e.preventDefault();
+    void play();
+  } else if (e.key.toLowerCase() === "m") button("mute").click();
+  else if (e.key.toLowerCase() === "f") void fullscreen();
+  else if (e.key === "ArrowRight") {
+    e.preventDefault();
+    seek(transport.position() + 5);
+  } else if (e.key === "ArrowLeft") {
+    e.preventDefault();
+    seek(transport.position() - 5);
   }
-  const visualTime = mode === "audio" ? transport.visualPosition() : t;
-  const section =
-    mode === "study"
-      ? studyAt(t)
-      : cues
-        ? activeSection(cues, visualTime)
-        : { id: "intro" as const, progress: 0 };
-  const intensity = Math.min(
-    Number(input("intensity").value),
-    input("low-flash").checked ? 0.45 : 1,
-  );
-  const renderKey = [
-    section.id,
-    section.progress,
-    visualTime,
-    intensity,
-    reduced.checked,
-    pointer.x,
-    pointer.y,
-    innerWidth,
-    innerHeight,
-  ].join("|");
-  if (renderKey !== lastRenderKey) {
-    world?.render(
-      section.id,
-      section.progress,
-      mode === "audio" && !cues ? 0 : visualTime,
-      intensity,
+  revealControls();
+});
+function tick(now: number) {
+  requestAnimationFrame(tick);
+  const playing = transport.state === "playing",
+    seconds = transport.visualPosition(now),
+    dt = lastFrame ? Math.min(0.1, (now - lastFrame) / 1000) : 0;
+  if (development && playing && lastFrame && metrics.intervals.length < 40000)
+    metrics.intervals.push(now - lastFrame);
+  lastFrame = now;
+  const moving =
+    Math.abs(pointer.x - targetPointer.x) +
+      Math.abs(pointer.y - targetPointer.y) >
+    0.002;
+  pointer.x += (targetPointer.x - pointer.x) * (1 - Math.exp(-dt * 8));
+  pointer.y += (targetPointer.y - pointer.y) * (1 - Math.exp(-dt * 8));
+  if ((playing || dirty || moving) && world && !contextLost) {
+    const bands = features
+      ? sampleFeatures(features, seconds)
+      : { low: 0, mid: 0, high: 0, flux: 0 };
+    frame = evaluateShow(
+      score,
+      seconds,
+      bands,
+      innerWidth < 700,
       reduced.checked,
-      pointer,
     );
-    lastRenderKey = renderKey;
+    world.render(frame, pointer, reduced.checked);
+    dirty = false;
   }
-  get("scene-name").textContent = labels[section.id];
-  get("time").textContent = format(t);
-  seek.value = String(t);
-  editor.update();
-  frame = requestAnimationFrame(render);
+  if (development && playing && seconds >= previousSong) {
+    for (const event of score.events)
+      if (
+        event.seconds > previousSong &&
+        event.seconds <= seconds &&
+        !observed.has(event.id)
+      ) {
+        observed.add(event.id);
+        metrics.anchors.push({
+          id: event.id,
+          scheduled_seconds: event.seconds,
+          observed_seconds: seconds,
+          lateness_ms: (seconds - event.seconds) * 1000,
+        });
+      }
+  }
+  previousSong = seconds;
+  if (now - lastUi > 150) {
+    lastUi = now;
+    input("seek").value = String(transport.position());
+    get("time").textContent = format(transport.position());
+    if (development)
+      get("debug").textContent =
+        `${seconds.toFixed(3)} s · ${transport.state}\n${transport.clockQuality}\n${world ? JSON.stringify(world.diagnostics()) : "Renderer unavailable"}`;
+  }
 }
-async function boot() {
-  try {
-    world = await createWorld(get<HTMLCanvasElement>("world"), () => {
-      pause();
-      sceneAvailable = false;
-      get("fallback").hidden = false;
-      get("fallback-message").textContent =
-        "The graphics context was lost. Audio has paused. Reload to rebuild the scene; the recording will need to be selected again.";
-      message("Graphics paused. Reload to recover.");
-      updateControls();
+if (development) {
+  get("developer").hidden = false;
+  const api = {
+    transport,
+    score,
+    getFrame: () => frame,
+    seek,
+    metrics,
+    world: () => world,
+    resetMetrics: () => {
+      metrics.intervals.length = metrics.anchors.length = 0;
+      observed.clear();
+      previousSong = transport.visualPosition();
+    },
+    decodeRecord: () => ({
+      hash: transport.hash,
+      duration: transport.duration,
+      length: transport.decodedBuffer?.length,
+      sampleRate: transport.sampleRate,
+      channels: transport.decodedBuffer?.numberOfChannels,
+      calibrationOffsetMs: transport.calibrationOffsetMs,
+    }),
+  };
+  Object.assign(window, { __BUMER__: api });
+}
+async function initialise() {
+  const data = fetch(`${import.meta.env.BASE_URL}data/features.json`)
+    .then(async (r) => {
+      if (!r.ok) throw new Error(`Analysis returned HTTP ${r.status}`);
+      const value = (await r.json()) as FeatureData;
+      if (
+        value.runtime_sha256 !== TRACK_HASH ||
+        !Array.isArray(value.samples) ||
+        !value.samples.length ||
+        value.samples.some(
+          (r) => r.length !== 5 || r.some((n) => !Number.isFinite(n) || n < 0),
+        ) ||
+        !Number.isFinite(value.hop_seconds) ||
+        value.hop_seconds <= 0
+      )
+        throw new Error("Invalid audio-feature data.");
+      features = value;
+      dirty = true;
+    })
+    .catch((e) => {
+      featureError = `Surface detail unavailable: ${e instanceof Error ? e.message : String(e)}. The authored show remains available.`;
+      status(featureError);
     });
-    ready = true;
-    sceneAvailable = true;
-    get("fallback").hidden = true;
-    updateControls();
-    message(
-      "Courtyard ready. Load your recording, or explore the silent scene study.",
-    );
-    const studyLink = new URL(location.href).searchParams.get("study");
-    if (studyLink !== null && Number.isFinite(Number(studyLink))) {
-      mode = "study";
-      studyOffset = Math.max(0, Math.min(STUDY_DURATION, Number(studyLink)));
-      studyPlaying = false;
-      showPlayback();
-      get("study-tag").textContent = "SILENT SCENE STUDY";
-      get("mode-label").textContent = "Scene study · no soundtrack";
-      message("A paused scene study. These are not song timings.");
-      updateControls();
-    }
-    render();
-  } catch (e) {
-    ready = true;
-    updateControls();
-    get("fallback").hidden = false;
-    get("fallback-message").textContent =
-      `The scene could not load: ${e instanceof Error ? e.message : String(e)}. Audio controls remain available.`;
-    message(
-      "The scene needs a retry. You can still load and play local audio.",
-    );
-    render();
-  }
+  await Promise.all([loadAudio(), loadScene(), data]);
+  if (featureError) status(featureError);
+  updateControls();
 }
-button("retry").onclick = () => location.reload();
-addEventListener("pagehide", () => {
-  cancelAnimationFrame(frame);
-  world?.dispose();
-  void transport.dispose();
-});
-void boot();
+updateControls();
+requestAnimationFrame(tick);
+void initialise();

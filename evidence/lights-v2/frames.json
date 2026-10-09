@@ -1,0 +1,51 @@
+{
+  "browser": "153.0.8010.12",
+  "method": "Playwright headful Chromium on desktop RTX 4070; portrait viewport is emulation, not a phone; developer drawer hidden for product frames",
+  "records": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "decode": {
+        "hash": "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
+        "duration": 244.297125,
+        "length": 11726262,
+        "sampleRate": 48000,
+        "channels": 2,
+        "calibrationOffsetMs": 0
+      },
+      "scene": {
+        "quality": "high",
+        "dpr": 1,
+        "drawCalls": 21,
+        "triangles": 1220510,
+        "points": 62688,
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL 4.5.0)"
+      }
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "decode": {
+        "hash": "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
+        "duration": 244.297125,
+        "length": 11726262,
+        "sampleRate": 48000,
+        "channels": 2,
+        "calibrationOffsetMs": 0
+      },
+      "scene": {
+        "quality": "low",
+        "dpr": 1,
+        "drawCalls": 21,
+        "triangles": 437974,
+        "points": 30589,
+        "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL 4.5.0)"
+      }
+    }
+  ],
+  "errors": []
+}

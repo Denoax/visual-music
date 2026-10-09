@@ -1,0 +1,39 @@
+{
+  "status": "digital_decode_alignment_measured",
+  "method": "First-second mono mean of browser stereo decode vs offline FFmpeg at matched rates; onset-bearing interval 80\u2013750 ms; constant +/-64-frame lag search and fitted gain. No perceptual listening or acoustic/display measurement. No proportional retiming.",
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+  "records": [
+    {
+      "sampleRate": 48000,
+      "duration": 244.297125,
+      "length": 11726262,
+      "channels": 2,
+      "first_threshold_frame": 4655,
+      "first_threshold_seconds": 0.09697916666666667,
+      "offline_first_threshold_frame": 4161,
+      "offline_first_threshold_seconds": 0.0866875,
+      "best_integer_lag_browser_minus_offline_frames": 0,
+      "constant_offset_ms": 0.0,
+      "normalised_correlation": 0.9999979268157361,
+      "fitted_offline_to_browser_gain": 1.4147507425264014,
+      "rms_error_after_gain_fit": 0.0003811537959126889
+    },
+    {
+      "sampleRate": 44100,
+      "duration": 244.29714285714286,
+      "length": 10773504,
+      "channels": 2,
+      "first_threshold_frame": 4277,
+      "first_threshold_seconds": 0.09698412698412698,
+      "offline_first_threshold_frame": 3823,
+      "offline_first_threshold_seconds": 0.08668934240362812,
+      "best_integer_lag_browser_minus_offline_frames": 0,
+      "constant_offset_ms": 0.0,
+      "normalised_correlation": 0.9999973416440531,
+      "fitted_offline_to_browser_gain": 1.41471966000494,
+      "rms_error_after_gain_fit": 0.0004225105284416352
+    }
+  ],
+  "calibration_offset_ms": 0,
+  "calibration_basis": "Best measured constant digital decoder lag is zero; physical output remains uncalibrated."
+}

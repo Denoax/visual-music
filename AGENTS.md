@@ -1,33 +1,26 @@
-# BUMER.EXE project instructions
+# BUMER.EXE replacement instructions
 
-Build the complete standalone audiovisual website described in `ASSETFILE.md`. The user's priorities are exceptional visual/audio craft, humour, the exact selected song and reliable synchronisation. Work through implementation and evidence without routine reconfirmation. Inspect applicable parent/repository instructions first.
-
-## Read order
+This is the authorised Lights rebuild of an existing project, not the old courtyard brief. Mani rejected that visual experience in full. Replace the active root `ASSETFILE.md` and instructions with this pack’s files while preserving rejected history/evidence. Complete the real website in `Denoax/bumer-exe` and leave manimarami.com alone.
 
 1. Read and apply **$reference-led-design**.
-2. Read `ASSETFILE.md` in full.
-3. Inspect `manifests/assets.json`, `manifests/track.template.json` and `manifests/cues.template.json`.
-4. Read `core/README.md` before adapting the tested timing arithmetic.
+2. Read `ASSETFILE.md` in full, then `evidence/PACK_REVIEW.md`, `analysis/track.json`, `analysis/markers.candidates.json` and `show/score.proposal.json`.
+3. Inspect the existing source and the supplied MP3. Copy `public/audio/chernyy-bumer.mp3` unchanged into the project and verify its SHA-256. Default playback uses this bundled asset.
+4. Inspect real Lights compositions/motion and implement original terrain, sculptural light, beams, particles and musical choreography. Run actual browser visual/audio review while building. A test count is not a quality judgement.
+5. Complete the whole site, listened cue score, production preview and genuine evidence. Do not end at a plan or excerpt and do not ask routine reconfirmation. The excerpt checkpoint exists to catch the previous art-direction failure early.
 
-## Source rules if the skill is unavailable
+## Embedded source policy if the skill is unavailable
 
-- Inspect original human-created references and their actual available imagery/motion. Distinguish observations, creator-documented implementation and your inference.
-- Use original CSS/SVG/Three.js/GLSL, authored meshes and deterministic simulation. Reuse owned/licensed material with source records. Do not generate images, videos, textures, concept art or external model-generated media for assets or visual authority unless the user later explicitly requests that particular generation.
-- Reference artwork and footage are research material; do not put them in the runtime. A public repository's code license does not automatically license music, photos or models.
-- Keep real controls and sparse real content. Avoid default card grids, decorative pills, fake telemetry, model badges, fabricated metadata and gratuitous UI. This project can be funny and maximal in selected musical moments; do not inherit a portfolio's unrelated prohibition on all colourful or playful motion.
-- Validate actual rendered output and continuous playback. Compilation and selected screenshots do not prove visual craft or smoothness. Record unresolved inspection gaps rather than inventing evidence.
+- Use human-created references, creator documentation/source and inspected actual imagery/motion. Distinguish direct observations, documented techniques and your inference.
+- Write original Three.js/GLSL/SVG/CSS and meshes/simulation. Use owned/licensed assets with provenance. Do not generate or commission images, video, textures, concept art, mockups, icons or external model-generated media unless Mani explicitly requests that particular generation later.
+- Research artwork is not runtime artwork. Publicly visible source code does not imply permission for all its media; resolve actual licences before reuse. The supplied song is authorised for this local/private work; a public redistribution licence is not established by this pack.
+- Use sparse real controls/content, no fake telemetry or decorative application UI. The normal website is the musical experience. Developer cue editing and diagnostics stay out of the public flow.
+- Inspect rendered desktop and portrait output, interaction and full continuous playback. Record unavailable review layers honestly. Never claim a live reference played when only stills/source were inspected.
 
-## Non-negotiable runtime contracts
+## Runtime contracts
 
-- Exact audio byte hash binds the cue sheet. All times are seconds in the reviewed runtime recording. No guessed timestamps or substituted song.
-- One audio source/clock; visuals sample song time. Pause, replay and seek retain phase and reconstruct major state. Hidden-tab suspension is handled.
-- The provided template has unresolved times intentionally. Complete analysis and review; release validation must fail while essential inputs remain unresolved.
-- All intensity modes respect measured general/red flash limits. Controls remain available; reduced motion has a designed composition.
-- This is a new project. Preserve the accepted manimarami.com project and recoverable history.
-
-## Working method
-
-Use a concise source-to-implementation register. Keep raw assets and notices, hash runtime derivatives, and inspect hero geometry before selection. Develop lighting/venue/transport while any exact audio/model input is unresolved. Do not call a proxy or silent show complete. No paid asset purchase without applicable authorization.
-
-Complete the full site and local production preview with meaningful browser/audio evidence. Keep technical success, visual review, measured sync and user acceptance separate. Report what was actually tested. Do not install this file globally or claim this pack updated a separate running agent's memory.
-
+- Track SHA-256: `67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780`.
+- One audio source/clock; visuals sample presentation song time. Pause/seek/replay reconstruct phase and major state. Context/visibility recovery works.
+- Offline analysis is measured. Candidate grid/transients/proposal windows are not approved cues. Perform listening and browser alignment review before making final sync claims.
+- Flexible score regions replace the old thirteen car-story IDs. Keep authored macro events and continuous band detail separate.
+- Every shipped intensity mode must respect actual general/red flash criteria. Preserve a usable pause and a designed reduced-motion mode.
+- Complete necessary reversible work autonomously. Preserve v1 and do not rewrite git history. Do not publish the MP3 publicly without resolving distribution permission.

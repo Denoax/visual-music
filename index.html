@@ -4,239 +4,130 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
-    <meta name="theme-color" content="#050607" />
+    <meta name="theme-color" content="#030715" />
     <meta
       name="description"
-      content="A black sedan. A quiet courtyard. An unreasonable sound system. BUMER.EXE is an authored audiovisual neighbourhood rave."
+      content="A luminous world choreographed to Серёга — Чёрный бумер."
     />
-    <title>BUMER.EXE — Start ignition</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>BUMER.EXE — A world of light</title>
   </head>
   <body>
     <canvas
       id="world"
-      aria-label="A black executive sedan in a courtyard that unfolds into a neighbourhood light installation"
+      aria-label="Rolling luminous terrain, glowing sculptures and a floating canopy"
+      tabindex="0"
     ></canvas>
-    <div class="frame" aria-hidden="true"></div>
     <header>
-      <a class="wordmark" href="./" aria-label="BUMER.EXE home"
-        >BUMER<span>.EXE</span></a
-      >
-      <div class="header-actions">
-        <button id="credits-button">Credits</button
-        ><button
+      <a href="./" class="wordmark">BUMER.EXE</a>
+      <nav aria-label="Playback controls">
+        <button
+          id="play"
+          disabled
+          aria-label="Pause"
+          title="Play or pause (Space)"
+        >
+          Ⅱ
+        </button>
+        <button id="mute" aria-label="Mute" title="Mute (M)">♪</button>
+        <button
           id="fullscreen"
           aria-label="Enter fullscreen"
-          title="Fullscreen"
+          title="Fullscreen (F)"
         >
           ⛶
         </button>
-      </div>
+        <button id="settings-button" aria-label="Settings" title="Settings">
+          ⋯
+        </button>
+      </nav>
     </header>
     <main>
-      <section class="entrance" id="entrance" aria-labelledby="title">
-        <div class="song-credit">SERYOGA <span>—</span> ЧЁРНЫЙ БУМЕР</div>
+      <section id="entrance" aria-labelledby="title">
+        <p class="song">СЕРЁГА <span>—</span> ЧЁРНЫЙ БУМЕР</p>
         <h1 id="title">BUMER.EXE</h1>
-        <div class="entry-actions">
-          <button id="ignition" class="primary" disabled>
-            <span class="key-icon" aria-hidden="true">↗</span
-            ><span id="ignition-label">Preparing the courtyard…</span></button
-          ><button id="study">
-            Explore without audio <span aria-hidden="true">→</span>
-          </button>
-        </div>
-        <p id="entry-note">
-          Bring your local recording. It stays on this device.
-        </p>
+        <button id="start" disabled>
+          <span class="play-symbol" aria-hidden="true">▷</span
+          ><span id="start-label">Preparing the light…</span>
+        </button>
+        <p class="hint">Headphones on. Follow the light.</p>
       </section>
-      <div id="scene-caption" class="scene-caption" hidden>
-        <span id="study-tag">SILENT SCENE STUDY</span>
-        <p id="scene-name">Ignition</p>
-      </div>
-      <div id="status" role="status" aria-live="polite">
-        Loading materials and preparing shaders…
-      </div>
-      <section id="fallback" hidden>
-        <h2>The courtyard needs WebGL</h2>
-        <p id="fallback-message">
-          Audio and its controls remain available. Try a browser with hardware
-          acceleration to see the show.
-        </p>
-        <button id="retry">Retry the scene</button>
+      <section id="ending" hidden aria-label="Recording ended">
+        <p class="song">СЕРЁГА — ЧЁРНЫЙ БУМЕР</p>
+        <h2>Once more?</h2>
+        <button id="replay">Replay ↗</button>
+      </section>
+      <p id="status" role="status" aria-live="polite">Loading the recording…</p>
+      <section id="recovery" hidden>
+        <h2 id="recovery-title">The show needs a moment.</h2>
+        <p id="recovery-message"></p>
+        <div class="recovery-actions">
+          <button id="retry-audio">Retry song</button
+          ><button id="retry-scene">Retry scene</button
+          ><button id="choose-file" hidden>Choose the supplied MP3</button>
+        </div>
       </section>
     </main>
-    <footer id="transport">
-      <div class="transport-track">
-        <span id="track-title" class="track-title">ЧЁРНЫЙ БУМЕР</span
-        ><span id="mode-label">Seryoga · local recording</span>
-      </div>
-      <div class="playback">
-        <button id="play" aria-label="Play" disabled>▶</button
-        ><button id="replay" aria-label="Replay" disabled>↺</button
-        ><output id="time" for="seek">0:00</output
-        ><input
-          id="seek"
-          type="range"
-          min="0"
-          max="130"
-          value="0"
-          step="0.01"
-          aria-label="Seek"
-          disabled
-        /><span id="duration">—:—</span>
-      </div>
-      <div class="tools">
-        <button id="mute" aria-label="Mute" aria-pressed="false">♪</button
-        ><input
+    <section id="controls" aria-label="Song position and volume">
+      <span id="time">0:00</span
+      ><input
+        id="seek"
+        type="range"
+        min="0"
+        max="244.297"
+        step="0.01"
+        value="0"
+        aria-label="Song position"
+        disabled
+      /><span id="duration">4:04</span
+      ><label class="volume"
+        >Volume<input
           id="volume"
           type="range"
           min="0"
           max="1"
-          value="0.7"
           step="0.01"
+          value="0.7"
           aria-label="Volume"
-        /><button
-          id="settings-button"
-          aria-label="Light and motion settings"
-          title="Light and motion"
-        >
-          ☼</button
-        ><button
-          id="load-audio"
-          aria-label="Load local recording"
-          title="Load recording"
-        >
-          ↥
-        </button>
-      </div>
-    </footer>
-    <input
-      id="audio-file"
-      type="file"
-      accept="audio/*,.mp3,.wav,.flac,.m4a,.ogg"
-      hidden
-    />
-    <input id="cue-file" type="file" accept=".json,application/json" hidden />
+      /></label>
+    </section>
     <dialog id="settings">
-      <div class="dialog-heading">
-        <h2>Make yourself comfortable.</h2>
+      <form method="dialog">
         <button class="close" aria-label="Close settings">×</button>
-      </div>
+      </form>
+      <h2>A world of light</h2>
       <label class="setting"
-        >Volume<input
-          id="volume-settings"
-          type="range"
-          min="0"
-          max="1"
-          value="0.7"
-          step="0.01"
-      /></label>
-      <label class="setting"
-        >Light intensity<input
-          id="intensity"
-          type="range"
-          min="0.15"
-          max="1"
-          value="0.5"
-          step="0.05" /></label
+        ><input id="reduced" type="checkbox" /> Gentle motion &amp; light</label
       ><label class="setting"
-        >Low light<input id="low-flash" type="checkbox" checked /></label
-      ><label class="setting"
-        >Reduced camera motion<input id="reduced" type="checkbox"
-      /></label>
-      <p>Slow light chases. No strobe. Pause is always available.</p>
-      <button id="import-cues">Load reviewed track &amp; cues</button
-      ><button id="open-editor">Open listening & cue editor</button>
-    </dialog>
-    <dialog id="credits">
-      <div class="dialog-heading">
-        <h2>BUMER.EXE</h2>
-        <button class="close" aria-label="Close credits">×</button>
-      </div>
-      <p>
-        An unreasonable neighbourhood nightclub.<br />A project by Mani Marami
-        Milani / Denoax.
+        >Detail<select id="quality">
+          <option value="high">Full field</option>
+          <option value="low">Lighter field</option>
+        </select></label
+      >
+      <p class="instruction">
+        Move to look around.<br />Tap a sculpture to release its light.<br />Space
+        pauses · M mutes · F fills the screen.
       </p>
-      <p>
-        Requested recording:
+      <p class="credit">
+        Серёга — Чёрный бумер<br />World &amp; choreography: BUMER.EXE<br />Inspired
+        by
         <a
-          href="https://open.spotify.com/track/0iVj13fDCDRM7rfYEGF50X"
+          href="https://helloenjoy.itch.io/lights"
           target="_blank"
           rel="noopener noreferrer"
-          >Seryoga — Чёрный бумер</a
-        >. Music is supplied locally; no recording is bundled or uploaded.
-      </p>
-      <p>
-        Original code-authored sedan, courtyard, lighting rig, air freshener and
-        shopping trolley. No external car scan is used.
-      </p>
-      <p>
-        Materials:
-        <a href="https://polyhaven.com/a/asphalt_02">Asphalt 02 — Rob Tuytel</a
-        >;
-        <a href="https://polyhaven.com/a/concrete_wall_007"
-          >Concrete Wall 007 — Charlotte Baglioni, Dario Barresi & Rico
-          Cilliers</a
-        >;
-        <a href="https://polyhaven.com/a/rooftop_night"
-          >Rooftop Night — Greg Zaal</a
-        >. Poly Haven, CC0.
-      </p>
-      <p>Anton — Anton Project Authors, SIL OFL 1.1. Three.js — MIT.</p>
-      <p>
-        Reference influence:
-        <a href="https://helloenjoy.itch.io/lights">HelloEnjoy / Lights</a>,
-        <a href="https://www.baku89.com/deja-vu">Baku Hashimoto / Deja Vu</a>,
-        <a
-          href="https://www.zacharyrichter.com/chemical-brothers-under-neon-lights"
-          >Under Neon Lights</a
-        >. Reference artwork and music are not included.
+          >HelloEnjoy’s Lights</a
+        >.
       </p>
     </dialog>
-    <dialog id="editor">
-      <div class="dialog-heading">
-        <h2>Listen. Mark. Review.</h2>
-        <button class="close" aria-label="Close editor">×</button>
-      </div>
-      <p id="editor-identity">Load the intended local recording first.</p>
-      <canvas
-        id="waveform"
-        height="100"
-        aria-label="Decoded recording waveform. Use the seek slider to scrub."
-      ></canvas
-      ><label class="setting"
-        >Position<input
-          id="editor-seek"
-          type="range"
-          min="0"
-          max="1"
-          step="0.001"
-          value="0" /></label
-      ><output id="editor-time">0.000 s</output>
-      <div class="editor-controls">
-        <button id="editor-play">Play / pause</button
-        ><button id="mark-beat">Mark beat</button
-        ><button id="mark-anchor">Mark anchor</button>
-      </div>
-      <div id="section-editor"></div>
-      <label class="setting"
-        >Marker listening notes<textarea
-          id="marker-notes"
-          placeholder="How you reviewed these beats and accents"
-        ></textarea></label
-      ><label class="setting"
-        >Recording identity notes<textarea
-          id="identity-notes"
-          placeholder="Artist, title, version and comparison with the requested recording"
-        ></textarea></label
-      ><button id="export-cues">Export review draft</button>
-      <p>
-        Exports stay pending until identity, every boundary and twelve
-        audiovisual anchors are reviewed. Scene studies do not supply song
-        timings.
-      </p>
-    </dialog>
+    <aside id="developer" hidden>
+      <strong>Development review</strong>
+      <p>Candidate score · listening review pending</p>
+      <output id="debug"></output
+      ><a href="review/listening.html">Listening / annotation utility ↗</a>
+    </aside>
+    <input type="file" id="audio-file" accept="audio/mpeg,.mp3" hidden />
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

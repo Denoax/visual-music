@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BUMER.EXE — recording review tool</title>
+<style>
+:root{color-scheme:dark;font:16px/1.5 system-ui,sans-serif;background:#101219;color:#e8edf5}body{max-width:1100px;margin:3rem auto;padding:0 1.5rem}h1{font-size:1.7rem;margin:0}.note{color:#9facc0;max-width:80ch}button,input,select{font:inherit;background:#202737;color:#eef3ff;border:1px solid #51627c;border-radius:5px;padding:.55rem .7rem}button{cursor:pointer}button:disabled{opacity:.5}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #7ae5d9;outline-offset:3px}.row{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;margin:1rem 0}#seek{flex:1;min-width:200px}canvas{width:100%;height:210px;display:block;background:#151b25}label{display:inline-flex;gap:.4rem;align-items:center}#status{padding:.7rem 0;color:#83ded7;min-height:1.5em}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;padding:.55rem;border-bottom:1px solid #344056}#note{flex:1;min-width:250px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.8rem;color:#9eb1c9}a{color:#85ded8}summary{cursor:pointer}#view-caption{font-size:.85rem;color:#b8c6d9}
+</style>
+<h1>Recording review</h1>
+<p class="note">Developer utility for the supplied Чёрный бумер recording. The timeline shows measured waveform and transient data plus a candidate pulse grid. It does not label verses, isolated drums or approved beats. This tool is not the website’s design.</p>
+<div class="row"><button id="play" disabled>Play</button><button id="replay" disabled>Replay</button><input id="seek" aria-label="Seek recording" type="range" min="0" max="245" step="0.001" value="0" disabled><output id="time">0.000 s</output><label>Volume <input id="volume" type="range" min="0" max="1" step="0.01" value="0.65"></label></div>
+<canvas id="wave" width="1600" height="330" aria-label="Measured waveform, band curves and candidate markers"></canvas>
+<div id="view-caption">Loading measured data…</div>
+<div class="row"><label>View <select id="zoom"><option value="full">Full recording</option><option value="20">20 seconds</option><option value="5">5 seconds</option></select></label><label><input id="grid" type="checkbox" checked>Candidate pulses</label><label><input id="flux" type="checkbox" checked>Transient peaks</label></div>
+<div id="status" role="status">Loading bundled MP3 and analysis…</div>
+<p class="note">Listen through the complete recording. Add real audible landmarks and proposed visual responses. Exports remain drafts; promotion to reviewed score requires listening notes and the final show’s alignment evidence.</p>
+<div class="row"><label>Event <select id="kind"><option>region_boundary</option><option>terrain_ignite</option><option>group_morph</option><option>group_release</option><option>palette_transition</option><option>camera_reveal</option><option>beam_fan</option><option>particle_burst</option><option>settle</option><option>audible_landmark</option></select></label><input id="note" aria-label="Audible feature and visual proposal" placeholder="Audible feature / intended visual response"><button id="mark" disabled>Add at current time</button><button id="export" disabled>Export draft & decode record</button></div>
+<table><thead><tr><th>Seconds</th><th>Type</th><th>Note</th><th>Action</th></tr></thead><tbody id="events"></tbody></table>
+<details><summary>Measured browser decode and asset record</summary><pre id="decode"></pre></details>
+<p class="note">Serve the extracted pack over localhost and open this file’s URL. Nothing is uploaded. The supplied MP3 is fetched from the pack. Space toggles playback outside text inputs. Click the waveform to seek.</p>
+<script type="module" src="./listening.mjs"></script>
+</html>

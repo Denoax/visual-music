@@ -1,0 +1,21 @@
+{
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+  "records": [
+    {
+      "sampleRate": 48000,
+      "duration": 244.297125,
+      "length": 11726262,
+      "channels": 2,
+      "first_threshold_frame": 4655,
+      "first_threshold_seconds": 0.09697916666666667
+    },
+    {
+      "sampleRate": 44100,
+      "duration": 244.29714285714286,
+      "length": 10773504,
+      "channels": 2,
+      "first_threshold_frame": 4277,
+      "first_threshold_seconds": 0.09698412698412698
+    }
+  ]
+}

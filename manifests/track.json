@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "requested_spotify_id": "0iVj13fDCDRM7rfYEGF50X",
+  "requested_artist": "Seryoga",
+  "requested_title": "\u0427\u0451\u0440\u043d\u044b\u0439 \u0431\u0443\u043c\u0435\u0440",
+  "identity_review_status": "user_designated_not_independently_listened",
+  "identity_review_notes": "User supplied this MP3 in the current project correction and explicitly instructed including it from now on. No independent full-song listening was performed in this pack-creation turn.",
+  "runtime_sha256": "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
+  "source_sha256": "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
+  "source_filename": "\u0427\u0451\u0440\u043d\u044b\u0439 \u0431\u0443\u043c\u0435\u0440 - \u0421\u0435\u0440\u0451\u0433\u0430.mp3",
+  "source_size_bytes": 9771885,
+  "runtime_audio_mode": "bundled_user_supplied_recording",
+  "runtime_audio_path": "public/audio/chernyy-bumer.mp3",
+  "distribution_permission": {
+    "status": "user_authorised_local_private_project_inclusion",
+    "record": "Current user instruction: include the supplied MP3 from now on. Public redistribution licence not established."
+  },
+  "source_probe": {
+    "codec": "mp3",
+    "sample_rate_hz": "44100",
+    "channels": 2,
+    "duration_seconds": "244.297125"
+  },
+  "analysis": {
+    "sample_rate_hz": 48000,
+    "channels": 1,
+    "duration_seconds": 244.29714583333333,
+    "frame_count": 11726263,
+    "decoded_pcm_sha256": "83cd826b351b93b4fd55deaae41a2ad080feb2b6a83d16233b6b5714efd6a000",
+    "decode_command": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-i",
+      "<INPUT_AUDIO>",
+      "-map",
+      "0:a:0",
+      "-vn",
+      "-ac",
+      "1",
+      "-ar",
+      "48000",
+      "-f",
+      "f32le",
+      "pipe:1"
+    ]
+  },
+  "runtime_decoded_duration_seconds": 244.297125,
+  "runtime_sample_rate_hz": 48000,
+  "runtime_decoder_record": "evidence/lights-v2/frames.json",
+  "measurement_note": "Encoded hash verified. Chromium decode measured. Listening remains pending because audio input is unavailable in this session.",
+  "identity_basis": "user_designated_upload"
+}

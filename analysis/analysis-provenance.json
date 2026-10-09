@@ -1,0 +1,21 @@
+{
+  "input_sha256": "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
+  "tool": "BUMER.EXE prepare_audio.py",
+  "probe_command": [
+    "ffprobe",
+    "-v",
+    "error",
+    "-select_streams",
+    "a:0",
+    "-show_streams",
+    "-show_format",
+    "-of",
+    "json",
+    "<INPUT_AUDIO>"
+  ],
+  "ffmpeg_version": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "numpy_version": "2.3.5",
+  "identity_reviewed": false,
+  "beat_markers_reviewed": false,
+  "phrase_markers_reviewed": false
+}

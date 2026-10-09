@@ -1,0 +1,186 @@
+
+> bumer-exe@0.1.0 test
+> node --test core/*.test.mjs && tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: scheduled start holds the source offset until the audio start
+ok 1 - scheduled start holds the source offset until the audio start
+  ---
+  duration_ms: 0.51079
+  type: 'test'
+  ...
+# Subtest: sampling clamps at the actual decoded track ending
+ok 2 - sampling clamps at the actual decoded track ending
+  ---
+  duration_ms: 0.102106
+  type: 'test'
+  ...
+# Subtest: output timestamp mapping accounts for an audible position behind graph time
+ok 3 - output timestamp mapping accounts for an audible position behind graph time
+  ---
+  duration_ms: 0.605755
+  type: 'test'
+  ...
+# Subtest: positive measured lead advances sampling exactly once
+ok 4 - positive measured lead advances sampling exactly once
+  ---
+  duration_ms: 0.078897
+  type: 'test'
+  ...
+# Subtest: stale, zero-initialized and implausible timestamps report fallback quality
+ok 5 - stale, zero-initialized and implausible timestamps report fallback quality
+  ---
+  duration_ms: 0.161798
+  type: 'test'
+  ...
+# Subtest: pause samples an explicit frozen position regardless of elapsed wall time
+ok 6 - pause samples an explicit frozen position regardless of elapsed wall time
+  ---
+  duration_ms: 0.215702
+  type: 'test'
+  ...
+# Subtest: seek and replay reconstruct from a new anchor without historical accumulation
+ok 7 - seek and replay reconstruct from a new anchor without historical accumulation
+  ---
+  duration_ms: 0.120853
+  type: 'test'
+  ...
+# Subtest: sparse and dense render schedules end at the same song position
+ok 8 - sparse and dense render schedules end at the same song position
+  ---
+  duration_ms: 0.071189
+  type: 'test'
+  ...
+# Subtest: section boundaries are unambiguous when seeking backwards or forwards
+ok 9 - section boundaries are unambiguous when seeking backwards or forwards
+  ---
+  duration_ms: 0.235633
+  type: 'test'
+  ...
+# Subtest: pulse peaks on the reviewed marker and is independent of playback history
+ok 10 - pulse peaks on the reviewed marker and is independent of playback history
+  ---
+  duration_ms: 0.240905
+  type: 'test'
+  ...
+# Subtest: invalid numerical anchors and offsets are rejected
+ok 11 - invalid numerical anchors and offsets are rejected
+  ---
+  duration_ms: 0.112925
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 37.544684
+TAP version 13
+# Subtest: seek and replay reconstruct world state without visiting previous phases
+ok 1 - seek and replay reconstruct world state without visiting previous phases
+  ---
+  duration_ms: 9.024539
+  type: 'test'
+  ...
+# Subtest: the first entrance and later canopy alter geometry and density
+ok 2 - the first entrance and later canopy alter geometry and density
+  ---
+  duration_ms: 0.11594
+  type: 'test'
+  ...
+# Subtest: portrait uses a separate framing envelope and reduced motion uses a stable camera
+ok 3 - portrait uses a separate framing envelope and reduced motion uses a stable camera
+  ---
+  duration_ms: 0.128496
+  type: 'test'
+  ...
+# Subtest: events do not fire a backlog and waves have bounded lifetimes
+ok 4 - events do not fire a backlog and waves have bounded lifetimes
+  ---
+  duration_ms: 0.069559
+  type: 'test'
+  ...
+# Subtest: particles are age-based, bounded and seed-reproducible
+ok 5 - particles are age-based, bounded and seed-reproducible
+  ---
+  duration_ms: 0.115393
+  type: 'test'
+  ...
+# Subtest: band curves interpolate and clamp in recording seconds without scaling time
+ok 6 - band curves interpolate and clamp in recording seconds without scaling time
+  ---
+  duration_ms: 0.082206
+  type: 'test'
+  ...
+# Subtest: flexible regions cover the complete asset without story-specific IDs
+ok 7 - flexible regions cover the complete asset without story-specific IDs
+  ---
+  duration_ms: 0.756412
+  type: 'test'
+  ...
+# Subtest: wrong hash, region gaps and invalid events fail at import
+ok 8 - wrong hash, region gaps and invalid events fail at import
+  ---
+  duration_ms: 0.745554
+  type: 'test'
+  ...
+# Subtest: changing score status cannot promote unresolved listening or event review
+ok 9 - changing score status cannot promote unresolved listening or event review
+  ---
+  duration_ms: 0.180155
+  type: 'test'
+  ...
+# Subtest: pause/resume and seek replace sources and preserve offsets and volume
+ok 10 - pause/resume and seek replace sources and preserve offsets and volume
+  ---
+  duration_ms: 2.682648
+  type: 'test'
+  ...
+# Subtest: repeated async play cannot overlap sources and pause cancels pending start
+ok 11 - repeated async play cannot overlap sources and pause cancels pending start
+  ---
+  duration_ms: 0.51274
+  type: 'test'
+  ...
+# Subtest: obsolete source end cannot end a replacement and replay starts at zero
+ok 12 - obsolete source end cannot end a replacement and replay starts at zero
+  ---
+  duration_ms: 0.443054
+  type: 'test'
+  ...
+# Subtest: unexpected context suspension freezes at graph time
+ok 13 - unexpected context suspension freezes at graph time
+  ---
+  duration_ms: 0.367981
+  type: 'test'
+  ...
+# Subtest: invalid or oversized input does not replace the accepted buffer
+ok 14 - invalid or oversized input does not replace the accepted buffer
+  ---
+  duration_ms: 0.550107
+  type: 'test'
+  ...
+# Subtest: a mismatched encoded recording cannot replace the accepted audio buffer
+ok 15 - a mismatched encoded recording cannot replace the accepted audio buffer
+  ---
+  duration_ms: 0.872331
+  type: 'test'
+  ...
+# Subtest: the same encoded recording may decode at a different sample rate
+ok 16 - the same encoded recording may decode at a different sample rate
+  ---
+  duration_ms: 0.534034
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 135.3853

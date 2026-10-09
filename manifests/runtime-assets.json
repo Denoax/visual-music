@@ -1,274 +1,34 @@
 {
-  "schema_version": 1,
-  "status": "runtime_inventory",
+  "schema_version": 2,
   "assets": [
     {
-      "id": "hero_sedan",
-      "role": "Hero long black executive sedan",
-      "kind": "authored_code",
-      "runtime_required": true,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": null,
-      "source_author": "BUMER.EXE project",
-      "source_license_listed": null,
-      "source_inspection_status": "authored_and_rendered",
-      "runtime_path": "src/scene/car.ts",
-      "runtime_sha256": "82f998e7113f48f5659791f639f501ac03ea7ec3fd5cc3780dcc394192533926",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "Original authored project code; no third-party model bytes.",
-        "record": "evidence/SOURCES.md"
-      },
-      "preparation_record": "evidence/SOURCES.md",
-      "source_candidates": [
-        {
-          "url": "https://sketchfab.com/3d-models/bmw-e38-7f3c847956614f62b0e64ba6ffc8614f",
-          "author": "longobarda",
-          "license_listed": "CC Attribution",
-          "license_link_verified": "https://creativecommons.org/licenses/by/4.0/",
-          "reported_triangles": 1400000,
-          "provenance_statement": "Creator describes an iPhone scan of their own BMW E38",
-          "status": "candidate_only_no_bytes_or_visual_topology_inspection"
-        },
-        {
-          "url": "https://sketchfab.com/3d-models/bmw-e38-cyberbody-ff3d4b9cc7b6425f86cd7bca9c5f7ac6",
-          "author": "INANIS",
-          "license_listed": null,
-          "status": "listing_located_full_page_403_license_and_geometry_unverified"
-        }
-      ]
+      "path": "public/audio/chernyy-bumer.mp3",
+      "role": "runtime recording",
+      "sha256": "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
+      "bytes": 9771885,
+      "basis": "User supplied, authorised for local/private inclusion; no public distribution grant established."
     },
     {
-      "id": "asphalt",
-      "role": "Ground roughness/aggregate and wetness base",
-      "kind": "external_asset",
-      "runtime_required": true,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": "https://polyhaven.com/a/asphalt_02",
-      "source_author": "Rob Tuytel",
-      "source_license_listed": "CC0",
-      "source_inspection_status": "downloaded_and_rendered",
-      "runtime_path": "public/assets/textures/asphalt_02_diff_1k.jpg",
-      "runtime_sha256": "1aa5ce99f58a625c71d48cfc3e68b65ca85ccb00f39e045c0a928608a0ea25ed",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "CC0",
-        "record": "evidence/SOURCES.md"
-      },
-      "preparation_record": "evidence/SOURCES.md",
-      "source_sha256": "1aa5ce99f58a625c71d48cfc3e68b65ca85ccb00f39e045c0a928608a0ea25ed",
-      "source_download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_02/asphalt_02_diff_1k.jpg"
+      "path": "public/data/features.json",
+      "role": "50 ms surface-control data",
+      "sha256": "1461de9f367beb01473d27454a0919ba838f981fce289d9770181ebe71cfc359",
+      "bytes": 189939,
+      "basis": "Subsampled supplied measured 10 ms analysis; independently percentile normalised, not drums/decibels."
     },
     {
-      "id": "concrete",
-      "role": "Facade material",
-      "kind": "external_asset",
-      "runtime_required": true,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": "https://polyhaven.com/a/concrete_wall_007",
-      "source_author": "Charlotte Baglioni / Dario Barresi / Rico Cilliers",
-      "source_license_listed": "CC0",
-      "source_inspection_status": "downloaded_and_rendered",
-      "runtime_path": "public/assets/textures/concrete_wall_007_diff_1k.jpg",
-      "runtime_sha256": "1a5ff668a66e147d9fb795d8407ca67a144a1ca010779a5b8386137a4917a086",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "CC0",
-        "record": "evidence/SOURCES.md"
-      },
-      "preparation_record": "evidence/SOURCES.md",
-      "source_sha256": "1a5ff668a66e147d9fb795d8407ca67a144a1ca010779a5b8386137a4917a086",
-      "source_download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_007/concrete_wall_007_diff_1k.jpg"
+      "path": "public/favicon.svg",
+      "role": "site icon",
+      "sha256": "a4110bf9b51aca79d54a0039e74e9b948eba81053548877c6fe6b6beba1c8b6b",
+      "bytes": 211,
+      "basis": "Original code-authored SVG."
     },
     {
-      "id": "reflection_environment",
-      "role": "Optional paint/chrome environment",
-      "kind": "external_asset",
-      "runtime_required": false,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": "https://polyhaven.com/a/rooftop_night",
-      "source_author": "Greg Zaal",
-      "source_license_listed": "CC0",
-      "source_inspection_status": "downloaded_and_rendered",
-      "runtime_path": "public/assets/textures/rooftop_night_1k.hdr",
-      "runtime_sha256": "ae4b5c0ce8ad9e69be22ab485197bec8e90a40205e76ea1a1f491c74fb554500",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "CC0",
-        "record": "evidence/SOURCES.md"
-      },
-      "preparation_record": "evidence/SOURCES.md",
-      "source_sha256": "ae4b5c0ce8ad9e69be22ab485197bec8e90a40205e76ea1a1f491c74fb554500",
-      "source_download_url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/rooftop_night_1k.hdr"
-    },
-    {
-      "id": "display_font",
-      "role": "Optional condensed display face",
-      "kind": "external_asset",
-      "runtime_required": false,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": "https://github.com/google/fonts/tree/main/ofl/anton",
-      "source_author": "Anton Project Authors",
-      "source_license_listed": "SIL-OFL-1.1",
-      "source_inspection_status": "downloaded_and_rendered",
-      "runtime_path": "public/assets/fonts/Anton-Regular.ttf",
-      "runtime_sha256": "a4ba3a92350ebb031da0cb47630ac49eb265082ca1bc0450442f4a83ab947cab",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "SIL-OFL-1.1",
-        "record": "public/assets/fonts/OFL.txt"
-      },
-      "preparation_record": "evidence/SOURCES.md",
-      "source_sha256": "a4ba3a92350ebb031da0cb47630ac49eb265082ca1bc0450442f4a83ab947cab",
-      "source_download_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf"
-    },
-    {
-      "id": "venue_geometry",
-      "role": "Original courtyard, facades and lighting architecture",
-      "kind": "authored_code",
-      "runtime_required": true,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": null,
-      "source_author": "BUMER.EXE project",
-      "source_license_listed": null,
-      "source_inspection_status": "authored_and_rendered",
-      "runtime_path": "src/scene/venue.ts",
-      "runtime_sha256": "774cd9cc612732c059e6bebd00f4f64c5116ace3f6bd44f42244747ef0d25af3",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "Original authored project code; no third-party model bytes.",
-        "record": "evidence/SOURCES.md"
-      },
-      "preparation_record": "evidence/SOURCES.md"
-    },
-    {
-      "id": "light_shaders",
-      "role": "Original LED/beam/haze rendering",
-      "kind": "authored_code",
-      "runtime_required": true,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": null,
-      "source_author": "BUMER.EXE project",
-      "source_license_listed": null,
-      "source_inspection_status": "authored_and_rendered",
-      "runtime_path": "src/scene/lights.ts",
-      "runtime_sha256": "1b149208d08f5df67d22f468e937282793284c0eb3c3d6315f54427fab5a6f0c",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "Original authored project code; no third-party model bytes.",
-        "record": "evidence/SOURCES.md"
-      },
-      "preparation_record": "evidence/SOURCES.md"
-    },
-    {
-      "id": "air_freshener",
-      "role": "Original recurring comic subject",
-      "kind": "authored_code",
-      "runtime_required": true,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": null,
-      "source_author": "BUMER.EXE project",
-      "source_license_listed": null,
-      "source_inspection_status": "authored_and_rendered",
-      "runtime_path": "src/scene/car.ts",
-      "runtime_sha256": "82f998e7113f48f5659791f639f501ac03ea7ec3fd5cc3780dcc394192533926",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "Original authored project code; no third-party model bytes.",
-        "record": "evidence/SOURCES.md"
-      },
-      "preparation_record": "evidence/SOURCES.md"
-    },
-    {
-      "id": "trolley",
-      "role": "Original final physical gag if retained",
-      "kind": "authored_code",
-      "runtime_required": false,
-      "used_in_runtime": true,
-      "status": "ready",
-      "source_url": null,
-      "source_author": "BUMER.EXE project",
-      "source_license_listed": null,
-      "source_inspection_status": "authored_and_rendered",
-      "runtime_path": "src/scene/lights.ts",
-      "runtime_sha256": "1b149208d08f5df67d22f468e937282793284c0eb3c3d6315f54427fab5a6f0c",
-      "inspection_record": "evidence/REVIEW.md",
-      "rights": {
-        "status": "documented",
-        "basis": "Original authored project code; no third-party model bytes.",
-        "record": "evidence/SOURCES.md"
-      },
-      "preparation_record": "evidence/SOURCES.md"
+      "path": "public/assets/THREE-LICENSE.txt",
+      "role": "dependency notice",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "bytes": 1081,
+      "basis": "Three.js MIT notice preserved."
     }
   ],
-  "source_record_date": "2026-10-09",
-  "note": "Runtime files are acquired or code-authored. Requested soundtrack and song cues remain unresolved. Render inspection is not human approval.",
-  "downloaded_files": {
-    "public/assets/textures/asphalt_02_nor_gl_1k.jpg": {
-      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_02/asphalt_02_nor_gl_1k.jpg",
-      "sha256": "42a1c381b53204e83a982db2864479a30bc127bbdeebb1006f8ee51bff099df3",
-      "bytes": 1240122
-    },
-    "public/assets/textures/asphalt_02_diff_1k.jpg": {
-      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_02/asphalt_02_diff_1k.jpg",
-      "sha256": "1aa5ce99f58a625c71d48cfc3e68b65ca85ccb00f39e045c0a928608a0ea25ed",
-      "bytes": 731707
-    },
-    "public/assets/textures/asphalt_02_rough_1k.jpg": {
-      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_02/asphalt_02_rough_1k.jpg",
-      "sha256": "70ba3edc65525eb4dc366cf010ca7ae0bd34e0251ff0225c2dad627a873d0712",
-      "bytes": 544032
-    },
-    "public/assets/textures/asphalt_02_rough_ao_1k.jpg": {
-      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_02/asphalt_02_rough_ao_1k.jpg",
-      "sha256": "fd3fe3498b091fd2812b519a2996bc166953479241cf67b999d2cd7b6374bd8c",
-      "bytes": 1226120
-    },
-    "public/assets/textures/concrete_wall_007_nor_gl_1k.jpg": {
-      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_007/concrete_wall_007_nor_gl_1k.jpg",
-      "sha256": "cccb1841908ced8b89b65b5de97c1926f717dab63a14559264703a99639c291f",
-      "bytes": 602349
-    },
-    "public/assets/textures/concrete_wall_007_diff_1k.jpg": {
-      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_007/concrete_wall_007_diff_1k.jpg",
-      "sha256": "1a5ff668a66e147d9fb795d8407ca67a144a1ca010779a5b8386137a4917a086",
-      "bytes": 654485
-    },
-    "public/assets/textures/concrete_wall_007_rough_1k.jpg": {
-      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_007/concrete_wall_007_rough_1k.jpg",
-      "sha256": "5de46a478cbcb4cf4851be9b1dc4a58609c580e498fe758a6959119d45e7a5cb",
-      "bytes": 563812
-    },
-    "public/assets/textures/rooftop_night_1k.hdr": {
-      "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/rooftop_night_1k.hdr",
-      "sha256": "ae4b5c0ce8ad9e69be22ab485197bec8e90a40205e76ea1a1f491c74fb554500",
-      "bytes": 1624479
-    },
-    "public/assets/fonts/Anton-Regular.ttf": {
-      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/Anton-Regular.ttf",
-      "sha256": "a4ba3a92350ebb031da0cb47630ac49eb265082ca1bc0450442f4a83ab947cab",
-      "bytes": 170812
-    },
-    "public/assets/fonts/OFL.txt": {
-      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/anton/OFL.txt",
-      "sha256": "ee67e6ee22790b7929f1a3769ca2801d565c64b5a9096942c1adf5596de9c9e4",
-      "bytes": 4484
-    }
-  }
+  "world": "Original code-authored geometry, shaders and seeded fields. No reference images or generated media in runtime."
 }

@@ -1,207 +1,171 @@
-# BUMER.EXE — Codex assetfile and implementation brief
+# BUMER.EXE — LIGHTS RESET
 
-Version 1 · 2026-10-09 · Mani Marami Milani / Denoax
+## The brief that governs this rebuild
 
-## Read first
+**Rebuild the visual experience around HelloEnjoy’s Lights.** Mani rejected the entire courtyard/car version at `43cb2b6`. The previous assetfile’s narrative and visual direction are superseded. This is a full-screen, one-song, interactive luminous world: the camera glides through colourful light terrain, sculptural glowing forms, bokeh, beams and choreographed transformations. Make the music feel as though it is building and rearranging the world around the viewer. Craft, depth, joyful colour and musical intention come first.
 
-Implement a complete, standalone, song-driven website. The product is a funny, beautifully executed internet rave: guns.lol entrance attitude, the nostalgia of an NCS visualizer, and an authored audiovisual show that grows into an impossible neighbourhood nightclub. The working title is **BUMER.EXE**. It is a new project, independent of manimarami.com.
+The MP3 in this pack is now the fixed runtime recording. Bundle it; the normal experience must start with one Play gesture. Mani should never have to find and upload the song every visit. Implement the complete website in the existing `Denoax/bumer-exe` project. Keep the rejected commit recoverable. Leave the accepted manimarami.com project alone.
 
-Read and apply **$reference-led-design** before visual implementation. If that skill is unavailable, its operative rules are embedded in `AGENTS.md`; record the installation gap and proceed using those rules. Inspect applicable local instructions and existing reusable code before choosing dependencies or rebuilding mechanisms.
+Read and apply **$reference-led-design** before implementing. If it is unavailable, apply the embedded rules in `AGENTS.md`: inspect real human-created references; build original code/meshes/shaders; use owned/licensed assets with provenance; no generated media; inspect the actual rendered experience and continuous playback. This pack is a replacement instruction/asset pack, not a claim that a rebuilt site already exists.
 
-The requested song is **Seryoga — Чёрный бумер**, Spotify track ID `0iVj13fDCDRM7rfYEGF50X`: https://open.spotify.com/track/0iVj13fDCDRM7rfYEGF50X. This identifies the intended recording; it is not a runtime audio source or a redistribution grant.
+## Reference authority and what was actually inspected
 
-**Critical evidence boundary:** this pack contains no song recording, acquired car model, downloaded texture or verified second-by-second cue sheet. The published song structure was researched; full playback of the exact linked recording was unavailable to the research session. Every cue time therefore starts as `null`. Candidate assets have explicit inspection and acquisition statuses. Never invent timings, audio availability, listening evidence, licenses or approval to make the pack appear complete.
+Primary experience: <https://helloenjoy.itch.io/lights>.
+Creator’s project page: <https://helloenjoy.com/home#top>.
+Creator’s source: <https://github.com/C4RL05/Lights>, inspected tree SHA `44e2b0aaa11764f37c2ad29feea9afc84a5bb380`.
 
-The deliverable from Codex is the actual running website, its source, asset records, measured audio-sync evidence and browser review captures. This document specifies the work; it does not establish the website's visual quality or sync.
+The creator’s three stills were opened and visually inspected. Use these exact compositions as the visual standard:
 
-## 1. The experience
+| Reference | Observed qualities | Original implementation to build |
+|---|---|---|
+| [Light field](https://helloenjoy.com/images/lights-1.jpg) | Rolling terrain made legible by dense coloured light points; dark recesses; large foreground forms; haze and tiny distant stars; a clear horizon | A continuous undulating landscape with instanced emissive points, smooth sculptural forms, a controlled horizon and layered particle depths |
+| [Beams and bokeh](https://helloenjoy.com/images/lights-2.jpg) | Multi-colour luminous spheres with soft edges; strong near/far scale; diagonals from beams; colour trails across the terrain; small bright cores within large glows | Depth-aware glowing billboards plus dimensional meshes, shaped beam cones, restrained bloom, terrain ribbons and deliberate foreground occlusion |
+| [Wave of balloons](https://helloenjoy.com/images/lights-3.jpg) | Rounded forms stretching into drop/stem silhouettes; coloured contours flowing over hills; the landscape remains readable between light sources | Original vertex-morphed orb/drop sculptures rising from wave ridges, timed ribbon waves, and a camera moving through the arrangement |
 
-A black 1990s-style executive sedan sits in a damp courtyard under a streetlamp. A small title and **Start ignition** provide the entrance. One user gesture starts the prepared show and the song together. Chrome edges, headlights and reflections introduce the car before the space expands.
+These are research links, not runtime image assets. The deployed experience must render its own world. Do not copy Ellie Goulding’s song, artwork, logos, handles or texture set. No explicit repository licence was found in the inspected root tree: study its techniques, write original implementation, and do not transplant its code/assets without resolving permission.
 
-During the first verse, apartment windows answer the rhythm. The first chorus reveals a coordinated courtyard rave. During the second verse, ordinary street objects quietly become part of the rig. The second chorus transforms the surrounding buildings into monumental LED surfaces. A brief surreal interlude focuses on a hanging air freshener. The final chorus reveals the whole venue, with one carefully reserved physical joke. The ending returns to the courtyard and offers replay.
+The live itch experience reached a “browser does not support WebGL” screen in the available cloud browser. **Its continuous motion and interaction were not observed here.** Before building, run it on Codex’s available real browser if possible, and inspect at least entrance, first large transformation, later terrain/sphere phase and ending. If it still cannot run, inspect the creator’s official embedded video and record the gap. Do not claim a full reference playback from static images or source reading.
 
-The central joke is scale: a ridiculous car-flex song receives the care of an ambitious concert installation. Keep a straight face. The air freshener is the recurring comic subject; exaggerated motion belongs to it, not to every object or control.
+The inspected source makes the important design mechanism concrete:
 
-Ship a complete automatically choreographed experience first. Essential controls are start/pause, volume/mute, seek, replay, light intensity/low-flash mode and credits. Cursor movement steers a secondary spotlight with modest influence. Fullscreen is optional and user-controlled. A live multiplayer room, webcam face effects, phone pairing and a generic upload-any-song visualizer are later ideas, outside this first implementation.
+- `js/lights/events/Director.js`: explicit musical phase times; soundtrack position drives the phase; beat data has included/excluded events.
+- `js/lights/events/BeatEvents.js`: phases activate different terrain, spheres, stars and cannon systems; beat responses vary by phase.
+- `js/lights/experience/Player.js`: altitude, speed, tilt and field of view are choreographed; pointer steering and a press-driven turbo add play.
+- `js/lights/events/SpectrumEvents.js`: precomputed spectrum data sampled by song time drives terrain displacement.
+- `js/lights/tiles/balls/BallsManager.js`: sphere states grow, change shape, release and disappear; raycast interaction triggers explosions.
 
-## 2. Concrete art direction
+Transfer the principles—music-directed world changes, shaped light, spatial depth and playful interaction. Modernise the transport, determinism, shaders and performance in original code. Do not inherit the source’s frame-integrated drift or old Three.js APIs. More bloom alone will not produce this quality.
 
-### Composition
+## Why v1 must be replaced
 
-- Establish three excellent rendered compositions early: entrance car, first chorus courtyard, final chorus venue. Inspect each on desktop and portrait, then continue through the full sequence without waiting for a procedural approval.
-- The sedan must read from silhouette, proportion and light. Use a long bonnet, distinct cabin, restrained bright trim, wheels with depth and separated lamp geometry. A stack of cuboids with bloom is a development proxy, not the final hero.
-- Maintain one dominant visual subject per shot. Use foreground lamp hardware, midground car and far façades to create depth. The world must remain spatially legible when paused.
-- Compose a believable small place before making it impossible. Reuse its windows, parking marks, lamps and rear-light shapes as the enlarged concert architecture. Avoid teleporting into unrelated tunnels or galaxies.
-- Portrait has its own camera paths and focal distances. Show the car and upward façade/rig reveal vertically; protect touch controls with safe-area insets. Do not crop the desktop camera and call mobile finished.
+The supplied archive was inspected: `src/main.ts`, transport, cues, choreography, world, project instructions, README, review record and rendered chorus/finale/portrait-bridge frames. The private GitHub connector returned 404 for this repository, so this review uses the supplied archive rather than claiming a current remote checkout.
 
-### Light and materials
+The screenshots show a mostly static dark courtyard, a literal sedan, hard window grids, thin LED strips, simple cone beams, a shopping trolley/speaker gag and a large persistent player/caption layer. The source uses slow free-running sinusoidal lighting and thirteen preselected car-story sections. The delivered capture is a **130-second silent scene study**, while this supplied recording lasts roughly **244.3 seconds**. Those study poses/times cannot be adapted into song choreography by stretching the duration.
 
-- Base: ink black `#050607`, graphite `#151719`, warm streetlight `#E4B67A`, chrome highlights `#DDE1E4`. Rear-lamp red `#D32A22` is a concentrated accent. Acid lime `#CBF26D` enters for a later reveal rather than cycling continuously. These are initial tuning values, not measurements or fixed physical colours.
-- Preserve black areas and the outline of the car. Bloom belongs to luminous lamps and LEDs, not to all geometry or the entire interface.
-- Paint should reveal curved surface highlights. Glass should remain darker than the lamps. Rubber needs distinct roughness. Asphalt needs rough aggregate plus local wetness variation; do not make the entire floor a perfect mirror.
-- Use the actual light rig as the source of beams and visible reflections. Layered haze should explain depth. Thick transparent quads, clipping fog and white soup are defects.
-- Design LED banks with real apparent spacing. Chase patterns travel through the banks. Keep a limited family of optical effects: beam fans, window chases, rear-light echoes and one circular motif.
-- Broad saturated-red flashing requires particular care. Every shipping intensity mode must remain inside measured flash limits. A warning or an opt-in toggle does not replace that requirement.
+Retain the useful audio transport lifecycle, tested clock arithmetic, hash checks, accessible controls and failure recovery where they fit. Replace the car, freshener, courtyard, streetlights, façade, trolley, captions, pose table and silent-study public flow. Replace the hard-coded section IDs and validator assumption that every recording must fit the old thirteen-part story. Rebuild `src/scene/world.ts`, the scene modules, `src/show/choreography.ts`, `src/show/cues.ts`, entrance UI and CSS around this brief. Preserve old evidence as rejected historical evidence, never as v2 validation.
 
-### Motion and humour
+## Fixed audio asset
 
-- Camera movement follows phrases. Hold a frame long enough to perceive its subject. Reserve fast passages and a small impulse for selected accents; constant shake weakens the show.
-- Car, lighting structures and buildings have weight. Humour comes from an impossible action carried out with convincing staging, not from making everything rubbery.
-- Make the air freshener a simple original code/mesh object, with a recognizable silhouette, thickness and string attachment. Author a repeatable damped swing as a function of song time; avoid a history-dependent solver that breaks seeking.
-- Reserve one final joke. Default: the camera reveals that an absurdly oversized lighting sculpture is sitting on a small shopping trolley. Place and frame it so the viewer can understand the scale. If it is not readable in the real render, refine it or substitute a comparably specific physical joke; record the decision.
-- Text remains scarce: project title, song credit and real controls. Do not cover verses with lyric paragraphs, invented system errors, telemetry, badges or explanatory jokes.
+| Item | Measured value |
+|---|---|
+| Included runtime file | `public/audio/chernyy-bumer.mp3` |
+| Original upload name | `Чёрный бумер - Серёга.mp3` |
+| Encoded SHA-256 | `67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780` |
+| Bytes | `9,771,885` |
+| Codec | MP3, 320 kb/s, stereo, source 44,100 Hz |
+| ffprobe duration | `244.297125` seconds |
+| FFmpeg analysis decode | Mono, 48,000 Hz, `11,726,263` frames, `244.29714583333333` seconds |
+| Identity basis | User supplied this recording for the requested song, Seryoga — Чёрный бумер; the original Spotify selection is `0iVj13fDCDRM7rfYEGF50X` |
 
-## 3. Reference-to-use map
+Copy these bytes unchanged to the repository path above. Resolve with `import.meta.env.BASE_URL` so the production subpath also works. Fetch and decode once, verify the hash, prepare the show, then enable Play. Audio must begin only after a user gesture. Do not add Spotify playback, a second hidden media element, an unrelated sample song or a local-file selection gate. An explicit retry may use a file picker after a real load/decode failure; it is not the normal entrance.
 
-These references supply principles. They are not artwork to copy into the runtime. Research used creator pages, published descriptions, available imagery and source/making-of documentation. Uninterrupted playback of these references was not verified here. Codex must inspect actual available visual material before final adaptation; describe any unavailable material honestly.
+The user explicitly authorised including this supplied MP3 in future work. The pack includes it for this rebuild/private project. That instruction is not evidence of a licence for public redistribution. Do not publish the recording publicly without resolving that deployment question; it does not block local/private implementation and review.
 
-| ID / original source | Evidence available in research | Use in BUMER.EXE |
-| --- | --- | --- |
-| R01 — HelloEnjoy, **Lights**: https://helloenjoy.itch.io/lights ; source https://github.com/c4rl05/Lights | Creator identifies an interactive Three.js experience around Ellie Goulding's single; indexed screenshot imagery shows luminous forms and a flowing coloured environment. | A recognisable motif develops throughout the whole song. Adapt the musical journey; do not reproduce its coloured orbs, branding or recording. |
-| R02 — Zach Richter / Jono Brandel / Within, **Under Neon Lights**: https://www.zacharyrichter.com/chemical-brothers-under-neon-lights ; source https://github.com/within-unlimited/under-neon-lights | Director describes a world building in neon colour. The repository documents Three.js and Frame.js; the repository is archived. | Major sections change the scale and architecture of one world. Study timeline-driven scene authoring. Do not import the film's models or characters by default. |
-| R03 — Baku Hashimoto / dot by dot, **KAMRA — Deja Vu**: https://www.baku89.com/deja-vu ; making-of https://www.baku89.com/making-of/deja-vu ; source https://github.com/Whatever-Co/KAMRA-Deja-Vu | Creator documents manually authored facial motion, Cinema4D-to-JSON data, composited material and UV transformations. Source code license excludes media. | Give the air freshener and final physical gag authored poses, anticipation and recovery. Use the workflow principle rather than copying faces or videos. |
-| R04 — Vincent Morisset / Google Data Arts, **Just A Reflektor**: https://blog.google/products-and-platforms/products/chrome/just-reflektor-virtual-projection-with/ | Official account documents a mobile-controlled spotlight and evolving visual treatments; the old tech sandbox is listed as inactive. | Cursor controls a secondary projected beam. The core show remains coherent when the viewer does nothing. Phone pairing is optional future work. |
-| R05 — AC-bu / Baku Hashimoto, **Kindolphin / HAPPENING**: https://www.baku89.com/kindolphin ; making-of https://www.baku89.com/making-of/kindolphin | Creator documents an animated comic music experience with scrolling/scratching and a PWA implementation. The larger app also contains other comics. | Specific absurdity, carefully timed typographic/graphic beats and tactile replay/seek. Do not copy comic art or the electronic-reader parody. |
-| R06 — HelloEnjoy, **HelloRun**: https://helloenjoy.itch.io/hellorun | Creator documents a one-song runner whose movement and pulses follow Du Tonc's track. | Rhythmic forward travel for one street passage. Listening must not depend on surviving obstacles. |
-| R07 — HelloEnjoy, **Fantasynth One**: https://helloenjoy.com/home ; release https://store.steampowered.com/oldnews/?appids=624460&feed=steam_community_announcements | Creator documents a VR journey through an environment that comes alight with N'to's music. This is a VR reference, not a browser site. | Architectural light reveals, scale and ordered illumination. Do not mislabel its renderer or treat footage as proof of browser performance. |
+`analysis/track.json` contains the byte/decode measurements. Measure `AudioBuffer.duration`, `length`, `sampleRate` and channel count in the target browsers. `decodeAudioData` resamples to the context’s sample rate; do not reject the same encoded file just because one device decodes at 44.1 kHz and another at 48 kHz. Cue time is seconds in the recording. Compare measured browser duration and onset alignment with the offline analysis, record any constant decoder offset, and correct explicitly if required. Do not proportionally retime the show to hide a mismatch.
 
-The source records above distinguish creator documentation from our proposed adaptation. The previous portfolio pack's provenance/evidence method is retained; its galaxy art direction and unrelated asset assumptions are not imported.
+## The intended visual experience
 
-## 4. Asset acquisition and preparation
+### First impression
 
-`manifests/assets.json` is a starting register, not a downloaded asset inventory. Obtain source bytes through ordinary permitted downloads. Preserve original notices. Record original and derivative SHA-256, author, license/version, source URL, preparation command, dimensions or geometry counts, local runtime path and a real inspection record.
+The loaded entrance is already beautiful: a low camera hovering over a deep midnight field with a few large luminous sculptures, a distant coloured horizon, slow small particles and restrained parallax. Sparse original typography names BUMER.EXE and the song. One understated Play control. On Play, the text dissolves and the viewer enters the world. Keep a small pause/mute/fullscreen affordance, and reveal the compact seek/volume controls on interaction or keyboard focus. No bottom dashboard, permanent chapter captions or developer telemetry in the normal show. Development tooling lives behind a query flag.
 
-| Role | Source / acquisition direction | Preparation and acceptance |
-| --- | --- | --- |
-| Hero sedan | Prefer an owned, provenance-known model. Research candidate: longobarda's photographed BMW E38 scan, https://sketchfab.com/3d-models/bmw-e38-7f3c847956614f62b0e64ba6ffc8614f . Creator states an iPhone scan of their own car; listing reports ~1.4M triangles and CC Attribution, whose link resolves to CC BY 4.0. | Candidate only: no bytes or topology were inspected here. Inspect the actual geometry, wheels, underside, interiors and baked lighting before selecting it. It will need substantial cleanup/retopology, separated lamp surfaces and neutral materials if suitable. Do not ship the raw scan, assume its photographs relight well, or hide defects in darkness. |
-| Alternate sedan candidate | INANIS, https://sketchfab.com/3d-models/bmw-e38-cyberbody-ff3d4b9cc7b6425f86cd7bca9c5f7ac6 . Listing located, full page returned 403 during research. | License, provenance, geometry and style remain unresolved. Reinspect before use; no permission or quality is asserted. Keep cyberbody modifications only if they serve this show's specific car silhouette. |
-| Asphalt material | Poly Haven **Asphalt 02**, Rob Tuytel: https://polyhaven.com/a/asphalt_02 ; file catalogue https://api.polyhaven.com/files/asphalt_02 ; page identifies CC0. | Choose 1K/2K diffuse, OpenGL normal and roughness/packed maps. Set map colour spaces explicitly. Add original shader-authored wetness variation; keep dry aggregate visible. No need for 8K displacement. |
-| Façade / concrete | Poly Haven **Concrete Wall 007**, credited creators on source page: https://polyhaven.com/a/concrete_wall_007 ; catalogue https://api.polyhaven.com/files/concrete_wall_007 ; CC0 listed. | One reusable material with restrained grime variation. Model slabs, windows and balconies as intentional original geometry; build instanced LED windows independently. |
-| Reflection environment | Poly Haven **Rooftop Night**, Greg Zaal: https://polyhaven.com/a/rooftop_night ; catalogue https://api.polyhaven.com/files/rooftop_night ; CC0 listed. | Begin with a low-resolution environment for paint/chrome reflections. Its twilight sky is not automatically the background or the show's lighting design. Tune exposure; authored lamps remain dominant. |
-| Display font | **Anton**, Anton Project Authors: https://github.com/google/fonts/tree/main/ofl/anton ; verified notice https://raw.githubusercontent.com/google/fonts/main/ofl/anton/OFL.txt . SIL OFL 1.1. | Self-host only necessary glyphs with the notice; verify the actual font contains every used character. Tune optical spacing. Use a readable system sans for transport controls unless an existing owned font is better. |
-| LED grids, beams, circular rig, lamps | Original Three.js geometry/shaders, derived from inspected reference principles. | Use instancing/reused geometry. Lights are actual scene objects. Preserve spacing and local contrast. Authored code is valid artwork; generated raster/video media is not. |
-| Air freshener and trolley | Original mesh/code with real silhouette references inspected during implementation; owned models may be reused. | Thickness, attachment, contact and materials matter. No low-effort clip-art sticker standing in for the 3D subject. |
+### Six scene systems, one cohesive world
 
-If the hero model is unavailable or unsuitable, continue lighting/transport/venue work while sourcing a documented alternative or authoring a refined mesh in Blender from inspected real references. A proxy is explicitly temporary. Choose a deliberate level of stylisation and apply it consistently across the car and environment; a rough photogrammetry car in a toy city is not a cohesive final result. No paid purchases without applicable user authorization.
+1. **Luminous terrain.** A smooth, continuous height field. Dense small light points and coloured contour ribbons explain its shape. Valleys remain dark; crests pick up light. Authored low-band waves expand over the terrain at selected musical hits. The ground should still read as land rather than an arbitrary flat point cloud.
+2. **Orb/drop sculptures.** Original high-quality rounded forms with a compact radiant core and broad coloured falloff. Some are half-submerged; others stretch upward and detach. Use smooth silhouettes, gradient colour, soft rim response and controlled specular depth. Vary size and spacing with a seeded field. Sparse huge foreground forms create scale; smaller middle/distant forms create density.
+3. **Bokeh and stars.** Three depth ranges with different motion, size and focus. Large near discs are occasional, not a screen-wide blur. Occlusion and parallax must make them inhabit the world. Tiny distant points provide contrast. Use procedural shader profiles; no generated textures.
+4. **Beams and light sweeps.** Shaped light with taper, a bright core, smooth radial falloff and haze. Beams sweep through space on authored phrases. Their source points, beam directions and pools belong to the composition. LED chases move spatially around ridges and forms. Avoid opaque triangles, detached wire rings and uniform rows of identical poles.
+5. **Morph/release system.** On selected accents, whole groups grow from terrain, stretch into drops, release into a floating canopy or collapse into ribbon-like waves. Use coherent group movement and strong silhouettes. The first major change should be recognisable with the sound muted.
+6. **Deterministic particle bursts.** Small, crisp luminous fragments from selected impact points or clicked sculptures. Pool particles; initialise from event time and seed; evaluate position from age so pause/seek/replay reconstruct them. Do not spam every analyser peak.
 
-## 5. Song study and authored cue treatment
+Build smooth, deliberately lit original geometry rather than crude placeholder props. Instancing and shader variation should buy visual density without thousands of scene objects. Use WebGL2/Three.js compatible with the existing tested stack first. WebGPU is optional only if a finished fallback and demonstrated quality/performance justify it. Do not switch engines or dependencies for novelty.
 
-Published structure source: https://www.shazam.com/song/933947652/chernyy-bumer . It indicates three verses, recurring choruses, a repeated-title bridge and a doubled closing chorus. This is a related catalogue entry, not proof of the exact Spotify recording's timing. Duration listings and 85/170 BPM estimates elsewhere are deliberately not used as a cue grid. Verify the actual file, tempo/beat interpretation and every boundary by listening and waveform inspection.
+### Colour and rendering
 
-`manifests/cues.template.json` holds these semantic anchors with unresolved times. Do not spread evenly spaced events over a guessed four-minute duration. Do not call this song an EDM build/drop structure unless the actual recording supports those cues.
+Use Lights’ joyous multi-colour light rather than v1’s near-monochrome grey/lime. A family of electric cyan, saturated pink/violet, warm yellow and smaller lime/orange accents sits against deep blue-black space. Each region has two dominant colours and a smaller contrasting accent; not every object cycles the full rainbow at once. Palette changes happen at musical boundaries and preserve luminance hierarchy.
 
-| Cue ID | Anchor to locate in exact audio | Proposed scene / attention |
-| --- | --- | --- |
-| intro | Audible opening | Headlights, wheel/chrome detail, then readable sedan silhouette. |
-| verse_1 | First verse begins | Street-level courtyard; small window groups answer the rhythm. |
-| ignition_phrase | Engine / coloured-light narrative in first verse | Reveal interior lights and beam volume. Do not add a competing engine sound over the song. |
-| refrain_1 | Repeated pre-chorus boast | Activate the first rig in a deliberate sequence; widen framing. |
-| chorus_1 | First chorus | Courtyard becomes the first coordinated venue; signature circular/rear-light motif. |
-| verse_2 | Second verse | Lower intensity and closer camera; ordinary street details join the rig. |
-| refrain_2 | Second repeated lead-in | Parking lines illuminate and façade panels prepare to unfold. |
-| chorus_2 | Second chorus | Reveal monumental LED façades and more spatial depth. |
-| bridge | Repeated-title interlude | Simple strong silhouette; turntable-like car staging and air-freshener focus. |
-| verse_3 | Third verse | Interior/near-car shot with passing reflections; develop the recurring physical joke. |
-| refrain_3 | Final lead-in | Reactivate known motifs in the established order. |
-| chorus_final_a | First final chorus pass | Wide venue composition; coordinated beams, LED banks and reflections. |
-| chorus_final_b | Closing chorus repetition | Reserve the largest architectural transformation and reveal the trolley gag. |
-| outro | Last phrase / instrumental ending, if present | Deactivate in sequence; ordinary courtyard returns; air freshener settles; replay. |
+Render in linear light with appropriate output conversion. Use HDR emission for small bright cores; control exposure and bloom radius so forms retain colour and silhouette. Avoid white-out hotspots, grey fog flattening the horizon and low-contrast dark-on-dark objects. Bloom is finishing treatment, not a substitute for good light gradients. Use depth-aware procedural glow sprites and affordable beam shaders before expensive full-volume effects. Edge aliasing, banding, sorting artefacts and visible repeated tile seams must be fixed in the actual output.
 
-Reconcile this semantic list with the actual recording. If a proposed subsection does not exist, mark its `resolution_status` as `not_present` with a listening note and place its design action in an actual neighbouring phrase. Do not manufacture a pause, bridge or outro. Add real instrumental accents/fills discovered during analysis.
+Camera motion supplies the scale: low gliding paths along terrain, gentle rising reveals, passage between large forms, and one major climb into the released canopy. Use position/target/FOV splines with eased, phrase-length transitions. Keep the central world readable in portrait: compose a separate framing envelope and let depth run vertically; do not crop a landscape camera and switch off its essential glow. The low quality tier still needs the same composition and luminous identity.
 
-Within a chorus, recurring title phrases use a consistent graphic accent. Brake-light references motivate concentrated rear-lamp/red reflection moments; chase references motivate the forward street passage; window references motivate the façade view. Keep these moments brief rather than displaying full lyric text. Later choruses reinterpret the same motifs at larger scale.
+## Music-directed score: measured input, then listening review
 
-## 6. Audio and synchronisation contract
+The analysis in this pack was generated from the supplied MP3. It is **not a listened, approved cue sheet**. No full-song listening or audiovisual sync was performed here. Avoid fabricated lyrics, confidently invented chorus times, or an “exact BPM” claim.
 
-### Establish the exact audio
+Included timing aids:
 
-First look for the user's supplied recording in the project inputs or specifically identified local audio location. Compare artist/title/version with the requested Spotify entry and listen to it. A file named similarly is not enough. Do not rip Spotify, bypass a download restriction, silently use a remix, substitute another song, or claim full playback occurred when it did not.
+- `analysis/waveform.json`: peak/RMS every 10 ms.
+- `analysis/features.json`: low/mid/high-band and positive spectral-flux curves, independently percentile-normalised; these are control signals, not isolated drums or decibels.
+- `analysis/markers.candidates.json`: pulse hypothesis, nearby measured transient peaks, timbral-change candidates and uncertainty. The candidate family is approximately 85/170 BPM; metre and bar phase remain unresolved. Predicted grid points are distinguished from detected transient peaks.
+- `analysis/measurement-overview.png`: waveform/band overview.
+- `review/listening.html`: local developer utility that plays the bundled recording, displays the measurement data, lets the reviewer annotate and export draft events, and records browser decode/hash information. This is not the website’s visual design.
+- `tools/prepare_audio.py` and `tools/propose_markers.py`: reproducible analysis scripts.
 
-Run `tools/prepare_audio.py` on the exact intended runtime file. It hashes bytes, probes metadata and produces a waveform plus band-energy/onset candidates. Its findings are measurement aids, not approved beat or phrase markers. Listen and mark anchors in a development editor that scrubs the actual decoded runtime buffer. Verify the file identity and mark `identity_review_status` accordingly.
+### Visual staging proposals to test against the recording
 
-Bind the finished cue sheet to `track_sha256`. Runtime must verify the loaded bytes before applying the fixed song-specific cue sheet. If the audio changes or mismatches, stop that cue sheet and show a concise real recovery action. No arbitrary file should get this choreography by filename alone.
+These are **feature-based windows to audition**, not authoritative musical section names or final edit boundaries. Exact proposals and candidate status are also in `show/score.proposal.json`. Listen to the whole track and refine them; use measured accents, real bar/phrase boundaries and any repeated musical motifs. You may change the number of regions.
 
-Use the same encoded audio bytes for playback, decoding tests and analysis input. An analysis WAV derived by the helper is for analysis; it must not silently replace production audio. If compression/trim/resampling is deliberately introduced, hash the derivative, rebuild/review cues against it and record the transformation. Measure browser-decoded duration and leading padding; seconds in a different master are not automatically interchangeable.
+| Approximate recording window | Evidence available here | Proposed world development |
+|---|---|---|
+| 0:00–0:18 | Lower low-band energy before a pronounced entrance | A few luminous seeds and faint terrain points; camera starts close, revealing the horizon without prematurely spending the spectacle |
+| Around 0:18 | Sharp low-band/RMS entrance | A wave of points ignites over hills; the nearest orb/drop group rises; first confident forward acceleration |
+| 0:30–0:52 | A clear change in band balance; dense high-band activity | Enter the full light field, interleaving cyan/pink forms and a warm accent; selected rhythmic accents send spatial ripples rather than screen flashes |
+| 0:52–1:26 | Another sustained band pattern | Colour trails develop over the ridges; glide between huge foreground forms; create breathing room before the next reveal |
+| 1:26–2:21 | Repeated changes around 1:26 and 1:48 | Reprise the main luminous language at a new scale; group growth/release becomes more prominent; climb briefly to reveal the field’s pattern |
+| 2:21–2:44 | Four conspicuous repeated mid/high envelope dips/returns | Choreograph repeated compress/release gestures: the world gathers into suspended droplets, then expands; exact gestures must be placed on listened returns |
+| 2:44–3:07 | The repeated envelope pattern ends | Drop back into the terrain corridor; accelerate in depth; build the suspended canopy above the viewer |
+| 3:07–3:53 | New band balance, then a later change near 3:30 | The largest transformation: sculptures release into a luminous ceiling while the terrain becomes flowing ribbons; beam fans and local particle bursts accent selected phrases |
+| Approximately 3:53–4:04.297 | Broad fade in the measured envelope | Let the structures settle and the field thin out with the actual fade; graceful deceleration; a quiet replay view at the recording’s end |
 
-For public hosting, bundle only a recording with documented permission for the intended use. Spotify links/embeds do not grant that permission; official platform terms prohibit synchronising platform recordings with visual media: https://developer.spotify.com/policy and https://developer.spotify.com/documentation/embeds/terms . A complete static website can instead load the user's matching local recording entirely client-side, with no upload, account or secret. If a matching recording is missing, finish independent scene/transport work and provide a polished local-file entry. Report exact-track sync as blocked until the file is analysed; don't declare a silent preview fully complete.
+Make energy and density follow the song. Do not sustain maximum intensity for four minutes. Repeated motifs should reprise recognisable visual motifs with an evolved camera/scale, so the piece has memory. Use the actual fade rather than chopping at a rounded duration. If listening contradicts a proposed window, listening wins and the score record changes.
 
-### One audio clock
+### A small amount of fun
 
-Preferred transport for this short fixed recording: one decoded `AudioBuffer`, scheduled through `AudioBufferSourceNode` into a gain node and the destination. Create/resume the AudioContext after the entrance gesture. Prepare critical assets/shaders before entering the audible sequence. Loading completion is the real basis of a loading indicator.
+Interaction should feel like playing with light. A bounded pointer/touch offset lets the viewer look through the world; the main camera score remains intact. Clicking/tapping an orb releases a beautiful small burst. A press-and-hold gesture can gather nearby light toward the pointer and release it on the next reviewed beat, with a restrained camera push. These are local visual accents: they never alter playback rate or move the music clock.
 
-Maintain an audio-graph start time, source offset and a transport generation token. Every play/resume/seek creates a new one-shot source. Source end handlers must check generation before changing current state. Stop/disconnect old sources on replacement, preserve volume, and keep the file at playback rate 1.
+One optional absurd moment can happen deep into the piece: all the large forms briefly squash in the same rubbery rhythm, then recover into an immaculate canopy. It must be musically placed and beautifully animated. No car/trolley scene, meme pop-ups, intrusive lyrics, error windows or joke overlay is required. The surreal world itself supplies the humour.
 
-Transport position comes from the audio graph, not accumulated render deltas. Visual position should use `AudioContext.getOutputTimestamp()` to map an estimated display time to the audible output position where supported. The supplied `core/audio-time.mjs` contains the arithmetic and pure evaluators; it is not a complete browser transport. Codex must implement source lifecycle and integrate/verify it.
+## Clock and event architecture
 
-Definitions: `anchor = { contextStartSeconds, sourceOffsetSeconds, durationSeconds }`. For a running graph:
+Keep one decoded `AudioBuffer` and one active `AudioBufferSourceNode`, with its context start time and song offset as the transport anchor. `requestAnimationFrame` asks the audio transport for presentation song time; it never advances an independent show clock. Keep generation protection around load, resume, source replacement and obsolete end handlers. Preserve pause, seek, replay, volume ramp, visibility pause and context-loss recovery.
 
-```
-graphSongSeconds = clamp(sourceOffsetSeconds + currentTime - contextStartSeconds)
-outputContextSeconds = timestamp.contextTime +
-  (estimatedDisplayPerformanceMs - timestamp.performanceTime) / 1000
-visualSongSeconds = clamp(sourceOffsetSeconds + outputContextSeconds - contextStartSeconds)
-```
+Use a fresh valid `AudioContext.getOutputTimestamp()` to map audio output position to the display performance-time coordinate. Record when a fallback is used. Do not add `baseLatency` and `outputLatency` blindly to an already output-aligned timestamp. Keep a documented calibration offset with a clear sign convention; zero is the uncalibrated default. Do not promise speaker/display perfection from a graph clock alone.
 
-Use only valid/fresh timestamp pairs from the running context. Before the scheduled start, hold the opening state; do not run the show early. A fallback based on `currentTime` is explicitly best-effort and requires separate measurement/calibration. Do not subtract a guessed latency, double-count `baseLatency`/`outputLatency`, or describe software timestamp mapping as a physical guarantee. A measured positive `visualLeadMs` intentionally advances visual sampling; record its sign and value.
+The show has two levels:
 
-Pause/seek/replay, backgrounding and context suspension must preserve the intended state. Auto-pause when the document becomes hidden and offer resume on return. If audio suspends unexpectedly, freeze scene time rather than continuing a wall-clock show. Handle decode/load errors with a real retry/file-load action. Mute changes gain; it does not reset song time. Repeated clicks cannot start overlapping sources.
+- **Authored score:** reviewed region boundaries, selected beat/accent events, camera splines, palette transitions, group morphs, release events and deterministic seeds.
+- **Continuous detail:** interpolated precomputed band/envelope curves sampled at presentation song time for small surface movement, glow breathing and controlled particles. These curves supply texture, not automatic scene selection.
 
-### Authored macro-events, measured small reactions
+Replace v1’s rigid cue schema with semantic-neutral, flexible regions and event types. Every time is seconds in this encoded asset’s reviewed browser timeline and bound to its SHA-256. An event includes `id`, `seconds`, `type`, `target`, `duration_seconds`, `seed`, `params`, and an audio-feature/review note. Regions cover the recording without gaps. Camera paths and major state are functions of absolute song time. Event particle positions are functions of `(songTime - eventTime)`.
 
-Evaluate major scene state directly from absolute song time: camera pose, façade transforms, rig activation, title visibility and air-freshener pose. Sample a paused GSAP timeline or equivalent pure functions with events suppressed. Do not schedule the show with `setTimeout`, autonomous CSS delays or an independently running GSAP clock.
+Seek must reconstruct the same major world/camera/palette state as continuous play at the same time; it must not depend on having visited earlier phases. Reset optional interaction history on replay and define its seek policy. An event dispatcher may notify transient UI/sound-free interactions, but rendering should be able to evaluate directly at any time. If multiple cues were crossed in a dropped frame, evaluate the present state rather than firing a backlog of flashes. No random values inside the render loop.
 
-Beat/phrase markers are arrays of measured seconds with method/confidence/review notes. Use a phase-local pulse envelope for kicks and accents. Use offline band-energy curves for subtle speaker motion, highlight variation and low haze modulation; a live analyser may add secondary detail. FFT bass bins do not identify every kick, and overall amplitude does not locate a chorus. No essential visual event depends on live spectral inference.
+Development previews may use honestly labelled candidate cues while musical review is underway. Do not freeze the whole show at ignition or expose “cue review pending” as the normal product experience. Final evidence must distinguish measured candidates, reviewed cues, software timing checks and physical output measurements. Promote cue status only with actual evidence; never fix a failed gate by changing a string to `reviewed`.
 
-Particle/haze randomness has a fixed seed. At a given cue time, positions are computed from that time and seed, or from deterministic checkpoints. Seeking to the finale after replay must produce the same major state. Cursor input and optional intensity remain separate from the authoritative timeline.
+## Delivery and acceptance
 
-Suggested mapping: low-band energy → modest speaker excursion/reflection strength; reviewed snare/accents → travelling LED highlights; high-band energy → small specular details; phrases → camera moves/architecture; chorus anchors → major reveal. These are creative mappings, not claims that source-separated drums exist.
+### Implement in this order, keep working through completion
 
-### Measured sync acceptance
+1. Inspect existing repository instructions/source, the three real Lights compositions, available live motion, this MP3 and the analysis aids. Preserve v1 history/evidence. Copy in the unchanged audio asset and replace the active instructions/manifests.
+2. Build a **real runtime excerpt** covering one entrance and the first major musical transformation. Use the actual song and proposed/listened events. Concentrate on terrain, sculptural forms, deep glow, camera scale and minimal controls. Inspect it in a browser at desktop and portrait before duplicating the language across four minutes. This is an internal quality checkpoint, not a new permission request or an excuse to deliver a partial site.
+3. If the excerpt still reads as empty black space, flat dots, neon wire shapes, cheap cone lights or washed-out blur, revise geometry, depth, lighting and composition first. Compare against the creator’s actual stills. The beauty must survive a paused frame and the authored transformation must survive muted playback.
+4. Complete the whole recording’s score, all scene systems, interaction, entrance/ending, recovery and quality tiers. Listen through the full recording, review cues at phrase/beat boundaries, then replay the entire site with audio. Carry out required browser/device verification and report genuine remaining limits.
+5. Build and serve a local production preview from the final checkout. Capture actual full-length audio/video, meaningful desktop/portrait frames, score/clock evidence and the final SHA. Prepare the normal GitHub commit/push in the existing authorised workflow; do not force-push or rewrite the rejected history. Keep public deployment and public song distribution separate from local/private implementation.
 
-- At least twelve reviewed audio/visual anchor pairs across the song, including early, middle and late passages. Target software presentation residual p95 ≤ 30 ms and maximum ≤ 50 ms on a real 60 Hz display; these are project targets, not browser guarantees. Report actual results and measurement uncertainty, including video frame quantisation.
-- Compare the first and last anchor residuals. Investigate more than one 60 Hz frame of systematic drift. Do not correct drift by adding repeated ad hoc offsets to individual cues.
-- Repeat representative anchors after pause/resume, seek forward/backward, replay, resize, hidden-tab resume and intensity changes. These actions must not create cumulative phase drift or duplicate audio.
-- Use a rendered cue witness plus captured audio loopback/waveform where available. Capture method, devices, browser, display cadence and Bluetooth/wired output must be stated. Loopback and software timestamp tests do not prove physical speaker/display alignment.
-- Listen to uninterrupted full playback and review the continuous browser capture. If listening, real GPU/display tests or physical output tests cannot be performed, state the specific unverified layer and keep that delivery status separate.
+### What counts as a successful result
 
-Primary technical references: https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/getOutputTimestamp ; https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start ; https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData . Consult current installed API documentation when integrating.
+- **Visual craft:** terrain relief, near/mid/far scale, shaped luminous forms and controlled colour are visible at entrance and the first major transformation. At least three materially different states belong to the same world. Later spectacle transforms scale/shape/density, not merely light intensity. Portrait has the same visual ambition.
+- **Musical craft:** a listened, asset-bound score; major entrances/morphs/returns align to chosen audible landmarks. Different parts have different visual behaviours. No free-running decorative oscillator is used as an excuse for sync.
+- **Transport:** bundled song, single gesture start, one source, no duplicate playback, working pause/seek/replay/mute/volume, fresh source per resume, no phase drift after seeking or tab hiding. Failed audio/renderer loads give real recovery with usable controls.
+- **Timing evidence:** at least twelve selected audible/visual anchors distributed from entrance through final fade; measure software event timing against the decoded audio timeline. At 60 Hz use p95 ≤30 ms and max ≤50 ms as project software targets, report actual results, and verify no cumulative first-to-last drift. These are project targets, not certified human perception or acoustic latency. Record speaker/display or loopback evidence separately when available.
+- **Motion and flash:** deliver LED movement, beam fans, geometry impact and particle accents with stable background luminance. Measure complete rendered playback against general/red flash thresholds in every shipped intensity mode, including moving light fields and user interactions. A warning or “crazy mode” toggle does not replace measurement. If full measurement is unavailable, ship the restrained measured/verified behaviour and report the remaining gate; no unverified full-screen white/red strobe. Provide an immediate Pause and designed reduced-motion/intensity composition.
+- **Performance:** examine continuous frame-time distribution and actual sustained motion on representative hardware. Record browser/device/viewport, tier, DPR, renderer, draw calls and frame-time percentiles. Do not describe headless software rendering or an emulated viewport as real phone performance. Degrade density/post effects gracefully while preserving terrain, soft light and score.
+- **Evidence:** tests/build are engineering evidence. Actual screenshots, continuous audio/video and listening evidence support visual/music review. User acceptance remains user acceptance. Report these separately; thirty-five passing tests did not make v1 an accepted visual experience.
 
-## 7. Website architecture and execution
+## Primary technical sources
 
-Prefer Vite + TypeScript + Three.js with a small semantic DOM transport. React is optional if it serves existing project code; it must not own per-frame scene state. Use one canvas and one authoritative transport. Pin dependencies and keep the lockfile. Read actual renderer colour-management/tone-mapping documentation for the installed version.
+- Output timestamp mapping: <https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/getOutputTimestamp>
+- Browser decode/resampling: <https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData>
+- General/red flash criteria: <https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html>
 
-Keep source modules proportionate: audio transport; track identity/analysis; cue evaluation; camera choreography; car/venue; lights/atmosphere; DOM controls; capability/quality tiers. Separate song-specific data from rendering. The package's pure timing helper is reusable; adapt its type boundary rather than building an unnecessary framework.
-
-The first version is static-hostable. Test asset URLs under the configured base path, including a repository subpath if targeting GitHub Pages. No backend, logins, tracking, social badges or fake online counts are required. Credits report real assets, artists and reference influence. Use the user's requested target if hosting is specified later; do not assume access to their physical local preview from this handoff.
-
-Provisional budgets to measure and tune: desktop target 60 fps on the user's real GPU; mobile target at least stable 30 fps while preserving the choreography; cap DPR per tier; ~150k hero-car triangles high tier and ~50k mobile after actual inspection; ~250 draw calls high tier; 1K/2K material maps; ~12 MiB initial visual transfer excluding the soundtrack. These are starting budgets, not accomplished benchmarks or hard excuses for poor imagery. Record deviations and their visual benefit.
-
-Use instanced window/LED banks, shared materials, bounded fog layers, warmed shaders and an inexpensive low tier. Reduce postprocessing/overdraw before removing the scene's main subject. A software-rendered CI session is not a GPU performance benchmark. Dispose resources on teardown and handle WebGL context loss without blasting or silently losing audio controls.
-
-## 8. Quality gates and delivery
-
-### Implement in this order
-
-1. Inspect instructions, existing owned mechanisms and source material; initialise the new standalone project. Keep source/asset acquisition records concise.
-2. Locate and analyse the exact recording where available. Build clock/transport and an anchor editor early. Independent visual work continues if audio is missing.
-3. Acquire/prepare the hero sedan and compose the entrance, first-chorus and finale frames on desktop and portrait. Replace proxies before completion.
-4. Implement the full authored cue sequence with seek/replay coherence. Add secondary audio reactions and one readable recurring joke.
-5. Inspect real browser frames and uninterrupted playback; fix the largest visual defect first. Run meaningful transport/identity tests and measured sync checks.
-6. Deliver the running preview, production build, source/evidence package and honest status record. Do not stop at a starter, plan, mockup or partial first scene.
-
-### Things that fail review
-
-- A stock spectrum ring on a wallpaper for the whole track; generic gradient nightclub; cuboid hero car; unresolved scan artifacts; a wall of arbitrary particles; constant chromatic glitch; overexposed bloom; unrelated memes.
-- A professionally written README attached to a visually weak scene. More documentation is not a fix for imagery.
-- Fake cue seconds/BPM grid; matching by filename; wall-clock drift; multiple sources after replay; a camera timeline that continues during pause; a different remix quietly used as the song.
-- Tiny inaccessible controls, touch traps, broken portrait framing, forgotten source credits, inaccessible assets silently treated as bundled, or reference footage shipped as original work.
-- Calling build success, arithmetic tests, isolated screenshots or an agent score visual approval. Human approval is a separate fact.
-
-Keep flash behaviour below applicable general/red flash thresholds in every mode; provide low-flash controls and immediate pause. Source: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html . Reduced motion uses fixed strong camera compositions and restrained travelling light while preserving playback and controls.
-
-### Required evidence
-
-`evidence/REVIEW.md` records implementation SHA/dirty status; actual audio hash and identity; runtime decoder details; anchor/cue review; used assets and derivatives; tested browsers/devices; measured sync and performance; unedited full-play capture; entrance/chorus/bridge/finale/outro desktop/portrait frames; fallback/error tests; unresolved limitations. Name concrete defects and improvements, not self-awarded adjectives.
-
-Report independently: build/behaviour, visual review, exact-track sync, measured performance, asset provenance and public-audio distribution mode. The supplied release validator checks missing contracts and hashes; it cannot certify aesthetics, permissions, playback smoothness or physical sync.
-
+Research inspected 2026-10-09. Keep a short source-to-implementation record as you work. No generated imagery, generated video, generated textures or generated concept art was requested or included.

@@ -20,6 +20,9 @@ export class AudioTransport {
   hash = "";
   filename = "";
   clockQuality = "frozen";
+  /** Positive values advance visuals. Zero until measured output calibration exists. */
+  calibrationOffsetMs = 0;
+  clockSamples = { output: 0, fallback: 0 };
   onChange: () => void = () => {};
   constructor(
     private readonly createContext: () => AudioContext = () =>
@@ -61,7 +64,7 @@ export class AudioTransport {
     }
     return this.context;
   }
-  async load(file: File) {
+  async load(file: File, expectedHash?: string) {
     const request = ++this.loadingGeneration;
     this.pause();
     if (!file.size || file.size > 80 * 1024 * 1024)
@@ -72,6 +75,10 @@ export class AudioTransport {
     const hash = Array.from(new Uint8Array(digest), (b) =>
       b.toString(16).padStart(2, "0"),
     ).join("");
+    if (expectedHash && hash !== expectedHash)
+      throw new Error(
+        "The recording does not match the supplied song. Restore the original MP3.",
+      );
     let buffer: AudioBuffer;
     try {
       buffer = await context.decodeAudioData(bytes.slice(0));
@@ -116,10 +123,12 @@ export class AudioTransport {
       performanceNowMs: displayPerformanceMs,
       frozenSongSeconds: this.lastPosition,
       outputTimestamp: this.context.getOutputTimestamp?.(),
-      visualLeadMs: 0,
+      visualLeadMs: this.calibrationOffsetMs,
       estimatedDisplayLeadMs: 0,
     });
     this.clockQuality = result.clockQuality;
+    if (result.clockQuality === "output_estimate") this.clockSamples.output++;
+    else this.clockSamples.fallback++;
     return result.seconds;
   }
   private stopSource() {
@@ -164,6 +173,8 @@ export class AudioTransport {
     const context = this.ensureContext();
     await context.resume();
     if (token !== this.generation) return;
+    if (context.state !== "running")
+      throw new Error("Audio could not resume. Press Play to retry.");
     this.start(this.state === "ended" ? 0 : this.frozenSeconds);
   }
   pause() {
@@ -209,6 +220,20 @@ export class AudioTransport {
         this.context.currentTime,
         0.015,
       );
+  }
+  /** Developer recording tap, downstream of volume. It never creates a second source. */
+  captureOutput() {
+    if (!this.context || !this.gain)
+      throw new Error("Load audio before recording.");
+    const output = this.context.createMediaStreamDestination();
+    this.gain.connect(output);
+    return {
+      stream: output.stream,
+      dispose: () => {
+        this.gain?.disconnect(output);
+        output.stream.getTracks().forEach((track) => track.stop());
+      },
+    };
   }
   async dispose() {
     ++this.loadingGeneration;

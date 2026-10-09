@@ -143,3 +143,26 @@ test("invalid or oversized input does not replace the accepted buffer", async ()
   await assert.rejects(transport.load(new File([], "empty.wav")), /smaller/);
   assert.equal(transport.hash, hash);
 });
+test("a mismatched encoded recording cannot replace the accepted audio buffer", async () => {
+  const { transport } = await setup();
+  const hash = transport.hash;
+  await assert.rejects(
+    transport.load(new File(["wrong bytes"], "wrong.mp3"), "0".repeat(64)),
+    /does not match/,
+  );
+  assert.equal(transport.hash, hash);
+  assert.equal(transport.duration, 100);
+});
+test("the same encoded recording may decode at a different sample rate", async () => {
+  const context = new Context();
+  context.decodeAudioData = async () => ({ duration: 100, sampleRate: 44100 });
+  const transport = new AudioTransport(
+    () => context as unknown as AudioContext,
+  );
+  const file = new File(["same encoded bytes"], "fixture.mp3");
+  await transport.load(file);
+  const hash = transport.hash;
+  await transport.load(file, hash);
+  assert.equal(transport.sampleRate, 44100);
+  assert.equal(transport.hash, hash);
+});

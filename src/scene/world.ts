@@ -1,247 +1,183 @@
 import * as THREE from "three";
-import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
-import { createCar } from "./car";
-import { createVenue, loadMaterials } from "./venue";
-import { createLights } from "./lights";
-import { evaluateScene } from "../show/choreography";
-import type { SectionId } from "../show/cues";
+import { createTerrain } from "./terrain";
+import { createSculptures, sculpturePosition } from "./sculptures";
+import { createAtmosphere, createBursts } from "./atmosphere";
+import { showUniforms } from "./materials";
+import type { Score } from "../show/cues";
+import type { ShowFrame } from "../show/choreography";
+export type Quality = "high" | "low";
 export async function createWorld(
   canvas: HTMLCanvasElement,
-  onContextLoss: () => void,
+  score: Score,
+  quality: Quality,
 ) {
-  const low = matchMedia("(max-width: 700px)").matches;
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: true,
-    alpha: false,
-    powerPreference: "high-performance",
-  });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, low ? 1.25 : 1.75));
-  renderer.setSize(innerWidth, innerHeight);
+  const low = quality === "low",
+    renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: false,
+      powerPreference: low ? "low-power" : "high-performance",
+    });
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.0;
-  renderer.shadowMap.enabled = !low;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x070b12);
-  scene.fog = new THREE.FogExp2(0x111a26, 0.018);
-  const camera = new THREE.PerspectiveCamera(
-    43,
-    innerWidth / innerHeight,
-    0.04,
-    140,
-  );
-  const materials = await loadMaterials();
-  const hdr = await new RGBELoader().loadAsync(
-    `${import.meta.env.BASE_URL}assets/textures/rooftop_night_1k.hdr`,
-  );
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  const environment = pmrem.fromEquirectangular(hdr);
-  scene.environment = environment.texture;
-  scene.environmentIntensity = 0.25;
-  hdr.dispose();
-  pmrem.dispose();
-  scene.add(new THREE.HemisphereLight(0x8899b4, 0x171a20, 0.65));
-  const { car, freshener, brake } = createCar();
-  scene.add(car);
-  const { venue, windows, windowPositions, windowMaterial, frames, reflector } =
-    createVenue(materials, low);
-  scene.add(venue);
-  const rig = createLights(low);
-  scene.add(rig.group);
-  const key = new THREE.SpotLight(0xbcd6f4, 165, 35, 0.58, 0.7, 1);
-  key.position.set(-3, 8, 6);
-  key.target.position.set(0, 0, 0);
-  scene.add(key, key.target);
-  for (const side of [-1, 1]) {
-    const head = new THREE.SpotLight(0xffddb0, 45, 17, 0.25, 0.75, 1);
-    head.position.set(-2.8, 0.83, side * 0.59);
-    head.target.position.set(-14, 0, side * 0.8);
-    scene.add(head, head.target);
-  }
-  const cursorSpot = new THREE.SpotLight(0xccdcec, 8, 40, 0.15, 1, 1.2);
-  cursorSpot.position.set(-5, 9, 5);
-  cursorSpot.target.position.set(0, 0, 0);
-  scene.add(cursorSpot, cursorSpot.target);
+  renderer.toneMappingExposure = 1.08;
+  const scene = new THREE.Scene(),
+    camera = new THREE.PerspectiveCamera(60, 1, 0.2, 800),
+    uniforms = showUniforms();
+  const terrain = createTerrain(uniforms, low),
+    sculptures = createSculptures(uniforms, low),
+    atmosphere = createAtmosphere(uniforms, low),
+    bursts = createBursts(uniforms, score.events);
+  scene.add(terrain, sculptures.group, atmosphere.group, bursts.points);
   const composer = new EffectComposer(renderer);
   composer.addPass(new RenderPass(scene, camera));
-  const bloom = new UnrealBloomPass(
-    new THREE.Vector2(innerWidth, innerHeight),
-    0.22,
-    0.35,
-    1.5,
-  );
+  const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.65, 0.48, 0.68);
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
-  let lost = false;
-  const contextLost = (event: Event) => {
-    event.preventDefault();
-    lost = true;
-    onContextLoss();
-  };
-  canvas.addEventListener("webglcontextlost", contextLost);
-  const resize = () => {
-    camera.aspect = innerWidth / innerHeight;
+  const lossExtension = renderer
+    .getContext()
+    .getExtension("WEBGL_lose_context");
+  const sphere = new THREE.Sphere(),
+    raycaster = new THREE.Raycaster(),
+    point = new THREE.Vector3();
+  function resize() {
+    const width = innerWidth,
+      height = innerHeight,
+      dpr = Math.min(devicePixelRatio, low ? 1.25 : 1.75);
+    renderer.setPixelRatio(dpr);
+    renderer.setSize(width, height, false);
+    composer.setPixelRatio(dpr);
+    composer.setSize(width, height);
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    renderer.setSize(innerWidth, innerHeight);
-    composer.setSize(innerWidth, innerHeight);
-  };
-  addEventListener("resize", resize);
-  const facadeMatrix = new THREE.Matrix4(),
-    facadeQuaternion = new THREE.Quaternion(),
-    facadePosition = new THREE.Vector3();
-  const yAxis = new THREE.Vector3(0, 1, 0),
-    xAxis = new THREE.Vector3(1, 0, 0),
-    one = new THREE.Vector3(1, 1, 1);
-  const gagLight = new THREE.SpotLight(0xe2e7e9, 0, 15, 0.42, 0.65, 1);
-  gagLight.position.set(6.2, 3.7, 0.5);
-  gagLight.target.position.set(6.2, 0.35, -5.2);
-  scene.add(gagLight, gagLight.target);
-  const color = new THREE.Color(),
-    warm = new THREE.Color(0xe4b67a),
-    cold = new THREE.Color(0xb3c9dc),
-    lime = new THREE.Color(0xcbf26d);
-  const target = new THREE.Vector3(),
-    direction = new THREE.Vector3(),
-    down = new THREE.Vector3(0, -1, 0);
+    uniforms.uPixelRatio.value = dpr;
+  }
+  resize();
+  await renderer.compileAsync(scene, camera);
   function render(
-    id: SectionId,
-    progress: number,
-    time: number,
-    intensity: number,
-    reduced: boolean,
+    frame: ShowFrame,
     pointer: { x: number; y: number },
+    reduced: boolean,
   ) {
-    if (lost) return;
-    const pose = evaluateScene(
-      id,
-      progress,
-      time,
-      innerWidth < innerHeight,
-      reduced,
+    camera.position.fromArray(frame.position);
+    camera.position.x += pointer.x * (reduced ? 0.25 : 1.9);
+    camera.position.y += pointer.y * (reduced ? 0.1 : 0.7);
+    camera.lookAt(
+      new THREE.Vector3(...frame.target).add(
+        new THREE.Vector3(
+          pointer.x * (reduced ? 0.4 : 3.5),
+          pointer.y * (reduced ? 0.15 : 1.6),
+          0,
+        ),
+      ),
     );
-    camera.position.fromArray(pose.camera);
-    camera.lookAt(target.fromArray(pose.target));
-    freshener.rotation.z = pose.freshenerSwing;
-    rig.ring.rotation.z = pose.ringRotation;
-    rig.group.visible = pose.rig > 0.01;
-    rig.ringLeds.visible = pose.rig > 0.08;
-    rig.leds.visible = pose.rig > 0.05;
-    rig.gag.visible = pose.gag > 0.01;
-    rig.gag.scale.setScalar(Math.max(0.001, pose.gag));
-    rig.glow.emissive.copy(cold).lerp(lime, pose.lime);
-    rig.glow.emissiveIntensity = 0.6 + pose.rig * intensity * 1.2;
-    // Constant rear-lamp red. No saturated-red pulse or full-screen strobe.
-    brake.emissiveIntensity = 0.8;
-    const unfold = Math.max(0, (pose.facade - 0.4) / 0.6);
-    if (windowMaterial.userData.activation)
-      windowMaterial.userData.activation.value = unfold;
-    gagLight.intensity = pose.gag * 45;
-    windowPositions.forEach(([x, y, z, r], i) => {
-      const extension = unfold * (0.35 + 0.45 * Math.sin(i * 0.17));
-      facadeQuaternion
-        .setFromAxisAngle(yAxis, r)
-        .multiply(
-          new THREE.Quaternion().setFromAxisAngle(xAxis, -unfold * 0.28),
-        );
-      facadePosition.set(
-        x + (r ? (x > 0 ? -extension : extension) : 0),
-        y,
-        z + (r ? 0 : extension),
+    camera.fov = frame.fov;
+    camera.updateProjectionMatrix();
+    uniforms.uEye.value.copy(camera.position);
+    uniforms.uTime.value = frame.seconds;
+    uniforms.uDensity.value = frame.density;
+    uniforms.uMorph.value = frame.morph;
+    uniforms.uGroupPulse.value.fromArray(frame.groupPulse);
+    uniforms.uRelease.value = frame.release;
+    uniforms.uRibbons.value = frame.ribbons;
+    uniforms.uBeams.value = frame.beams;
+    uniforms.uPalette.value = frame.palette;
+    uniforms.uBrightness.value = frame.brightness;
+    uniforms.uAccent.value = frame.accent;
+    uniforms.uLow.value = frame.features.low;
+    uniforms.uHigh.value = frame.features.high;
+    uniforms.uWaveAge.value = frame.wave
+      ? frame.seconds - frame.wave.seconds
+      : -1;
+    if (frame.wave)
+      uniforms.uWaveOrigin.value.set(frame.wave.params.x, frame.wave.params.z);
+    uniforms.uRestrained.value = reduced ? 1 : 0;
+    bloom.strength = reduced ? 0.42 : 0.65;
+    const nearby = sculptures.sculptures
+      .slice(0, 10)
+      .sort(
+        (a, b) =>
+          Math.abs(a.center[2] - frame.position[2]) -
+          Math.abs(b.center[2] - frame.position[2]),
       );
-      facadeMatrix.compose(facadePosition, facadeQuaternion, one);
-      frames.setMatrixAt(i, facadeMatrix);
-      facadePosition.x += r ? (x > 0 ? -0.085 : 0.085) : 0;
-      facadePosition.z += r ? 0 : 0.085;
-      facadeMatrix.compose(facadePosition, facadeQuaternion, one);
-      windows.setMatrixAt(i, facadeMatrix);
-      const resting = i % 7 === 0 || i % 11 === 0;
-      // Slow spatial chases: one cycle in 16 seconds, bounded between lit states.
-      const wave = 0.72 + 0.28 * Math.sin(time * 0.39 + i * 0.34);
-      color
-        .copy(resting ? warm : cold)
-        .lerp(lime, pose.lime)
-        .multiplyScalar(
-          resting
-            ? 0.28 + pose.facade * wave * intensity
-            : 0.015 + pose.facade * wave * intensity * 0.65,
-        );
-      windows.setColorAt(i, color);
-    });
-    windows.instanceMatrix.needsUpdate = true;
-    frames.instanceMatrix.needsUpdate = true;
-    if (windows.instanceColor) windows.instanceColor.needsUpdate = true;
-    rig.ledPositions.forEach((_, i) => {
-      color
-        .copy(cold)
-        .lerp(lime, pose.lime)
-        .multiplyScalar(0.5 + 0.3 * Math.sin(i * 0.4 - time * 0.39));
-      rig.leds.setColorAt(i, color);
-    });
-    if (rig.leds.instanceColor) rig.leds.instanceColor.needsUpdate = true;
-    rig.beams.forEach(({ mesh, spot, origin, index }) => {
-      const sway = reduced ? 0 : Math.sin(time * 0.16 + index * 0.6) * 3;
-      target.set(
-        (index - (rig.beams.length - 1) / 2) * 2.4 + sway,
-        0.03,
-        5 + Math.cos(index) * 2,
+    nearby
+      .slice(0, 6)
+      .forEach((s, i) =>
+        uniforms.uPools.value[i].set(
+          s.center[0],
+          s.seed + s.group * 0.7,
+          s.center[2],
+          s.radius,
+        ),
       );
-      direction.subVectors(target, origin).normalize();
-      mesh.quaternion.setFromUnitVectors(down, direction);
-      mesh.material.uniforms.opacity.value = pose.rig * intensity * 0.042;
-      mesh.material.uniforms.color.value.copy(cold).lerp(lime, pose.lime);
-      if (spot) {
-        spot.target.position.copy(target);
-        spot.intensity = pose.rig * intensity * 65;
-        spot.color.copy(cold).lerp(lime, pose.lime);
-      }
-    });
-    cursorSpot.target.position.set(pointer.x * 5, 0, pointer.y * 3);
-    cursorSpot.intensity = 8 * intensity;
-    bloom.enabled = !low;
+    atmosphere.update(frame, reduced);
+    bursts.update(frame.seconds, reduced);
+    renderer.info.autoReset = false;
+    renderer.info.reset();
     composer.render();
   }
-  render("intro", 0, 0, 0.5, false, { x: 0, y: 0 });
-  rig.group.visible =
-    rig.gag.visible =
-    rig.ringLeds.visible =
-    rig.leds.visible =
-      true;
-  await renderer.compileAsync(scene, camera);
-  render("intro", 0, 0, 0.5, false, { x: 0, y: 0 });
-  return {
-    render,
-    renderer,
-    camera,
-    scene,
-    dispose: () => {
-      removeEventListener("resize", resize);
-      canvas.removeEventListener("webglcontextlost", contextLost);
-      const textures = new Set<THREE.Texture>(),
-        mats = new Set<THREE.Material>();
-      scene.traverse((o) => {
-        if (o instanceof THREE.Mesh) {
-          o.geometry.dispose();
-          for (const m of Array.isArray(o.material) ? o.material : [o.material])
-            mats.add(m);
+  function tap(x: number, y: number, frame: ShowFrame) {
+    raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
+    let nearest = Infinity,
+      selected = -1;
+    sculptures.sculptures.forEach((s, i) => {
+      sphere.center.fromArray(sculpturePosition(s, frame));
+      sphere.radius = s.radius;
+      const hit = raycaster.ray.intersectSphere(sphere, point);
+      if (hit) {
+        const d = point.distanceTo(camera.position);
+        if (d < nearest) {
+          nearest = d;
+          selected = i;
         }
-      });
-      for (const m of mats) {
-        for (const value of Object.values(m))
-          if (value instanceof THREE.Texture) textures.add(value);
-        m.dispose();
       }
-      textures.forEach((t) => t.dispose());
-      environment.dispose();
-      reflector.getRenderTarget().dispose();
-      bloom.dispose();
-      composer.dispose();
-      renderer.dispose();
-    },
+    });
+    if (selected < 0) return false;
+    bursts.add({
+      seconds: frame.seconds,
+      seed: 8801 + selected * 37,
+      position: sculpturePosition(sculptures.sculptures[selected], frame),
+    });
+    return true;
+  }
+  function dispose() {
+    scene.traverse((o) => {
+      if (o instanceof THREE.Mesh || o instanceof THREE.Points) {
+        o.geometry.dispose();
+        for (const m of Array.isArray(o.material) ? o.material : [o.material])
+          m.dispose();
+      }
+    });
+    for (const pass of composer.passes) pass.dispose();
+    composer.dispose();
+    renderer.dispose();
+  }
+  function diagnostics() {
+    const gl = renderer.getContext(),
+      ext = gl.getExtension("WEBGL_debug_renderer_info");
+    return {
+      quality,
+      dpr: renderer.getPixelRatio(),
+      drawCalls: renderer.info.render.calls,
+      triangles: renderer.info.render.triangles,
+      points: renderer.info.render.points,
+      renderer: ext
+        ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)
+        : gl.getParameter(gl.RENDERER),
+    };
+  }
+  return {
+    restoreContext: () => lossExtension?.restoreContext(),
+    render,
+    resize,
+    tap,
+    resetInteractions: bursts.reset,
+    dispose,
+    diagnostics,
+    renderer,
   };
 }
