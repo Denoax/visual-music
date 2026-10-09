@@ -191,6 +191,13 @@ export function evaluateScene(
   const oldTarget = portrait
     ? (previous.portraitTarget ?? previous.target)
     : previous.target;
+  const freshenerImpulse =
+    Math.sin(time * 3.4) *
+    0.13 *
+    smooth(progress / 0.08) *
+    Math.exp(-progress * 7);
+  const freshenerSway = Math.sin(time * 2.2) * 0.04 + freshenerImpulse;
+  const settling = id === "outro" ? 1 - smooth(progress) : 1;
   return {
     camera: mix3(oldCamera, camera, t),
     target: mix3(oldTarget, target, t),
@@ -198,9 +205,7 @@ export function evaluateScene(
     facade: mix(previous.facade, current.facade, t),
     lime: mix(previous.lime, current.lime, t),
     gag: mix(previous.gag, current.gag, t),
-    freshenerSwing: reducedMotion
-      ? 0
-      : Math.sin(time * 2.2) * 0.16 + Math.sin(time * 0.67) * 0.04,
+    freshenerSwing: reducedMotion ? 0 : freshenerSway * settling,
     ringRotation: reducedMotion ? 0 : Math.sin(time * 0.12) * 0.12,
   };
 }

@@ -110,3 +110,9 @@ test("recording identity requires a verified exact-track record and matching bro
     /different audio/,
   );
 });
+
+test("the freshener settles upright at the ending regardless of previous seek history", () => {
+  evaluateScene("bridge", 0.3, 73, false, false);
+  assert.equal(evaluateScene("outro", 1, 130, false, false).freshenerSwing, 0);
+  assert.equal(evaluateScene("outro", 1, 130, true, false).freshenerSwing, 0);
+});
