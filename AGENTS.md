@@ -1,0 +1,33 @@
+# BUMER.EXE project instructions
+
+Build the complete standalone audiovisual website described in `ASSETFILE.md`. The user's priorities are exceptional visual/audio craft, humour, the exact selected song and reliable synchronisation. Work through implementation and evidence without routine reconfirmation. Inspect applicable parent/repository instructions first.
+
+## Read order
+
+1. Read and apply **$reference-led-design**.
+2. Read `ASSETFILE.md` in full.
+3. Inspect `manifests/assets.json`, `manifests/track.template.json` and `manifests/cues.template.json`.
+4. Read `core/README.md` before adapting the tested timing arithmetic.
+
+## Source rules if the skill is unavailable
+
+- Inspect original human-created references and their actual available imagery/motion. Distinguish observations, creator-documented implementation and your inference.
+- Use original CSS/SVG/Three.js/GLSL, authored meshes and deterministic simulation. Reuse owned/licensed material with source records. Do not generate images, videos, textures, concept art or external model-generated media for assets or visual authority unless the user later explicitly requests that particular generation.
+- Reference artwork and footage are research material; do not put them in the runtime. A public repository's code license does not automatically license music, photos or models.
+- Keep real controls and sparse real content. Avoid default card grids, decorative pills, fake telemetry, model badges, fabricated metadata and gratuitous UI. This project can be funny and maximal in selected musical moments; do not inherit a portfolio's unrelated prohibition on all colourful or playful motion.
+- Validate actual rendered output and continuous playback. Compilation and selected screenshots do not prove visual craft or smoothness. Record unresolved inspection gaps rather than inventing evidence.
+
+## Non-negotiable runtime contracts
+
+- Exact audio byte hash binds the cue sheet. All times are seconds in the reviewed runtime recording. No guessed timestamps or substituted song.
+- One audio source/clock; visuals sample song time. Pause, replay and seek retain phase and reconstruct major state. Hidden-tab suspension is handled.
+- The provided template has unresolved times intentionally. Complete analysis and review; release validation must fail while essential inputs remain unresolved.
+- All intensity modes respect measured general/red flash limits. Controls remain available; reduced motion has a designed composition.
+- This is a new project. Preserve the accepted manimarami.com project and recoverable history.
+
+## Working method
+
+Use a concise source-to-implementation register. Keep raw assets and notices, hash runtime derivatives, and inspect hero geometry before selection. Develop lighting/venue/transport while any exact audio/model input is unresolved. Do not call a proxy or silent show complete. No paid asset purchase without applicable authorization.
+
+Complete the full site and local production preview with meaningful browser/audio evidence. Keep technical success, visual review, measured sync and user acceptance separate. Report what was actually tested. Do not install this file globally or claim this pack updated a separate running agent's memory.
+

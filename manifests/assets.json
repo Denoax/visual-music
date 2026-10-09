@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "status": "acquisition_plan",
+  "assets": [
+    {
+      "id": "hero_sedan",
+      "role": "Hero long black executive sedan",
+      "kind": "external_asset",
+      "runtime_required": true,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": null,
+      "source_author": null,
+      "source_license_listed": null,
+      "source_inspection_status": "not_yet_authored",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null,
+      "source_candidates": [
+        {
+          "url": "https://sketchfab.com/3d-models/bmw-e38-7f3c847956614f62b0e64ba6ffc8614f",
+          "author": "longobarda",
+          "license_listed": "CC Attribution",
+          "license_link_verified": "https://creativecommons.org/licenses/by/4.0/",
+          "reported_triangles": 1400000,
+          "provenance_statement": "Creator describes an iPhone scan of their own BMW E38",
+          "status": "candidate_only_no_bytes_or_visual_topology_inspection"
+        },
+        {
+          "url": "https://sketchfab.com/3d-models/bmw-e38-cyberbody-ff3d4b9cc7b6425f86cd7bca9c5f7ac6",
+          "author": "INANIS",
+          "license_listed": null,
+          "status": "listing_located_full_page_403_license_and_geometry_unverified"
+        }
+      ]
+    },
+    {
+      "id": "asphalt",
+      "role": "Ground roughness/aggregate and wetness base",
+      "kind": "external_asset",
+      "runtime_required": true,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": "https://polyhaven.com/a/asphalt_02",
+      "source_author": "Rob Tuytel",
+      "source_license_listed": "CC0",
+      "source_inspection_status": "source_page_metadata_only",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null
+    },
+    {
+      "id": "concrete",
+      "role": "Facade material",
+      "kind": "external_asset",
+      "runtime_required": true,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": "https://polyhaven.com/a/concrete_wall_007",
+      "source_author": "Charlotte Baglioni / Dario Barresi / Rico Cilliers",
+      "source_license_listed": "CC0",
+      "source_inspection_status": "source_page_metadata_only",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null
+    },
+    {
+      "id": "reflection_environment",
+      "role": "Optional paint/chrome environment",
+      "kind": "external_asset",
+      "runtime_required": false,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": "https://polyhaven.com/a/rooftop_night",
+      "source_author": "Greg Zaal",
+      "source_license_listed": "CC0",
+      "source_inspection_status": "source_page_metadata_only",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null
+    },
+    {
+      "id": "display_font",
+      "role": "Optional condensed display face",
+      "kind": "external_asset",
+      "runtime_required": false,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": "https://github.com/google/fonts/tree/main/ofl/anton",
+      "source_author": "Anton Project Authors",
+      "source_license_listed": "SIL-OFL-1.1",
+      "source_inspection_status": "source_page_metadata_only",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null
+    },
+    {
+      "id": "venue_geometry",
+      "role": "Original courtyard, facades and lighting architecture",
+      "kind": "authored_code",
+      "runtime_required": true,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": null,
+      "source_author": null,
+      "source_license_listed": null,
+      "source_inspection_status": "not_yet_authored",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null
+    },
+    {
+      "id": "light_shaders",
+      "role": "Original LED/beam/haze rendering",
+      "kind": "authored_code",
+      "runtime_required": true,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": null,
+      "source_author": null,
+      "source_license_listed": null,
+      "source_inspection_status": "not_yet_authored",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null
+    },
+    {
+      "id": "air_freshener",
+      "role": "Original recurring comic subject",
+      "kind": "authored_code",
+      "runtime_required": true,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": null,
+      "source_author": null,
+      "source_license_listed": null,
+      "source_inspection_status": "not_yet_authored",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null
+    },
+    {
+      "id": "trolley",
+      "role": "Original final physical gag if retained",
+      "kind": "authored_code",
+      "runtime_required": false,
+      "used_in_runtime": false,
+      "status": "planned",
+      "source_url": null,
+      "source_author": null,
+      "source_license_listed": null,
+      "source_inspection_status": "not_yet_authored",
+      "runtime_path": null,
+      "runtime_sha256": null,
+      "inspection_record": null,
+      "rights": {
+        "status": "pending",
+        "basis": null,
+        "record": null
+      },
+      "preparation_record": null
+    }
+  ],
+  "source_record_date": "2026-10-09",
+  "note": "No external asset bytes are bundled; source listings are not runtime inspection or acquisition evidence."
+}

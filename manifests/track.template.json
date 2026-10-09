@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "requested_spotify_id": "0iVj13fDCDRM7rfYEGF50X",
+  "requested_artist": "Seryoga",
+  "requested_title": "Чёрный бумер",
+  "reference_url": "https://open.spotify.com/track/0iVj13fDCDRM7rfYEGF50X",
+  "identity_review_status": "pending",
+  "identity_review_notes": null,
+  "runtime_sha256": null,
+  "source_sha256": null,
+  "source_filename": null,
+  "runtime_audio_mode": "user_local_file",
+  "runtime_audio_path": null,
+  "distribution_permission": {
+    "status": "not_granted_by_this_pack",
+    "record": null
+  },
+  "runtime_decoded_duration_seconds": null,
+  "runtime_sample_rate_hz": null,
+  "runtime_decoder_record": null,
+  "analysis": null,
+  "note": "No audio bytes or verified timing are included. Verify exact recording and runtime decode."
+}

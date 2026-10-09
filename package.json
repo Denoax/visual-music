@@ -1,0 +1,25 @@
+{
+  "name": "bumer-exe",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test core/*.test.mjs && tsx --test tests/*.test.ts",
+    "test:browser": "playwright test",
+    "format": "prettier --write src tests index.html vite.config.ts playwright.config.ts package.json tsconfig.json"
+  },
+  "dependencies": {
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "0.186.0",
+    "@playwright/test": "1.64.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "tsx": "4.23.0",
+    "prettier": "3.8.4"
+  }
+}

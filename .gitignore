@@ -1,0 +1,17 @@
+node_modules/
+dist/
+analysis/*
+!analysis/.gitkeep
+*.mp3
+*.wav
+*.flac
+*.m4a
+*.ogg
+*.aac
+*.opus
+test-results/
+playwright-report/
+evidence/*.webm
+evidence/*.mp4
+__pycache__/
+*.pyc

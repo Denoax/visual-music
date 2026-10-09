@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#050607" />
+    <meta
+      name="description"
+      content="A black sedan. A quiet courtyard. An unreasonable sound system. BUMER.EXE is an authored audiovisual neighbourhood rave."
+    />
+    <title>BUMER.EXE — Start ignition</title>
+  </head>
+  <body>
+    <canvas
+      id="world"
+      aria-label="A black executive sedan in a courtyard that unfolds into a neighbourhood light installation"
+    ></canvas>
+    <div class="frame" aria-hidden="true"></div>
+    <header>
+      <a class="wordmark" href="./" aria-label="BUMER.EXE home"
+        >BUMER<span>.EXE</span></a
+      >
+      <div class="header-actions">
+        <button id="credits-button">Credits</button
+        ><button
+          id="fullscreen"
+          aria-label="Enter fullscreen"
+          title="Fullscreen"
+        >
+          ⛶
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="entrance" id="entrance" aria-labelledby="title">
+        <div class="song-credit">SERYOGA <span>—</span> ЧЁРНЫЙ БУМЕР</div>
+        <h1 id="title">BUMER.EXE</h1>
+        <div class="entry-actions">
+          <button id="ignition" class="primary" disabled>
+            <span class="key-icon" aria-hidden="true">↗</span
+            ><span id="ignition-label">Preparing the courtyard…</span></button
+          ><button id="study">
+            Explore without audio <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <p id="entry-note">
+          Bring your local recording. It stays on this device.
+        </p>
+      </section>
+      <div id="scene-caption" class="scene-caption" hidden>
+        <span id="study-tag">SILENT SCENE STUDY</span>
+        <p id="scene-name">Ignition</p>
+      </div>
+      <div id="status" role="status" aria-live="polite">
+        Loading materials and preparing shaders…
+      </div>
+      <section id="fallback" hidden>
+        <h2>The courtyard needs WebGL</h2>
+        <p id="fallback-message">
+          Audio and its controls remain available. Try a browser with hardware
+          acceleration to see the show.
+        </p>
+        <button id="retry">Retry the scene</button>
+      </section>
+    </main>
+    <footer id="transport">
+      <div class="transport-track">
+        <span id="track-title" class="track-title">ЧЁРНЫЙ БУМЕР</span
+        ><span id="mode-label">Seryoga · local recording</span>
+      </div>
+      <div class="playback">
+        <button id="play" aria-label="Play" disabled>▶</button
+        ><button id="replay" aria-label="Replay" disabled>↺</button
+        ><output id="time" for="seek">0:00</output
+        ><input
+          id="seek"
+          type="range"
+          min="0"
+          max="130"
+          value="0"
+          step="0.01"
+          aria-label="Seek"
+          disabled
+        /><span id="duration">—:—</span>
+      </div>
+      <div class="tools">
+        <button id="mute" aria-label="Mute" aria-pressed="false">♪</button
+        ><input
+          id="volume"
+          type="range"
+          min="0"
+          max="1"
+          value="0.7"
+          step="0.01"
+          aria-label="Volume"
+        /><button
+          id="settings-button"
+          aria-label="Light and motion settings"
+          title="Light and motion"
+        >
+          ☼</button
+        ><button
+          id="load-audio"
+          aria-label="Load local recording"
+          title="Load recording"
+        >
+          ↥
+        </button>
+      </div>
+    </footer>
+    <input
+      id="audio-file"
+      type="file"
+      accept="audio/*,.mp3,.wav,.flac,.m4a,.ogg"
+      hidden
+    />
+    <input id="cue-file" type="file" accept=".json,application/json" hidden />
+    <dialog id="settings">
+      <div class="dialog-heading">
+        <h2>Make yourself comfortable.</h2>
+        <button class="close" aria-label="Close settings">×</button>
+      </div>
+      <label class="setting"
+        >Volume<input
+          id="volume-settings"
+          type="range"
+          min="0"
+          max="1"
+          value="0.7"
+          step="0.01"
+      /></label>
+      <label class="setting"
+        >Light intensity<input
+          id="intensity"
+          type="range"
+          min="0.15"
+          max="1"
+          value="0.5"
+          step="0.05" /></label
+      ><label class="setting"
+        >Low light<input id="low-flash" type="checkbox" checked /></label
+      ><label class="setting"
+        >Reduced camera motion<input id="reduced" type="checkbox"
+      /></label>
+      <p>Slow light chases. No strobe. Pause is always available.</p>
+      <button id="import-cues">Load reviewed track &amp; cues</button
+      ><button id="open-editor">Open listening & cue editor</button>
+    </dialog>
+    <dialog id="credits">
+      <div class="dialog-heading">
+        <h2>BUMER.EXE</h2>
+        <button class="close" aria-label="Close credits">×</button>
+      </div>
+      <p>
+        An unreasonable neighbourhood nightclub.<br />A project by Mani Marami
+        Milani / Denoax.
+      </p>
+      <p>
+        Requested recording:
+        <a
+          href="https://open.spotify.com/track/0iVj13fDCDRM7rfYEGF50X"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Seryoga — Чёрный бумер</a
+        >. Music is supplied locally; no recording is bundled or uploaded.
+      </p>
+      <p>
+        Original code-authored sedan, courtyard, lighting rig, air freshener and
+        shopping trolley. No external car scan is used.
+      </p>
+      <p>
+        Materials:
+        <a href="https://polyhaven.com/a/asphalt_02">Asphalt 02 — Rob Tuytel</a
+        >;
+        <a href="https://polyhaven.com/a/concrete_wall_007"
+          >Concrete Wall 007 — Charlotte Baglioni, Dario Barresi & Rico
+          Cilliers</a
+        >;
+        <a href="https://polyhaven.com/a/rooftop_night"
+          >Rooftop Night — Greg Zaal</a
+        >. Poly Haven, CC0.
+      </p>
+      <p>Anton — Anton Project Authors, SIL OFL 1.1. Three.js — MIT.</p>
+      <p>
+        Reference influence:
+        <a href="https://helloenjoy.itch.io/lights">HelloEnjoy / Lights</a>,
+        <a href="https://www.baku89.com/deja-vu">Baku Hashimoto / Deja Vu</a>,
+        <a
+          href="https://www.zacharyrichter.com/chemical-brothers-under-neon-lights"
+          >Under Neon Lights</a
+        >. Reference artwork and music are not included.
+      </p>
+    </dialog>
+    <dialog id="editor">
+      <div class="dialog-heading">
+        <h2>Listen. Mark. Review.</h2>
+        <button class="close" aria-label="Close editor">×</button>
+      </div>
+      <p id="editor-identity">Load the intended local recording first.</p>
+      <canvas
+        id="waveform"
+        height="100"
+        aria-label="Decoded recording waveform. Use the seek slider to scrub."
+      ></canvas
+      ><label class="setting"
+        >Position<input
+          id="editor-seek"
+          type="range"
+          min="0"
+          max="1"
+          step="0.001"
+          value="0" /></label
+      ><output id="editor-time">0.000 s</output>
+      <div class="editor-controls">
+        <button id="editor-play">Play / pause</button
+        ><button id="mark-beat">Mark beat</button
+        ><button id="mark-anchor">Mark anchor</button>
+      </div>
+      <div id="section-editor"></div>
+      <label class="setting"
+        >Marker listening notes<textarea
+          id="marker-notes"
+          placeholder="How you reviewed these beats and accents"
+        ></textarea></label
+      ><label class="setting"
+        >Recording identity notes<textarea
+          id="identity-notes"
+          placeholder="Artist, title, version and comparison with the requested recording"
+        ></textarea></label
+      ><button id="export-cues">Export review draft</button>
+      <p>
+        Exports stay pending until identity, every boundary and twelve
+        audiovisual anchors are reviewed. Scene studies do not supply song
+        timings.
+      </p>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
