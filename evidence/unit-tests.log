@@ -1,0 +1,156 @@
+
+> bumer-exe@0.1.0 test
+> node --test core/*.test.mjs && tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: scheduled start holds the source offset until the audio start
+ok 1 - scheduled start holds the source offset until the audio start
+  ---
+  duration_ms: 0.494126
+  type: 'test'
+  ...
+# Subtest: sampling clamps at the actual decoded track ending
+ok 2 - sampling clamps at the actual decoded track ending
+  ---
+  duration_ms: 0.092286
+  type: 'test'
+  ...
+# Subtest: output timestamp mapping accounts for an audible position behind graph time
+ok 3 - output timestamp mapping accounts for an audible position behind graph time
+  ---
+  duration_ms: 0.549768
+  type: 'test'
+  ...
+# Subtest: positive measured lead advances sampling exactly once
+ok 4 - positive measured lead advances sampling exactly once
+  ---
+  duration_ms: 0.072544
+  type: 'test'
+  ...
+# Subtest: stale, zero-initialized and implausible timestamps report fallback quality
+ok 5 - stale, zero-initialized and implausible timestamps report fallback quality
+  ---
+  duration_ms: 0.134744
+  type: 'test'
+  ...
+# Subtest: pause samples an explicit frozen position regardless of elapsed wall time
+ok 6 - pause samples an explicit frozen position regardless of elapsed wall time
+  ---
+  duration_ms: 0.204731
+  type: 'test'
+  ...
+# Subtest: seek and replay reconstruct from a new anchor without historical accumulation
+ok 7 - seek and replay reconstruct from a new anchor without historical accumulation
+  ---
+  duration_ms: 0.112634
+  type: 'test'
+  ...
+# Subtest: sparse and dense render schedules end at the same song position
+ok 8 - sparse and dense render schedules end at the same song position
+  ---
+  duration_ms: 0.068676
+  type: 'test'
+  ...
+# Subtest: section boundaries are unambiguous when seeking backwards or forwards
+ok 9 - section boundaries are unambiguous when seeking backwards or forwards
+  ---
+  duration_ms: 0.227487
+  type: 'test'
+  ...
+# Subtest: pulse peaks on the reviewed marker and is independent of playback history
+ok 10 - pulse peaks on the reviewed marker and is independent of playback history
+  ---
+  duration_ms: 0.24333
+  type: 'test'
+  ...
+# Subtest: invalid numerical anchors and offsets are rejected
+ok 11 - invalid numerical anchors and offsets are rejected
+  ---
+  duration_ms: 0.110541
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 35.155316
+TAP version 13
+# Subtest: audio-byte mismatch and pending templates cannot activate choreography
+ok 1 - audio-byte mismatch and pending templates cannot activate choreography
+  ---
+  duration_ms: 0.615522
+  type: 'test'
+  ...
+# Subtest: untrusted cues reject overlap, duplicate ids, missing anchors and unordered beats
+ok 2 - untrusted cues reject overlap, duplicate ids, missing anchors and unordered beats
+  ---
+  duration_ms: 0.187414
+  type: 'test'
+  ...
+# Subtest: section boundaries are half-open and seeking reconstructs the same state
+ok 3 - section boundaries are half-open and seeking reconstructs the same state
+  ---
+  duration_ms: 0.55387
+  type: 'test'
+  ...
+# Subtest: portrait cameras differ and reduced motion freezes the air freshener
+ok 4 - portrait cameras differ and reduced motion freezes the air freshener
+  ---
+  duration_ms: 0.098674
+  type: 'test'
+  ...
+# Subtest: recording identity requires a verified exact-track record and matching browser decode
+ok 5 - recording identity requires a verified exact-track record and matching browser decode
+  ---
+  duration_ms: 1.889385
+  type: 'test'
+  ...
+# Subtest: the freshener settles upright at the ending regardless of previous seek history
+ok 6 - the freshener settles upright at the ending regardless of previous seek history
+  ---
+  duration_ms: 0.151642
+  type: 'test'
+  ...
+# Subtest: pause/resume and seek replace sources and preserve offsets and volume
+ok 7 - pause/resume and seek replace sources and preserve offsets and volume
+  ---
+  duration_ms: 2.264573
+  type: 'test'
+  ...
+# Subtest: repeated async play cannot overlap sources and pause cancels pending start
+ok 8 - repeated async play cannot overlap sources and pause cancels pending start
+  ---
+  duration_ms: 0.506162
+  type: 'test'
+  ...
+# Subtest: obsolete source end cannot end a replacement and replay starts at zero
+ok 9 - obsolete source end cannot end a replacement and replay starts at zero
+  ---
+  duration_ms: 0.417497
+  type: 'test'
+  ...
+# Subtest: unexpected context suspension freezes at graph time
+ok 10 - unexpected context suspension freezes at graph time
+  ---
+  duration_ms: 0.397555
+  type: 'test'
+  ...
+# Subtest: invalid or oversized input does not replace the accepted buffer
+ok 11 - invalid or oversized input does not replace the accepted buffer
+  ---
+  duration_ms: 0.521306
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 115.090084

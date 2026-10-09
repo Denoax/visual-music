@@ -1,0 +1,42 @@
+{
+  "browser": "153.0.8010.36",
+  "method": "Playwright headless Chromium, software-rendered; frame inspection only; no physical-device or soundtrack-sync claim",
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "states": [
+    [
+      "entrance",
+      0
+    ],
+    [
+      "chorus",
+      35
+    ],
+    [
+      "bridge",
+      75
+    ],
+    [
+      "venue",
+      105
+    ],
+    [
+      "finale",
+      116
+    ],
+    [
+      "outro",
+      126
+    ]
+  ],
+  "consoleErrors": [],
+  "fullSilentStudyCaptured": true
+}

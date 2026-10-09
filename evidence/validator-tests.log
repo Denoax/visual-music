@@ -1,0 +1,15 @@
+test_absent_semantic_section_can_be_explicitly_recorded (test_validate_pack.PackValidationTests.test_absent_semantic_section_can_be_explicitly_recorded) ... ok
+test_asset_byte_changes_are_rejected (test_validate_pack.PackValidationTests.test_asset_byte_changes_are_rejected) ... ok
+test_bundled_audio_requires_actual_bytes_and_permission_record (test_validate_pack.PackValidationTests.test_bundled_audio_requires_actual_bytes_and_permission_record) ... ok
+test_complete_local_reference_records_are_consistent (test_validate_pack.PackValidationTests.test_complete_local_reference_records_are_consistent) ... ok
+test_escape_path_is_rejected (test_validate_pack.PackValidationTests.test_escape_path_is_rejected) ... ok
+test_gaps_and_overlaps_are_rejected (test_validate_pack.PackValidationTests.test_gaps_and_overlaps_are_rejected) ... ok
+test_malformed_fields_return_errors_without_crashing (test_validate_pack.PackValidationTests.test_malformed_fields_return_errors_without_crashing) ... ok
+test_markers_must_be_sorted_and_in_range (test_validate_pack.PackValidationTests.test_markers_must_be_sorted_and_in_range) ... ok
+test_unresolved_identity_and_timing_are_rejected (test_validate_pack.PackValidationTests.test_unresolved_identity_and_timing_are_rejected) ... ok
+test_wrong_audio_hash_is_rejected (test_validate_pack.PackValidationTests.test_wrong_audio_hash_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.005s
+
+OK

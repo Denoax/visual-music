@@ -1,0 +1,17 @@
+{
+  "implementation_sha": "3b0388436596a8c64c671704fda229e33482910f",
+  "capture_worktree_status": "source committed; evidence files pending commit",
+  "source_hashes": {
+    "src/audio/editor.ts": "1996c8c5909b3660b6210a2db00fcc2608eea0f71ed1e487e52c43e177e19930",
+    "src/audio/transport.ts": "ba8c6f9c5ee7b498e8fc1764cf4fa44d738c1089f55f41ee34e50811ebd30498",
+    "src/main.ts": "9940fb2399936e8035fd022fa91595d907b50ebffd2d53533099287439f4ec47",
+    "src/scene/car.ts": "82f998e7113f48f5659791f639f501ac03ea7ec3fd5cc3780dcc394192533926",
+    "src/scene/geometry.ts": "f62b7672d3cff4deec5e1521509894038c8a7c10ae2f45b9d67b7d879b464375",
+    "src/scene/lights.ts": "1b149208d08f5df67d22f468e937282793284c0eb3c3d6315f54427fab5a6f0c",
+    "src/scene/venue.ts": "774cd9cc612732c059e6bebd00f4f64c5116ace3f6bd44f42244747ef0d25af3",
+    "src/scene/world.ts": "6f3cc7f1ab9c72180136a9ee2e08706eb9fe27d39e6874a4dbe00367390722ff",
+    "src/show/choreography.ts": "3e66467a8a6081c21d407eaf82c6145bb617364d889cbcf5620a62d4f8a88ed1",
+    "src/show/cues.ts": "aee1bb4d38f3cabf8eefe64d687d60628930a34221c1f6c32fbb97d269af0856",
+    "src/style.css": "ae2e38fd2155e40489b05849e057575196e1299a54c7f96268fd991a76263a1f"
+  }
+}
