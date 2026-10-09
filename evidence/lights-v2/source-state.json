@@ -1,0 +1,21 @@
+{
+  "runtime_implementation_commit": "8c672b0",
+  "continuous_capture_source_commit": "2ebf1e7",
+  "final_runtime_source_sha256": {
+    "src/audio/transport.ts": "45590443d6ca7769f7760bbb19def48d8ccddeaf00d6bcc31853665ae45c48eb",
+    "src/main.ts": "71f3ecb91ec49f0a7e16312d9758172892133a74d105c0f4beac6fe3439b5d69",
+    "src/scene/atmosphere.ts": "8a37cc1d17f0c8b7c7b2ffc67f8a6d2f01ca28b7ef97a54343140c2f2bac7f92",
+    "src/scene/materials.ts": "a9088e04c9a102896cb2b6ecaddc628cac60f1b88e1b8aaad214d45ae7ea8141",
+    "src/scene/sculptures.ts": "05eca3309b7e6eddf32f3d160e59cf8e10b133dd304b4ed2969da23e588514bd",
+    "src/scene/terrain.ts": "5c8e8d4af87b4a46c1d35787ce9f1a531a21e7202bd8b08a8948a02d5223b31c",
+    "src/scene/world.ts": "91d2c87a5ffcfdafd6c7012f2e527d7c560af061d9e7826602a24f7ffab212fd",
+    "src/show/choreography.ts": "0bac9cb2ea6697e8ddee27b8b5f9426580373d81c8982671152fb9812505c2ab",
+    "src/show/cues.ts": "431e0b73f33d0db10abe30dd6546aa9cb5a7a4e6407ec45e165799ea6bcf2a0d",
+    "src/style.css": "5c4566ce1e39cb646d6264db4958d3cae19248203c23bc4a7b38e3dcfa278804"
+  },
+  "validation": "38 unique checks passed; build/format/consistency pass; listening and formal flash review gates remain partial.",
+  "preview": "http://127.0.0.1:4175/",
+  "preview_service": "bumer-exe-preview.service",
+  "repository_visibility": "private",
+  "logs": "Captured reporter logs retain all outcomes and diagnostics; trailing whitespace normalised only."
+}

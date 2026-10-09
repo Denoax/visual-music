@@ -14,7 +14,7 @@ Running 7 tests using 1 worker
   ✓  7 tests/browser/site.spec.ts:200:1 › visible sculptures accept a bounded burst without changing the recording clock (1.3s)
 
 
-  1) tests/browser/site.spec.ts:6:1 › bundled song starts with one gesture, pauses, seeks and resumes without phase loss 
+  1) tests/browser/site.spec.ts:6:1 › bundled song starts with one gesture, pauses, seeks and resumes without phase loss
 
     Error: expect(received).not.toBe(expected) // Object.is equality
 
@@ -32,5 +32,5 @@ Running 7 tests using 1 worker
     Error Context: test-results/site-bundled-song-starts-w-2c630--resumes-without-phase-loss/error-context.md
 
   1 failed
-    tests/browser/site.spec.ts:6:1 › bundled song starts with one gesture, pauses, seeks and resumes without phase loss 
+    tests/browser/site.spec.ts:6:1 › bundled song starts with one gesture, pauses, seeks and resumes without phase loss
   6 passed (11.1s)
