@@ -35,5 +35,6 @@
     }
   ],
   "calibration_offset_ms": 0,
-  "calibration_basis": "Best measured constant digital decoder lag is zero; physical output remains uncalibrated."
+  "calibration_basis": "Best measured constant digital decoder lag is zero; physical output remains uncalibrated.",
+  "threshold_note": "Raw first-crossing thresholds differ because the FFmpeg mono downmix and browser stereo average have different amplitudes. Gain-fitted waveform correlation, not the raw threshold difference, estimates constant timing offset."
 }

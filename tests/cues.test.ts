@@ -31,3 +31,15 @@ test("changing score status cannot promote unresolved listening or event review"
   forged.review_status = "reviewed";
   assert.throws(() => validateScore(forged), /listening/);
 });
+test("invalid gather deltas, region review states and seeds cannot enter the world", () => {
+  const gather = clone();
+  const event = gather.events.find((e) => "gather_delta" in e.params)!;
+  event.params.gather_delta = Infinity;
+  assert.throws(() => validateScore(gather), /event/);
+  const region = clone();
+  region.regions[0].review_status = "invented";
+  assert.throws(() => validateScore(region), /Regions/);
+  const seed = clone();
+  seed.events[0].seed = -1;
+  assert.throws(() => validateScore(seed), /event/);
+});

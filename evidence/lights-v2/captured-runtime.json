@@ -25,5 +25,7 @@
     "dist/assets/modulepreload-polyfill-P2Xu9kJm.js": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
     "dist/assets/main-7F-FIdho.js": "c5a02950db13a54ffdb1bfbcd7c6d491888828e9eccf245f8b85eb161a158e4f"
   },
-  "note": "These exact runtime source and score bytes produced the full standard/gentle recordings and the frame captures. No runtime edit occurred between build, captures and this record."
+  "note": "These exact runtime source and score bytes produced the full standard/gentle recordings and the frame captures. No runtime edit occurred between build, captures and this record.",
+  "source_commit": "2ebf1e7",
+  "final_validation_change": "Subsequent cue-parser guards reject invalid optional gather deltas, seeds and review states. Valid score data and all rendering/choreography/audio bytes are unchanged."
 }

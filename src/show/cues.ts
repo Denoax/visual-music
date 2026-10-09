@@ -155,6 +155,7 @@ export function validateScore(value: unknown, hash = TRACK_HASH): Score {
       !finite(region.end_seconds) ||
       Math.abs(region.start_seconds - end) > 0.0001 ||
       region.end_seconds <= region.start_seconds ||
+      !["candidate", "reviewed"].includes(String(region.review_status)) ||
       !text(region.note)
     )
       throw new Error(
@@ -179,10 +180,15 @@ export function validateScore(value: unknown, hash = TRACK_HASH): Score {
       event.seconds > end ||
       !finite(event.duration_seconds) ||
       event.duration_seconds <= 0 ||
+      !finite(event.seed) ||
       !Number.isInteger(event.seed) ||
+      event.seed < 0 ||
+      event.seed > 0xffffffff ||
       !isRecord(event.params) ||
       !finite(event.params.x) ||
       !finite(event.params.z) ||
+      ("gather_delta" in event.params &&
+        ![-1, 1].includes(event.params.gather_delta as number)) ||
       !text(event.audio_feature) ||
       !text(event.review_notes) ||
       !["candidate", "reviewed"].includes(String(event.review_status))

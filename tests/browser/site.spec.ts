@@ -6,6 +6,14 @@ const ready = async (page: Page) => {
 test("bundled song starts with one gesture, pauses, seeks and resumes without phase loss", async ({
   page,
 }) => {
+  await page.addInitScript(() => {
+    (window as any).__createdAudioSources = 0;
+    const original = AudioContext.prototype.createBufferSource;
+    AudioContext.prototype.createBufferSource = function () {
+      (window as any).__createdAudioSources++;
+      return original.call(this);
+    };
+  });
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => {
@@ -21,6 +29,7 @@ test("bundled song starts with one gesture, pauses, seeks and resumes without ph
       hash: t.hash,
       duration: t.duration,
       context: t.audioContext.state,
+      sources: (window as any).__createdAudioSources,
     };
   });
   expect(initial.state).toBe("ready");
@@ -28,9 +37,13 @@ test("bundled song starts with one gesture, pauses, seeks and resumes without ph
     "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
   );
   expect(initial.duration).toBeCloseTo(244.297, 2);
-  expect(initial.context).not.toBe("running");
+  // Browser autoplay policy can run an empty graph; no source may start before Play.
+  expect(initial.sources).toBe(0);
   await page.locator("#start").click();
   await expect(page.locator("#play")).toHaveAttribute("aria-label", "Pause");
+  expect(await page.evaluate(() => (window as any).__createdAudioSources)).toBe(
+    1,
+  );
   await page.waitForFunction(
     () => (window as any).__BUMER__.transport.position() > 0.3,
   );
@@ -167,4 +180,60 @@ test("visibility and suspended-context recovery never keep a source running", as
     document.dispatchEvent(new Event("visibilitychange"));
   });
   await expect(page.locator("#play")).toHaveAttribute("aria-label", "Play");
+});
+test("renderer failure retains bundled audio and meaningful recovery controls", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const native = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function (
+      type: string,
+      ...args: unknown[]
+    ) {
+      if (type.includes("webgl")) return null;
+      return native.apply(this, [type, ...args] as any);
+    } as any;
+  });
+  await ready(page);
+  await expect(page.locator("#recovery")).toBeVisible();
+  await expect(page.locator("#recovery-message")).toContainText(
+    "Audio and playback",
+  );
+  await page.locator("#start").click();
+  await expect(page.locator("#play")).toHaveAttribute("aria-label", "Pause");
+  await page.waitForFunction(
+    () => (window as any).__BUMER__.transport.position() > 0.2,
+  );
+  await page.locator("#play").click();
+  await page.evaluate(() => (window as any).__BUMER__.seek(73));
+  expect(
+    await page.evaluate(() => (window as any).__BUMER__.transport.position()),
+  ).toBe(73);
+});
+test("visible sculptures accept a bounded burst without changing the recording clock", async ({
+  page,
+}) => {
+  await ready(page);
+  await page.evaluate(() => (window as any).__BUMER__.seek(25));
+  await page.locator("#start").click();
+  await page.waitForFunction(
+    () => (window as any).__BUMER__.getFrame()?.seconds > 25,
+  );
+  const hit = await page.evaluate(() => {
+    const api = (window as any).__BUMER__,
+      frame = api.getFrame(),
+      world = api.world();
+    for (const x of [-0.8, -0.5, -0.2, 0.2, 0.5, 0.8])
+      for (const y of [-0.6, -0.3, 0, 0.3])
+        if (world.tap(x, y, frame))
+          return { x, y, position: api.transport.position() };
+    return null;
+  });
+  expect(hit).not.toBeNull();
+  await page.mouse.click((hit!.x + 1) * 720, (1 - hit!.y) * 450);
+  const position = await page.evaluate(() =>
+    (window as any).__BUMER__.transport.position(),
+  );
+  expect(position).toBeGreaterThanOrEqual(hit!.position);
+  expect(position - hit!.position).toBeLessThan(1);
 });

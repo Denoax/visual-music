@@ -204,4 +204,3 @@ Keep flash behaviour below applicable general/red flash thresholds in every mode
 `evidence/REVIEW.md` records implementation SHA/dirty status; actual audio hash and identity; runtime decoder details; anchor/cue review; used assets and derivatives; tested browsers/devices; measured sync and performance; unedited full-play capture; entrance/chorus/bridge/finale/outro desktop/portrait frames; fallback/error tests; unresolved limitations. Name concrete defects and improvements, not self-awarded adjectives.
 
 Report independently: build/behaviour, visual review, exact-track sync, measured performance, asset provenance and public-audio distribution mode. The supplied release validator checks missing contracts and hashes; it cannot certify aesthetics, permissions, playback smoothness or physical sync.
-

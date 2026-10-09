@@ -12,6 +12,8 @@ npm run test:browser
 npm run validate
 ```
 
+The prepared local preview runs as a transient user service named `bumer-exe-preview` at http://127.0.0.1:4175/. Stop it with `systemctl --user stop bumer-exe-preview`.
+
 Use Node 22.23+ or a compatible Node 24 release. Play/Pause, seek, volume, mute, replay and fullscreen are accessible with mouse, touch and keyboard. Space pauses, M mutes, F enters fullscreen and arrow keys seek. Settings include a lighter field and a stable gentle-motion composition; the operating-system reduced-motion preference selects the latter automatically.
 
 `src/audio/transport.ts` owns the decoded buffer, single active source and output-timestamp clock. `show/score.json` owns flexible regions, selected events, camera knots and appearance curves, bound to the recording hash. `src/show/choreography.ts` evaluates major state from absolute song time. Small surface detail samples `public/data/features.json`; this is measured band control data, not isolated instruments. Geometry and shaders are original code.
