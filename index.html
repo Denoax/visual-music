@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en" data-color-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <title>Visual Music</title>
+    <link
+      rel="preload"
+      href="./fonts/instrument-sans-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script type="module" crossorigin src="./assets/main-BKnAAc0X.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-8umkfjPa.css">
+  </head>
+  <body>
+    <canvas
+      id="world"
+      aria-label="Music-reactive LED waves. Move to steer; hold the scene to fly faster, or drag one finger; focus the scene for arrow keys or WASD. The native pointer stays visible."
+      tabindex="0"
+    ></canvas>
+    <div class="bumer-ui">
+      <main>
+        <section id="entrance" aria-labelledby="title">
+          <h1 id="title">Visual Music</h1>
+          <p class="song">Around the World <span>(La La La La La)</span></p>
+          <button id="start" class="ui-action" disabled>Preparing…</button>
+        </section>
+        <p id="status" role="status" aria-live="polite">
+          Preparing the recording…
+        </p>
+        <button id="retry" class="ui-action" hidden>Retry</button>
+      </main>
+      <header id="controls" class="hub-header" hidden>
+        <button
+          id="menu-button"
+          class="utility-toggle"
+          type="button"
+          aria-label="Playback menu"
+          aria-expanded="false"
+          aria-controls="portfolio-utilities"
+        ></button>
+        <div id="portfolio-utilities" class="portfolio-nav-shell">
+          <nav class="gooey-nav" aria-label="Playback controls">
+            <ul class="gooey-list">
+              <li class="gooey-segment gooey-bar">
+                <svg
+                  aria-hidden="true"
+                  class="gooey-neck"
+                  width="48"
+                  viewBox="-34 0 48 40"
+                  preserveAspectRatio="none"
+                  style="left: -34px"
+                >
+                  <path fill="currentColor" /></svg
+                ><button
+                  id="play"
+                  type="button"
+                  class="gooey-label gooey-md"
+                  hidden
+                >
+                  Pause
+                </button>
+              </li>
+              <li class="gooey-segment gooey-bar">
+                <svg
+                  aria-hidden="true"
+                  class="gooey-neck"
+                  width="48"
+                  viewBox="-34 0 48 40"
+                  preserveAspectRatio="none"
+                  style="left: -34px"
+                >
+                  <path fill="currentColor" /></svg
+                ><button
+                  id="replay"
+                  type="button"
+                  class="gooey-label gooey-md"
+                  hidden
+                >
+                  Replay
+                </button>
+              </li>
+              <li class="gooey-segment gooey-bar">
+                <svg
+                  aria-hidden="true"
+                  class="gooey-neck"
+                  width="48"
+                  viewBox="-34 0 48 40"
+                  preserveAspectRatio="none"
+                  style="left: -34px"
+                >
+                  <path fill="currentColor" /></svg
+                ><button
+                  id="settings-button"
+                  type="button"
+                  class="gooey-label gooey-md"
+                  aria-haspopup="dialog"
+                  aria-expanded="false"
+                  aria-controls="settings"
+                >
+                  Settings
+                </button>
+              </li>
+              <li class="gooey-segment gooey-bar">
+                <svg
+                  aria-hidden="true"
+                  class="gooey-neck"
+                  width="48"
+                  viewBox="-34 0 48 40"
+                  preserveAspectRatio="none"
+                  style="left: -34px"
+                >
+                  <path fill="currentColor" /></svg
+                ><button
+                  id="credits-button"
+                  type="button"
+                  class="gooey-label gooey-md"
+                  aria-haspopup="dialog"
+                  aria-expanded="false"
+                  aria-controls="credits"
+                >
+                  Credits
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <dialog
+        id="settings"
+        class="experience-settings glass-window"
+        aria-labelledby="settings-title"
+      >
+        <div class="settings-panel">
+          <div class="settings-heading">
+            <h2 id="settings-title">Settings</h2>
+            <button
+              class="settings-close pane-close"
+              aria-label="Close settings"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="m6 6 12 12M18 6 6 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="settings-body">
+            <div id="brightness-slider" class="angry-slider">
+              <div class="angry-slider-label">
+                <label for="brightness">Brightness</label
+                ><output for="brightness">100%</output>
+              </div>
+              <div class="angry-slider-gesture">
+                <svg aria-hidden="true" width="100%" height="94">
+                  <line class="angry-slider-track" x1="12" y1="46" y2="46" />
+                  <line class="angry-slider-fill" x1="12" y1="46" y2="46" />
+                  <ellipse rx="6" ry="6" /></svg
+                ><input
+                  id="brightness"
+                  class="angry-slider-native"
+                  aria-label="Brightness"
+                  type="range"
+                  min="80"
+                  max="140"
+                  step="1"
+                  value="100"
+                />
+              </div>
+            </div>
+            <div id="volume-slider" class="angry-slider">
+              <div class="angry-slider-label">
+                <label for="volume">Sound volume</label
+                ><output for="volume">70%</output>
+              </div>
+              <div class="angry-slider-gesture">
+                <svg aria-hidden="true" width="100%" height="94">
+                  <line class="angry-slider-track" x1="12" y1="46" y2="46" />
+                  <line class="angry-slider-fill" x1="12" y1="46" y2="46" />
+                  <ellipse rx="6" ry="6" /></svg
+                ><input
+                  id="volume"
+                  class="angry-slider-native"
+                  aria-label="Sound volume"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="70"
+                />
+              </div>
+            </div>
+            <label class="settings-motion"
+              ><span>Less motion</span
+              ><input id="reduced" type="checkbox" role="switch"
+            /></label>
+            <div class="settings-actions">
+              <button id="mute" class="ui-action" aria-pressed="false">
+                Mute</button
+              ><button id="fullscreen" class="ui-action">Fullscreen</button>
+            </div>
+            <button id="reset-settings" class="settings-reset">
+              Reset settings
+            </button>
+          </div>
+        </div>
+      </dialog>
+      <dialog
+        id="credits"
+        class="experience-settings glass-window"
+        aria-labelledby="credits-title"
+      >
+        <div class="settings-panel">
+          <div class="settings-heading">
+            <h2 id="credits-title">Credits</h2>
+            <button
+              class="settings-close pane-close"
+              aria-label="Close credits"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="m6 6 12 12M18 6 6 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="settings-body credits-body">
+            <p>
+              Around the World (La La La La La) · supplied recording. Embedded
+              tags name A Touch Of Class, Pete Konemann.
+            </p>
+            <p>
+              Original Three.js/GLSL scene informed by
+              <a
+                href="https://helloenjoy.itch.io/lights"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Lights by HelloEnjoy</a
+              >. No reference imagery, soundtrack or source code is loaded here.
+            </p>
+            <p>
+              Retired ridge and folded-fin geometry; historical projected-light
+              research from
+              <a
+                href="https://joanielemercier.com/fuji/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Studio Lemercier</a
+              >.
+              <a href="/licenses/Projected-Landscapes.txt" target="_blank"
+                >Retired landscape credits</a
+              >.
+            </p>
+            <p>
+              Controls adapted from Mani’s owned portfolio: connected Rare UI
+              navigation, authored Close SVG, Instrument Sans and slider/pane
+              motion.
+            </p>
+            <p>
+              <a href="/licenses/Rare-UI.txt" target="_blank">Rare UI notice</a>
+              ·
+              <a href="/licenses/Instrument-Sans-OFL.txt" target="_blank"
+                >Font licence</a
+              >
+            </p>
+            <p>
+              Move to steer · hold to fly faster · drag on touch · focus the
+              scene for arrow keys or WASD. Space pauses; M mutes. Music keeps
+              playing while Settings is open.
+            </p>
+          </div>
+        </div>
+      </dialog>
+    </div>
+    <aside id="developer" hidden><pre id="debug"></pre></aside>
+  </body>
+</html>
