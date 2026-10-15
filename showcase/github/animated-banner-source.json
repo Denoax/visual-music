@@ -2,24 +2,24 @@
   "application": "Visual Music",
   "runtime_commit": "41076b775a7c3be27b1867aa410a518cf2be5073",
   "source": {
-    "path": "evidence/dance-floor-only/visual-music-capture/desktop-full.webm",
+    "path": "../bumer-exe/evidence/dance-floor-only/visual-music-capture/desktop-full.webm",
     "bytes": 159869183,
     "sha256": "6ce57c039b81e6aa4281eafa801e6ff02f22a36c51436e403b7014a239ddce52"
   },
   "lettering": {
     "path": "showcase/github/animated-banner.html",
-    "bytes": 962,
-    "sha256": "26207dc1bd0639f9a99ca8d57489b1619ad921136825f06892af5672d15cf480"
+    "bytes": 841,
+    "sha256": "3bb3054c7406ffc1f8617d72b88020e428fac08ad569467b78a6dfb521e1127d"
   },
   "output": {
     "path": "showcase/github/visual-music-loop.gif",
-    "bytes": 21251969,
-    "sha256": "26a2db2cf067056ced3d425605474013c6311c507a076e101545c67afaf8f7df"
+    "bytes": 21270066,
+    "sha256": "f2bfefe0d470e06d424897192b94e1e234a041a63bdc91d3963cd2f54ae8794b"
   },
   "poster": {
     "path": "showcase/github/visual-music-loop-poster.webp",
-    "bytes": 104714,
-    "sha256": "6c86548eb41227860610ee043ecc5c71ea881d202c629a30a7a324672ba73c4a"
+    "bytes": 104240,
+    "sha256": "9c8f8729e866204b7ae3987e19684dcf40334ee42798f1d389be9eb44d455606"
   },
   "processing": "Original actual-audio desktop recording media58-64.5s; audio omitted in this documentation GIF. Original-pace30fps sampling, scaled to990px and cropped to990x352 at y64. Static original DOM lettering in existing Instrument Sans. A disclosed0.5s lap crossfade blends the end of the recorded segment into its beginning; it is an edited banner, not an uninterrupted runtime capture or exact periodic simulation.64-colour GIF palette is lossy. Application code/camera/audio are unchanged.",
   "reference": "Actual current Denoax portfolio and Kona Desktop README headers;990x352 profile banner convention. Original footage and font retained; no generated imagery.",

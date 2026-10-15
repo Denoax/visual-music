@@ -12,8 +12,8 @@
     40
   ],
   "loop": 0,
-  "wrap_mean_rgb_delta": 12.824171640648913,
-  "max_adjacent_mean_rgb_delta": 16.55843568258341,
+  "wrap_mean_rgb_delta": 12.838863062442607,
+  "max_adjacent_mean_rgb_delta": 16.56385827976737,
   "poster_pixels_equal_first_gif_frame": true,
   "scope": "GIF encoding/motion evidence; actual browser cadence and subjective approval separate."
 }

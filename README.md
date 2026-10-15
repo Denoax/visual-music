@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="showcase/github/visual-music-loop-poster.webp">
-  <img src="showcase/github/visual-music-loop.gif" alt="Visual Music — animated waves across the actual LED floor" width="100%">
+  <source media="(prefers-reduced-motion: reduce)" srcset="showcase/github/visual-music-loop-poster.webp?v=clean-title">
+  <img src="showcase/github/visual-music-loop.gif?v=clean-title" alt="Visual Music — animated waves across the actual LED floor" width="100%">
 </picture>
 
 # Visual Music
@@ -12,7 +12,7 @@ Raised waves, luminous grids and a continuous journey through *Around the World 
 
 [![Three.js](https://img.shields.io/badge/Three.js-0.186-20232a?logo=threedotjs&logoColor=white)](https://threejs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-7-20232a?logo=typescript&logoColor=3178c6)](https://www.typescriptlang.org/) [![Vite](https://img.shields.io/badge/Vite-8-20232a?logo=vite&logoColor=bd34fe)](https://vite.dev/)
 
-[Experience](#the-experience) · [Controls](#controls) · [Run locally](#run-locally) · [Architecture](#architecture) · [Verification](#verification) · [Credits](#credits)
+[**Play Visual Music**](https://denoax.github.io/visual-music/) · [Experience](#the-experience) · [Controls](#controls) · [Run locally](#run-locally) · [Architecture](#architecture) · [Verification](#verification) · [Credits](#credits)
 
 *The banner uses actual scene footage with a short lap edit. Reduced motion selects a still.*
 
@@ -112,4 +112,4 @@ These are technical checks. Continuous human visual/listening approval, physical
 - Music: the exact user-supplied *Around the World (La La La La La)* recording; [asset manifest](assets/manifest.json). Bundling does not grant additional music redistribution rights.
 - Current repository presentation: real Visual Music browser captures, following the wide banner, centered introduction and screenshot-led structure of [Mani's portfolio](https://github.com/Denoax/portfolio) and [Kona Desktop](https://github.com/Denoax/konata-hyprland-dotfiles). [Showcase source record](showcase/github/README.md).
 
-Retired asset credits remain preserved. No model-generated visual media are used. Apply `$reference-led-design` to visual continuations and preserve the current approval boundary. This repository publishes the source and documentation. Complete review recordings remain local; hosting is separate.
+Retired asset credits remain preserved. No model-generated visual media are used. Apply `$reference-led-design` to visual continuations and preserve the current approval boundary. This private repository contains the source and documentation. [The public Pages repository](https://github.com/Denoax/visual-music) contains only the built website and credits. Complete review recordings remain local. [Hosting and update instructions](PAGES.md).

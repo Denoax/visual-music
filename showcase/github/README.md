@@ -1,6 +1,6 @@
 # Repository showcase
 
-The active header is visual-music-loop.gif with visual-music-loop-poster.webp for reduced motion. Both use the same990×352 canvas as the current portfolio/Kona profile banners. The profile receives identical bytes.
+The requested eyebrow text has been removed; the title and tagline keep their established positions. The active header is visual-music-loop.gif with visual-music-loop-poster.webp for reduced motion. Both use the same990×352 canvas as the current portfolio/Kona profile banners. The profile receives identical bytes.
 
 The GIF combines the actual reviewed desktop renderer footage at media58–64.5s with original DOM lettering in the existing Instrument Sans. It runs at original pace with a0.5s lap crossfade; it is an edited documentation banner, not an uninterrupted runtime recording or exact periodic simulation. The64-colour GIF conversion is lossy. No runtime, camera, audio or scene changes were made. File cadence is separate from browser/device performance.
 
