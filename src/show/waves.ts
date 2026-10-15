@@ -1,3 +1,8 @@
+import {
+  formationFor,
+  formationPulse,
+  formationGLSL,
+} from "../../core/wave-formations.mjs";
 import cues from "../../show/cues.proposal.json";
 import eventRecord from "../../show/events.json";
 import originRecord from "../../show/camera-origins.json";
@@ -125,12 +130,17 @@ export function rawHeight(x: number, z: number, state: WaveState) {
   for (const e of state.fronts) {
     const age = t - e.time;
     if (age < 0 || age >= WAVE.lifetime) continue;
-    const d = Math.hypot(x - e.x, z - e.z),
-      q = (d - WAVE.speed * age) / WAVE.width;
+    const pulse = formationPulse(
+      x - e.x,
+      z - e.z,
+      age,
+      formationFor(e.time),
+      WAVE.width,
+    );
     h +=
       state.ring *
       (0.4 + 0.6 * e.strength) *
-      Math.exp(-0.5 * q * q) *
+      pulse *
       smooth(0, WAVE.attack, age) *
       (1 - smooth(WAVE.lifetime - WAVE.fade, WAVE.lifetime, age));
   }
@@ -153,18 +163,19 @@ export function surfaceHeight(x: number, z: number, state: WaveState) {
     : d + (c - d) * (1 - u) + (b - d) * (1 - v);
 }
 
-/** Independently authored implementation of the recorded Gaussian proposal.
+/** Independently authored event-born height-field formations.
  * All render passes use this exact GLSL kernel; CPU uses the same units/equations. */
 export const heightGLSL = `
 uniform float uTime, uBase, uRing, uMotion;
-uniform vec4 uFronts[${WAVE.capacity}];
+uniform vec4 uFronts[${WAVE.capacity}], uFrontForms[${WAVE.capacity}];
+${formationGLSL}
 float heightAt(vec2 p) {
  float h=uBase*(.58*sin(p.x*.022+p.y*.027+uTime*.24)+.28*sin(p.x*.039-p.y*.014-uTime*.19)+.14*cos(p.x*.009+p.y*.046+uTime*.11));
  for(int i=0;i<${WAVE.capacity};i++) {
   float a=uTime-uFronts[i].z;
   if(a>=0. && a<${WAVE.lifetime}) {
-   float q=(distance(p,uFronts[i].xy)-${WAVE.speed}.*a)/${WAVE.width}.;
-   h+=uRing*(.4+.6*uFronts[i].w)*exp(-.5*q*q)*smoothstep(0.,${WAVE.attack},a)*(1.-smoothstep(${WAVE.lifetime - WAVE.fade},${WAVE.lifetime},a));
+   float pulse=wfPulse(p-uFronts[i].xy,a,uFrontForms[i],${WAVE.width}.);
+   h+=uRing*(.4+.6*uFronts[i].w)*pulse*smoothstep(0.,${WAVE.attack},a)*(1.-smoothstep(${WAVE.lifetime - WAVE.fade},${WAVE.lifetime},a));
   }
  }
  float v=h/${WAVE.heightBound}.;

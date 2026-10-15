@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { emitterGLSL } from "../../core/beauty.mjs";
-/** One opaque background draw before floor. Fixed world up; no texture and no
- * screenspace gradient. Camera translation follows, yaw/pitch/roll do not.
+/** Retained black background draw before floor. No coloured atmosphere.
+ * Camera translation follows, yaw/pitch/roll do not.
  * Keep existing world-space stars in their depth-tested post-softness pass.
  */
 export function createHorizon() {
@@ -17,7 +17,7 @@ export function createHorizon() {
       void main(){gl_FragColor=vec4(beautyHorizon(vRay,uAzimuth,uGain),1.);}`,
   });
   const mesh = new THREE.Mesh(geometry, material);
-  mesh.name = "retrowave-horizon";
+  mesh.name = "black-horizon";
   mesh.renderOrder = -1000;
   mesh.frustumCulled = false;
   return {

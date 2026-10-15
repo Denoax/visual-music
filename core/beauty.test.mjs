@@ -45,16 +45,12 @@ test("fog attenuates monotonically, no negative-distance lift", () => {
     previous = v;
   }
 });
-test("horizon remains black at zenith and tracks world elevation, not screen UV", () => {
-  assert.deepEqual(horizonRgb([0, 1, 0]), [0, 0, 0]);
-  assert.deepEqual(horizonRgb([0, -1, 0]), [0, 0, 0]);
-  assert.deepEqual(horizonRgb([0, 0, -1], 0, 0), [0, 0, 0]);
-  assert.ok(horizonRgb([0, 0.02, -1]).some((x) => x > 0.001));
-  assert.notDeepEqual(
-    horizonRgb([0, 0, -1], 0),
-    horizonRgb([0, 0, -1], Math.PI),
-  );
+test("sky background stays exactly black in every direction at any cue gain", () => {
+ for(const d of [[0,1,0],[0,-1,0],[0,.02,-1],[1,0,0],[0,0,0]])
+  for(const a of [0,Math.PI/2,Math.PI])
+   for(const g of [0,.5,1,10]) assert.deepEqual(horizonRgb(d,a,g),[0,0,0]);
 });
+
 test("visual return uses presented end age and does not alter the song phase", () => {
   assert.equal(visualReturn(null).phase, "song");
   assert.equal(visualReturn(0).blend, 0);

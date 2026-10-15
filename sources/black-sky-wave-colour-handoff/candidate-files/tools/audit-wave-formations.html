@@ -1,0 +1,55 @@
+<!doctype html><meta charset="utf-8"><title>Wave formation shader audit</title>
+<h1>Wave formation shader audit</h1><pre id="result">Running CPU / WebGL2 checks…</pre>
+<script type="module">
+// Development-only executable check. Open through Vite, not file:// or dist.
+// No assets leave this page. It compiles the actual runtime shader strings.
+import { heightGLSL, rawHeight } from '/src/show/waves.ts';
+import { floorLightGLSL, paletteLut } from '/src/show/floor.ts';
+import { emitterGLSL } from '/core/beauty.mjs';
+import { FORMATIONS, formationFor, formationBand, crestChroma } from '/core/wave-formations.mjs';
+import { chunkAt, hash32, smooth5 } from '/core/chunk-wave-exchange.mjs';
+const result=document.querySelector('#result');
+try {
+ const gl=document.createElement('canvas').getContext('webgl2');
+ if(!gl)throw Error('WebGL2 unavailable');
+ const program=gl.createProgram();
+ const compile=(type,source)=>{const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));gl.attachShader(program,s);};
+ compile(gl.VERTEX_SHADER,`#version 300 es\nprecision highp float;precision highp int;\n#define texture2D texture\n${heightGLSL}${floorLightGLSL}${emitterGLSL}\nuniform vec2 probe;out vec4 a,b;void main(){FloorLight f=floorLight(probe);a=vec4(heightAt(probe),wfBand(probe-uLocalFronts[0].xy,uTime-uLocalFronts[0].z,uLocalForms[0]),wfChroma(probe-uLocalFronts[0].xy,uTime-uLocalFronts[0].z,uLocalForms[0]),f.activation);b=vec4(f.emission,length(beautyHorizon(vec3(probe.x,.02,probe.y),uTime,1.)));gl_Position=vec4(0.,0.,0.,1.);}`);
+ compile(gl.FRAGMENT_SHADER,'#version 300 es\nprecision highp float;out vec4 c;void main(){c=vec4(0.);}');
+ gl.transformFeedbackVaryings(program,['a','b'],gl.INTERLEAVED_ATTRIBS);gl.linkProgram(program);
+ if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);
+ const loc=n=>gl.getUniformLocation(program,n), f1=(n,v)=>gl.uniform1f(loc(n),v),f4=(n,...v)=>gl.uniform4f(loc(n),...v);
+ const lut=paletteLut();gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,lut.width,lut.height,0,gl.RGBA,gl.UNSIGNED_BYTE,lut.bytes);
+ gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+ f1('uBase',.7);f1('uRing',5);f1('uMotion',1);f1('uBrightness',1);f1('uLow',.7);f1('uAccent',.4);f1('uReduced',0);
+ f4('uLighting',1,1,1,.5);gl.uniform3f(loc('uFlow'),.5,0,0);gl.uniform2iv(loc('uLocalIds'),new Int32Array([13,-1]));
+ gl.bindVertexArray(gl.createVertexArray());gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK,gl.createTransformFeedback());const buffer=gl.createBuffer();gl.bindBuffer(gl.TRANSFORM_FEEDBACK_BUFFER,buffer);gl.bufferData(gl.TRANSFORM_FEEDBACK_BUFFER,32,gl.STREAM_READ);gl.bindBufferBase(gl.TRANSFORM_FEEDBACK_BUFFER,0,buffer);
+ let count=0,off=0,on=0,heightError=0,bandError=0,chromaError=0,gateError=0,offEmission=0,skyMax=0,colourChanges=0;
+ const previousColours=new Map();
+ for(const section of FORMATIONS.slice(0,7))for(const age of [.6,1.1,2]){
+  const birth=section.start+.2,form=formationFor(birth),event={x:-192,z:-5001,time:Math.fround(birth),id:13,strength:1};
+  const seconds=Math.fround(birth+age),realAge=seconds-event.time;
+  const fronts=new Float32Array(64),forms=new Float32Array(64);for(let i=0;i<16;i++){fronts.set(i?[0,0,-1000,0]:[event.x,event.z,event.time,1],i*4);forms.set(i?[0,1,0,0]:form,i*4);}
+  gl.uniform4fv(loc('uFronts[0]'),fronts);gl.uniform4fv(loc('uFrontForms[0]'),forms);gl.uniform4fv(loc('uLocalFronts[0]'),new Float32Array([event.x,event.z,event.time,1,0,0,-1000,0]));gl.uniform4fv(loc('uLocalForms[0]'),new Float32Array([...form,0,1,0,0]));
+  f1('uTime',seconds);f4('uChapter',1,1,seconds-10,seconds+10);f4('uRecipe',1,seconds*.18,2,0);
+  for(let dx=-120;dx<=120;dx+=12)for(let dz=-120;dz<=120;dz+=12){
+   const x=event.x+dx,z=event.z+dz;gl.uniform2f(loc('probe'),x,z);const values=new Float32Array(8);
+   gl.enable(gl.RASTERIZER_DISCARD);gl.beginTransformFeedback(gl.POINTS);gl.drawArrays(gl.POINTS,0,1);gl.endTransformFeedback();gl.disable(gl.RASTERIZER_DISCARD);gl.getBufferSubData(gl.TRANSFORM_FEEDBACK_BUFFER,0,values);
+   const h=rawHeight(x,z,{seconds,base:.7,ring:5,motion:1,fronts:[event]});heightError=Math.max(heightError,Math.abs(h-values[0]));
+   bandError=Math.max(bandError,Math.abs(formationBand(dx,dz,realAge,form)-values[1]));chromaError=Math.max(chromaError,Math.abs(crestChroma(dx,dz,realAge,form)-values[2]));
+   const c=chunkAt(x,z),spatial=formationBand(c.centerX-event.x,c.centerZ-event.z,realAge,form),life=smooth5(realAge/.14)*(1-smooth5((realAge-4.2)/1.4));
+   const swap=hash32(c.cx,c.cz,13)<1374389534?spatial*life:0,gate=c.base+(1-2*c.base)*swap;
+   gateError=Math.max(gateError,Math.abs(gate-values[3]));
+   if(gate===0){off++;offEmission=Math.max(offEmission,...values.slice(4,7));}else on++;
+   skyMax=Math.max(skyMax,values[7]);
+   const rgb=[...values.slice(4,7)],energy=rgb.reduce((a,b)=>a+b,0),key=`${section.start}:${dx}:${dz}`;
+   if(gate>.1&&energy>.001){const ratios=rgb.map(v=>v/energy),old=previousColours.get(key);if(old&&ratios.some((v,i)=>Math.abs(v-old[i])>.002))colourChanges++;previousColours.set(key,ratios);}
+   count++;
+  }
+ }
+ if(gl.getError()!==0)throw Error('WebGL error');
+ const passed=heightError<.003&&bandError<.0001&&chromaError<.0001&&gateError<.0001&&offEmission===0&&skyMax===0&&off>0&&colourChanges>0;
+ const report={status:passed?'passed':'failed',count,heightError,bandError,chromaError,gateError,off,on,offEmission,skyMax,colourChanges,renderer:gl.getParameter(gl.RENDERER),scope:'Shader arithmetic and exact OFF/background only; no listening, motion, hardware performance or AV approval.'};
+ result.textContent=JSON.stringify(report,null,2);document.title=`Wave shader audit: ${report.status}`;
+}catch(error){result.textContent=JSON.stringify({status:'failed',error:String(error)},null,2);document.title='Wave shader audit: failed';}
+</script>

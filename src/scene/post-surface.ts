@@ -25,7 +25,7 @@ export function presentedVertex(
       visual.blend
   );
 }
-// The original Gaussian kernel is preserved byte-for-byte in waves.ts.
+// Event-born formation metadata is shared by song geometry and light passes.
 // Rename its time uniform only, so returned geometry and song lighting cannot
 // accidentally share a moving cue clock after the source naturally completes.
 export const surfaceHeightGLSL =

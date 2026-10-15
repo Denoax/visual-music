@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "reports": {
+    "wave-formations-gpu-audit": {
+      "beforeStatus": "passed",
+      "afterStatus": "passed",
+      "arithmeticAndCountDifferences": {},
+      "actualRenderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL 4.5.0)",
+      "errors": []
+    },
+    "lighting-gpu-audit": {
+      "beforeStatus": "passed",
+      "afterStatus": "passed",
+      "arithmeticAndCountDifferences": {},
+      "actualRenderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL 4.5.0)",
+      "errors": []
+    }
+  },
+  "screenshot": {
+    "size": [
+      960,
+      720
+    ],
+    "changedPixels": 0,
+    "maxChannelDifference": 0,
+    "scope": "Shader audit report page pixels only; no application visual or motion approval."
+  },
+  "scope": "Real NVIDIA shader output parity before/after exact-zero OFF early return. Supplied thresholds unchanged. Not scene visual, performance, listening or physical AV approval."
+}

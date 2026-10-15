@@ -1,0 +1,574 @@
+diff --git a/core/beauty.mjs b/core/beauty.mjs
+--- a/core/beauty.mjs
++++ b/core/beauty.mjs
+@@ -23,12 +23,7 @@
+    return exp(-d*d);
+  }
+  vec3 beautyHorizon(vec3 direction,float azimuth,float gain){
+-   vec3 ray=normalize(direction);
+-   float band=exp(-pow((ray.y-.018)/.055,2.));
+-   float upper=1.-smoothstep(.10,.23,ray.y),lower=smoothstep(-.16,-.055,ray.y);
+-   vec3 dir=vec3(sin(azimuth),0.,-cos(azimuth));
+-   float lobe=pow(.5+.5*dot(ray,dir),4.);
+-   return mix(vec3(.020,.033,.080),vec3(.055,.012,.035),lobe*.5)*band*upper*lower*clamp(gain,0.,1.);
++   return vec3(0.); // Retained signature; no coloured scattering or sky lift.
+  }
+ `;
+ 
+@@ -60,25 +55,7 @@
+ }
+ // Establish gentle depth before the existing 520--600 m ownership fade.
+ // This is an optical attenuation, not an emitter visibility gate.
+-export function horizonRgb(direction, azimuth = 0, gain = 1) {
+-  const length = Math.hypot(...direction);
+-  if (!length) return [0, 0, 0];
+-  const [x, y, z] = direction.map((q) => q / length);
+-  const band = Math.exp(-Math.pow((y - 0.018) / 0.055, 2));
+-  const upper = 1 - smooth3(0.1, 0.23, y);
+-  const below = smooth3(-0.16, -0.055, y);
+-  const lobe = Math.pow(
+-    0.5 + 0.5 * (x * Math.sin(azimuth) - z * Math.cos(azimuth)),
+-    4,
+-  );
+-  const cool = [0.02, 0.033, 0.08],
+-    warm = [0.055, 0.012, 0.035];
+-  return cool.map(
+-    (v, i) =>
+-      (v * (1 - lobe * 0.5) + warm[i] * lobe * 0.5) *
+-      band *
+-      upper *
+-      below *
+-      clamp01(gain),
+-  );
++// The retired horizon API remains black for all callers.
++export function horizonRgb(_direction, _azimuth = 0, _gain = 1) {
++  return [0, 0, 0];
+ }
+diff --git a/core/beauty.test.mjs b/core/beauty.test.mjs
+--- a/core/beauty.test.mjs
++++ b/core/beauty.test.mjs
+@@ -45,16 +45,12 @@
+     previous = v;
+   }
+ });
+-test("horizon remains black at zenith and tracks world elevation, not screen UV", () => {
+-  assert.deepEqual(horizonRgb([0, 1, 0]), [0, 0, 0]);
+-  assert.deepEqual(horizonRgb([0, -1, 0]), [0, 0, 0]);
+-  assert.deepEqual(horizonRgb([0, 0, -1], 0, 0), [0, 0, 0]);
+-  assert.ok(horizonRgb([0, 0.02, -1]).some((x) => x > 0.001));
+-  assert.notDeepEqual(
+-    horizonRgb([0, 0, -1], 0),
+-    horizonRgb([0, 0, -1], Math.PI),
+-  );
++test("sky background stays exactly black in every direction at any cue gain", () => {
++ for(const d of [[0,1,0],[0,-1,0],[0,.02,-1],[1,0,0],[0,0,0]])
++  for(const a of [0,Math.PI/2,Math.PI])
++   for(const g of [0,.5,1,10]) assert.deepEqual(horizonRgb(d,a,g),[0,0,0]);
+ });
++
+ test("visual return uses presented end age and does not alter the song phase", () => {
+   assert.equal(visualReturn(null).phase, "song");
+   assert.equal(visualReturn(0).blend, 0);
+diff --git a/core/comfort-motion.mjs b/core/comfort-motion.mjs
+--- a/core/comfort-motion.mjs
++++ b/core/comfort-motion.mjs
+@@ -1,5 +1,5 @@
+ // Original production comfort policy. Keep the numerical reference model intact.
+-export const COMFORT = Object.freeze({travel:.45,turn:.65,heldTarget:1.2,heldTau:1.25,releaseTau:.85});
++export const COMFORT = Object.freeze({travel:.45,turn:.65,heldTarget:1.2,heldTau:.45,releaseTau:.85});
+ const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+ export function comfortIntegrate(state,parameters,t,dt,input={},scale=.4125,profile=COMFORT){
+   if(!Number.isFinite(dt)||dt<0||dt>.2||!Number.isFinite(t)||t<state.seconds)throw RangeError('Invalid forward step');
+diff --git a/core/slow-entry.test.mjs b/core/slow-entry.test.mjs
+--- a/core/slow-entry.test.mjs
++++ b/core/slow-entry.test.mjs
+@@ -12,7 +12,7 @@
+   near(-s.z,150*.4125*COMFORT.travel);assert.equal(s.altitude,60);assert.equal(s.vfov,25);
+ });
+ test('M1 ramps gently, is bounded at1.2 and releases without a speed jump',()=>{
+-  let s=state();s=comfortIntegrate(s,parameters,.1,.1,{held:true});assert.ok(s.turbo<1.02);
++  let s=state();s=comfortIntegrate(s,parameters,.1,.1,{held:true});assert.ok(s.turbo>1.03&&s.turbo<1.05);
+   for(let i=2;i<=200;i++)s=comfortIntegrate(s,parameters,i/10,.1,{held:true});assert.ok(s.turbo<=1.2&&s.turbo>1.19);
+   const before=s.turbo;s=comfortIntegrate(s,parameters,20.1,.1,{held:false});assert.ok(s.turbo<before&&s.turbo>1);
+ });
+diff --git a/core/wave-formations.mjs b/core/wave-formations.mjs
+new file mode 100644
+--- /dev/null
++++ b/core/wave-formations.mjs
+@@ -0,0 +1,93 @@
++/** Original height-field choreography. Parameters belong to each event's birth,
++ * never to the current chapter: an active crest cannot change shape mid-flight.
++ * All distances are metres. No horizontal vertex displacement or extra meshes.
++ */
++export const FORMATIONS = Object.freeze([
++  {start:0, end:25, name:'circle', kind:0, angle:0, mix:0},
++  {start:25, end:40, name:'oval', kind:1, angle:.25, mix:.82},
++  {start:40, end:56, name:'circle', kind:0, angle:0, mix:0},
++  {start:56, end:75, name:'diagonal-ridge', kind:2, angle:-Math.PI/3, mix:.84},
++  {start:75, end:94, name:'chevron', kind:3, angle:-Math.PI/2, mix:.8},
++  {start:94, end:106, name:'crossed-ridges', kind:4, angle:-Math.PI/2, mix:.86},
++  {start:106, end:123, name:'paired-rings', kind:5, angle:0, mix:.85},
++  {start:123, end:139, name:'diagonal-ridge', kind:2, angle:-Math.PI/6, mix:.86},
++  {start:139, end:158, name:'circle', kind:0, angle:0, mix:0},
++  {start:158, end:175, name:'oval', kind:1, angle:-.45, mix:.88},
++  {start:175, end:190, name:'chevron', kind:3, angle:-Math.PI/2, mix:.84},
++  {start:190, end:201, name:'crossed-ridges', kind:4, angle:-Math.PI/3, mix:.8},
++  {start:201, end:Infinity, name:'circle', kind:0, angle:0, mix:0},
++].map(Object.freeze));
++
++const parameters=FORMATIONS.map(s=>Object.freeze([s.kind,Math.cos(s.angle),Math.sin(s.angle),s.mix]));
++const births=new Map();
++export function formationFor(seconds) {
++  let f=births.get(seconds);
++  if(f)return f;
++  const i=FORMATIONS.findIndex(s=>seconds<s.end);
++  f=parameters[i<0?parameters.length-1:i];
++  if(births.size>=1024)births.delete(births.keys().next().value);
++  births.set(seconds,f);
++  return f;
++}
++export function formationMetric(dx,dz,age,form,speed=34) {
++  const [kind,c,s]=form, u=dx*c+dz*s, v=-dx*s+dz*c, r=speed*age;
++  if(kind<.5)return [Math.hypot(dx,dz)-r,1];
++  if(kind<1.5)return [Math.hypot(u/1.35,v*1.16)-r,1];
++  if(kind<2.5)return [u-r,Math.exp(-.5*(v/140)**2)];
++  if(kind<3.5)return [u+.42*(Math.sqrt(v*v+144)-12)-r,Math.exp(-.5*(v/160)**2)];
++  if(kind<4.5){const a=.8*u+.6*v-r,b=.8*u-.6*v-r;return [Math.abs(a)<Math.abs(b)?a:b,Math.exp(-.5*(Math.hypot(dx,dz)/240)**2)];}
++  const a=Math.hypot(dx,dz)-r,b=a+24;
++  return [Math.abs(a)<Math.abs(b)?a:b,1];
++}
++export function formationPulse(dx,dz,age,form,width=10,speed=34) {
++  const radial=Math.hypot(dx,dz)-speed*age;
++  const base=Math.exp(-.5*(radial/width)**2);
++  if(form[0]<.5||form[3]<=0)return base;
++  const [d,footprint]=formationMetric(dx,dz,age,form,speed);
++  return base*(1-form[3])+Math.exp(-.5*(d/width)**2)*footprint*form[3];
++}
++// Compact support matters here: Gaussian tails must never wake every OFF bank.
++export function formationBand(dx,dz,age,form) {
++  const window=d=>{const t=Math.max(0,Math.min(1,(Math.abs(d)-1.1)/4.9));return 1-t*t*t*(t*(t*6-15)+10);};
++  const base=window(Math.hypot(dx,dz)-34*age);
++  const [d,footprint]=formationMetric(dx,dz,age,form);
++  return base*(1-form[3])+window(d)*footprint*form[3];
++}
++// A signed phase travels with the physical crest. Its amplitude is local and
++// finite; band envelopes scale this motion rather than rotating the whole LUT.
++export function crestChroma(dx,dz,age,form,life=1) {
++  const [d,footprint]=formationMetric(dx,dz,age,form);
++  const u=dx*form[1]+dz*form[2],v=-dx*form[2]+dz*form[1],r=34*age;
++  const lobe=d=>Math.sin(d*.085)*Math.exp(-.5*(d/18)**2);
++  let shaped=lobe(d)*footprint;
++  if(form[0]>3.5&&form[0]<4.5)shaped=.5*(lobe(.8*u+.6*v-r)+lobe(.8*u-.6*v-r))*footprint;
++  else if(form[0]>4.5)shaped=.5*(lobe(Math.hypot(dx,dz)-r)+lobe(Math.hypot(dx,dz)-r+24));
++  return (lobe(Math.hypot(dx,dz)-r)*(1-form[3])+shaped*form[3])*life;
++}
++export const formationGLSL = `
++vec2 wfMetric(vec2 d,float age,vec4 f){
++ float u=dot(d,f.yz),v=dot(d,vec2(-f.z,f.y)),r=34.*age;
++ if(f.x<.5)return vec2(length(d)-r,1.);
++ if(f.x<1.5)return vec2(length(vec2(u/1.35,v*1.16))-r,1.);
++ if(f.x<2.5)return vec2(u-r,exp(-.5*(v/140.)*(v/140.)));
++ if(f.x<3.5)return vec2(u+.42*(sqrt(v*v+144.)-12.)-r,exp(-.5*(v/160.)*(v/160.)));
++ if(f.x<4.5){float a=.8*u+.6*v-r,b=.8*u-.6*v-r;return vec2(abs(a)<abs(b)?a:b,exp(-.5*dot(d,d)/(240.*240.)));}
++ float a=length(d)-r,b=a+24.;return vec2(abs(a)<abs(b)?a:b,1.);
++}
++float wfChromaLobe(float d){return sin(d*.085)*exp(-.5*d*d/(18.*18.));}
++float wfBandWindow(float d){float t=clamp((abs(d)-1.1)/4.9,0.,1.);return 1.-t*t*t*(t*(t*6.-15.)+10.);}
++float wfBand(vec2 d,float age,vec4 f){vec2 m=wfMetric(d,age,f);return mix(wfBandWindow(length(d)-34.*age),wfBandWindow(m.x)*m.y,f.w);}
++float wfChroma(vec2 d,float age,vec4 f){
++ vec2 m=wfMetric(d,age,f);float shape=wfChromaLobe(m.x)*m.y;
++ float u=dot(d,f.yz),v=dot(d,vec2(-f.z,f.y)),r=34.*age;
++ if(f.x>3.5&&f.x<4.5)shape=.5*(wfChromaLobe(.8*u+.6*v-r)+wfChromaLobe(.8*u-.6*v-r))*m.y;
++ else if(f.x>4.5)shape=.5*(wfChromaLobe(length(d)-r)+wfChromaLobe(length(d)-r+24.));
++ return mix(wfChromaLobe(length(d)-r),shape,f.w);
++}
++float wfPulse(vec2 d,float age,vec4 f,float width){
++ float q=(length(d)-34.*age)/width,base=exp(-.5*q*q);
++ if(f.x<.5||f.w<=0.)return base;
++ vec2 m=wfMetric(d,age,f);float n=m.x/width;
++ return mix(base,exp(-.5*n*n)*m.y,f.w);
++}
++`;
+diff --git a/src/show/waves.ts b/src/show/waves.ts
+--- a/src/show/waves.ts
++++ b/src/show/waves.ts
+@@ -1,3 +1,4 @@
++import { formationFor, formationPulse, formationGLSL } from "../../core/wave-formations.mjs";
+ import cues from "../../show/cues.proposal.json";
+ import eventRecord from "../../show/events.json";
+ import originRecord from "../../show/camera-origins.json";
+@@ -125,12 +126,11 @@
+   for (const e of state.fronts) {
+     const age = t - e.time;
+     if (age < 0 || age >= WAVE.lifetime) continue;
+-    const d = Math.hypot(x - e.x, z - e.z),
+-      q = (d - WAVE.speed * age) / WAVE.width;
++    const pulse = formationPulse(x - e.x, z - e.z, age, formationFor(e.time), WAVE.width);
+     h +=
+       state.ring *
+       (0.4 + 0.6 * e.strength) *
+-      Math.exp(-0.5 * q * q) *
++      pulse *
+       smooth(0, WAVE.attack, age) *
+       (1 - smooth(WAVE.lifetime - WAVE.fade, WAVE.lifetime, age));
+   }
+@@ -153,18 +153,19 @@
+     : d + (c - d) * (1 - u) + (b - d) * (1 - v);
+ }
+ 
+-/** Independently authored implementation of the recorded Gaussian proposal.
++/** Independently authored event-born height-field formations.
+  * All render passes use this exact GLSL kernel; CPU uses the same units/equations. */
+ export const heightGLSL = `
+ uniform float uTime, uBase, uRing, uMotion;
+-uniform vec4 uFronts[${WAVE.capacity}];
++uniform vec4 uFronts[${WAVE.capacity}], uFrontForms[${WAVE.capacity}];
++${formationGLSL}
+ float heightAt(vec2 p) {
+  float h=uBase*(.58*sin(p.x*.022+p.y*.027+uTime*.24)+.28*sin(p.x*.039-p.y*.014-uTime*.19)+.14*cos(p.x*.009+p.y*.046+uTime*.11));
+  for(int i=0;i<${WAVE.capacity};i++) {
+   float a=uTime-uFronts[i].z;
+   if(a>=0. && a<${WAVE.lifetime}) {
+-   float q=(distance(p,uFronts[i].xy)-${WAVE.speed}.*a)/${WAVE.width}.;
+-   h+=uRing*(.4+.6*uFronts[i].w)*exp(-.5*q*q)*smoothstep(0.,${WAVE.attack},a)*(1.-smoothstep(${WAVE.lifetime - WAVE.fade},${WAVE.lifetime},a));
++   float pulse=wfPulse(p-uFronts[i].xy,a,uFrontForms[i],${WAVE.width}.);
++   h+=uRing*(.4+.6*uFronts[i].w)*pulse*smoothstep(0.,${WAVE.attack},a)*(1.-smoothstep(${WAVE.lifetime - WAVE.fade},${WAVE.lifetime},a));
+   }
+  }
+  float v=h/${WAVE.heightBound}.;
+diff --git a/src/show/floor.ts b/src/show/floor.ts
+--- a/src/show/floor.ts
++++ b/src/show/floor.ts
+@@ -99,7 +99,7 @@
+ uint rfCellHash(ivec2 c,int seed){return rfHash(uint(c.x)^(uint(c.y)*0x9e3779b1u)^(uint(seed)*0x85ebca6bu));}
+ float rfCellRandom(ivec2 c,int seed){return float(rfCellHash(c,seed))*(1./4294967296.);}
+ uniform sampler2D uPalette;uniform vec3 uFlow;uniform vec4 uRecipe,uLighting,uChapter;
+-uniform vec4 uLocalFronts[2],uPaint[8];uniform ivec2 uLocalIds;
++uniform vec4 uLocalFronts[2],uLocalForms[2],uPaint[8];uniform ivec2 uLocalIds;
+ uniform vec4 uBorrow;uniform vec3 uMicro;
+ uniform uint uDensityThreshold;uniform float uBrightness,uLow,uAccent,uReduced;
+ vec2 lightingCoordinates(vec2 p){float c=cos(uFlow.x),s=sin(uFlow.x);return vec2(c*p.x+s*p.y,-s*p.x+c*p.y);}
+@@ -118,8 +118,7 @@
+  for(int i=0;i<2;i++){
+   vec4 f=uLocalFronts[i];float age=uTime-f.z;int id=i==0?uLocalIds.x:uLocalIds.y;
+   if(age<=0.||age>=5.6||rfCellHash(c,id)>=1374389534u)continue;
+-  float delta=abs(distance(center,f.xy)-34.*age);
+-  float w=(1.-rfSmooth5((delta-1.1)/4.9))*rfSmooth5(age/.14)*(1.-rfSmooth5((age-4.2)/1.4));value=max(value,w);
++  float w=wfBand(center-f.xy,age,uLocalForms[i])*rfSmooth5(age/.14)*(1.-rfSmooth5((age-4.2)/1.4));value=max(value,w);
+  }return value*mix(1.,.2,uReduced);
+ }
+ float paintAt(vec2 p){float v=0.;for(int i=0;i<8;i++){float age=uTime-uPaint[i].z;if(age>=0.&&age<3.){float radius=3.+age*3.2;float d=distance(p,uPaint[i].xy);float w=exp(-d*d/(radius*radius))*rfSmooth5(age/.045)*(1.-rfSmooth5((age-1.8)/1.2))*uPaint[i].w;v=max(v,w);}}return v;}
+@@ -135,11 +134,23 @@
+  return uBorrow.w*step(distance(p,uBorrow.xy),16.)*(rfCellHash(id,71)%3u==0u?1.:0.);
+ }
+ float activationAt(vec2 p){float g=mix(recipeGate(p,uChapter.x),recipeGate(p,uRecipe.x),regionalMix(p));return g*(1.-borrowing(p));}
+-vec3 familyAt(vec2 p,float family){vec2 uv=lightingCoordinates(p);float u=family>3.5?fract((uv.x+uv.y)/96.-uRecipe.y/8.):.5+.5*sin(uv.x*.026);return texture2D(uPalette,vec2((.5+u*127.)/128.,(family+.5)/5.)).rgb;}
+-vec3 paletteAt(vec2 p){return mix(familyAt(p,uChapter.y),familyAt(p,uLighting.x),regionalMix(p));}
++float crestColourShift(vec2 p){
++ float shift=0.,best=0.;
++ for(int i=0;i<2;i++){vec4 f=uLocalFronts[i];float age=uTime-f.z;
++  if(age<=0.||age>=5.6)continue;
++  float life=rfSmooth5(age/.14)*(1.-rfSmooth5((age-4.2)/1.4))*(.4+.6*f.w);
++  float energy=wfPulse(p-f.xy,age,uLocalForms[i],18.)*life;
++  shift+=wfChroma(p-f.xy,age,uLocalForms[i])*life;best+=energy;
++ }
++ return (shift/max(1.,best))*(.32+.16*uLow+.10*uAccent)*mix(1.,.12,uReduced);
++}
++vec3 familyAt(vec2 p,float family,float shift){vec2 uv=lightingCoordinates(p);
++ float u=family>3.5?fract((uv.x+uv.y)/96.-uRecipe.y/8.+shift):clamp(.5+.5*sin(uv.x*.026)+shift,0.,1.);
++ return texture2D(uPalette,vec2((.5+u*127.)/128.,(family+.5)/5.)).rgb;}
++vec3 paletteAt(vec2 p){float shift=crestColourShift(p);return mix(familyAt(p,uChapter.y,shift),familyAt(p,uLighting.x,shift),regionalMix(p));}
+ float idleGate(vec2 p){float base=chunkBase(ivec2(floor(p/6.)));float swap=rfSmooth5((sin(uVisualPhase.y*6.28318530718/12.)-.55)/.4);return base+(1.-2.*base)*swap;}
+ FloorLight floorLight(vec2 p){
+- float ring=0.;for(int i=0;i<${WAVE.capacity};i++){float a=uTime-uFronts[i].z;if(a>=0.&&a<${WAVE.lifetime}){float d=distance(p,uFronts[i].xy),q=(d-${WAVE.speed}.*a)/3.2;float life=smoothstep(0.,${WAVE.attack},a)*(1.-smoothstep(${WAVE.lifetime - WAVE.fade},${WAVE.lifetime},a))*(.4+.6*uFronts[i].w);ring=max(ring,exp(-.5*q*q)*life);}}
++ float ring=0.;for(int i=0;i<${WAVE.capacity};i++){float a=uTime-uFronts[i].z;if(a>=0.&&a<${WAVE.lifetime}){float life=smoothstep(0.,${WAVE.attack},a)*(1.-smoothstep(${WAVE.lifetime - WAVE.fade},${WAVE.lifetime},a))*(.4+.6*uFronts[i].w);ring=max(ring,wfPulse(p-uFronts[i].xy,a,uFrontForms[i],3.2)*life);}}
+  ring*=mix(1.,.12,uReduced);
+  float localAccent=(rfCellRandom(ivec2(floor(p/6.)),37)<.18?1.:0.)*max(ring,paintAt(p));
+  float gate=activationAt(p)*landscapeGate(p);vec3 col=paletteAt(p);float gain=uBrightness;
+diff --git a/src/show/arrangement.ts b/src/show/arrangement.ts
+--- a/src/show/arrangement.ts
++++ b/src/show/arrangement.ts
+@@ -85,8 +85,7 @@
+       visual,
+       finish,
+       airTime: seconds,
+-      horizonGain:
+-        ease((seconds - 7) / 8) * (0.18 + 0.12 * ease(music.sky)) * brightness,
++      horizonGain: 0, // Colour belongs to discrete emitters, never the sky background.
+       horizonAzimuth: 0.4 + 0.22 * Math.sin(seconds * 0.013),
+       board,
+       gridRest,
+diff --git a/src/scene/field.ts b/src/scene/field.ts
+--- a/src/scene/field.ts
++++ b/src/scene/field.ts
+@@ -1,3 +1,4 @@
++import { formationFor } from "../../core/wave-formations.mjs";
+ import {
+   pointFragment,
+   capFragment,
+@@ -103,6 +104,8 @@
+         () => new THREE.Vector4(0, 0, -1000, 0),
+       ),
+     },
++    uFrontForms: {value: Array.from({length: WAVE.capacity}, () => new THREE.Vector4(0,1,0,0))},
++    uLocalForms: {value: [new THREE.Vector4(0,1,0,0), new THREE.Vector4(0,1,0,0)]},
+     uOffset: { value: new THREE.Vector2() },
+     uCameraXZ: { value: new THREE.Vector2() },
+     uNear: { value: new THREE.Vector2(13, 22) },
+@@ -262,6 +265,7 @@
+       visual.phase === "song" ? 0 : visual.breath,
+       visual.phase === "song" ? 0 : visual.hueMix,
+     );
++    for(let i=0;i<WAVE.capacity;i++) u.uFrontForms.value[i].fromArray(formationFor(state.fronts[i]?.time ?? 0));
+     u.uHorizonGain.value = score.horizonGain;
+     u.uHorizonAzimuth.value = score.horizonAzimuth;
+     u.uBase.value = state.base;
+@@ -329,6 +333,7 @@
+         f?.strength ?? 0,
+       );
+       u.uLocalIds.value[i] = f?.id ?? -1;
++      u.uLocalForms.value[i].fromArray(formationFor(f?.time ?? 0));
+     }
+     for (let i = 0; i < 8; i++) {
+       const p = decoration.paint[i];
+diff --git a/src/scene/field-adapter-snippets.mjs b/src/scene/field-adapter-snippets.mjs
+--- a/src/scene/field-adapter-snippets.mjs
++++ b/src/scene/field-adapter-snippets.mjs
+@@ -24,8 +24,8 @@
+  }`;
+ 
+ // Add to the existing ground fragment after all raw wave/surface functions.
+-// Supply uHorizonGain/uHorizonAzimuth to field from the same authored sky cue.
+-// Apply this to floor background only, not cap/point OFF gates or depthMesh.
++// Retired sky uniforms remain accepted; they cannot add colour to empty space.
++// Atmospheric attenuation removes energy only; no coloured scattering term.
+ // Add varying vec3 vSurfaceWorld to ground vertex and assign the very same
+ // displaced position used by gl_Position. Do not re-evaluate height per pixel.
+ export const groundFragmentMain = `
+@@ -36,9 +36,8 @@
+    float distanceMetres=distance(p,cameraPosition);
+    float ownership=1.-smoothstep(520.,600.,distance(vWorld,uCameraXZ));
+    float transmission=beautyFogTransmission(distanceMetres,.00135);
+-   vec3 scattered=beautyHorizon(p-cameraPosition,uHorizonAzimuth,uHorizonGain);
+    vec3 emitted=surfaceLight(vWorld,fineWeight(vWorld))*uGroundGain;
+-   gl_FragColor=vec4((emitted*transmission*ownership+scattered*(1.-transmission*ownership))*uTerrainVisible,1.);
++   gl_FragColor=vec4(emitted*transmission*ownership*uTerrainVisible,1.);
+  }`;
+ 
+ // Keep the current quarter-size two-pass Gaussian. Initial candidate values
+diff --git a/src/scene/horizon.mjs b/src/scene/horizon.mjs
+--- a/src/scene/horizon.mjs
++++ b/src/scene/horizon.mjs
+@@ -1,7 +1,7 @@
+ import * as THREE from "three";
+ import { emitterGLSL } from "../../core/beauty.mjs";
+-/** One opaque background draw before floor. Fixed world up; no texture and no
+- * screenspace gradient. Camera translation follows, yaw/pitch/roll do not.
++/** Retained black background draw before floor. No coloured atmosphere.
++ * Camera translation follows, yaw/pitch/roll do not.
+  * Keep existing world-space stars in their depth-tested post-softness pass.
+  */
+ export function createHorizon() {
+@@ -17,7 +17,7 @@
+       void main(){gl_FragColor=vec4(beautyHorizon(vRay,uAzimuth,uGain),1.);}`,
+   });
+   const mesh = new THREE.Mesh(geometry, material);
+-  mesh.name = "retrowave-horizon";
++  mesh.name = "black-horizon";
+   mesh.renderOrder = -1000;
+   mesh.frustumCulled = false;
+   return {
+diff --git a/src/scene/post-surface.ts b/src/scene/post-surface.ts
+--- a/src/scene/post-surface.ts
++++ b/src/scene/post-surface.ts
+@@ -25,7 +25,7 @@
+       visual.blend
+   );
+ }
+-// The original Gaussian kernel is preserved byte-for-byte in waves.ts.
++// Event-born formation metadata is shared by song geometry and light passes.
+ // Rename its time uniform only, so returned geometry and song lighting cannot
+ // accidentally share a moving cue clock after the source naturally completes.
+ export const surfaceHeightGLSL =
+diff --git a/src/scene/world.ts b/src/scene/world.ts
+--- a/src/scene/world.ts
++++ b/src/scene/world.ts
+@@ -259,7 +259,7 @@
+       cameraLens: camera.fov,
+       cameraQuaternion: camera.quaternion.toArray(),
+       heightBound: WAVE.heightBound * state.motion,
+-      background: "black zenith; faint world-oriented low horizon",
++      background: "black background at every elevation; discrete stars and LED halos only",
+       horizon: {
+         gain: arrangement.horizonGain,
+         azimuth: arrangement.horizonAzimuth,
+diff --git a/tests/reference-camera.test.ts b/tests/reference-camera.test.ts
+--- a/tests/reference-camera.test.ts
++++ b/tests/reference-camera.test.ts
+@@ -68,7 +68,7 @@
+   const before = f.snapshot();
+   f.advance(29, { turn: 1, tilt: 1, held: true }, false);
+   assert.ok(
+-    Math.abs(f.pose().turbo - (1.2 - 0.2 * Math.exp(-1 / 1.25))) < 0.000001,
++    Math.abs(f.pose().turbo - (1.2 - 0.2 * Math.exp(-1 / 0.45))) < 0.000001,
+   );
+   assert.ok(f.pose().roll > 0);
+   assert.ok(f.pose().yaw > before.pose.yaw);
+diff --git a/tests/browser/flight-regression.spec.ts b/tests/browser/flight-regression.spec.ts
+--- a/tests/browser/flight-regression.spec.ts
++++ b/tests/browser/flight-regression.spec.ts
+@@ -34,7 +34,7 @@
+     );
+     expect(d).not.toHaveProperty("cursor");
+     expect(d.floor.depthTest).toBe(true);
+-    expect(d.background).toContain("black zenith");
++    expect(d.background).toContain("black background at every elevation");
+     expect(d.clearance).toBeGreaterThanOrEqual(3.19);
+     expect(
+       await page.locator("#world").evaluate((e) => getComputedStyle(e).cursor),
+diff --git a/tests/wave-variation.test.ts b/tests/wave-variation.test.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/wave-variation.test.ts
+@@ -0,0 +1,81 @@
++import test from "node:test";
++import assert from "node:assert/strict";
++import { FORMATIONS, formationFor, formationMetric, formationPulse, formationBand, crestChroma } from "../core/wave-formations.mjs";
++import { rawHeight, surfaceHeight, waveState, WAVE } from "../src/show/waves";
++import { comfortIntegrate, COMFORT } from "../core/comfort-motion.mjs";
++
++test("the approved circular kernel survives as the complete first 25 seconds", () => {
++  for(let t=.2;t<25;t+=.31){
++    const s=waveState(t,null,false);
++    for(const x of [-100,0,83]) for(const z of [-600,-120,0]){
++      let h=s.base*(.58*Math.sin(x*.022+z*.027+t*.24)+.28*Math.sin(x*.039-z*.014-t*.19)+.14*Math.cos(x*.009+z*.046+t*.11));
++      for(const e of s.fronts){const age=t-e.time,u=Math.max(0,Math.min(1,age/.14)),v=Math.max(0,Math.min(1,(age-4.2)/1.4)),q=(Math.hypot(x-e.x,z-e.z)-34*age)/10;
++        h+=s.ring*(.4+.6*e.strength)*Math.exp(-.5*q*q)*u*u*(3-2*u)*(1-v*v*(3-2*v));}
++      assert.ok(Math.abs(rawHeight(x,z,s)-14*Math.tanh(h/14))<1e-10);
++    }
++  }
++});
++test("new wave shapes are distinct, bounded and carry compact-support exchanges", () => {
++  const signatures=[];
++  for(const section of FORMATIONS.slice(0,7)){
++    const form=formationFor(section.start+.1),signature=[];
++    for(let x=-180;x<=180;x+=6)for(let z=-180;z<=180;z+=6){
++      const pulse=formationPulse(x,z,1.1,form),bank=formationBand(x,z,1.1,form);
++      assert.ok(Number.isFinite(pulse)&&pulse>=0&&pulse<=1+1e-12);
++      assert.ok(bank>=0&&bank<=1+1e-12);
++      assert.ok(Math.abs(crestChroma(x,z,1.1,form))<=1+1e-12);
++      signature.push(pulse);
++    }
++    signatures.push(signature);
++    assert.equal(formationBand(10000,20000,1.1,form),0);
++  }
++  // Circle recurs deliberately; every authored alternative differs spatially.
++  for(const i of [1,3,4,5,6])assert.ok(signatures[i].some((v,j)=>Math.abs(v-signatures[0][j])>.1));
++});
++test("event-birth shape is stable across chapter changes, seeks and replay",()=>{
++  for(const boundary of FORMATIONS.slice(1).map(s=>s.start)){
++    const e={x:0,z:0,time:boundary-.1,strength:1,id:99};
++    const fixed=formationFor(e.time);
++    for(const age of [.01,.15,1,4,5.59]){
++      const s={...waveState(e.time+age,null,false),fronts:[e],base:0,ring:7};
++      const attack=Math.min(1,age/.14),fade=Math.min(1,Math.max(0,(age-4.2)/1.4));
++      const life=attack*attack*(3-2*attack)*(1-fade*fade*(3-2*fade));
++      const expected=14*Math.tanh(7*formationPulse(32,48,age,fixed)*life/14);
++      assert.ok(Math.abs(rawHeight(32,48,s)-expected)<1e-10);
++      assert.equal(rawHeight(32,48,s),rawHeight(32,48,{...s}));
++      assert.deepEqual(formationFor(e.time),fixed);
++    }
++  }
++});
++test("raw vertices and exact terrain triangles retain the 14m bound in every passage",()=>{
++  for(let t=25;t<220;t+=.67){const s=waveState(t,null,false);
++    for(const e of s.fronts.slice(-2))for(const dx of [-51,0,51])for(const dz of [-93,12,93]){
++      const x=Math.round((e.x+dx)/3)*3,z=Math.round((e.z+dz)/3)*3;
++      const h=rawHeight(x,z,s);assert.ok(Number.isFinite(h)&&Math.abs(h)<WAVE.heightBound);
++      assert.ok(Math.abs(h-surfaceHeight(x,z,s))<1e-8);
++      assert.ok(Math.abs(surfaceHeight(x-1e-6,z+.3,s)-surfaceHeight(x+1e-6,z+.3,s))<1e-4);
++    }
++  }
++});
++test("colour phases have no discontinuity at paired-ring or crossed-ridge seams",()=>{
++  for(const t of [96,110]){const f=formationFor(t);
++    for(let x=-100;x<=100;x+=.43){
++      const a=crestChroma(x,-14,1,f),b=crestChroma(x+1e-5,-14,1,f);
++      assert.ok(Math.abs(a-b)<1e-5);
++      assert.ok(formationMetric(x,-14,1,f).every(Number.isFinite));
++    }
++  }
++});
++test("M1 is more responsive, capped, and leaves all no-input route states unchanged",()=>{
++  const initial=()=>({seconds:0,x:0,z:0,angle:0,roll:0,pitchX:0,turbo:1});
++  const p={speed:150,altitude:60,vfov:25,tilt:9};
++  let a=initial(),b=initial();
++  for(let i=1;i<=2400;i++){
++    a=comfortIntegrate(a,p,i/240,1/240);
++    b=comfortIntegrate(b,p,i/240,1/240,{},.4125,{...COMFORT,heldTau:1.25});
++    assert.deepEqual(a,b);
++  }
++  const boost=comfortIntegrate(initial(),p,.1,.1,{held:true});
++  assert.ok(boost.turbo>1.03&&boost.turbo<1.05);
++  assert.equal(COMFORT.heldTarget,1.2);assert.equal(COMFORT.travel,.45);
++});
+diff --git a/tools/audit-wave-formations.html b/tools/audit-wave-formations.html
+new file mode 100644
+--- /dev/null
++++ b/tools/audit-wave-formations.html
+@@ -0,0 +1,55 @@
++<!doctype html><meta charset="utf-8"><title>Wave formation shader audit</title>
++<h1>Wave formation shader audit</h1><pre id="result">Running CPU / WebGL2 checks…</pre>
++<script type="module">
++// Development-only executable check. Open through Vite, not file:// or dist.
++// No assets leave this page. It compiles the actual runtime shader strings.
++import { heightGLSL, rawHeight } from '/src/show/waves.ts';
++import { floorLightGLSL, paletteLut } from '/src/show/floor.ts';
++import { emitterGLSL } from '/core/beauty.mjs';
++import { FORMATIONS, formationFor, formationBand, crestChroma } from '/core/wave-formations.mjs';
++import { chunkAt, hash32, smooth5 } from '/core/chunk-wave-exchange.mjs';
++const result=document.querySelector('#result');
++try {
++ const gl=document.createElement('canvas').getContext('webgl2');
++ if(!gl)throw Error('WebGL2 unavailable');
++ const program=gl.createProgram();
++ const compile=(type,source)=>{const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));gl.attachShader(program,s);};
++ compile(gl.VERTEX_SHADER,`#version 300 es\nprecision highp float;precision highp int;\n#define texture2D texture\n${heightGLSL}${floorLightGLSL}${emitterGLSL}\nuniform vec2 probe;out vec4 a,b;void main(){FloorLight f=floorLight(probe);a=vec4(heightAt(probe),wfBand(probe-uLocalFronts[0].xy,uTime-uLocalFronts[0].z,uLocalForms[0]),wfChroma(probe-uLocalFronts[0].xy,uTime-uLocalFronts[0].z,uLocalForms[0]),f.activation);b=vec4(f.emission,length(beautyHorizon(vec3(probe.x,.02,probe.y),uTime,1.)));gl_Position=vec4(0.,0.,0.,1.);}`);
++ compile(gl.FRAGMENT_SHADER,'#version 300 es\nprecision highp float;out vec4 c;void main(){c=vec4(0.);}');
++ gl.transformFeedbackVaryings(program,['a','b'],gl.INTERLEAVED_ATTRIBS);gl.linkProgram(program);
++ if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);
++ const loc=n=>gl.getUniformLocation(program,n), f1=(n,v)=>gl.uniform1f(loc(n),v),f4=(n,...v)=>gl.uniform4f(loc(n),...v);
++ const lut=paletteLut();gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,lut.width,lut.height,0,gl.RGBA,gl.UNSIGNED_BYTE,lut.bytes);
++ gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
++ f1('uBase',.7);f1('uRing',5);f1('uMotion',1);f1('uBrightness',1);f1('uLow',.7);f1('uAccent',.4);f1('uReduced',0);
++ f4('uLighting',1,1,1,.5);gl.uniform3f(loc('uFlow'),.5,0,0);gl.uniform2iv(loc('uLocalIds'),new Int32Array([13,-1]));
++ gl.bindVertexArray(gl.createVertexArray());gl.bindTransformFeedback(gl.TRANSFORM_FEEDBACK,gl.createTransformFeedback());const buffer=gl.createBuffer();gl.bindBuffer(gl.TRANSFORM_FEEDBACK_BUFFER,buffer);gl.bufferData(gl.TRANSFORM_FEEDBACK_BUFFER,32,gl.STREAM_READ);gl.bindBufferBase(gl.TRANSFORM_FEEDBACK_BUFFER,0,buffer);
++ let count=0,off=0,on=0,heightError=0,bandError=0,chromaError=0,gateError=0,offEmission=0,skyMax=0,colourChanges=0;
++ const previousColours=new Map();
++ for(const section of FORMATIONS.slice(0,7))for(const age of [.6,1.1,2]){
++  const birth=section.start+.2,form=formationFor(birth),event={x:-192,z:-5001,time:Math.fround(birth),id:13,strength:1};
++  const seconds=Math.fround(birth+age),realAge=seconds-event.time;
++  const fronts=new Float32Array(64),forms=new Float32Array(64);for(let i=0;i<16;i++){fronts.set(i?[0,0,-1000,0]:[event.x,event.z,event.time,1],i*4);forms.set(i?[0,1,0,0]:form,i*4);}
++  gl.uniform4fv(loc('uFronts[0]'),fronts);gl.uniform4fv(loc('uFrontForms[0]'),forms);gl.uniform4fv(loc('uLocalFronts[0]'),new Float32Array([event.x,event.z,event.time,1,0,0,-1000,0]));gl.uniform4fv(loc('uLocalForms[0]'),new Float32Array([...form,0,1,0,0]));
++  f1('uTime',seconds);f4('uChapter',1,1,seconds-10,seconds+10);f4('uRecipe',1,seconds*.18,2,0);
++  for(let dx=-120;dx<=120;dx+=12)for(let dz=-120;dz<=120;dz+=12){
++   const x=event.x+dx,z=event.z+dz;gl.uniform2f(loc('probe'),x,z);const values=new Float32Array(8);
++   gl.enable(gl.RASTERIZER_DISCARD);gl.beginTransformFeedback(gl.POINTS);gl.drawArrays(gl.POINTS,0,1);gl.endTransformFeedback();gl.disable(gl.RASTERIZER_DISCARD);gl.getBufferSubData(gl.TRANSFORM_FEEDBACK_BUFFER,0,values);
++   const h=rawHeight(x,z,{seconds,base:.7,ring:5,motion:1,fronts:[event]});heightError=Math.max(heightError,Math.abs(h-values[0]));
++   bandError=Math.max(bandError,Math.abs(formationBand(dx,dz,realAge,form)-values[1]));chromaError=Math.max(chromaError,Math.abs(crestChroma(dx,dz,realAge,form)-values[2]));
++   const c=chunkAt(x,z),spatial=formationBand(c.centerX-event.x,c.centerZ-event.z,realAge,form),life=smooth5(realAge/.14)*(1-smooth5((realAge-4.2)/1.4));
++   const swap=hash32(c.cx,c.cz,13)<1374389534?spatial*life:0,gate=c.base+(1-2*c.base)*swap;
++   gateError=Math.max(gateError,Math.abs(gate-values[3]));
++   if(gate===0){off++;offEmission=Math.max(offEmission,...values.slice(4,7));}else on++;
++   skyMax=Math.max(skyMax,values[7]);
++   const rgb=[...values.slice(4,7)],energy=rgb.reduce((a,b)=>a+b,0),key=`${section.start}:${dx}:${dz}`;
++   if(gate>.1&&energy>.001){const ratios=rgb.map(v=>v/energy),old=previousColours.get(key);if(old&&ratios.some((v,i)=>Math.abs(v-old[i])>.002))colourChanges++;previousColours.set(key,ratios);}
++   count++;
++  }
++ }
++ if(gl.getError()!==0)throw Error('WebGL error');
++ const passed=heightError<.003&&bandError<.0001&&chromaError<.0001&&gateError<.0001&&offEmission===0&&skyMax===0&&off>0&&colourChanges>0;
++ const report={status:passed?'passed':'failed',count,heightError,bandError,chromaError,gateError,off,on,offEmission,skyMax,colourChanges,renderer:gl.getParameter(gl.RENDERER),scope:'Shader arithmetic and exact OFF/background only; no listening, motion, hardware performance or AV approval.'};
++ result.textContent=JSON.stringify(report,null,2);document.title=`Wave shader audit: ${report.status}`;
++}catch(error){result.textContent=JSON.stringify({status:'failed',error:String(error)},null,2);document.title='Wave shader audit: failed';}
++</script>

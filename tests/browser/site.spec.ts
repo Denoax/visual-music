@@ -65,6 +65,7 @@ test("Settings keeps time running; native volume/mute, pause and focus remain us
   await boot(page);
   await enter(page);
   await page.locator("#settings-button").press("Enter");
+  await expect(page.locator("#pause")).toBeVisible();
   const time = () =>
     page.evaluate(() => (window as any).__BUMER__.transport.position());
   const a = await time();
@@ -100,7 +101,15 @@ test("Failed bytes remain retryable while graphics prepare; entry interruption n
   await expect(page.locator("#start")).toBeDisabled();
   await page.locator("#retry").press("Enter");
   await expect(page.locator("#start")).toBeEnabled({ timeout: 120000 });
-  await page.locator("#start").evaluate((el:HTMLElement)=>el.addEventListener("click",()=>window.dispatchEvent(new Event("blur")),{once:true}));
+  await page
+    .locator("#start")
+    .evaluate((el: HTMLElement) =>
+      el.addEventListener(
+        "click",
+        () => window.dispatchEvent(new Event("blur")),
+        { once: true },
+      ),
+    );
   await page.locator("#start").press("Enter");
   await expect(page.locator("#start")).toBeEnabled({ timeout: 30000 });
   expect(

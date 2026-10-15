@@ -402,6 +402,9 @@ function tick(now: number) {
   ) {
     fieldEntered = true;
     canvas.focus({ preventScroll: true });
+    // Refresh after this tick reschedules RAF; Pause must be available on first
+    // entry without creating a second animation-frame owner inside the tick.
+    queueMicrotask(controls);
   }
   const model = loading.sample(visibleSeconds, { reduced: gentle.checked });
   landing.hidden = fieldEntered;

@@ -1,0 +1,4 @@
+{
+  "status": "RETAINED_ADVERSE_NOT_COMPARABLE",
+  "reason": "Optimized browser opened on monitor2/workspace1, 60Hz; baseline and unoptimized were monitor1/workspace2,240.299Hz. Stopped only owned benchmark and preserved partial results. Native renderer and quality were unchanged. This partial run is excluded from optimized comparison."
+}

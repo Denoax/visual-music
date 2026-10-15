@@ -1,0 +1,104 @@
+[
+  {
+    "path": "core/beauty.mjs",
+    "base_sha256": "f0af6b91b3488edae53217a6a033a71f8c533bd96f807b3b40c6b345322791cf",
+    "candidate_sha256": "a8c32cd76201d6e93d6528635e44e16ed9adc97586fe3f625858a725894d6e44",
+    "candidate_bytes": 2394
+  },
+  {
+    "path": "core/beauty.test.mjs",
+    "base_sha256": "7d02f1dccb84c6976879b2d8148112cee8096fc6fde47f0721d2274bf92f8d5a",
+    "candidate_sha256": "ce54749a2e991d84eb1b7de56aae0a421249f5c8b4b1977121b57d64873fb74c",
+    "candidate_bytes": 3161
+  },
+  {
+    "path": "core/comfort-motion.mjs",
+    "base_sha256": "090326758da87b31f7041122644bbd0cfc23854d9a12f09943ee081b5fea5685",
+    "candidate_sha256": "95a5080a5398cb1a23d5c4bd4b72a292f05a5ee33583651f89f990443c2104df",
+    "candidate_bytes": 1217
+  },
+  {
+    "path": "core/slow-entry.test.mjs",
+    "base_sha256": "d525992990754a6fd5a48a0ca9384b5746ca477049347c93e54163bf2c925776",
+    "candidate_sha256": "9237065c62effec5a68bc25f320ee8aef38794e03ca2387a0e98717fa6607313",
+    "candidate_bytes": 6249
+  },
+  {
+    "path": "core/wave-formations.mjs",
+    "base_sha256": null,
+    "candidate_sha256": "aa79c9522c782bed9fa8eea7614aceef5a9928fad05586c9afd21dcda5c7c1a3",
+    "candidate_bytes": 5079
+  },
+  {
+    "path": "src/show/waves.ts",
+    "base_sha256": "4661ccde9cf5f20ae99e8e8d5a8ec090c3af82ac5f47c6e2f59eb60ed82b5e07",
+    "candidate_sha256": "19fd515c4e71ab32f8084a9b2a8bfe1b050aeb508cf73c8afd14bb26fb27418a",
+    "candidate_bytes": 5807
+  },
+  {
+    "path": "src/show/floor.ts",
+    "base_sha256": "d53d8de74ee6c57209c202a9fc75d98dbb79c4737dbf1641e360bd02feed538e",
+    "candidate_sha256": "47fe40495420f18151f44b5e3e02176b73912aa7242bede9865c4ee06de085b8",
+    "candidate_bytes": 10135
+  },
+  {
+    "path": "src/show/arrangement.ts",
+    "base_sha256": "796db95d2edadf76644cfc73e1e42ab4d32301ee1ba35e93ba08167c2d927993",
+    "candidate_sha256": "6563dda9e2f9360f02bb927b92534ad842271c2d0bd5d2fc4f52f5d584e33eb3",
+    "candidate_bytes": 3295
+  },
+  {
+    "path": "src/scene/field.ts",
+    "base_sha256": "1ef80aacdfc2583cc14ab1d918da265f8ebfe8f16d7fac90d207d8053799aefa",
+    "candidate_sha256": "baf5b007df58b7ba41bdb35b4192fbe6bc7e68c74cb7fa1a69522ed27d2bb517",
+    "candidate_bytes": 20395
+  },
+  {
+    "path": "src/scene/field-adapter-snippets.mjs",
+    "base_sha256": "98e346f43c7fe71d81f1f0fd6b3871fe4a07a9570ecf9cdea2874220db07f097",
+    "candidate_sha256": "bb2b0eb9c39a0da3bb72c2b4cb62ff0f320a784ad4dbad6e2a61fb11e71c9c7b",
+    "candidate_bytes": 2472
+  },
+  {
+    "path": "src/scene/horizon.mjs",
+    "base_sha256": "ea5b80902d9d89d35a17c10759649c2947ea713de3ea6410a6e7e936ea6f7227",
+    "candidate_sha256": "2a7741d70d30964d88c6d3b6d302548128ef79b42bdfca7a5cd1ad344126d331",
+    "candidate_bytes": 1409
+  },
+  {
+    "path": "src/scene/post-surface.ts",
+    "base_sha256": "7d7c22c607426e96c476bc5d1ba1bed67a80edae4549716a0d2e45d618a4263e",
+    "candidate_sha256": "a8e242a907742c7fdf01ed3834619725cc94390a08d9e9724d983af04864ef9f",
+    "candidate_bytes": 1706
+  },
+  {
+    "path": "src/scene/world.ts",
+    "base_sha256": "732ff7e62175699817179f3e9c615a6e36330d2bf8bd95301aebc48c9aa28e23",
+    "candidate_sha256": "484c1982f580c83b3045d018a360b265ccf03ffc699790113f46fa2c2503e88a",
+    "candidate_bytes": 13075
+  },
+  {
+    "path": "tests/reference-camera.test.ts",
+    "base_sha256": "60838e89b87997568887ead2715440e4b79c69e1df253f392ead91104c410450",
+    "candidate_sha256": "8d5c7d5d82473f9931e67e1233821c184a27c61e6ef3dd68110727d3136c297a",
+    "candidate_bytes": 4259
+  },
+  {
+    "path": "tests/browser/flight-regression.spec.ts",
+    "base_sha256": "94d03911d339f8a4f033bb8a9c400cbf9385e7f3ef7f51f2e9a4f9570aa192ab",
+    "candidate_sha256": "d7b004c7fd7c929a213de21999b4ee1e1f7c72ce5526a248ed510823eb95a475",
+    "candidate_bytes": 6755
+  },
+  {
+    "path": "tests/wave-variation.test.ts",
+    "base_sha256": null,
+    "candidate_sha256": "54e5fcc75eed8d033b88d0e0d17310e74156f94e1d9db43264dc8597ff97686b",
+    "candidate_bytes": 4195
+  },
+  {
+    "path": "tools/audit-wave-formations.html",
+    "base_sha256": null,
+    "candidate_sha256": "26976639c931e4a8575dc7bb3ceae68ba1b359a9775df0527225630aa099f7ce",
+    "candidate_bytes": 6199
+  }
+]

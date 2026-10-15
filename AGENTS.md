@@ -1,3 +1,9 @@
+# Current black-sky and event-born wave continuation
+
+Read/apply $reference-led-design. Preserve the approved slow-entry lifecycle, exact MP3, base route/camera/turning, floor-only scene, genuine OFF banks, native controls and finite thank-you finish. Latest request authorizes only black sky (no atmospheric additive wash), birth-frozen circle/oval/ridge/chevron/cross/paired-ring waves on one bounded CPU/GPU triangle surface, crest-carried colour within existing palette families, and .45s M1 attack at the unchanged1.2x cap/.85s release. This scoped wave extension supersedes historical raw-kernel locks; no horizontal displacement, extra meshes/passes or scenery. Current authority is show/black-sky-wave-colour.as-built.json and evidence/black-sky-wave-colour. Historical records below retain their old scope.
+
+Normal verified source push through bumer-exe-publication is authorized; retain both Git roots/checkpoints. No force push, hosting/visibility change, Hermes/portfolio/profile/Pages modification or generated visual media. Deliver ONE complete rebuildable review ZIP with new actual-audio full-song desktop/portrait captures through settled thank you. Regenerate identities; never relabel preceding captures or software-renderer results as hardware/visual/listening approval.
+
 # Visual Music: slow entry and finite finish
 
 Read/apply $reference-led-design. Current source and show/slow-entry-finish.as-built.json are authoritative. Preserve exact MP3/raw wave timing, floor-only lights, sole route/audio owners, native pointer, slower comfort policy, shared terrain/fine fades, real silent loading, native Continue/chime, one Settings surface, owned glass, audio headroom and the destination-presented finite thank-you/confetti ending. The previous toolbar and perpetual ambient loop are retired, recoverable in history. No room, SAO, scene cursor/trail, physical/holographic scenery or generated visual media.

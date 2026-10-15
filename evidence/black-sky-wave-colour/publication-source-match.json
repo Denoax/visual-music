@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "source_files": 154,
+  "production_files": 15,
+  "runtime_identity_sha256": "edba2cbf7a2f965ae46089466c3258d4177fc4aaa21665745d9c1ea9fa245cfa",
+  "scope": "All sealed source/assets and every production byte equal canonical review and actual preview. Publication history remains separate.",
+  "source_file_sets_equal": true,
+  "production_file_sets_equal": true
+}

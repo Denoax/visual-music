@@ -259,7 +259,8 @@ export async function createWorld(canvas: HTMLCanvasElement) {
       cameraLens: camera.fov,
       cameraQuaternion: camera.quaternion.toArray(),
       heightBound: WAVE.heightBound * state.motion,
-      background: "black zenith; faint world-oriented low horizon",
+      background:
+        "black background at every elevation; discrete stars and LED halos only",
       horizon: {
         gain: arrangement.horizonGain,
         azimuth: arrangement.horizonAzimuth,

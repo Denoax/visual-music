@@ -70,5 +70,15 @@
     "ui_audio": "Original bounded harmonic synthesis through the sole existing AudioContext/master; music peak reservation via transport owner.",
     "landing_ball": "Authored DOM/CSS only, no scene cursor ball",
     "finish": "Presented tail, black fade, thank you, finite flat confetti; no ambient loop"
+  },
+  "black_sky_wave_colour": {
+    "new_binary_assets": false,
+    "runtime_wave_code": "core/wave-formations.mjs",
+    "source_record": "sources/black-sky-wave-colour-source-record.md",
+    "handoff": "sources/black-sky-wave-colour-handoff",
+    "authority": "show/black-sky-wave-colour.as-built.json",
+    "sky": "black; discrete emitters and depth-tested stars only",
+    "prior_lifecycle": "slow-entry-finish preserved",
+    "approval": "Candidate score until human continuous visual/listening review; measured executor evidence separately recorded."
   }
 }

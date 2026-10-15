@@ -23,12 +23,7 @@ export const emitterGLSL = `
    return exp(-d*d);
  }
  vec3 beautyHorizon(vec3 direction,float azimuth,float gain){
-   vec3 ray=normalize(direction);
-   float band=exp(-pow((ray.y-.018)/.055,2.));
-   float upper=1.-smoothstep(.10,.23,ray.y),lower=smoothstep(-.16,-.055,ray.y);
-   vec3 dir=vec3(sin(azimuth),0.,-cos(azimuth));
-   float lobe=pow(.5+.5*dot(ray,dir),4.);
-   return mix(vec3(.020,.033,.080),vec3(.055,.012,.035),lobe*.5)*band*upper*lower*clamp(gain,0.,1.);
+   return vec3(0.); // Retained signature; no coloured scattering or sky lift.
  }
 `;
 
@@ -60,25 +55,7 @@ export function fogTransmission(distance, density = 0.00135) {
 }
 // Establish gentle depth before the existing 520--600 m ownership fade.
 // This is an optical attenuation, not an emitter visibility gate.
-export function horizonRgb(direction, azimuth = 0, gain = 1) {
-  const length = Math.hypot(...direction);
-  if (!length) return [0, 0, 0];
-  const [x, y, z] = direction.map((q) => q / length);
-  const band = Math.exp(-Math.pow((y - 0.018) / 0.055, 2));
-  const upper = 1 - smooth3(0.1, 0.23, y);
-  const below = smooth3(-0.16, -0.055, y);
-  const lobe = Math.pow(
-    0.5 + 0.5 * (x * Math.sin(azimuth) - z * Math.cos(azimuth)),
-    4,
-  );
-  const cool = [0.02, 0.033, 0.08],
-    warm = [0.055, 0.012, 0.035];
-  return cool.map(
-    (v, i) =>
-      (v * (1 - lobe * 0.5) + warm[i] * lobe * 0.5) *
-      band *
-      upper *
-      below *
-      clamp01(gain),
-  );
+// The retired horizon API remains black for all callers.
+export function horizonRgb(_direction, _azimuth = 0, _gain = 1) {
+  return [0, 0, 0];
 }

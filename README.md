@@ -22,13 +22,15 @@ Raised waves, luminous grids and a continuous journey through *Around the World 
 
 ## The experience
 
-The page loads automatically and silently. After real recording/analysis/font/shader readiness, a small landing-page ball falls onto Play and “click to continue” fades in. One Continue action unlocks the existing audio context, plays a soft chime and starts the exact recording at sample zero after a 0.8s lead. Fly low over an endless LED floor while physical waves spread from fixed emitters. Local chunks trade light as the waves arrive: bulbs genuinely switch off, leaving dark space between coloured grids, chases and held palettes. Soft stars move through the same world.
+The page loads automatically and silently. After real recording/analysis/font/shader readiness, a small landing-page ball falls onto Play and “click to continue” fades in. One Continue action unlocks the existing audio context, plays a soft chime and starts the exact recording at sample zero after a 0.8s lead. Fly low over an endless LED floor while physical waves spread from fixed emitters. The sky stays black throughout. After the circular opening, event-born oval, ridge, chevron, crossed and paired-ring formations travel over the same terrain; quiet circular passages return between them. Crest phase moves colour within the existing cohesive palettes. Local chunks trade light as the waves arrive: bulbs genuinely switch off, leaving dark space between coloured grids, chases and held palettes. Soft stars move through the same world.
+
+The banner and gallery below show the approved preceding build. Current continuation captures and receipts are in [`evidence/black-sky-wave-colour`](evidence/black-sky-wave-colour).
 
 | Cool light | Warm light |
 |:---:|:---:|
 | <img src="showcase/github/floor-cool.webp" alt="Cyan raised LED terrain with dark unlit regions" width="100%"> | <img src="showcase/github/floor-warm.webp" alt="Amber and rose LED waves beneath depth-tested stars" width="100%"> |
 
-Steering changes the travelled path. Normal travel is 45% of the preceding route speed. Holding the scene gently eases toward 1.2× that speed over a 1.25s time constant; releasing settles over 0.85s. Camera height/lens and raw wave timing are unchanged. The floor carries the musical movement while the horizon stays stable.
+Steering changes the travelled path. Normal travel is 45% of the preceding route speed. Holding the scene gently eases toward 1.2× that speed over a 0.45s time constant; releasing settles over 0.85s. Camera height/lens and raw wave timing are unchanged. The floor carries the musical movement while the horizon stays stable.
 
 The complete recording plays once. Only after its destination-presented tail, the whole scene fades to black over 2.6s. A minimal thank-you page appears with a single restrained 36-piece/four-second confetti burst (omitted for reduced motion). The render loop then stops; there is no perpetual ambient scene or automatic replay.
 
@@ -38,10 +40,10 @@ The complete recording plays once. Only after its destination-presented tail, th
 <br>
 
 <p align="center">
-  <img src="showcase/github/portrait.webp" alt="The current scene in a 390 by 844 portrait browser viewport" width="42%">
+  <img src="showcase/github/portrait.webp" alt="The preceding approved scene in a 390 by 844 portrait browser viewport" width="42%">
 </p>
 
-The recorded portrait view uses browser-emulated touch and viewport geometry. Physical phone performance and touch review remain pending.
+This historical portrait gallery uses browser-emulated touch and viewport geometry. Physical phone performance and touch review remain pending.
 
 </details>
 
@@ -86,7 +88,7 @@ SHA-256: 47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0
 | Rendering | [`src/scene/world.ts`](src/scene/world.ts), [`src/scene/field.ts`](src/scene/field.ts) | Terrain, mounted bulbs, floor lighting, stars and depth |
 | Score | [`analysis`](analysis), [`show`](show) | Hash-bound measurements, events and current as-built records |
 | Provenance | [`assets`](assets), [`sources`](sources) | Notices, source studies and recoverable retired work |
-| Review | [`tools`](tools), [`evidence/slow-entry-finish`](evidence/slow-entry-finish) | Runtime checks, captures, audio comparisons and archive verification |
+| Review | [`tools`](tools), [`evidence/black-sky-wave-colour`](evidence/black-sky-wave-colour) | Runtime checks, captures, audio comparisons and archive verification |
 
 The current scene is dance-floor-only. Mountains, folded fins, floating actors, ribbons and beams have no live construction, update, reset or recovery paths, and no models ship in the production build. Their originals remain under [`sources/retired-stage-scenery-65787fd`](sources/retired-stage-scenery-65787fd) and the local recovery branch. The existing BUMER.EXE source paths and history remain intact. Historical modules and scores are retained records; [`show/CURRENT_AUTHORITY.md`](show/CURRENT_AUTHORITY.md) identifies the active implementation.
 
@@ -101,9 +103,9 @@ npm run test:browser
 
 Set `BUMER_CHROME` to an installed compatible Chromium executable for browser checks. The historical checkout and developer API names stay intact.
 
-The current slow-entry review has 138 passing core/TypeScript checks, targeted browser entry/settings/pause/recovery/finish checks, native short-screen hit testing at DPR 1–2 and emulated primary-touch cancellation. A stereo-master sample audit covers repeated button notes at the recording peak, mute and headroom. The exact MP3 and built preview are hash-bound to the recordings. Full-page desktop/portrait captures include the complete presented audio tail and finite thank-you finish.
+Current technical evidence and exact checks are listed in the [black-sky/wave-colour review](evidence/black-sky-wave-colour/REVIEW.md). It includes executable CPU/GPU shader comparisons, real OFF emission/spill checks, event-birth/triangle/route regressions, lifecycle/input checks and new full-page desktop/portrait captures with the actual stereo master through the settled thank-you finish. The current score is an authored candidate, not newly approved lyric/downbeat analysis.
 
-Native GPU context creation was resource-blocked; the current rendered evidence uses software WebGL. Its measured frame cadence is reported rather than treated as hardware performance. Continuous human visual/listening approval, physical-device touch and audiovisual alignment, native foreground performance and exact portfolio optical parity remain pending. See the [current review and limits](evidence/slow-entry-finish/REVIEW.md); historical validation documents describe earlier releases.
+The preceding review used slow software WebGL. This continuation has a separate native NVIDIA baseline/candidate foreground benchmark and records the actual backend for every new capture; no old performance or recording is relabelled. Human continuous visual/listening approval, physical devices and audiovisual alignment remain separate from those technical checks.
 
 ## Credits
 
@@ -116,9 +118,9 @@ Native GPU context creation was resource-blocked; the current rendered evidence 
 Retired asset credits remain preserved. No model-generated visual media are used. Apply `$reference-led-design` to visual continuations and preserve the current approval boundary. The source repository stays private. [Play the public GitHub Pages website](https://denoax.github.io/visual-music/); [deployment instructions](PAGES.md). The public deployment repository contains only the exact built website and credits.
 
 
-## Slow entry and finite finish review
+## Previous slow-entry and finite-finish review
 
-Current authority: [as-built record](show/slow-entry-finish.as-built.json) and
+Previous authority: [as-built record](show/slow-entry-finish.as-built.json) and
 [evidence/review scope](evidence/slow-entry-finish/REVIEW.md). The current review
 records complete desktop/portrait full-page journeys with their real stereo
 master, including the Continue chime, full recording, black fade and thank you.
@@ -129,3 +131,7 @@ The latest user request authorizes a source push only. The existing public
 Pages deployment is deliberately unchanged in this review. Human continuous
 visual/listening approval, physical devices/AV and hardware foreground
 performance remain separate from build, software-browser and digital-audio checks.
+
+## Black-sky and wave-colour continuation
+
+Current authority: [source-derived as-built](show/black-sky-wave-colour.as-built.json), [source record](sources/black-sky-wave-colour-source-record.md) and [executor evidence/limits](evidence/black-sky-wave-colour/REVIEW.md). Base flight/camera, exact audio, loading/glass/notes and finite finish are preserved. Only mouse1 attack changes from1.25s to.45s; its cap remains1.2x and release.85s. All geometry and lighting use the same event-birth formations; no scenery or generated assets are added. Gallery/banner footage remains historical. The public Pages deployment remains the preceding release; this is a source-only push.

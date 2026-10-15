@@ -34,7 +34,7 @@ test("Fast reversals and controls preserve the floor and native pointer without 
     );
     expect(d).not.toHaveProperty("cursor");
     expect(d.floor.depthTest).toBe(true);
-    expect(d.background).toContain("black zenith");
+    expect(d.background).toContain("black background at every elevation");
     expect(d.clearance).toBeGreaterThanOrEqual(3.19);
     expect(
       await page.locator("#world").evaluate((e) => getComputedStyle(e).cursor),
@@ -171,13 +171,21 @@ test("Regressing presentation estimates hold the interactive route rather than r
   await page.waitForTimeout(1200);
   await clickControl(page, "#pause");
   await expect
-    .poll(() =>
-      page.evaluate(() => {
-        const b = (window as any).__BUMER__;
-        return b.world.snapshot().last === b.transport.visualPosition();
-      }),
-    )
-    .toBe(true);
+    .poll(() => page.evaluate(() => (window as any).__BUMER__.transport.state))
+    .toBe("paused");
+  // The route is monotonic; device-output estimates can regress slightly at
+  // pause. Assert its frozen state instead of equating two different clocks.
+  await page.waitForTimeout(200);
+  const frozen = await page.evaluate(() =>
+    (window as any).__BUMER__.world.snapshot(),
+  );
+  await page.waitForTimeout(200);
+  const still = await page.evaluate(() =>
+    (window as any).__BUMER__.world.snapshot(),
+  );
+  expect(still.last).toBe(frozen.last);
+  expect(still.flight).toEqual(frozen.flight);
+  expect(still.floor).toEqual(frozen.floor);
   const result = await page.evaluate(() => {
     const b = (window as any).__BUMER__,
       before = b.world.snapshot();
@@ -198,7 +206,7 @@ test("Regressing presentation estimates hold the interactive route rather than r
   await page.evaluate(() => (window as any).__BUMER__.seek(0));
   expect(
     await page.evaluate(
-      () => (window as any).__BUMER__.world.snapshot().flight.pose.yaw,
+      () => (window as any).__BUMER__.world.diagnostics().flight.pose.yaw,
     ),
   ).toBe(-Math.PI / 6);
 });

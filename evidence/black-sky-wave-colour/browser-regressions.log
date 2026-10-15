@@ -1,0 +1,31 @@
+
+Running 2 tests using 1 worker
+
+  ✘  1 tests/browser/flight-regression.spec.ts:162:1 › Regressing presentation estimates hold the interactive route rather than resetting it (12.0s)
+  ✓  2 tests/browser/wave-colour.spec.ts:2:1 › Real M1 ramps gently sooner, releases, cancels capture and cannot latch through Settings (6.3s)
+
+
+  1) tests/browser/flight-regression.spec.ts:162:1 › Regressing presentation estimates hold the interactive route rather than resetting it 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "paused"
+    Received: "playing"
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      173 |   await expect
+      174 |     .poll(() => page.evaluate(() => (window as any).__BUMER__.transport.state))
+    > 175 |     .toBe("paused");
+          |      ^
+      176 |   // The route is monotonic; device-output estimates can regress slightly at
+      177 |   // pause. Assert its frozen state instead of equating two different clocks.
+      178 |   await page.waitForTimeout(200);
+        at /home/mani/Downloads/bumer-exe/tests/browser/flight-regression.spec.ts:175:6
+
+    Error Context: test-results/flight-regression-Regressi-e8b78-te-rather-than-resetting-it/error-context.md
+
+  1 failed
+    tests/browser/flight-regression.spec.ts:162:1 › Regressing presentation estimates hold the interactive route rather than resetting it 
+  1 passed (19.6s)

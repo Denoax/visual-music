@@ -59,3 +59,7 @@ evidence/github-publication/banner-work/
 # Preserve preliminary/current raw capture originals outside the curated source commit.
 evidence/slow-entry-finish/**/raw/
 evidence/slow-entry-finish/*-preliminary*/
+
+# Preserve current review media originals without adding duplicate streams to Git.
+evidence/black-sky-wave-colour/**/raw/
+evidence/black-sky-wave-colour/*-preliminary*/

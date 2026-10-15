@@ -99,7 +99,7 @@ uint rfHash(uint h){h=(h^(h>>16u))*0x7feb352du;h=(h^(h>>15u))*0x846ca68bu;return
 uint rfCellHash(ivec2 c,int seed){return rfHash(uint(c.x)^(uint(c.y)*0x9e3779b1u)^(uint(seed)*0x85ebca6bu));}
 float rfCellRandom(ivec2 c,int seed){return float(rfCellHash(c,seed))*(1./4294967296.);}
 uniform sampler2D uPalette;uniform vec3 uFlow;uniform vec4 uRecipe,uLighting,uChapter;
-uniform vec4 uLocalFronts[2],uPaint[8];uniform ivec2 uLocalIds;
+uniform vec4 uLocalFronts[2],uLocalForms[2],uPaint[8];uniform ivec2 uLocalIds;
 uniform vec4 uBorrow;uniform vec3 uMicro;
 uniform uint uDensityThreshold;uniform float uBrightness,uLow,uAccent,uReduced;
 vec2 lightingCoordinates(vec2 p){float c=cos(uFlow.x),s=sin(uFlow.x);return vec2(c*p.x+s*p.y,-s*p.x+c*p.y);}
@@ -118,8 +118,7 @@ float localSwap(vec2 p){
  for(int i=0;i<2;i++){
   vec4 f=uLocalFronts[i];float age=uTime-f.z;int id=i==0?uLocalIds.x:uLocalIds.y;
   if(age<=0.||age>=5.6||rfCellHash(c,id)>=1374389534u)continue;
-  float delta=abs(distance(center,f.xy)-34.*age);
-  float w=(1.-rfSmooth5((delta-1.1)/4.9))*rfSmooth5(age/.14)*(1.-rfSmooth5((age-4.2)/1.4));value=max(value,w);
+  float w=wfBand(center-f.xy,age,uLocalForms[i])*rfSmooth5(age/.14)*(1.-rfSmooth5((age-4.2)/1.4));value=max(value,w);
  }return value*mix(1.,.2,uReduced);
 }
 float paintAt(vec2 p){float v=0.;for(int i=0;i<8;i++){float age=uTime-uPaint[i].z;if(age>=0.&&age<3.){float radius=3.+age*3.2;float d=distance(p,uPaint[i].xy);float w=exp(-d*d/(radius*radius))*rfSmooth5(age/.045)*(1.-rfSmooth5((age-1.8)/1.2))*uPaint[i].w;v=max(v,w);}}return v;}
@@ -135,14 +134,29 @@ float borrowing(vec2 p){
  return uBorrow.w*step(distance(p,uBorrow.xy),16.)*(rfCellHash(id,71)%3u==0u?1.:0.);
 }
 float activationAt(vec2 p){float g=mix(recipeGate(p,uChapter.x),recipeGate(p,uRecipe.x),regionalMix(p));return g*(1.-borrowing(p));}
-vec3 familyAt(vec2 p,float family){vec2 uv=lightingCoordinates(p);float u=family>3.5?fract((uv.x+uv.y)/96.-uRecipe.y/8.):.5+.5*sin(uv.x*.026);return texture2D(uPalette,vec2((.5+u*127.)/128.,(family+.5)/5.)).rgb;}
-vec3 paletteAt(vec2 p){return mix(familyAt(p,uChapter.y),familyAt(p,uLighting.x),regionalMix(p));}
+float crestColourShift(vec2 p){
+ float shift=0.,best=0.;
+ for(int i=0;i<2;i++){vec4 f=uLocalFronts[i];float age=uTime-f.z;
+  if(age<=0.||age>=5.6)continue;
+  float life=rfSmooth5(age/.14)*(1.-rfSmooth5((age-4.2)/1.4))*(.4+.6*f.w);
+  float energy=wfPulse(p-f.xy,age,uLocalForms[i],18.)*life;
+  shift+=wfChroma(p-f.xy,age,uLocalForms[i])*life;best+=energy;
+ }
+ return (shift/max(1.,best))*(.32+.16*uLow+.10*uAccent)*mix(1.,.12,uReduced);
+}
+vec3 familyAt(vec2 p,float family,float shift){vec2 uv=lightingCoordinates(p);
+ float u=family>3.5?fract((uv.x+uv.y)/96.-uRecipe.y/8.+shift):clamp(.5+.5*sin(uv.x*.026)+shift,0.,1.);
+ return texture2D(uPalette,vec2((.5+u*127.)/128.,(family+.5)/5.)).rgb;}
+vec3 paletteAt(vec2 p){float shift=crestColourShift(p);return mix(familyAt(p,uChapter.y,shift),familyAt(p,uLighting.x,shift),regionalMix(p));}
 float idleGate(vec2 p){float base=chunkBase(ivec2(floor(p/6.)));float swap=rfSmooth5((sin(uVisualPhase.y*6.28318530718/12.)-.55)/.4);return base+(1.-2.*base)*swap;}
 FloorLight floorLight(vec2 p){
- float ring=0.;for(int i=0;i<${WAVE.capacity};i++){float a=uTime-uFronts[i].z;if(a>=0.&&a<${WAVE.lifetime}){float d=distance(p,uFronts[i].xy),q=(d-${WAVE.speed}.*a)/3.2;float life=smoothstep(0.,${WAVE.attack},a)*(1.-smoothstep(${WAVE.lifetime - WAVE.fade},${WAVE.lifetime},a))*(.4+.6*uFronts[i].w);ring=max(ring,exp(-.5*q*q)*life);}}
+ // A truly OFF song cell contributes nothing. Preserve the historical idle blend.
+ float gate=activationAt(p)*landscapeGate(p);
+ if(gate==0.&&uVisualPhase.x==0.){FloorLight off;off.activation=0.;off.emission=vec3(0.);off.spill=vec3(0.);return off;}
+ float ring=0.;for(int i=0;i<${WAVE.capacity};i++){float a=uTime-uFronts[i].z;if(a>=0.&&a<${WAVE.lifetime}){float life=smoothstep(0.,${WAVE.attack},a)*(1.-smoothstep(${WAVE.lifetime - WAVE.fade},${WAVE.lifetime},a))*(.4+.6*uFronts[i].w);ring=max(ring,wfPulse(p-uFronts[i].xy,a,uFrontForms[i],3.2)*life);}}
  ring*=mix(1.,.12,uReduced);
  float localAccent=(rfCellRandom(ivec2(floor(p/6.)),37)<.18?1.:0.)*max(ring,paintAt(p));
- float gate=activationAt(p)*landscapeGate(p);vec3 col=paletteAt(p);float gain=uBrightness;
+ vec3 col=paletteAt(p);float gain=uBrightness;
  float wave=.25+.035*uLow+.20*uAccent*localAccent+.48*ring+.16*paintAt(p);
  vec3 idleColour=mix(vec3(.11,.20,.30),vec3(.21,.12,.25),uVisualPhase.w);
  float resting=idleGate(p);

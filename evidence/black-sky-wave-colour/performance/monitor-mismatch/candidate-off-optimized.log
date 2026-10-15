@@ -1,0 +1,22 @@
+GL_PROBE {"available":true,"renderer":"ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL 4.5.0)","vendor":"Google Inc. (NVIDIA Corporation)","timerAvailable":true,"pointSizeRange":[1,2047]}
+SAMPLE candidate-off-optimized desktop 0 30 {"samples":246,"median":16.600000000000364,"p95":20.899999999999636,"max":37.5,"over50Ms":0} {"samples":92,"median":3.939328,"p95":4.642816,"max":5.367808,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 0 84 {"samples":243,"median":16.600000000002183,"p95":20.899999999997817,"max":33.400000000001455,"over50Ms":0} {"samples":89,"median":3.654656,"p95":4.368384,"max":5.132288,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 0 112 {"samples":248,"median":16.600000000002183,"p95":20.80000000000291,"max":37.39999999999782,"over50Ms":0} {"samples":91,"median":3.97824,"p95":5.14048,"max":6.042624,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 0 184 {"samples":257,"median":16.600000000002183,"p95":20.900000000001455,"max":33.400000000001455,"over50Ms":0} {"samples":95,"median":3.780608,"p95":4.733952,"max":5.50912,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 1 30 {"samples":258,"median":16.60000000000582,"p95":29.099999999998545,"max":33.30000000000291,"over50Ms":0} {"samples":98,"median":4.086784,"p95":5.095424,"max":5.277696,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 1 84 {"samples":256,"median":16.69999999999709,"p95":20.900000000001455,"max":41.60000000000582,"over50Ms":0} {"samples":93,"median":3.926016,"p95":4.927488,"max":6.233088,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 1 112 {"samples":251,"median":16.69999999999709,"p95":20.900000000001455,"max":33.400000000001455,"over50Ms":0} {"samples":93,"median":4.097024,"p95":5.023744,"max":5.879808,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 1 184 {"samples":256,"median":16.60000000000582,"p95":20.900000000001455,"max":41.700000000004366,"over50Ms":0} {"samples":94,"median":4.01408,"p95":5.238784,"max":5.875712,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 2 30 {"samples":256,"median":16.60000000000582,"p95":25,"max":33.30000000000291,"over50Ms":0} {"samples":96,"median":3.844096,"p95":4.790272,"max":5.30944,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 2 84 {"samples":257,"median":16.60000000000582,"p95":20.90000000000873,"max":33.30000000000291,"over50Ms":0} {"samples":94,"median":4.012032,"p95":4.774912,"max":5.80608,"over50Ms":0}
+SAMPLE candidate-off-optimized desktop 2 112 {"samples":255,"median":16.69999999999709,"p95":20.90000000000873,"max":33.30000000000291,"over50Ms":0} {"samples":92,"median":4.191232,"p95":4.979712,"max":5.808128,"over50Ms":0}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.waitForTimeout: Target page, context or browser has been closed
+    at /home/mani/Downloads/bumer-exe/tools/benchmark-wave-colour.mjs:79:20 {
+  log: []
+}
+
+Node.js v22.23.2

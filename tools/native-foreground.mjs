@@ -10,7 +10,7 @@ export async function focusOwnedPreview(page){
  const clients=JSON.parse(execFileSync('hyprctl',['clients','-j'],{encoding:'utf8'}));
  const owned=[];
  for(const c of clients){
-  if(!c.title?.includes('BUMER.EXE')||!c.mapped||c.hidden)continue;
+  if(!(c.title?.includes('BUMER.EXE')||c.title?.includes('Visual Music'))||!c.mapped||c.hidden)continue;
   const command=await readFile(`/proc/${c.pid}/cmdline`,'utf8');
   if(command.includes('/tmp/playwright_chromiumdev_profile-')&&command.includes('chrome'))owned.push(c);
  }

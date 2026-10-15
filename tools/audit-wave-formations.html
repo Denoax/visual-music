@@ -1,0 +1,315 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Wave formation shader audit</title>
+<link rel="icon" href="data:," />
+<h1>Wave formation shader audit</h1>
+<pre id="result">Running CPU / WebGL2 checks…</pre>
+<script type="module">
+  // Development-only executable check. Open through Vite, not file:// or dist.
+  // No assets leave this page. It compiles the actual runtime shader strings.
+  import { heightGLSL, rawHeight } from "/src/show/waves.ts";
+  import { floorLightGLSL, paletteLut } from "/src/show/floor.ts";
+  import { emitterGLSL } from "/core/beauty.mjs";
+  import {
+    FORMATIONS,
+    formationFor,
+    formationBand,
+    crestChroma,
+  } from "/core/wave-formations.mjs";
+  import { chunkAt, hash32, smooth5 } from "/core/chunk-wave-exchange.mjs";
+  const result = document.querySelector("#result");
+  try {
+    const gl = document.createElement("canvas").getContext("webgl2");
+    if (!gl) throw Error("WebGL2 unavailable");
+    const program = gl.createProgram();
+    const compile = (type, source) => {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
+        throw Error(gl.getShaderInfoLog(shader));
+      gl.attachShader(program, shader);
+    };
+    compile(
+      gl.VERTEX_SHADER,
+      `#version 300 es
+precision highp float;precision highp int;
+#define texture2D texture
+${heightGLSL}${floorLightGLSL}${emitterGLSL}
+uniform vec2 probe;out vec4 a,b,c;
+void main(){
+ FloorLight f=floorLight(probe);
+ a=vec4(heightAt(probe),wfBand(probe-uLocalFronts[0].xy,uTime-uLocalFronts[0].z,uLocalForms[0]),wfChroma(probe-uLocalFronts[0].xy,uTime-uLocalFronts[0].z,uLocalForms[0]),f.activation);
+ b=vec4(f.emission,length(beautyHorizon(vec3(probe.x,.02,probe.y),uTime,1.)));
+ c=vec4(f.spill,0.);
+ gl_Position=vec4(0.,0.,0.,1.);
+}`,
+    );
+    compile(
+      gl.FRAGMENT_SHADER,
+      "#version 300 es\nprecision highp float;out vec4 c;void main(){c=vec4(0.);}",
+    );
+    gl.transformFeedbackVaryings(
+      program,
+      ["a", "b", "c"],
+      gl.INTERLEAVED_ATTRIBS,
+    );
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS))
+      throw Error(gl.getProgramInfoLog(program));
+    gl.useProgram(program);
+    const loc = (name) => gl.getUniformLocation(program, name),
+      f1 = (name, value) => gl.uniform1f(loc(name), value),
+      f4 = (name, ...values) => gl.uniform4f(loc(name), ...values);
+    const lut = paletteLut();
+    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.RGBA,
+      lut.width,
+      lut.height,
+      0,
+      gl.RGBA,
+      gl.UNSIGNED_BYTE,
+      lut.bytes,
+    );
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    f1("uBase", 0.7);
+    f1("uRing", 5);
+    f1("uMotion", 1);
+    f1("uBrightness", 1);
+    f1("uLow", 0.7);
+    f1("uAccent", 0.4);
+    f1("uReduced", 0);
+    f4("uLighting", 1, 1, 1, 0.5);
+    gl.uniform3f(loc("uFlow"), 0.5, 0, 0);
+    gl.bindVertexArray(gl.createVertexArray());
+    gl.bindTransformFeedback(
+      gl.TRANSFORM_FEEDBACK,
+      gl.createTransformFeedback(),
+    );
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.TRANSFORM_FEEDBACK_BUFFER, buffer);
+    gl.bufferData(gl.TRANSFORM_FEEDBACK_BUFFER, 48, gl.STREAM_READ);
+    gl.bindBufferBase(gl.TRANSFORM_FEEDBACK_BUFFER, 0, buffer);
+
+    const empty = {
+      x: 0,
+      z: 0,
+      time: -1000,
+      strength: 0,
+      id: -1,
+      form: [0, 1, 0, 0],
+    };
+    const eventAt = (birth, id = 13, dx = 0, dz = 0, strength = 1) => ({
+      x: -192 + dx,
+      z: -5001 + dz,
+      time: Math.fround(birth),
+      id,
+      strength,
+      // Select the immutable profile from original birth, then match upload precision.
+      form: formationFor(birth).map(Math.fround),
+    });
+    function upload(fronts, seconds) {
+      const records = new Float32Array(64),
+        forms = new Float32Array(64);
+      for (let i = 0; i < 16; i++) {
+        const front = fronts[i] ?? empty;
+        records.set([front.x, front.z, front.time, front.strength], i * 4);
+        forms.set(front.form, i * 4);
+      }
+      gl.uniform4fv(loc("uFronts[0]"), records);
+      gl.uniform4fv(loc("uFrontForms[0]"), forms);
+      gl.uniform4fv(loc("uLocalFronts[0]"), records.subarray(0, 8));
+      gl.uniform4fv(loc("uLocalForms[0]"), forms.subarray(0, 8));
+      gl.uniform2iv(
+        loc("uLocalIds"),
+        new Int32Array([fronts[0]?.id ?? -1, fronts[1]?.id ?? -1]),
+      );
+      f1("uTime", seconds);
+      f4("uChapter", 1, 1, seconds - 10, seconds + 10);
+      f4("uRecipe", 1, seconds * 0.18, 2, 0);
+    }
+    let count = 0,
+      off = 0,
+      on = 0,
+      heightError = 0,
+      bandError = 0,
+      chromaError = 0,
+      gateError = 0,
+      offEmission = 0,
+      offSpill = 0,
+      skyMax = 0,
+      colourChanges = 0;
+    const previousColours = new Map(),
+      cases = [];
+    function checkCase(name, fronts, seconds, colourKey = name) {
+      upload(fronts, seconds);
+      const first = fronts[0] ?? empty;
+      const realAge = Math.fround(seconds - first.time);
+      let caseCount = 0;
+      const points = [];
+      for (let dx = -120; dx <= 120; dx += 12)
+        for (let dz = -120; dz <= 120; dz += 12) points.push([dx, dz]);
+      // Follow the later lifetime crests beyond the original +/-120m square.
+      if (fronts.length)
+        for (let i = 0; i < 8; i++)
+          for (const offset of [-6, 0, 6]) {
+            const angle = (i * Math.PI) / 4,
+              radius = 34 * realAge + offset;
+            points.push([
+              Math.round((radius * Math.cos(angle)) / 3) * 3,
+              Math.round((radius * Math.sin(angle)) / 3) * 3,
+            ]);
+          }
+      for (const [dx, dz] of points) {
+        const x = -192 + dx,
+          z = -5001 + dz;
+        gl.uniform2f(loc("probe"), x, z);
+        const values = new Float32Array(12);
+        gl.enable(gl.RASTERIZER_DISCARD);
+        gl.beginTransformFeedback(gl.POINTS);
+        gl.drawArrays(gl.POINTS, 0, 1);
+        gl.endTransformFeedback();
+        gl.disable(gl.RASTERIZER_DISCARD);
+        gl.getBufferSubData(gl.TRANSFORM_FEEDBACK_BUFFER, 0, values);
+        const height = rawHeight(x, z, {
+          seconds,
+          base: 0.7,
+          ring: 5,
+          motion: 1,
+          fronts,
+        });
+        heightError = Math.max(heightError, Math.abs(height - values[0]));
+        bandError = Math.max(
+          bandError,
+          Math.abs(
+            formationBand(x - first.x, z - first.z, realAge, first.form) -
+              values[1],
+          ),
+        );
+        chromaError = Math.max(
+          chromaError,
+          Math.abs(
+            crestChroma(x - first.x, z - first.z, realAge, first.form) -
+              values[2],
+          ),
+        );
+        const chunk = chunkAt(x, z);
+        let swap = 0;
+        for (const front of fronts) {
+          const age = Math.fround(seconds - front.time);
+          // Match the Float32 uniforms, subtraction and GLSL lifetime literal.
+          if (age <= 0 || age >= Math.fround(5.6)) continue;
+          if (hash32(chunk.cx, chunk.cz, front.id) >= 1374389534) continue;
+          const spatial = formationBand(
+            chunk.centerX - front.x,
+            chunk.centerZ - front.z,
+            age,
+            front.form,
+          );
+          const life = smooth5(age / 0.14) * (1 - smooth5((age - 4.2) / 1.4));
+          swap = Math.max(swap, spatial * life);
+        }
+        const gate = chunk.base + (1 - 2 * chunk.base) * swap;
+        gateError = Math.max(gateError, Math.abs(gate - values[3]));
+        if (gate === 0) {
+          off++;
+          offEmission = Math.max(
+            offEmission,
+            ...values.slice(4, 7).map(Math.abs),
+          );
+          offSpill = Math.max(offSpill, ...values.slice(8, 11).map(Math.abs));
+        } else on++;
+        skyMax = Math.max(skyMax, values[7]);
+        const rgb = [...values.slice(4, 7)],
+          energy = rgb.reduce((a, b) => a + b, 0);
+        const key = `${colourKey}:${dx}:${dz}`;
+        if (gate > 0.1 && energy > 0.001) {
+          const ratios = rgb.map((value) => value / energy),
+            old = previousColours.get(key);
+          if (
+            old &&
+            ratios.some((value, i) => Math.abs(value - old[i]) > 0.002)
+          )
+            colourChanges++;
+          previousColours.set(key, ratios);
+        }
+        count++;
+        caseCount++;
+      }
+      cases.push({
+        name,
+        seconds,
+        realAges: fronts.map((front) => Math.fround(seconds - front.time)),
+        probes: caseCount,
+      });
+    }
+    const ages = [0, 0.07, 0.14, 0.6, 1.1, 2, 4.2, 5.59, 5.6];
+    for (const section of FORMATIONS) {
+      const birth = section.start + 0.2,
+        event = eventAt(birth);
+      for (const age of ages)
+        checkCase(
+          `${section.start}:${section.name}:${age}`,
+          [event],
+          Math.fround(birth + age),
+          `${section.start}:${section.name}`,
+        );
+    }
+    // Exercise simultaneous profiles across a chapter boundary, then clear both
+    // occupied upload slots. Reset cases must not retain a previous form/front.
+    const overlap = [eventAt(93.2), eventAt(94.2, 19, 18, -12, 0.65)];
+    checkCase("overlapping-chevron-and-crossed", overlap, Math.fround(96.2));
+    checkCase("reset-to-one-driver", [overlap[1]], Math.fround(96.2));
+    checkCase("reset-to-no-drivers", [], Math.fround(96.2));
+
+    if (gl.getError() !== 0) throw Error("WebGL error");
+    const passed =
+      heightError < 0.003 &&
+      bandError < 0.0001 &&
+      chromaError < 0.0001 &&
+      gateError < 0.0001 &&
+      offEmission === 0 &&
+      offSpill === 0 &&
+      skyMax === 0 &&
+      off > 0 &&
+      colourChanges > 0;
+    const debugRenderer = gl.getExtension("WEBGL_debug_renderer_info");
+    const report = {
+      status: passed ? "passed" : "failed",
+      count,
+      profiles: FORMATIONS.length,
+      requestedAges: ages,
+      cases,
+      heightError,
+      bandError,
+      chromaError,
+      gateError,
+      off,
+      on,
+      offEmission,
+      offSpill,
+      skyMax,
+      colourChanges,
+      renderer: gl.getParameter(
+        debugRenderer ? debugRenderer.UNMASKED_RENDERER_WEBGL : gl.RENDERER,
+      ),
+      scope:
+        "Shader arithmetic, all event-birth profiles, attack/fade/lifetime edges, overlapping/reset drivers and exact OFF emission/spill/background only; no listening, motion, hardware performance or AV approval.",
+    };
+    result.textContent = JSON.stringify(report, null, 2);
+    document.title = `Wave shader audit: ${report.status}`;
+  } catch (error) {
+    result.textContent = JSON.stringify(
+      { status: "failed", error: String(error) },
+      null,
+      2,
+    );
+    document.title = "Wave shader audit: failed";
+  }
+</script>

@@ -1,0 +1,380 @@
+import * as THREE from "three";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+import { openingLayers } from "../../core/opening-layers.mjs";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { createHorizon } from "./horizon.mjs";
+import { createField } from "./field";
+import { createGpuTimer } from "./gpu-timer";
+import { waveState, WAVE } from "../show/waves";
+import type { Features } from "../show/track";
+import { createArrangement } from "../show/arrangement";
+import { currentTerrain } from "./terrain";
+import referenceScore from "../../show/reference-camera-score.json";
+import { createFlight } from "./flight";
+import { createStars } from "./stars";
+import { StarPass } from "./star-pass";
+import { createPaint } from "../show/paint";
+import { createStartGlass } from "./start-glass";
+import { SoftnessPass } from "./softness";
+import type { GlideState } from "../input";
+
+export async function createWorld(canvas: HTMLCanvasElement) {
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    // The linear composer target already supplies 4x MSAA.
+    antialias: false,
+    powerPreference: "high-performance",
+  });
+  renderer.debug.onShaderError = (gl, program, vertex, fragment) => {
+    throw Error(
+      `Scene shader compilation failed: ${gl.getProgramInfoLog(program)}\nVertex: ${gl.getShaderInfoLog(vertex)}\nFragment: ${gl.getShaderInfoLog(fragment)}`,
+    );
+  };
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.NoToneMapping;
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0);
+  const camera = new THREE.PerspectiveCamera(25, 1, 0.4125, 660);
+  const field = createField(renderer.getContext());
+  const horizon = createHorizon();
+  scene.add(horizon.mesh, field.group);
+  const stars = createStars(renderer.getContext()),
+    paint = createPaint(),
+    flight = createFlight(
+      new URLSearchParams(location.search).get("dev") === "1" &&
+        new URLSearchParams(location.search).get("referenceCamera") === "1"
+        ? referenceScore.cues
+        : undefined,
+      new URLSearchParams(location.search).get("referenceCamera") === "1",
+    ),
+    arrange = createArrangement();
+  // The floor keeps its own phrase/ripple lighting; no aerial actor borrows it.
+  const floorBorrow = new THREE.Vector4(0, 0, 0, 0);
+  let arrangement = arrange(0, null, false);
+  const target = new THREE.WebGLRenderTarget(1, 1, {
+    type: THREE.HalfFloatType,
+    samples: 4,
+  });
+  const composer = new EffectComposer(renderer, target);
+  composer.addPass(new RenderPass(scene, camera));
+  composer.addPass(new SoftnessPass());
+  const air = new THREE.Group();
+  air.add(stars.group);
+  const airPass = new StarPass(camera, field.depthMesh, air);
+  composer.addPass(airPass);
+  const fade = new ShaderPass({
+    uniforms: { tDiffuse: { value: null }, gain: { value: 1 } },
+    vertexShader:
+      "varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}",
+    fragmentShader:
+      "uniform sampler2D tDiffuse;uniform float gain;varying vec2 vUv;void main(){gl_FragColor=vec4(texture2D(tDiffuse,vUv).rgb*gain,1.);}",
+  });
+  composer.addPass(fade);
+  composer.addPass(new OutputPass());
+  const startGlass = createStartGlass(renderer);
+  const timer = createGpuTimer(
+    renderer.getContext(),
+    new URLSearchParams(location.search).get("dev") === "1",
+  );
+  const loss = renderer.getContext().getExtension("WEBGL_lose_context");
+  let prewarming = false;
+  let warmPrograms = 0;
+  let layers = openingLayers(0, 4);
+  let last = 0,
+    x = 0,
+    z = 0,
+    y = 4,
+    initialised = false,
+    wasReduced = false;
+  let state = waveState(0, null, false),
+    clear = 4;
+  function resize() {
+    const width = canvas.clientWidth,
+      height = canvas.clientHeight,
+      dpr = Math.min(devicePixelRatio, innerWidth < 700 ? 1.5 : 1.75);
+    renderer.setPixelRatio(dpr);
+    renderer.setSize(width, height, false);
+    composer.setPixelRatio(dpr);
+    composer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.fov = flight.pose().vfov;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  function reset(seconds = 0) {
+    last = seconds;
+    flight.reset(seconds);
+    paint.reset();
+    const pose = flight.pose();
+    x = pose.x;
+    z = pose.z;
+    initialised = false;
+    wasReduced = false;
+  }
+  function render(
+    seconds: number,
+    input: { x: number } & Partial<GlideState>,
+    reduced: boolean,
+    features: Features | null,
+    _playing = false,
+    endAge: number | null = null,
+    brightness = 1,
+  ) {
+    // Output-timestamp estimates can briefly regress while the device warms.
+    // Hold the last presentation sample; only explicit reset/seek owns route reset.
+    seconds = Math.max(last, seconds);
+    last = seconds;
+    flight.advance(
+      seconds,
+      {
+        turn: input.turn ?? input.x,
+        tilt: input.tilt ?? input.y ?? 0,
+        held: input.held,
+      },
+      reduced,
+    );
+    const pose = flight.pose();
+    x = pose.x;
+    z = pose.z;
+    wasReduced = reduced;
+    state = waveState(seconds, features, reduced, flight.origins());
+    arrangement = arrange(seconds, features, reduced, endAge, brightness);
+    y = pose.y;
+    initialised = true;
+    camera.fov = pose.vfov;
+    camera.updateProjectionMatrix();
+    camera.position.set(x, y, z);
+    const b = pose.basis;
+    camera.quaternion.setFromRotationMatrix(
+      new THREE.Matrix4().makeBasis(
+        new THREE.Vector3(...b.right),
+        new THREE.Vector3(...b.up),
+        new THREE.Vector3(...b.back),
+      ),
+    );
+    horizon.update(camera, {
+      gain: arrangement.horizonGain,
+      azimuth: arrangement.horizonAzimuth,
+    });
+    const actualTerrain = currentTerrain(state, undefined, arrangement.visual);
+    layers = openingLayers(seconds, y, {
+      heightBound: WAVE.heightBound,
+      fixture: 0.28,
+      reduced,
+    });
+    field.setGroundVisible(layers.depthAllowed, layers.surfaceGain);
+    clear = camera.position.y - actualTerrain.height(x, z);
+    camera.updateMatrixWorld();
+    const route = new THREE.Vector3(x, y, z);
+    field.update(
+      state,
+      camera,
+      canvas.clientHeight,
+      renderer.getPixelRatio(),
+      arrangement,
+      {
+        borrow: floorBorrow,
+        paint: paint.at(seconds, flight.origins()),
+        micro: arrangement.micro,
+      },
+    );
+    stars.update(
+      arrangement,
+      camera,
+      route,
+      canvas.clientHeight,
+      renderer.getPixelRatio(),
+    );
+    renderer.info.autoReset = false;
+    renderer.info.reset();
+    timer.begin();
+    fade.uniforms.gain.value = arrangement.finish.worldGain;
+    // At sample zero every scored scene layer is exactly black. Keep loading
+    // and its native UI responsive without repeatedly evaluating invisible
+    // terrain. Real variants were already warmed offscreen below.
+    if (!prewarming && seconds === 0 && !_playing && endAge === null) {
+      renderer.setRenderTarget(null);
+      renderer.setClearColor(0, 1);
+      renderer.clear();
+    } else composer.render();
+    if (!prewarming && endAge === null) startGlass.draw();
+    timer.end();
+  }
+  // Warm the actual hidden terrain/caps/fine variants and compositor in this
+  // renderer's offscreen chain; none of the warm-up route reaches the visitor.
+  const originalScreen = composer.renderToScreen;
+  prewarming = true;
+  composer.renderToScreen = false;
+  renderer.setSize(4, 4, false);
+  composer.setSize(4, 4);
+  try {
+    render(14, { x: 0 }, false, null);
+    await renderer.compileAsync(scene, camera);
+    await airPass.prewarm(renderer);
+    await startGlass.prewarm();
+    warmPrograms = renderer.info.programs?.length ?? 0;
+  } finally {
+    prewarming = false;
+    composer.renderToScreen = originalScreen;
+    reset();
+    resize();
+  }
+  render(0, { x: 0 }, false, null);
+  function diagnostics() {
+    const gl = renderer.getContext(),
+      ext = gl.getExtension("WEBGL_debug_renderer_info");
+    return {
+      startGlass: startGlass.diagnostics(),
+      openingLayers: layers,
+      prewarm: {
+        programs: warmPrograms,
+        currentPrograms: renderer.info.programs?.length ?? 0,
+        offscreen: true,
+      },
+      finish: arrangement.finish,
+      renderer: ext
+        ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)
+        : gl.getParameter(gl.RENDERER),
+      dpr: renderer.getPixelRatio(),
+      size: [canvas.width, canvas.height],
+      points: field.pointCount,
+      drawCalls: renderer.info.render.calls,
+      triangles: renderer.info.render.triangles,
+      activeFronts: state.fronts.length,
+      section: state.section,
+      colourMode: state.colourMode,
+      coverage: state.coverage,
+      palette: state.paletteB,
+      hold: state.hold,
+      camera: camera.position.toArray(),
+      clearance: clear,
+      terrainHeight: currentTerrain(
+        state,
+        undefined,
+        arrangement.visual,
+      ).height(x, z),
+      groundVisible: field.groundVisible(),
+      cameraLens: camera.fov,
+      cameraQuaternion: camera.quaternion.toArray(),
+      heightBound: WAVE.heightBound * state.motion,
+      background: "black background at every elevation; discrete stars and LED halos only",
+      horizon: {
+        gain: arrangement.horizonGain,
+        azimuth: arrangement.horizonAzimuth,
+      },
+      drawingBuffer: [gl.drawingBufferWidth, gl.drawingBufferHeight],
+      mode:
+        arrangement.visual.phase === "song"
+          ? arrangement.mode
+          : arrangement.visual.phase,
+      visual: arrangement.visual,
+      floor: field.diagnostics(),
+      floorDimming: {
+        borrow: field.uniforms.uBorrow.value.toArray(),
+        structureParameters: field.uniforms.uStructureParams.value.map((p) =>
+          p.toArray(),
+        ),
+      },
+      overview: arrangement.overview,
+      gpuTimerAvailable: timer.available,
+      reducedOrigin: wasReduced ? "stationary route; fixed origins" : null,
+      heading: flight.pose().yaw,
+      pitch: flight.pose().pitch,
+      flight: flight.diagnostics(),
+      reveal: arrangement.reveal,
+      cameraStable:
+        "No beat/terrain shake. Authored source score plus deliberate input banking only",
+      grid: {
+        board: arrangement.board,
+        activationKind: arrangement.lighting.kind,
+        rest: arrangement.gridRest,
+      },
+      stars: stars.diagnostics(),
+      pulseStatus: arrangement.pulseStatus,
+    };
+  }
+  return {
+    render,
+    startVisible: startGlass.visible,
+    resize,
+    reset,
+    snapshot: () => ({
+      last,
+      x,
+      z,
+      y,
+      initialised,
+      wasReduced,
+      flight: flight.snapshot(),
+      floor: { ...arrangement.lighting },
+      stars: stars.snapshot(),
+      paint: paint.snapshot(),
+    }),
+    restore: (saved: {
+      last: number;
+      x: number;
+      z: number;
+      y: number;
+      initialised: boolean;
+      wasReduced: boolean;
+      flight: ReturnType<typeof flight.snapshot>;
+      floor: typeof arrangement.lighting;
+      stars: ReturnType<typeof stars.snapshot>;
+      paint: ReturnType<typeof paint.snapshot>;
+    }) => {
+      ({ last, x, z, y, initialised, wasReduced } = saved);
+      flight.restore(saved.flight);
+      paint.restore(saved.paint);
+    },
+    diagnostics,
+    gpuSamples: timer.samples,
+    height: (px: number, pz: number) =>
+      currentTerrain(state, undefined, arrangement.visual).vertex(px, pz),
+    state: () => state,
+    audit: () => ({
+      floor: field.audit(),
+      stars: stars.audit(),
+      flight: flight.snapshot(),
+      camera: {
+        aspect: camera.aspect,
+        projection: camera.projectionMatrix.elements,
+        inverse: camera.matrixWorldInverse.elements,
+      },
+      viewport: renderer.getViewport(new THREE.Vector4()).toArray(),
+      targets: [
+        composer.renderTarget1.width,
+        composer.renderTarget1.height,
+        composer.renderTarget1.viewport.toArray(),
+        composer.renderTarget2.viewport.toArray(),
+      ],
+      glViewport: Array.from(
+        renderer.getContext().getParameter(renderer.getContext().VIEWPORT),
+      ),
+      rect: canvas.getBoundingClientRect().toJSON(),
+      lights: {
+        passage: field.uniforms.uPassage.value.toArray(),
+        offset: field.uniforms.uOffset.value.toArray(),
+        motion: field.uniforms.uMotion.value,
+        borrow: field.uniforms.uBorrow.value.toArray(),
+        structureParameters: field.uniforms.uStructureParams.value.map((p) =>
+          p.toArray(),
+        ),
+      },
+    }),
+    restoreContext: () => loss?.restoreContext(),
+    loseContext: () => loss?.loseContext(),
+    dispose() {
+      timer.dispose();
+      startGlass.dispose();
+      field.dispose();
+      horizon.dispose();
+      stars.dispose();
+      for (const pass of composer.passes) pass.dispose();
+      composer.dispose();
+      target.dispose();
+      renderer.dispose();
+    },
+  };
+}

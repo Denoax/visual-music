@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "scope": "Fresh copy of verified archive source; patch syntax checked and17 candidate file hashes verified. Existing exact dependency installation linked; not a fresh package download.",
+  "source_archive_sha256": "3b7e155fab8717709f9e0623bce44669fb84a37537a9273d5f191dcdbb019f30",
+  "gpu_shader_execution": "not run",
+  "continuous_visual_review": "not run",
+  "github_push": "not performed"
+}

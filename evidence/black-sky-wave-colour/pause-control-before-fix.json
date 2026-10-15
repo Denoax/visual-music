@@ -1,0 +1,491 @@
+{
+  "scope": "Unchanged baseline/candidate paused driver versus device-output estimate; no runtime clock modification",
+  "rows": [
+    {
+      "port": 4176,
+      "immediate": {
+        "events": [
+          {
+            "type": "keydown",
+            "key": "Enter",
+            "id": "settings-button",
+            "settings": false
+          },
+          {
+            "type": "click",
+            "id": "settings-button",
+            "settings": false
+          },
+          {
+            "type": "keydown",
+            "key": "Enter",
+            "id": "",
+            "settings": true
+          },
+          {
+            "type": "click",
+            "id": "",
+            "settings": true
+          }
+        ],
+        "open": true,
+        "focused": "",
+        "state": "playing",
+        "worldLast": 1.287272999999976,
+        "outputPosition": 1.2935076666666436,
+        "route": {
+          "pose": {
+            "position": [
+              0,
+              -13.920372899667843,
+              0
+            ],
+            "vfov": 25,
+            "basis": {
+              "right": [
+                0.8660254037844387,
+                0,
+                -0.49999999999999994
+              ],
+              "up": [
+                0.0524970804266396,
+                0.9944728383353242,
+                0.09092761054796944
+              ],
+              "back": [
+                0.49723641916766204,
+                -0.10499416085327921,
+                0.861238741372006
+              ]
+            },
+            "yaw": -0.5235987755982988,
+            "pitchX": 0.1051880294385653,
+            "bank": 0,
+            "referenceSpeed": 0,
+            "sceneSpeed": 0,
+            "turbo": 1,
+            "x": 0,
+            "z": 0,
+            "y": -13.920372899667843,
+            "pitch": 0.1051880294385653,
+            "roll": 0
+          },
+          "state": {
+            "seconds": 1.2833333333333334,
+            "x": 0,
+            "z": 0,
+            "angle": 0.5235987755982988,
+            "roll": 0,
+            "pitchX": 0.10499199691994635,
+            "turbo": 1,
+            "speed": 0,
+            "altitude": -33.78376576876998,
+            "vfov": 25,
+            "tilt": -7.881077838378597
+          },
+          "tick": 308,
+          "seconds": 1.287272999999976,
+          "reduced": false,
+          "input": {
+            "x": 0,
+            "y": 0,
+            "held": false
+          },
+          "nextEvent": 1,
+          "origins": [
+            {
+              "id": 0,
+              "time": 1.16,
+              "strength": 0.958546,
+              "x": -69,
+              "z": -69
+            }
+          ],
+          "history": [
+            {
+              "seconds": 0.010193666666631573,
+              "input": {
+                "x": 0.5277777777777777,
+                "y": 0.22222222222222232,
+                "held": false
+              },
+              "reduced": false
+            },
+            {
+              "seconds": 1.2368076666666776,
+              "input": {
+                "x": 0,
+                "y": 0,
+                "held": false
+              },
+              "reduced": false
+            }
+          ]
+        }
+      },
+      "later": {
+        "events": [
+          {
+            "type": "keydown",
+            "key": "Enter",
+            "id": "settings-button",
+            "settings": false
+          },
+          {
+            "type": "click",
+            "id": "settings-button",
+            "settings": false
+          },
+          {
+            "type": "keydown",
+            "key": "Enter",
+            "id": "",
+            "settings": true
+          },
+          {
+            "type": "click",
+            "id": "",
+            "settings": true
+          }
+        ],
+        "open": false,
+        "focused": "settings-button",
+        "state": "playing",
+        "worldLast": 1.788348333333345,
+        "outputPosition": 1.800294000000012,
+        "route": {
+          "pose": {
+            "position": [
+              0,
+              -11.619498185343687,
+              0
+            ],
+            "vfov": 25,
+            "basis": {
+              "right": [
+                0.8660254037844387,
+                0,
+                -0.49999999999999994
+              ],
+              "up": [
+                0.0585605749607629,
+                0.9931176346440835,
+                0.10142989115248717
+              ],
+              "back": [
+                0.4965588173220417,
+                -0.11712114992152581,
+                0.8600651005480892
+              ]
+            },
+            "yaw": -0.5235987755982988,
+            "pitchX": 0.1173905819811517,
+            "bank": 0,
+            "referenceSpeed": 0,
+            "sceneSpeed": 0,
+            "turbo": 1,
+            "x": 0,
+            "z": 0,
+            "y": -11.619498185343687,
+            "pitch": 0.1173905819811517,
+            "roll": 0
+          },
+          "state": {
+            "seconds": 1.7875,
+            "x": 0,
+            "z": 0,
+            "angle": 0.5235987755982988,
+            "roll": 0,
+            "pitchX": 0.11738729190894147,
+            "turbo": 1,
+            "speed": 0,
+            "altitude": -28.17923811028982,
+            "vfov": 25,
+            "tilt": -6.872262859852167
+          },
+          "tick": 429,
+          "seconds": 1.788348333333345,
+          "reduced": false,
+          "input": {
+            "x": 0,
+            "y": 0,
+            "held": false
+          },
+          "nextEvent": 1,
+          "origins": [
+            {
+              "id": 0,
+              "time": 1.16,
+              "strength": 0.958546,
+              "x": -69,
+              "z": -69
+            }
+          ],
+          "history": [
+            {
+              "seconds": 0.010193666666631573,
+              "input": {
+                "x": 0.5277777777777777,
+                "y": 0.22222222222222232,
+                "held": false
+              },
+              "reduced": false
+            },
+            {
+              "seconds": 1.2368076666666776,
+              "input": {
+                "x": 0,
+                "y": 0,
+                "held": false
+              },
+              "reduced": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "port": 4175,
+      "immediate": {
+        "events": [
+          {
+            "type": "keydown",
+            "key": "Enter",
+            "id": "settings-button",
+            "settings": false
+          },
+          {
+            "type": "click",
+            "id": "settings-button",
+            "settings": false
+          },
+          {
+            "type": "keydown",
+            "key": "Enter",
+            "id": "",
+            "settings": true
+          },
+          {
+            "type": "click",
+            "id": "",
+            "settings": true
+          }
+        ],
+        "open": true,
+        "focused": "",
+        "state": "playing",
+        "worldLast": 1.2671183333333453,
+        "outputPosition": 1.278508,
+        "route": {
+          "pose": {
+            "position": [
+              0,
+              -13.998857103533904,
+              0
+            ],
+            "vfov": 25,
+            "basis": {
+              "right": [
+                0.8660254037844387,
+                0,
+                -0.49999999999999994
+              ],
+              "up": [
+                0.0519884199785587,
+                0.9945797186513166,
+                0.09004658480809256
+              ],
+              "back": [
+                0.4972898593256582,
+                -0.10397683995711741,
+                0.8613313024408199
+              ]
+            },
+            "yaw": -0.5235987755982988,
+            "pitchX": 0.10416510945198076,
+            "bank": 0,
+            "referenceSpeed": 0,
+            "sceneSpeed": 0,
+            "turbo": 1,
+            "x": 0,
+            "z": 0,
+            "y": -13.998857103533904,
+            "pitch": 0.10416510945198076,
+            "roll": 0
+          },
+          "state": {
+            "seconds": 1.2666666666666666,
+            "x": 0,
+            "z": 0,
+            "angle": 0.5235987755982988,
+            "roll": 0,
+            "pitchX": 0.10414156884073822,
+            "turbo": 1,
+            "speed": 0,
+            "altitude": -33.940855633098266,
+            "vfov": 25,
+            "tilt": -7.909354013957689
+          },
+          "tick": 304,
+          "seconds": 1.2671183333333453,
+          "reduced": false,
+          "input": {
+            "x": 0,
+            "y": 0,
+            "held": false
+          },
+          "nextEvent": 1,
+          "origins": [
+            {
+              "id": 0,
+              "time": 1.16,
+              "strength": 0.958546,
+              "x": -69,
+              "z": -69
+            }
+          ],
+          "history": [
+            {
+              "seconds": 0.0028090000000001725,
+              "input": {
+                "x": 0.5277777777777777,
+                "y": 0.22222222222222232,
+                "held": false
+              },
+              "reduced": false
+            },
+            {
+              "seconds": 1.2170079999999768,
+              "input": {
+                "x": 0,
+                "y": 0,
+                "held": false
+              },
+              "reduced": false
+            }
+          ]
+        }
+      },
+      "later": {
+        "events": [
+          {
+            "type": "keydown",
+            "key": "Enter",
+            "id": "settings-button",
+            "settings": false
+          },
+          {
+            "type": "click",
+            "id": "settings-button",
+            "settings": false
+          },
+          {
+            "type": "keydown",
+            "key": "Enter",
+            "id": "",
+            "settings": true
+          },
+          {
+            "type": "click",
+            "id": "",
+            "settings": true
+          }
+        ],
+        "open": false,
+        "focused": "settings-button",
+        "state": "playing",
+        "worldLast": 1.7630146666666784,
+        "outputPosition": 1.7802173333333333,
+        "route": {
+          "pose": {
+            "position": [
+              0,
+              -11.751260487934834,
+              0
+            ],
+            "vfov": 25,
+            "basis": {
+              "right": [
+                0.8660254037844387,
+                0,
+                -0.49999999999999994
+              ],
+              "up": [
+                0.05850261014331907,
+                0.9931312996908693,
+                0.10132949314362301
+              ],
+              "back": [
+                0.4965656498454346,
+                -0.11700522028663815,
+                0.8600769348257495
+              ]
+            },
+            "yaw": -0.5235987755982988,
+            "pitchX": 0.11727384975010853,
+            "bank": 0,
+            "referenceSpeed": 0,
+            "sceneSpeed": 0,
+            "turbo": 1,
+            "x": 0,
+            "z": 0,
+            "y": -11.751260487934834,
+            "pitch": 0.11727384975010853,
+            "roll": 0
+          },
+          "state": {
+            "seconds": 1.7625,
+            "x": 0,
+            "z": 0,
+            "angle": 0.5235987755982988,
+            "roll": 0,
+            "pitchX": 0.11727096689733904,
+            "turbo": 1,
+            "speed": 0,
+            "altitude": -28.49435410082222,
+            "vfov": 25,
+            "tilt": -6.928983738148
+          },
+          "tick": 423,
+          "seconds": 1.7630146666666784,
+          "reduced": false,
+          "input": {
+            "x": 0,
+            "y": 0,
+            "held": false
+          },
+          "nextEvent": 1,
+          "origins": [
+            {
+              "id": 0,
+              "time": 1.16,
+              "strength": 0.958546,
+              "x": -69,
+              "z": -69
+            }
+          ],
+          "history": [
+            {
+              "seconds": 0.0028090000000001725,
+              "input": {
+                "x": 0.5277777777777777,
+                "y": 0.22222222222222232,
+                "held": false
+              },
+              "reduced": false
+            },
+            {
+              "seconds": 1.2170079999999768,
+              "input": {
+                "x": 0,
+                "y": 0,
+                "held": false
+              },
+              "reduced": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -12,7 +12,7 @@ test('production speed drops55 percent while altitude and lens stay unchanged',(
   near(-s.z,150*.4125*COMFORT.travel);assert.equal(s.altitude,60);assert.equal(s.vfov,25);
 });
 test('M1 ramps gently, is bounded at1.2 and releases without a speed jump',()=>{
-  let s=state();s=comfortIntegrate(s,parameters,.1,.1,{held:true});assert.ok(s.turbo<1.02);
+  let s=state();s=comfortIntegrate(s,parameters,.1,.1,{held:true});assert.ok(s.turbo>1.03&&s.turbo<1.05);
   for(let i=2;i<=200;i++)s=comfortIntegrate(s,parameters,i/10,.1,{held:true});assert.ok(s.turbo<=1.2&&s.turbo>1.19);
   const before=s.turbo;s=comfortIntegrate(s,parameters,20.1,.1,{held:false});assert.ok(s.turbo<before&&s.turbo>1);
 });

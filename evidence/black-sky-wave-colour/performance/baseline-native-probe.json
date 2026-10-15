@@ -1,0 +1,57 @@
+{
+  "label": "baseline-native-probe",
+  "startedUtc": "2026-10-15T08:16:34.530Z",
+  "preview": "http://127.0.0.1:4176/",
+  "conditions": {
+    "headless": false,
+    "software": false,
+    "deviceScaleFactor": 1,
+    "desktop": {
+      "width": 1280,
+      "height": 720
+    },
+    "portrait": {
+      "width": 390,
+      "height": 844
+    },
+    "warmupMs": 2000,
+    "measureMs": 4000,
+    "repetitions": 3,
+    "anchors": [
+      30,
+      84,
+      112,
+      184
+    ],
+    "input": "neutral pointer; no held input; same reset/seek and route per anchor",
+    "recording": false,
+    "quality": "production unchanged; native application defaults; no lowered tier/caps/bloom/resolution",
+    "browserArgs": [
+      "--no-sandbox",
+      "--ozone-platform=x11",
+      "--use-gl=angle",
+      "--use-angle=gl"
+    ]
+  },
+  "errors": [
+    "cdpSession.send: Protocol error (Browser.getBrowserCommandLine): Command line not returned because --enable-automation not set.\n    at /home/mani/Downloads/bumer-exe/tools/benchmark-wave-colour.mjs:39:27"
+  ],
+  "records": [],
+  "probes": [],
+  "scope": "RAF intervals are wall-clock presentation intervals, never GPU/CPU timing. GPU elapsed samples are only actual EXT_disjoint_timer_query_webgl2. A software backend is not hardware evidence. A native compositor focus failure invalidates the corresponding foreground claim. No listening, motion or physical-device approval.",
+  "nativeBefore": {
+    "ok": true,
+    "value": "NVIDIA GeForce RTX 4070, 615.78.08, 12282 MiB, 10694 MiB, 1260 MiB, 33 %"
+  },
+  "runtime": {
+    "indexSha256": "7b0118f5e1ae989144ec876593ff12f522e3a7a55bef7c1a8b63d4aee570d394",
+    "script": "./assets/main-DAkVDyxS.js",
+    "scriptSha256": "49eb10b94483cbdf175b9fc2d92bf993b4d2d4fbc7c56604b0eabccda328df92"
+  },
+  "chromiumVersion": "153.0.8010.12",
+  "status": "FAILED",
+  "nativeAfter": {
+    "ok": true,
+    "value": "NVIDIA GeForce RTX 4070, 615.78.08, 12282 MiB, 10725 MiB, 1229 MiB, 36 %"
+  }
+}

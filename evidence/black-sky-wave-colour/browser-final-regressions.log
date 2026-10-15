@@ -1,0 +1,8 @@
+
+Running 3 tests using 1 worker
+
+  ✓  1 tests/browser/flight-regression.spec.ts:162:1 › Regressing presentation estimates hold the interactive route rather than resetting it (7.7s)
+  ✓  2 tests/browser/site.spec.ts:62:1 › Settings keeps time running; native volume/mute, pause and focus remain usable (5.3s)
+  ✓  3 tests/browser/wave-colour.spec.ts:2:1 › Real M1 ramps gently sooner, releases, cancels capture and cannot latch through Settings (6.6s)
+
+  3 passed (20.2s)

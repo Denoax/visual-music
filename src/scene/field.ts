@@ -1,3 +1,4 @@
+import { formationFor } from "../../core/wave-formations.mjs";
 import {
   pointFragment,
   capFragment,
@@ -102,6 +103,15 @@ export function createField(
         { length: WAVE.capacity },
         () => new THREE.Vector4(0, 0, -1000, 0),
       ),
+    },
+    uFrontForms: {
+      value: Array.from(
+        { length: WAVE.capacity },
+        () => new THREE.Vector4(0, 1, 0, 0),
+      ),
+    },
+    uLocalForms: {
+      value: [new THREE.Vector4(0, 1, 0, 0), new THREE.Vector4(0, 1, 0, 0)],
     },
     uOffset: { value: new THREE.Vector2() },
     uCameraXZ: { value: new THREE.Vector2() },
@@ -262,6 +272,10 @@ export function createField(
       visual.phase === "song" ? 0 : visual.breath,
       visual.phase === "song" ? 0 : visual.hueMix,
     );
+    for (let i = 0; i < WAVE.capacity; i++)
+      u.uFrontForms.value[i].fromArray(
+        formationFor(state.fronts[i]?.time ?? 0),
+      );
     u.uHorizonGain.value = score.horizonGain;
     u.uHorizonAzimuth.value = score.horizonAzimuth;
     u.uBase.value = state.base;
@@ -329,6 +343,7 @@ export function createField(
         f?.strength ?? 0,
       );
       u.uLocalIds.value[i] = f?.id ?? -1;
+      u.uLocalForms.value[i].fromArray(formationFor(f?.time ?? 0));
     }
     for (let i = 0; i < 8; i++) {
       const p = decoration.paint[i];

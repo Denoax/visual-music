@@ -24,8 +24,8 @@ export const capFragment = `${emitterGLSL}
  }`;
 
 // Add to the existing ground fragment after all raw wave/surface functions.
-// Supply uHorizonGain/uHorizonAzimuth to field from the same authored sky cue.
-// Apply this to floor background only, not cap/point OFF gates or depthMesh.
+// Retired sky uniforms remain accepted; they cannot add colour to empty space.
+// Atmospheric attenuation removes energy only; no coloured scattering term.
 // Add varying vec3 vSurfaceWorld to ground vertex and assign the very same
 // displaced position used by gl_Position. Do not re-evaluate height per pixel.
 export const groundFragmentMain = `
@@ -36,9 +36,8 @@ export const groundFragmentMain = `
    float distanceMetres=distance(p,cameraPosition);
    float ownership=1.-smoothstep(520.,600.,distance(vWorld,uCameraXZ));
    float transmission=beautyFogTransmission(distanceMetres,.00135);
-   vec3 scattered=beautyHorizon(p-cameraPosition,uHorizonAzimuth,uHorizonGain);
    vec3 emitted=surfaceLight(vWorld,fineWeight(vWorld))*uGroundGain;
-   gl_FragColor=vec4((emitted*transmission*ownership+scattered*(1.-transmission*ownership))*uTerrainVisible,1.);
+   gl_FragColor=vec4(emitted*transmission*ownership*uTerrainVisible,1.);
  }`;
 
 // Keep the current quarter-size two-pass Gaussian. Initial candidate values

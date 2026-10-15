@@ -1,0 +1,78 @@
+{
+  "technical_status": "verified_with_limits",
+  "implementation": "complete; verified current runtime and both full-song actual-audio recordings",
+  "checks": {
+    "core": 91,
+    "typescript": 59,
+    "build": "passed",
+    "integrity": "passed",
+    "gpu_formation_probes": 55776,
+    "gpu_lighting_probes": 147576,
+    "off_optimization_gpu_parity": "passed",
+    "browser_flows": "10 distinct flows covered across runs; earlier failures retained, final3 regression checks passed",
+    "source_and_preview": "All154 sealed source/asset files and15 production files match current canonical review, publication checkout and actual HTTPpreview; file sets equal",
+    "captures": [
+      {
+        "view": "desktop",
+        "bytes": 77661828,
+        "sha256": "07c9caa07536161da8b11ade94d1af801caf00a84cc57434735f4889d0bf0ad9",
+        "cadence_ms": {
+          "median": 16.699999999982538,
+          "p95": 16.70000000001164,
+          "max": 33.40000000000873
+        },
+        "minimum_audio_window_correlation": 0.9936140321520862,
+        "actual_audio_video_packets_unchanged": {
+          "audio_packets": 3808,
+          "video_packets": 5863
+        },
+        "av_origin_uncertainty_ms": 23.5
+      },
+      {
+        "view": "portrait",
+        "bytes": 32669123,
+        "sha256": "09191d2947711c5274486cd5faa72b1ae7f40478ce2f5f805daa7f4f307146a0",
+        "cadence_ms": {
+          "median": 16.69999999999709,
+          "p95": 16.70000000001164,
+          "max": 33.40000000000873
+        },
+        "minimum_audio_window_correlation": 0.9929177041417266,
+        "actual_audio_video_packets_unchanged": {
+          "audio_packets": 3809,
+          "video_packets": 5901
+        },
+        "av_origin_uncertainty_ms": 21
+      }
+    ],
+    "audio": "Exact unchanged MP3, current browser stereo decode219.66579166666668s, one offset-zero source, natural graph/presented completion; all16 digital correlation windows passed through219.5s; complete final silence/thank-you retained",
+    "rendered_review": "26 normal-pace diagnostic section slices and26 decoded final-recording frames/contact sheets inspected across desktop/portrait. Continuous files delivered; human continuous listening/motion approval not claimed."
+  },
+  "human_review": "pending",
+  "material_limits": [
+    "Human continuous listening/motion and physical-device/AV approval remain pending.",
+    "Numerical timing and authored anchors have not received new listening approval.",
+    "Native headed benchmark and native headless recordings use different ANGLE backends and serve different claims."
+  ],
+  "performance": {
+    "status": "measured_with_limits",
+    "comparison": "performance/comparison-off-optimized.json",
+    "renderer": "RTX4070; native headed ANGLE OpenGL4.5, same DP-4/240.299Hz display",
+    "desktop_gpu_ms": {
+      "baseline_median": 1.927,
+      "current_median": 2.96,
+      "current_p95": 3.617,
+      "current_max": 4.968
+    },
+    "portrait_gpu_ms": {
+      "baseline_median": 0.97,
+      "current_median": 1.533,
+      "current_p95": 2.264,
+      "current_max": 3.566
+    },
+    "raf_median_ms": 4.2,
+    "raf_over50ms": 0,
+    "limits": "Current shader cost is higher; sequential shared-GPU runs are not isolated causal benchmarks. Headless recording backend/cadence are separate."
+  },
+  "archive": "Final archive hash and clean-extraction report are external DELIVERY.json / VERIFIED_EXTRACTION.json beside the oneZIP, avoiding self-referential hashes"
+}

@@ -85,8 +85,7 @@ export function createArrangement() {
       visual,
       finish,
       airTime: seconds,
-      horizonGain:
-        ease((seconds - 7) / 8) * (0.18 + 0.12 * ease(music.sky)) * brightness,
+      horizonGain: 0, // Colour belongs to discrete emitters, never the sky background.
       horizonAzimuth: 0.4 + 0.22 * Math.sin(seconds * 0.013),
       board,
       gridRest,

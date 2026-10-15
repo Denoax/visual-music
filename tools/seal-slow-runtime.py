@@ -1,7 +1,9 @@
 """Bind captures to current source, complete production bytes and owned preview."""
 from pathlib import Path
 import hashlib,json,sys,urllib.request
-root=Path(__file__).resolve().parents[1];file=root/'evidence/slow-entry-finish/runtime-identity.json'
+root=Path(__file__).resolve().parents[1]
+evidence=next((a.split('=',1)[1] for a in sys.argv if a.startswith('--evidence=')), 'evidence/slow-entry-finish')
+file=root/evidence/'runtime-identity.json'
 def row(f,base):return {'path':str(f.relative_to(base)),'bytes':f.stat().st_size,'sha256':hashlib.sha256(f.read_bytes()).hexdigest()}
 source=[]
 for folder in ['src','core','analysis','show','public']:

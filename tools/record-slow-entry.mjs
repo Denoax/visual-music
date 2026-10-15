@@ -5,17 +5,20 @@ import {mkdir,writeFile,appendFile,readFile,rename} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {prepareRecordingOutput,recordingOutput} from './recording-output.mjs';
+import {focusOwnedPreview,foregroundState} from './native-foreground.mjs';
 const portrait=process.argv.includes('--portrait'),software=process.argv.includes('--software');
+const evidence=process.argv.find(a=>a.startsWith('--evidence='))?.slice(11)||'evidence/slow-entry-finish';
+const headed=process.argv.includes('--headed');
 const view=portrait?'portrait':'desktop',viewport=portrait?{width:390,height:844}:{width:1280,height:720};
-const out=process.argv.find(a=>a.startsWith('--out='))?.slice(6)||`evidence/slow-entry-finish/capture-${view}`;
+const out=process.argv.find(a=>a.startsWith('--out='))?.slice(6)||`${evidence}/capture-${view}`;
 await mkdir(out,{recursive:true});
-const identityBytes=await readFile('evidence/slow-entry-finish/runtime-identity.json');
+const identityBytes=await readFile(`${evidence}/runtime-identity.json`);
 const runtimeIdentitySha256=createHash('sha256').update(identityBytes).digest('hex');
 const identity=JSON.parse(identityBytes);
 for(const row of identity.source){if(createHash('sha256').update(await readFile(row.path)).digest('hex')!==row.sha256)throw Error('Capture source drift: '+row.path);}
 
-const args=software?['--no-sandbox','--enable-unsafe-swiftshader']:['--no-sandbox','--ozone-platform=x11','--use-gl=angle','--use-angle=gl'];
-const browser=await chromium.launch({headless:true,executablePath:process.env.BUMER_CHROME||'/home/mani/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',args});
+const args=software?['--no-sandbox','--enable-unsafe-swiftshader']:['--no-sandbox','--enable-automation','--ozone-platform=x11','--use-gl=angle','--use-angle=gl'];
+const browser=await chromium.launch({headless:!headed,executablePath:process.env.BUMER_CHROME||'/home/mani/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',args});
 const context=await browser.newContext({viewport,deviceScaleFactor:1,hasTouch:portrait,isMobile:portrait,recordVideo:{dir:`${out}/raw`,size:viewport}});
 const beforePage=Date.now(),page=await context.newPage(),afterPage=Date.now();
 page.setDefaultTimeout(180000);
@@ -25,6 +28,10 @@ const timer=setInterval(()=>console.log(view,'capture running',Math.round((Date.
 try{
  await page.addInitScript(()=>{document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='#developer{display:none!important}';document.head.append(s);});});
  await page.goto('http://127.0.0.1:4175/?dev=1');
+ const foreground=headed?await focusOwnedPreview(page):{scope:'Headless capture; no native foreground claim'};
+ await page.locator('#start:enabled').waitFor({timeout:180000});
+ const renderer=await page.evaluate(()=>{const gl=document.querySelector('#world').getContext('webgl2'),e=gl.getExtension('WEBGL_debug_renderer_info');return e?gl.getParameter(e.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER);});
+ if(!software&&/swiftshader|llvmpipe|software/i.test(renderer))throw Error('Requested hardware capture received software renderer: '+renderer);
  await page.locator('#start:enabled').waitFor({timeout:180000});
  await page.evaluate(async({prepare,output})=>{
   const b=window.__BUMER__,ctx=b.transport.audioContext;
@@ -45,7 +52,9 @@ try{
   {t:42,kind:'hold'},{t:48,kind:'release'},
  ];
  while(true){
-  const row=await page.evaluate(()=>{const b=window.__BUMER__;return{wall:performance.timeOrigin+performance.now(),presentation:b.transport.presentation(),state:b.transport.state,world:b.world.diagnostics(),lifecycle:b.lifecycle()};});trace.push(row);
+  const row=await page.evaluate(()=>{const b=window.__BUMER__;return{wall:performance.timeOrigin+performance.now(),presentation:b.transport.presentation(),state:b.transport.state,world:b.world.diagnostics(),lifecycle:b.lifecycle()};});
+  if(headed){row.foreground=foregroundState(foreground.address);if(row.foreground.ownedActive===false)throw Error('Owned recording lost native foreground; preserved as an interrupted attempt');}
+  trace.push(row);
   while(next<actions.length&&row.presentation.seconds>=actions[next].t){
    const action=actions[next++].kind;const cx=viewport.width/2,cy=viewport.height/2;
    if(action==='right')await page.mouse.move(viewport.width*.82,cy);
@@ -71,7 +80,7 @@ try{
  // packets; page video begins in the newPage() observation interval below.
  execFileSync('ffmpeg',['-v','error','-y','-i',`${out}/page-video.webm`,'-itsoffset',String(delay/1000),'-i',`${out}/master.webm`,'-map','0:v:0','-map','1:a:0','-c','copy',`${out}/${view}-full.webm`]);
  const media=await readFile(`${out}/${view}-full.webm`);
- await writeFile(`${out}/${view}-trace.json`,JSON.stringify({status:'captured',runtimeIdentitySha256,recorderSha256:createHash('sha256').update(await readFile(import.meta.filename)).digest('hex'),scope:'Uninterrupted normal-speed full-page browser recording plus actual master output. No seek, playback-rate change, replacement audio or viewport-quality reduction. Software/headless renderer is recorded; this is not human/device or hardware-performance approval.',viewport,software,fullEnd,trace,errors,videoEpochObservation:{beforePage,afterPage,selected:videoEpoch,uncertaintyMs:(afterPage-beforePage)/2},audioVideoOffsetMs:delay,alignmentLimit:'Page-video origin is bounded by newPage observation times; digital source correlation checks audio duration/drift separately. Physical AV alignment remains pending.',output:{bytes:media.length,sha256:createHash('sha256').update(media).digest('hex')}},null,2)+'\n');
+ await writeFile(`${out}/${view}-trace.json`,JSON.stringify({status:'captured',runtimeIdentitySha256,recorderSha256:createHash('sha256').update(await readFile(import.meta.filename)).digest('hex'),scope:'Uninterrupted normal-speed full-page browser recording plus actual master output. No seek, playback-rate change, replacement audio or viewport-quality reduction. Renderer and native foreground ownership are measured; capture cadence is not an uncaptured performance benchmark or human/device approval.',viewport,software,headed,foreground,fullEnd,trace,errors,videoEpochObservation:{beforePage,afterPage,selected:videoEpoch,uncertaintyMs:(afterPage-beforePage)/2},audioVideoOffsetMs:delay,alignmentLimit:'Page-video origin is bounded by newPage observation times; digital source correlation checks audio duration/drift separately. Physical AV alignment remains pending.',output:{bytes:media.length,sha256:createHash('sha256').update(media).digest('hex')}},null,2)+'\n');
  console.log('FULL_CAPTURE_PASS',view,media.length);
 }catch(e){await writeFile(`${out}/FAILED.json`,JSON.stringify({error:String(e),errors,trace},null,2));throw e;}
 finally{clearInterval(timer);await browser.close();}

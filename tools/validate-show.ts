@@ -121,7 +121,7 @@ console.log(
       max_active_fronts: maximum,
       clock: "Audio presentation time, field zero equals song zero",
       scope:
-        "Dance floor with unchanged raw waves, comfort45% camera/route, true OFF wave-local chunk lighting, explicit intro terrain visibility, complete output tail then finite black fade/thank-you/confetti, no runtime scenery models or aerial actors, depth-tested background stars and native pointer; silent real-readiness loading and one Continue",
+        "Black-sky dance floor with event-born shared wave formations, crest-carried palette phase, unchanged base camera/route and 1.2x boost with .45s attack; true OFF banks, exact complete track, silent loader/owned glass and finite thank-you finish preserved",
       listening: "unapproved candidates; human listening pending",
     },
     null,
@@ -129,7 +129,7 @@ console.log(
   ),
 );
 if (process.argv.includes("--review")) {
-  const evidence = await read("evidence/slow-entry-finish/review-status.json");
+  const evidence = await read("evidence/black-sky-wave-colour/review-status.json");
   console.log(JSON.stringify(evidence, null, 2));
   if (!["passed", "verified_with_limits"].includes(evidence.technical_status))
     process.exitCode = 1;
