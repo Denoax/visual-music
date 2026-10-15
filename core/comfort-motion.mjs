@@ -1,5 +1,6 @@
-// Original production comfort policy. Keep the numerical reference model intact.
-export const COMFORT = Object.freeze({travel:.45,turn:.65,heldTarget:1.2,heldTau:.45,releaseTau:.85});
+// Keep the slow base glide. Held travel reaches90% of the original unboosted
+// reference pace, making acceleration distinct without changing the camera score.
+export const COMFORT = Object.freeze({travel:.45,turn:.65,heldTarget:2,heldTau:.45,releaseTau:.85});
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export function comfortIntegrate(state,parameters,t,dt,input={},scale=.4125,profile=COMFORT){
   if(!Number.isFinite(dt)||dt<0||dt>.2||!Number.isFinite(t)||t<state.seconds)throw RangeError('Invalid forward step');

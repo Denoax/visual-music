@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 import { mkdir, readFile, writeFile, unlink } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-const out = 'evidence/ui-loops';
+const out = process.argv.find(value => value.startsWith('--evidence='))?.slice(11) || 'evidence/ui-loops';
 const recording = process.argv.includes('--record');
 const prefix = process.argv.find(value => value.startsWith('--prefix='))?.slice(9) || '04-baseline';
 const preview = process.env.BUMER_PREVIEW || 'http://127.0.0.1:4175/';

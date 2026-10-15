@@ -19,9 +19,13 @@ test("Real M1 ramps gently sooner, releases, cancels capture and cannot latch th
     edge = held.history.findLast((e: any) => e.input.held);
   expect(held.input.held).toBe(true);
   expect(held.state.turbo).toBeGreaterThan(1.02);
-  expect(held.state.turbo).toBeLessThanOrEqual(1.2);
+  expect(held.state.turbo).toBeLessThanOrEqual(2);
   const expected =
-    1.2 - 0.2 * Math.exp(-(held.state.seconds - edge.seconds) / 0.45);
+    2 -
+    Math.exp(
+      -(held.state.seconds - Math.floor(edge.seconds * 240 + 1e-8) / 240) /
+        0.45,
+    );
   expect(Math.abs(held.state.turbo - expected)).toBeLessThan(0.003);
   await page.mouse.up();
   await page.waitForTimeout(220);

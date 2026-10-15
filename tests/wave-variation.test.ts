@@ -153,8 +153,8 @@ test("M1 is more responsive, capped, and leaves all no-input route states unchan
     assert.deepEqual(a, b);
   }
   const boost = comfortIntegrate(initial(), p, 0.1, 0.1, { held: true });
-  assert.ok(boost.turbo > 1.03 && boost.turbo < 1.05);
-  assert.equal(COMFORT.heldTarget, 1.2);
+  assert.ok(boost.turbo > 1.18 && boost.turbo < 1.22);
+  assert.equal(COMFORT.heldTarget, 2);
   assert.equal(COMFORT.travel, 0.45);
 });
 
@@ -383,11 +383,11 @@ test("OFF exchange support is exact normal to the crest, with a deliberately unb
   assert.equal(formationBand(outsideX, outsideZ, age, ridge), 0);
 });
 
-test("the complete no-input production route and camera remain identical to the approved boost-attack policy", () => {
+test("the complete no-input production route and camera remain identical before and after the stronger boost", () => {
   const segments = compileCues();
   const route = createFlight();
   let approved = initialState(segments);
-  const previousPolicy = { ...COMFORT, heldTau: 1.25 };
+  const previousPolicy = { ...COMFORT, heldTarget: 1.2 };
   for (let tick = 1; tick <= 240 * 220; tick++) {
     const seconds = tick / 240;
     approved = comfortIntegrate(

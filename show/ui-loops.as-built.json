@@ -2,7 +2,7 @@
   "application": "Visual Music",
   "review_baseline": "1c86a4d317ebfc1512cbb5176c5ff08bc15cca70",
   "publication_baseline": "ca4ef694b7978cf929bf4faa580ca995b2b0a89b",
-  "authority": "Four serial UI tasks plus the requested3.5s minimum, current source and executor evidence; not human approval",
+  "authority": "Four serial UI tasks,3.5s minimum and held-boost correction; current source/evidence, not human approval",
   "inherited": "black-sky-wave-colour.as-built.json owns unchanged floor, event-born waves and camera policy; this overlay supersedes its landing-ball, glass brightness and confetti descriptions.",
   "loader": {
     "tasks": {
@@ -37,11 +37,11 @@
   "motion": {
     "travel": 0.45,
     "turn": 0.65,
-    "heldTarget": 1.2,
+    "heldTarget": 2,
     "heldTau": 0.45,
     "releaseTau": 0.85,
-    "change": "Only gesture/button ownership repair. Ordinary boost already worked; chorded pointermove buttons now reconciled for canvas-owned gestures. No base pace/lens/route change.",
-    "measured_ratio_4s": 1.1871514157619159,
+    "change": "Reported boost was too weak. Held target2x; base pace/lens/score and .45s attack/.85s release unchanged. Existing trusted gesture ownership and reduced-motion safety retained.",
+    "historical_1_2x_ratio_4s": 1.1871514157619159,
     "window_seconds": [
       84.25,
       88.25
@@ -79,7 +79,7 @@
     },
     {
       "path": "core/comfort-motion.mjs",
-      "sha256": "95a5080a5398cb1a23d5c4bd4b72a292f05a5ee33583651f89f990443c2104df"
+      "sha256": "03a22cd8f31e149cf4840a64095959053763c8fcb0182891a03329decfa94f9b"
     },
     {
       "path": "src/scene/flight.ts",
@@ -106,7 +106,8 @@
       "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0"
     }
   ],
-  "evidence": "evidence/loader-minimum",
+  "evidence": "evidence/boost-report",
+  "previous_entry_review": "evidence/loader-minimum",
   "previous_complete_review": "evidence/ui-loops",
   "source_record": "sources/ui-loops-source-record.md",
   "limits": "Missing newest loader clip: declared human-authored ring fallback. Human continuous listening/motion, physical devices/AV and current uncaptured foreground performance approval remain separate. No generated media or hosting update."

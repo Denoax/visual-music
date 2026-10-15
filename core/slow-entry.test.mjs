@@ -11,10 +11,19 @@ test('production speed drops55 percent while altitude and lens stay unchanged',(
   let s=state();for(let i=1;i<=240;i++)s=comfortIntegrate(s,parameters,i/240,1/240);
   near(-s.z,150*.4125*COMFORT.travel);assert.equal(s.altitude,60);assert.equal(s.vfov,25);
 });
-test('M1 ramps gently, is bounded at1.2 and releases without a speed jump',()=>{
-  let s=state();s=comfortIntegrate(s,parameters,.1,.1,{held:true});assert.ok(s.turbo>1.03&&s.turbo<1.05);
-  for(let i=2;i<=200;i++)s=comfortIntegrate(s,parameters,i/10,.1,{held:true});assert.ok(s.turbo<=1.2&&s.turbo>1.19);
+test('M1 ramps smoothly, is bounded at2x and releases without a speed jump',()=>{
+  let s=state();s=comfortIntegrate(s,parameters,.1,.1,{held:true});assert.ok(s.turbo>1.18&&s.turbo<1.22);
+  for(let i=2;i<=200;i++)s=comfortIntegrate(s,parameters,i/10,.1,{held:true});assert.ok(s.turbo<=2&&s.turbo>1.99);
   const before=s.turbo;s=comfortIntegrate(s,parameters,20.1,.1,{held:false});assert.ok(s.turbo<before&&s.turbo>1);
+});
+test('holding gives a visibly distinct travel gain without changing the base pace',()=>{
+  let base=state(),held=state();
+  for(let i=1;i<=960;i++){
+    base=comfortIntegrate(base,parameters,i/240,1/240);
+    held=comfortIntegrate(held,parameters,i/240,1/240,{held:true});
+  }
+  near(-base.z,4*150*.4125*.45);
+  assert.ok(held.z/base.z>1.8,'A sustained held boost must materially change travelled distance');
 });
 test('exponential held response agrees across frame subdivisions',()=>{
   let a=state(),b=state();for(let i=1;i<=120;i++)a=comfortIntegrate(a,parameters,i/120,1/120,{held:true});

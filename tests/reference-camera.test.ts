@@ -67,9 +67,7 @@ test("Held input smoothly changes turbo and travelled path; release, pause, snap
   f.reset(28);
   const before = f.snapshot();
   f.advance(29, { turn: 1, tilt: 1, held: true }, false);
-  assert.ok(
-    Math.abs(f.pose().turbo - (1.2 - 0.2 * Math.exp(-1 / 0.45))) < 0.000001,
-  );
+  assert.ok(Math.abs(f.pose().turbo - (2 - Math.exp(-1 / 0.45))) < 0.000001);
   assert.ok(f.pose().roll > 0);
   assert.ok(f.pose().yaw > before.pose.yaw);
   assert.ok(f.pose().pitch > before.pose.pitch);

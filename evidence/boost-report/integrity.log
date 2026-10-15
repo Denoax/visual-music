@@ -1,0 +1,14 @@
+
+> bumer-exe@0.1.0 validate
+> node --import tsx tools/validate-show.ts
+
+{
+  "runtime_integrity": "pass",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "feature_rows": 21967,
+  "selected_candidate_events": 255,
+  "max_active_fronts": 12,
+  "clock": "Audio presentation time, field zero equals song zero",
+  "scope": "Black-sky dance floor with event-born shared wave formations, crest-carried palette phase, unchanged base camera/route and 2x held boost with .45s attack; true OFF banks, exact complete track, 3.5s minimum readiness ring, brighter owned glass, staggered finite confetti and chord-safe input; exact floor/camera/audio preserved",
+  "listening": "unapproved candidates; human listening pending"
+}

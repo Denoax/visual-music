@@ -1,3 +1,7 @@
+# Current held-boost correction
+
+The user reports local left-click boost ineffective. Current held target is2x instead of1.2x; normal glide and camera score/lens are unchanged, with the same0.45s attack/0.85s release time constants and gesture safety. Current evidence is evidence/boost-report; older1.2x authority is historical. Normal source push continues through this history, without hosting/visibility or unrelated changes.
+
 # Current loading-duration follow-up
 
 The latest user deliberately requests a3–4second minimum. The ring stays for at least3.5visible seconds per load/retry, still waits for every real readiness gate, then uses the existing0.42s reveal. Reduced motion retains the minimum without animation. This supersedes the preceding no-minimum rule; music, camera, floor/waves, glass, input and finish remain unchanged. Current incremental evidence is evidence/loader-minimum; preceding full-song recordings keep their original source identities. Normal source push authorized; no hosting/visibility change.

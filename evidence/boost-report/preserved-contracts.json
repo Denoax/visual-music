@@ -1,0 +1,11 @@
+{
+  "source_identical": 151,
+  "changed": [
+    "core/comfort-motion.mjs",
+    "core/slow-entry.test.mjs",
+    "show/CURRENT_AUTHORITY.md",
+    "show/ui-loops.as-built.json",
+    "assets/manifest.json"
+  ],
+  "scope": "Only runtime behavior change is held target1.2to2. Every src renderer/route/input/transport file, analysis/cues/MP3, loader, shaders/terrain/lighting and ending code remains byte-identical. Full-score no-input route matches previouspolicy."
+}

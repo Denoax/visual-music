@@ -24,13 +24,13 @@ Raised waves, luminous grids and a continuous journey through *Around the World 
 
 The page loads automatically and silently. A small ring stays on screen for at least 3.5 visible seconds and waits longer if recording/analysis/font/shader preparation is still pending, then stops and reveals Play, “click to continue” and Settings. One Continue action unlocks the existing audio context, plays a soft chime and starts the exact recording at sample zero after a 0.8s lead. Fly low over an endless LED floor while physical waves spread from fixed emitters. The sky stays black throughout. After the circular opening, event-born oval, ridge, chevron, crossed and paired-ring formations travel over the same terrain; quiet circular passages return between them. Crest phase moves colour within the existing cohesive palettes. Local chunks trade light as the waves arrive: bulbs genuinely switch off, leaving dark space between coloured grids, chases and held palettes. Soft stars move through the same world.
 
-The banner and gallery below show the approved preceding build. Current minimum-duration entry checks are in [`evidence/loader-minimum`](evidence/loader-minimum); [`evidence/ui-loops`](evidence/ui-loops) preserves the preceding complete review.
+The banner and gallery below show the approved preceding build. Current held-boost checks are in [`evidence/boost-report`](evidence/boost-report); minimum-duration entry checks are in [`evidence/loader-minimum`](evidence/loader-minimum); [`evidence/ui-loops`](evidence/ui-loops) preserves the preceding complete review.
 
 | Cool light | Warm light |
 |:---:|:---:|
 | <img src="showcase/github/floor-cool.webp" alt="Cyan raised LED terrain with dark unlit regions" width="100%"> | <img src="showcase/github/floor-warm.webp" alt="Amber and rose LED waves beneath depth-tested stars" width="100%"> |
 
-Steering changes the travelled path. Normal travel is 45% of the preceding route speed. Holding the scene gently eases toward 1.2× that speed over a 0.45s time constant; releasing settles over 0.85s. Camera height/lens and raw wave timing are unchanged. The floor carries the musical movement while the horizon stays stable.
+Steering changes the travelled path. Normal travel is 45% of the preceding route speed. Holding the scene smoothly accelerates toward 2× that speed over a 0.45s time constant; releasing settles with a 0.85s time constant. Camera height/lens and raw wave timing are unchanged. The floor carries the musical movement while the horizon stays stable.
 
 The complete recording plays once. Only after its destination-presented tail, the whole scene fades to black over 2.6s. A minimal thank-you page appears with a restrained 36-piece shower staggered across about one second, fully settled inside four seconds (omitted for reduced motion). The render loop then stops; there is no perpetual ambient scene or automatic replay.
 
@@ -139,4 +139,4 @@ Historical wave/floor authority: [source-derived as-built](show/black-sky-wave-c
 
 ## Current UI loops
 
-[Source-derived overlay](show/ui-loops.as-built.json) and [current evidence](evidence/ui-loops/REVIEW.md) record the four serial tasks: real-readiness ring, brighter neutral owned glass, staggered finite confetti and a chorded mouse-button repair. Ordinary mouse1 boost already worked; the cap, base pace, camera and music are unchanged. Current recordings are supplied in one complete local review ZIP; no hosting deployment accompanies this source update.
+[Source-derived overlay](show/ui-loops.as-built.json) and [current evidence](evidence/ui-loops/REVIEW.md) record the four serial tasks: real-readiness ring, brighter neutral owned glass, staggered finite confetti and a chorded mouse-button repair. That earlier review repaired input ownership. The latest [held-boost correction](evidence/boost-report/REVIEW.md) raises the held target to2× while preserving base pace, camera, music and the release time constant. The preceding complete ZIP and full-song recordings keep their original source identity; current incremental checks are separately labelled. No hosting deployment accompanies these source updates.
