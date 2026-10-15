@@ -1,0 +1,26 @@
+
+> bumer-exe@0.1.0 validate:review
+> node --import tsx tools/validate-show.ts --review
+
+{
+  "runtime_integrity": "pass",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "feature_rows": 21967,
+  "selected_candidate_events": 255,
+  "max_active_fronts": 12,
+  "clock": "Audio presentation time, field zero equals song zero",
+  "scope": "Black-sky dance floor with event-born shared wave formations, crest-carried palette phase, unchanged base camera/route and 1.2x boost with .45s attack; true OFF banks, exact complete track, 3.5s minimum readiness ring, brighter owned glass, staggered finite confetti and chord-safe input; exact floor/camera/audio preserved",
+  "listening": "unapproved candidates; human listening pending"
+}
+{
+  "technical_status": "verified_with_limits",
+  "scope": "Intentional3.5-second visible minimum on each load/retry; all real tasks must still finish; unchanged0.42s reveal (immediate for reduced motion). No audio/scene/input change.",
+  "unit_checks": 17,
+  "browser": "Five distinct paths passed across final runs: unobstructed ready-assets minimum, late real gate, reduced-motion portrait touch, stale audio response retry and stale in-progress decode retry.",
+  "observed_cached_ready_seconds": 0.7165480000000002,
+  "observed_play_enabled_seconds": 4.133147999999994,
+  "build": "passed",
+  "runtime_integrity": "passed",
+  "prior_capture_scope": "evidence/ui-loops and previous review ZIP retain their original source/hash identities; no full-song recapture or listening approval claimed for this entry-only change.",
+  "limits": "Short native-browser captures/frames inspected; human and physical-device approval remain separate."
+}

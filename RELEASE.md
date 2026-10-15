@@ -1,3 +1,7 @@
+# Current loading-duration follow-up
+
+The latest user deliberately requests a3–4second minimum. The ring stays for at least3.5visible seconds per load/retry, still waits for every real readiness gate, then uses the existing0.42s reveal. Reduced motion retains the minimum without animation. This supersedes the preceding no-minimum rule; music, camera, floor/waves, glass, input and finish remain unchanged. Current incremental evidence is evidence/loader-minimum; preceding full-song recordings keep their original source identities. Normal source push authorized; no hosting/visibility change.
+
 # Current serial UI source update
 
 The current source replaces the rejected rail/ball loader with a ring driven by real readiness, preserves silent one-action audio entry, improves the owned glass visibility and accessible solid/forced-colour modes, and staggers the existing paper confetti across about one second inside the unchanged finite finish. The mouse repair handles canvas-owned button chords and release/capture loss; ordinary M1 acceleration already worked and no base pace, lens, route, boost policy, music or floor choreography changes accompany it.

@@ -1,0 +1,39 @@
+
+Running 5 tests using 1 worker
+
+  ✘  1 tests/browser/loader-loop.spec.ts:8:1 › loader waits for the minimum and real tasks, stops before Play and enters once (1.0s)
+LOADER_MINIMUM_TIMING {"firstReadyVisibleSeconds":0.7165480000000002,"playEnabledVisibleSeconds":4.133147999999994}
+  ✓  2 tests/browser/loader-loop.spec.ts:82:1 › ready assets still keep Play unavailable for the minimum duration (4.7s)
+  ✓  3 tests/browser/loader-loop.spec.ts:131:3 › primary-touch portrait › reduced motion has a stationary loader and one reachable touch entry (4.6s)
+STALE_AUDIO_RESPONSE {"before":{"position":0.06400000000000006,"sources":[{"kind":"start","contextSeconds":4.597333333333333,"offsetSeconds":0}],"hash":"47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0"},"after":{"state":"playing","sameBuffer":true,"position":0.0853333333333337,"sources":[{"kind":"start","contextSeconds":4.597333333333333,"offsetSeconds":0}],"hash":"47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0"}}
+  ✓  4 tests/browser/loader-loop.spec.ts:196:1 › a stale first audio response cannot interrupt a successfully retried song (5.1s)
+STALE_IN_PROGRESS_DECODE {"before":{"position":0.0853333333333337,"sources":[{"kind":"start","contextSeconds":5.461333333333333,"offsetSeconds":0}]},"after":{"state":"playing","sameBuffer":true,"position":0.09600000000000009,"sources":[{"kind":"start","contextSeconds":5.461333333333333,"offsetSeconds":0}]}}
+  ✓  5 tests/browser/loader-loop.spec.ts:292:1 › an already decoding old attempt cannot replace the retried recording (6.1s)
+
+
+  1) tests/browser/loader-loop.spec.ts:8:1 › loader waits for the minimum and real tasks, stops before Play and enters once 
+
+    Error: page.waitForFunction: TypeError: Cannot read properties of undefined (reading 'lifecycle')
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:24)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at predicate (eval at evaluate (:370:30)), <anonymous>:1:24)
+        at predicate (eval at evaluate (:370:30), <anonymous>:7:27)
+        at next (eval at evaluate (:370:30), <anonymous>:29:33)
+        at eval (eval at evaluate (:370:30), <anonymous>:42:13)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at /home/mani/Downloads/bumer-exe/tests/browser/loader-loop.spec.ts:44:14
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    evidence/loader-minimum/browser/loader-loop-loader-waits-f-b0bd2-before-Play-and-enters-once/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: evidence/loader-minimum/browser/loader-loop-loader-waits-f-b0bd2-before-Play-and-enters-once/error-context.md
+
+  1 failed
+    tests/browser/loader-loop.spec.ts:8:1 › loader waits for the minimum and real tasks, stops before Play and enters once 
+  4 passed (22.4s)

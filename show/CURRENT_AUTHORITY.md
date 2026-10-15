@@ -1,5 +1,7 @@
 # Current runtime authority
 
+The latest user review intentionally adds a3.5-second minimum visible loading period before the existing0.42-second Play reveal. Real asset readiness still gates entry; hidden time does not count and retry resets the minimum. Reduced motion keeps the minimum with a stationary ring and immediate reveal. Current incremental evidence: evidence/loader-minimum. Preceding full-song UI recordings retain their original hashes and are historical for entry timing.
+
 Read/apply $reference-led-design. Current source, [ui-loops.as-built.json](ui-loops.as-built.json), [source record](../sources/ui-loops-source-record.md) and [executor review](../evidence/ui-loops/REVIEW.md) own this four-task continuation. The ring loader, brighter owned glass, staggered finite confetti and chorded-M1 ownership repair supersede their previous descriptions. The newest loader clip was absent; this is a declared licensed human-reference fallback.
 
 [black-sky-wave-colour.as-built.json](black-sky-wave-colour.as-built.json) retains authority for unchanged waves, colour, black sky and base camera/route policy. Its landing-ball and UI descriptions are historical. Exact MP3, single presentation clock, genuine OFF lighting, controls and full-tail finite thank-you remain. Task04 preserves the1.2x cap/.45s attack/.85s release; ordinary boost already worked. Historical measurements/captures retain their original identities. Normal publication through the separate source checkout is authorized; no hosting/visibility/unrelated application change.

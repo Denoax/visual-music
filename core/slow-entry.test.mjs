@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {comfortIntegrate,COMFORT} from './comfort-motion.mjs';
 import {denseLayerAt,openingLayers,thankYouAt} from './opening-layers.mjs';
-import {LoadingModel,LOAD_TASKS} from './loading-model.mjs';
+import {LoadingModel,LOAD_TASKS,MIN_LOADING_SECONDS,READY_REVEAL_SECONDS} from './loading-model.mjs';
 import {confettiAt} from './confetti.mjs';import {tonePlan,createUiTones} from './ui-tones.mjs';
 const near=(a,b,e=1e-8)=>assert.ok(Math.abs(a-b)<e,`${a} != ${b}`);
 const state=()=>({seconds:0,x:0,z:0,angle:0,roll:0,pitchX:-9*Math.PI/180,turbo:1});
@@ -35,17 +35,28 @@ test('loading cannot finish from elapsed time alone or before all real tasks',()
   for(const k of Object.keys(LOAD_TASKS).slice(0,-1))l.markReady(k);assert.equal(l.sample(20).canContinue,false);
   l.markReady('font');assert.equal(l.sample(20).phase,'settling');assert.equal(l.sample(20).spinning,false);assert.equal(l.sample(20.5).canContinue,true);
 });
-test('cached readiness stops spinning immediately without an artificial minimum wait',()=>{
+test('cached readiness waits3.5 visible seconds before the existing reveal',()=>{
   const l=new LoadingModel();for(const k of Object.keys(LOAD_TASKS))l.markReady(k);
-  assert.equal(l.sample(.05).phase,'settling');assert.equal(l.sample(.05).spinning,false);
-  assert.equal(l.sample(.05).playOpacity,0);assert.equal(l.sample(.5).canContinue,true);
+  for(const seconds of [.05,MIN_LOADING_SECONDS-.001]){
+    const m=l.sample(seconds);assert.equal(m.realReady,true);assert.equal(m.phase,'loading');
+    assert.equal(m.spinning,true);assert.equal(m.playOpacity,0);assert.equal(m.canContinue,false);
+  }
+  const m=l.sample(MIN_LOADING_SECONDS);assert.equal(m.phase,'settling');assert.equal(m.spinning,false);
+  assert.equal(l.sample(MIN_LOADING_SECONDS+READY_REVEAL_SECONDS+.001).canContinue,true);
+});
+test('retry restarts the minimum visible duration without accepting stale readiness',()=>{
+  const l=new LoadingModel(),old=l.generation;for(const k of Object.keys(LOAD_TASKS))l.markReady(k);
+  l.sample(10);l.reset();assert.equal(l.markReady('font',old),false);
+  for(const k of Object.keys(LOAD_TASKS))l.markReady(k);
+  assert.equal(l.sample(0).spinning,true);assert.equal(l.sample(MIN_LOADING_SECONDS-.001).canContinue,false);
+  assert.equal(l.sample(MIN_LOADING_SECONDS,{reduced:true}).canContinue,true);
 });
 test('stale load completion cannot arm a retried page',()=>{
   const l=new LoadingModel(),old=l.generation;l.reset();assert.equal(l.markReady('shaders',old),false);
   assert.equal(l.sample(20).realReady,false);
 });
 test('native Continue is one-shot while pending; a rejected unlock returns ready',()=>{
-  const l=new LoadingModel();for(const k of Object.keys(LOAD_TASKS))l.markReady(k);l.sample(3.2);l.sample(5);
+  const l=new LoadingModel();for(const k of Object.keys(LOAD_TASKS))l.markReady(k);l.sample(MIN_LOADING_SECONDS);l.sample(MIN_LOADING_SECONDS+READY_REVEAL_SECONDS+.001);
   assert.equal(l.beginContinue(),true);assert.equal(l.beginContinue(),false);l.continueFailed('Audio did not unlock');assert.equal(l.beginContinue(),true);
 });
 test('failed loading stops spinning, stays blocked and stale completions cannot recover it',()=>{
@@ -54,9 +65,10 @@ test('failed loading stops spinning, stays blocked and stale completions cannot 
   assert.equal(l.markReady('font'),false);l.reset();assert.equal(l.markReady('font',old),false);
   assert.equal(l.sample(0).spinning,true);
 });
-test('reduced motion presents ready immediately after real readiness',()=>{
+test('reduced motion keeps the minimum duration but reveals without animation',()=>{
   const l=new LoadingModel();for(const k of Object.keys(LOAD_TASKS))l.markReady(k);
-  const m=l.sample(.1,{reduced:true});assert.equal(m.phase,'ready');
+  assert.equal(l.sample(.1,{reduced:true}).canContinue,false);
+  const m=l.sample(MIN_LOADING_SECONDS,{reduced:true});assert.equal(m.phase,'ready');
   assert.equal(m.spinnerOpacity,0);assert.equal(m.playOpacity,1);assert.equal(m.settingsOpacity,1);
 });
 test('only presented completion can drive the black thank-you page',()=>{

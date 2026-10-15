@@ -22,9 +22,9 @@ Raised waves, luminous grids and a continuous journey through *Around the World 
 
 ## The experience
 
-The page loads automatically and silently. A small ring spins only while real recording/analysis/font/shader preparation is pending, then stops and reveals Play, “click to continue” and Settings. One Continue action unlocks the existing audio context, plays a soft chime and starts the exact recording at sample zero after a 0.8s lead. Fly low over an endless LED floor while physical waves spread from fixed emitters. The sky stays black throughout. After the circular opening, event-born oval, ridge, chevron, crossed and paired-ring formations travel over the same terrain; quiet circular passages return between them. Crest phase moves colour within the existing cohesive palettes. Local chunks trade light as the waves arrive: bulbs genuinely switch off, leaving dark space between coloured grids, chases and held palettes. Soft stars move through the same world.
+The page loads automatically and silently. A small ring stays on screen for at least 3.5 visible seconds and waits longer if recording/analysis/font/shader preparation is still pending, then stops and reveals Play, “click to continue” and Settings. One Continue action unlocks the existing audio context, plays a soft chime and starts the exact recording at sample zero after a 0.8s lead. Fly low over an endless LED floor while physical waves spread from fixed emitters. The sky stays black throughout. After the circular opening, event-born oval, ridge, chevron, crossed and paired-ring formations travel over the same terrain; quiet circular passages return between them. Crest phase moves colour within the existing cohesive palettes. Local chunks trade light as the waves arrive: bulbs genuinely switch off, leaving dark space between coloured grids, chases and held palettes. Soft stars move through the same world.
 
-The banner and gallery below show the approved preceding build. Current continuation captures and receipts are in [`evidence/ui-loops`](evidence/ui-loops).
+The banner and gallery below show the approved preceding build. Current minimum-duration entry checks are in [`evidence/loader-minimum`](evidence/loader-minimum); [`evidence/ui-loops`](evidence/ui-loops) preserves the preceding complete review.
 
 | Cool light | Warm light |
 |:---:|:---:|
@@ -103,7 +103,7 @@ npm run test:browser
 
 Set `BUMER_CHROME` to an installed compatible Chromium executable for browser checks. The historical checkout and developer API names stay intact.
 
-Current technical checks and limits are in the [four-task UI review](evidence/ui-loops/REVIEW.md). Loader/retry, GPU/CSS/solid/forced-colour glass, staggered finite finish and trusted input checks use actual browser output. The exact MP3, approved wave/floor/camera policy and finite ending are preserved. Full-page desktop/portrait recordings contain the actual stereo master through the settled thank-you finish; each trace binds its source/build and renderer. The score remains an authored candidate, not newly approved lyric/downbeat analysis.
+Current entry-timing checks are in the [minimum-duration review](evidence/loader-minimum/REVIEW.md). The [preceding four-task UI review](evidence/ui-loops/REVIEW.md) retains its original source-bound full-song recordings; their old entry timing is historical. Loader/retry, GPU/CSS/solid/forced-colour glass, staggered finite finish and trusted input checks use actual browser output. The exact MP3, approved wave/floor/camera policy and finite ending are preserved. Full-page desktop/portrait recordings contain the actual stereo master through the settled thank-you finish; each trace binds its source/build and renderer. The score remains an authored candidate, not newly approved lyric/downbeat analysis.
 
 Native NVIDIA headless recording cadence is distinguished from uncaptured foreground GPU performance. Human continuous visual/listening approval, physical devices and physical audiovisual alignment remain pending. Historical benchmarks/recordings retain their original identities.
 

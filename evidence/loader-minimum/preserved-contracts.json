@@ -1,0 +1,12 @@
+{
+  "baseline": "81c1c886725429963382788b5d83c306c0dd0cdf",
+  "source_changed": [
+    "core/loading-model.mjs",
+    "core/slow-entry.test.mjs",
+    "show/CURRENT_AUTHORITY.md",
+    "show/ui-loops.as-built.json",
+    "assets/manifest.json"
+  ],
+  "source_identical": 151,
+  "scope": "Every src rendering/input/audio/camera file, wave/lighting/comfort code, analysis/score and exact MP3 unchanged; sole runtime behavior change is loader minimum. Existing full-song identities preserved."
+}

@@ -1,8 +1,9 @@
 import {smooth5} from './opening-layers.mjs';
 export const LOAD_TASKS=Object.freeze({audioBytes:.30,audioDecode:.25,analysis:.10,shaders:.25,font:.10});
-export const READY_REVEAL_SECONDS=.42;
-/** Readiness owns the spinner. Visible pre-song time only controls the short
- * reveal; it never fabricates readiness or changes the audio transport. */
+export const MIN_LOADING_SECONDS=3.5, READY_REVEAL_SECONDS=.42;
+/** Both real readiness and a deliberate minimum visible duration own entry.
+ * The existing pre-song clock pauses while hidden and resets on retry; no
+ * timeout or musical-clock changes are needed for the minimum/reveal. */
 export class LoadingModel{
   constructor(){this.generation=0;this.reset();}
   reset(){this.generation++;this.done=new Set();this.phase='loading';this.readyAt=null;this.error='';return this.generation;}
@@ -14,7 +15,7 @@ export class LoadingModel{
   fail(message,generation=this.generation){if(generation!==this.generation)return;this.error=message;this.phase='error';}
   sample(visibleSeconds,{reduced=false}={}){
     const real=[...this.done].reduce((v,k)=>v+LOAD_TASKS[k],0),ready=this.done.size===Object.keys(LOAD_TASKS).length;
-    if(this.phase==='loading'&&ready){this.phase='settling';this.readyAt=visibleSeconds;}
+    if(this.phase==='loading'&&ready&&visibleSeconds>=MIN_LOADING_SECONDS){this.phase='settling';this.readyAt=visibleSeconds;}
     const age=this.readyAt===null?0:Math.max(0,visibleSeconds-this.readyAt);
     if(this.phase==='settling'&&(reduced||age>=READY_REVEAL_SECONDS))this.phase='ready';
     const revealed=this.phase==='settling'||this.phase==='ready'||this.phase==='entering';

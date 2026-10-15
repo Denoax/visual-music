@@ -1,3 +1,7 @@
+# Current loading-duration follow-up
+
+The latest user deliberately requests a3–4second minimum. The ring stays for at least3.5visible seconds per load/retry, still waits for every real readiness gate, then uses the existing0.42s reveal. Reduced motion retains the minimum without animation. This supersedes the preceding no-minimum rule; music, camera, floor/waves, glass, input and finish remain unchanged. Current incremental evidence is evidence/loader-minimum; preceding full-song recordings keep their original source identities. Normal source push authorized; no hosting/visibility change.
+
 # Current serial UI continuation
 
 Read and apply `$reference-led-design`. Current source, [show/ui-loops.as-built.json](show/ui-loops.as-built.json) and [evidence/ui-loops](evidence/ui-loops) govern the four verified UI tasks: genuine-readiness ring loading with safe retry, brighter owned liquid glass and solid/forced-colour fallbacks, a staggered finite confetti shower, and canvas-owned mouse-chord acceleration/release. Ordinary M1 boost already worked; its 1.2x cap, .45s attack, .85s release and the approved base camera/pace remain unchanged. Preserve the exact complete MP3, black sky, physical waves/floor colour, native controls and finite thank-you finish. Keep the loader reference/MIT notice and original source records; no generated visual media.

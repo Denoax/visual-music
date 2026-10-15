@@ -2,7 +2,7 @@
   "application": "Visual Music",
   "review_baseline": "1c86a4d317ebfc1512cbb5176c5ff08bc15cca70",
   "publication_baseline": "ca4ef694b7978cf929bf4faa580ca995b2b0a89b",
-  "authority": "Four serial UI tasks, current source and executor evidence; not human approval",
+  "authority": "Four serial UI tasks plus the requested3.5s minimum, current source and executor evidence; not human approval",
   "inherited": "black-sky-wave-colour.as-built.json owns unchanged floor, event-born waves and camera policy; this overlay supersedes its landing-ball, glass brightness and confetti descriptions.",
   "loader": {
     "tasks": {
@@ -12,9 +12,9 @@
       "shaders": 0.25,
       "font": 0.1
     },
-    "minimum_wait_seconds": 0,
+    "minimum_wait_seconds": 3.5,
     "ready_reveal_seconds": 0.42,
-    "spinner": "Original SVG arc; spin only while actual gates are pending, pause at readiness/error; reduced motion stationary.",
+    "spinner": "Original SVG arc; spin until both real gates and3.5visible seconds complete, pause before the existing reveal/error; reduced motion stationary.",
     "retry": "Generation checks before accepting audio bytes, analysis or decoded completion. Continue owns one unlock/source-zero start and existing chime."
   },
   "glass": {
@@ -71,7 +71,7 @@
     },
     {
       "path": "core/loading-model.mjs",
-      "sha256": "54fe2fc30e249516f9e0ee47e0fedbcd36d63a7426c9926fb1778a108bf39a85"
+      "sha256": "0c19f08f8ec0cc66bf0cc57ffd1da39f102543df27b7e34e894ce1fd6f09c35a"
     },
     {
       "path": "core/confetti.mjs",
@@ -106,7 +106,8 @@
       "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0"
     }
   ],
-  "evidence": "evidence/ui-loops",
+  "evidence": "evidence/loader-minimum",
+  "previous_complete_review": "evidence/ui-loops",
   "source_record": "sources/ui-loops-source-record.md",
   "limits": "Missing newest loader clip: declared human-authored ring fallback. Human continuous listening/motion, physical devices/AV and current uncaptured foreground performance approval remain separate. No generated media or hosting update."
 }

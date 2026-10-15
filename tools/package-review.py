@@ -21,6 +21,10 @@ for directory in ['src','core','analysis','show','assets','sources','tools','tes
   if f.is_file() and '__pycache__' not in f.parts and f.suffix not in ['.webm','.mp4','.pyc']:
    rows.append(row(f))
 evidence=root/'evidence/ui-loops'
+capture_identity=json.loads((evidence/'runtime-identity.json').read_text())
+for source in capture_identity['source']:
+ assert digest(root/source['path'])==source['sha256'],'Source changed since full-song capture; record the current runtime before packaging a new complete review'
+
 assert (root/'show/ui-loops.as-built.json').is_file(),'Current UI-loop authority is required'
 assert (evidence/'REVIEW.md').is_file(),'Current UI-loop review record is required'
 

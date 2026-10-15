@@ -92,6 +92,7 @@
       "six-cohort finite confetti",
       "trusted chorded mouse-button ownership"
     ],
-    "unchanged": "Exact music, waves/colour, camera/comfort policy, controls/audio and finite finish window"
+    "unchanged": "Exact music, waves/colour, camera/comfort policy, controls/audio and finite finish window",
+    "loader_minimum_visible_seconds": 3.5
   }
 }

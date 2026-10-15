@@ -1,7 +1,11 @@
 import { test, expect } from "@playwright/test";
+import {
+  MIN_LOADING_SECONDS,
+  READY_REVEAL_SECONDS,
+} from "../../core/loading-model.mjs";
 test.use({ video: process.env.BUMER_LOADER_RECORD === "1" ? "on" : "off" });
 
-test("loader spins while a real task is pending, stops before Play and enters once", async ({
+test("loader waits for the minimum and real tasks, stops before Play and enters once", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
@@ -37,11 +41,26 @@ test("loader spins while a real task is pending, stops before Play and enters on
     first,
   );
   expect(await page.evaluate(() => (window as any).__musicStarts)).toBe(0);
+  // The developer API is exposed only after all real gates finish. Keep this
+  // gate pending beyond the minimum using the visible page's monotonic clock.
+  const pendingSince = await page.evaluate(() => performance.now());
+  await page.waitForFunction(
+    (start) => performance.now() - start >= 3600,
+    pendingSince,
+  );
+  await expect(page.locator("#start")).toBeDisabled();
+  await expect(landing).toHaveAttribute("data-spinning", "true");
   release();
   await expect(page.locator("#start")).toBeEnabled({ timeout: 120000 });
   await page.locator("#developer").evaluate((e: HTMLElement) => {
     e.hidden = true;
   });
+  const visibleSeconds = await page.evaluate(
+    () => (window as any).__BUMER__.lifecycle().visibleSeconds,
+  );
+  expect(visibleSeconds).toBeGreaterThanOrEqual(
+    MIN_LOADING_SECONDS + READY_REVEAL_SECONDS,
+  );
   await expect(landing).toHaveAttribute("data-spinning", "false");
   await expect(landing).toHaveAttribute("aria-busy", "false");
   const stopped = await spinner.evaluate((e) => getComputedStyle(e).transform);
@@ -62,6 +81,53 @@ test("loader spins while a real task is pending, stops before Play and enters on
   expect(await page.evaluate(() => (window as any).__musicStarts)).toBe(1);
   await expect(landing).toBeHidden();
   expect(errors).toEqual([]);
+});
+
+test("ready assets still keep Play unavailable for the minimum duration", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/?dev=1");
+  await page.waitForFunction(
+    () => (window as any).__BUMER__?.lifecycle().loading.realReady,
+  );
+  const first = await page.evaluate(() =>
+    (window as any).__BUMER__.lifecycle(),
+  );
+  if (first.visibleSeconds < MIN_LOADING_SECONDS) {
+    await expect(page.locator("#start")).toBeDisabled();
+    expect(first.loading.spinning).toBe(true);
+  }
+  if (
+    process.env.BUMER_LOADER_INSPECT &&
+    first.visibleSeconds < MIN_LOADING_SECONDS
+  )
+    await page.screenshot({ path: test.info().outputPath("minimum-hold.png") });
+  await expect(page.locator("#start")).toBeEnabled();
+  const settled = await page.evaluate(() =>
+    (window as any).__BUMER__.lifecycle(),
+  );
+  console.log(
+    "LOADER_MINIMUM_TIMING",
+    JSON.stringify({
+      firstReadyVisibleSeconds: first.visibleSeconds,
+      playEnabledVisibleSeconds: settled.visibleSeconds,
+    }),
+  );
+  if (process.env.BUMER_LOADER_INSPECT)
+    await page.screenshot({
+      path: test.info().outputPath("minimum-ready.png"),
+    });
+  expect(settled.visibleSeconds).toBeGreaterThanOrEqual(
+    MIN_LOADING_SECONDS + READY_REVEAL_SECONDS,
+  );
+  expect(
+    (
+      await page.evaluate(
+        () => (window as any).__BUMER__.transport.sourceEvents,
+      )
+    ).filter((e: any) => e.kind === "start"),
+  ).toHaveLength(0);
 });
 
 test.describe("primary-touch portrait", () => {
