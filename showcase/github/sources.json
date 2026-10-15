@@ -1,0 +1,79 @@
+{
+  "runtime_commit": "41076b775a7c3be27b1867aa410a518cf2be5073",
+  "inputs": [
+    {
+      "path": "evidence/dance-floor-only/visual-music-capture/frames/desktop-027.png",
+      "bytes": 1139267,
+      "sha256": "d673ea7d293e6494d7b07f07cdc759527b89117a07e4642c23fb678e03be6a4d"
+    },
+    {
+      "path": "evidence/dance-floor-only/visual-music-capture/frames/desktop-162.png",
+      "bytes": 1186283,
+      "sha256": "8c2888dce3051c8da753d04293ece9d8830b9578e402b90e079694b777481933"
+    },
+    {
+      "path": "evidence/dance-floor-only/visual-music-capture/frames/portrait-132.png",
+      "bytes": 424578,
+      "sha256": "5ee9eda74b55ade774e10bc7af9d2a1276ac4bf5f806928ec26f43af27279deb"
+    },
+    {
+      "path": "evidence/dance-floor-only/visual-music-capture/desktop-full.webm",
+      "bytes": 159869183,
+      "sha256": "6ce57c039b81e6aa4281eafa801e6ff02f22a36c51436e403b7014a239ddce52"
+    },
+    {
+      "path": "evidence/dance-floor-only/visual-music-capture/frames/desktop-060.png",
+      "bytes": 1039267,
+      "sha256": "dab66a87fee2524c718ee9e7a0ec6769f057f7930b879ce674b3c7fd637f228e"
+    },
+    {
+      "path": "public/fonts/instrument-sans-latin-variable.woff2",
+      "bytes": 30092,
+      "sha256": "2ee17598a98d8a59e4df8152d015bec9ab8e4d5672cc0ab42bef806b568e3971"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "showcase/github/visual-music-banner.webp",
+      "bytes": 321240,
+      "sha256": "ac9d07a0756b67399e501ce1934d12e1e31e5f900df00b90a72bac8284b23b4a"
+    },
+    {
+      "path": "showcase/github/visual-music-social.png",
+      "bytes": 704776,
+      "sha256": "f3302db7582fa8213f50ab1f49f0bf9359dcc4d5c89070d02e5c0bef3ec16a2b"
+    },
+    {
+      "path": "showcase/github/floor-cool.webp",
+      "bytes": 696748,
+      "sha256": "bf298d7e29c23dfa2a5948e8e645b4432698d10a5d629d586148dedc1a8eb35a"
+    },
+    {
+      "path": "showcase/github/floor-warm.webp",
+      "bytes": 750280,
+      "sha256": "74b5115e329f47c0381d17bb4e60b56c1ce72c24ad58febacb76a7799d4c5ab4"
+    },
+    {
+      "path": "showcase/github/portrait.webp",
+      "bytes": 293528,
+      "sha256": "f350d1a0e00b403197731693296307e5449075b926b37e72916d8d7f52facb73"
+    },
+    {
+      "path": "showcase/github/flight.gif",
+      "bytes": 6523534,
+      "sha256": "cdfca49fbf1414c173923fca333c8182e6bdb069f209373abe6cb2c8d598bd4f"
+    }
+  ],
+  "processing": {
+    "banner": "Browser-rendered original HTML typography over unchanged actual sixty-second scene frame; top-aligned crop at native 1440 width. Social version scales the frame down to 1280 width. Neither is an unedited runtime frame.",
+    "stills": "Lossless WebP conversions; original dimensions and pixels retained.",
+    "motion": "Five-second silent excerpt at media 25-30s, original pace, 12fps, 720x450, lossy GIF palette; wrap returns to the excerpt start and is not a claimed seamless scene loop."
+  },
+  "references": [
+    "Denoax/portfolio README and showcase/github inspected locally",
+    "Denoax/konata-hyprland-dotfiles README, real gallery and banner inspected locally at e1e8ad6; clarified by Mani as the requested KonaChat reference"
+  ],
+  "renderer_errors": [],
+  "remote_publication": "Not pushed or uploaded; visual-music-social.png is ready for repository Settings social-preview upload.",
+  "documentation_review": "Local marked16.4.2 GFM preview at1280x900 and390x844; image decode/UTF-8/anchors/contained widths pass. Independently authored preview CSS, not uploaded GitHub. Scene-frame and banner pixels inspected. Human approval remains pending."
+}

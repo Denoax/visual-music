@@ -1,7 +1,5 @@
 # Audio clock arithmetic
 
-`audio-time.mjs` maps an anchored source offset and context start time into recording seconds. `visualSongTime` uses a fresh, plausible `AudioContext.getOutputTimestamp()` when available, otherwise reports `fallback_graph`. Positive calibration offsets advance visual sampling. Latency fields are not added a second time.
+`audio-time.mjs` maps the anchored source offset/context start to recording seconds. `visualSongTime` uses a fresh output timestamp estimate or explicitly reports graph fallback. Calibration offset stays zero; latency is not added twice. Browser lifecycle belongs to `src/audio/transport.ts`; the wave score and event reconstruction belong to `src/show/waves.ts` and `show/`.
 
-The browser lifecycle is in `src/audio/transport.ts`; the recording-bound score is in `show/score.json`. Pure tests use synthetic coordinates and establish arithmetic contracts, not acoustic synchronisation or listened musical boundaries. `sectionAt` and `markerPulse` remain general helpers covered by those tests; the new show uses flexible regions and deterministic event envelopes.
-
-`npm run validate` checks the current recording, analysis and score structure. `npm run validate:review` reports pending review gates. The original v1 validator and templates are preserved only under rejected historical evidence.
+Pure synthetic-coordinate checks prove arithmetic contracts. Digital comparisons, build success and saved screenshots supply no human listening or physical AV alignment approval. The generic section/pulse helpers remain available and tested; the active scene uses its own continuously sampled cue/event model.

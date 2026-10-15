@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "scope": "handoff_only",
+  "exact_audio_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "encoded_bytes": 8892231,
+  "feature_rows": 21967,
+  "onset_candidates": 467,
+  "cue_sections": 9,
+  "decoded_analysis_seconds": 219.6658125,
+  "coverage_complete": true,
+  "original_reference_media_bundled": false,
+  "generated_visual_media": false,
+  "manifest_verified": true,
+  "manifest_payload_count": 24,
+  "website_implemented_here": false,
+  "current_preview_checked_here": false,
+  "listening_reviewed": false,
+  "browser_decode_verified": false
+}

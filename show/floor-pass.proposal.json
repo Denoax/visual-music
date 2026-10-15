@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "standing_skill": "$reference-led-design",
+  "base_commit": "2bc1104413576465e47ebfe4807bf03808c30b8a",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "status": "starting_floor_proposal_not_implemented_or_reference_matched",
+  "current_2bc_boundaries_verified": false,
+  "anchor_source": "preceding continuation chapter ranges; inspect current arrangement first and prefer any newer reviewed anchors",
+  "duration_seconds": 219.66579166666668,
+  "source_video_visuals_verified": false,
+  "listening_approved": false,
+  "camera": "preserve current heading-based flight, all-direction ground and startup route-reset fix",
+  "sky": "neutral black throughout; neutral restrained existing stars",
+  "cursor": "remove ball and attached trace/glints completely; retain steering and native pointer",
+  "sections": [
+    {
+      "id": "opening",
+      "start_seconds": 0,
+      "end_seconds": 25,
+      "floor_treatment": "white_led_grid",
+      "source_video_priority": null,
+      "direction": "Read the small bulb language and white waves against a neutral black sky."
+    },
+    {
+      "id": "first_rise",
+      "start_seconds": 25,
+      "end_seconds": 40,
+      "floor_treatment": "white_led_breath",
+      "source_video_priority": null,
+      "direction": "Current rhythmic controls breathe through coherent LED groups; retain aligned grid."
+    },
+    {
+      "id": "led",
+      "start_seconds": 40,
+      "end_seconds": 75,
+      "floor_treatment": "coloured_ripple_floor",
+      "source_video_priority": null,
+      "direction": "Shared wave origins drive saturated light rings and low surface spill; hold selected colour/layout."
+    },
+    {
+      "id": "sphere_hold",
+      "start_seconds": 75,
+      "end_seconds": 106,
+      "floor_treatment": "dense_reference_sequence",
+      "source_video_priority": null,
+      "direction": "Restyle the older sphere passage as a bounded dense LED patch, selecting an actually observed clip sequence."
+    },
+    {
+      "id": "shape_switch",
+      "start_seconds": 106,
+      "end_seconds": 139,
+      "floor_treatment": "heart_star_sequence",
+      "source_video_priority": "4ds7VpSK-K4",
+      "direction": "Match the heart and star floor-cell patterns; fill/outline/colours/stages must follow playback."
+    },
+    {
+      "id": "glass",
+      "start_seconds": 139,
+      "end_seconds": 158,
+      "floor_treatment": "masked_colour_layers",
+      "source_video_priority": null,
+      "direction": "Replace the old lens slot with restrained floor mask/light layers and fade back into readable grid."
+    },
+    {
+      "id": "overview",
+      "start_seconds": 158,
+      "end_seconds": 175,
+      "floor_treatment": "quiet_mask_grid",
+      "source_video_priority": null,
+      "direction": "Existing brief overview may show the floor motifs if it fits; no new camera lock or aerial setting."
+    },
+    {
+      "id": "bubbles",
+      "start_seconds": 175,
+      "end_seconds": 195,
+      "floor_treatment": "dense_reference_return",
+      "source_video_priority": null,
+      "direction": "Another verified source-floor sequence in a dense patch; keep the effect on the floor."
+    },
+    {
+      "id": "beams",
+      "start_seconds": 195,
+      "end_seconds": 210,
+      "floor_treatment": "reference_led_chase",
+      "source_video_priority": null,
+      "direction": "A selected source-matched chase/band sequence on floor cells, returning to aligned rests."
+    },
+    {
+      "id": "finale",
+      "start_seconds": 210,
+      "end_seconds": 214,
+      "floor_treatment": "grid_ripple_return",
+      "source_video_priority": null,
+      "direction": "Readable grid plus restrained current wave light, not all layers maximally bright."
+    },
+    {
+      "id": "outro",
+      "start_seconds": 214,
+      "end_seconds": 219.66579166666668,
+      "floor_treatment": "existing_fade",
+      "source_video_priority": null,
+      "direction": "Keep the exact music endpoint and current fade."
+    }
+  ],
+  "geometry": {
+    "preserve_terrain_spacing": 3,
+    "dense_visual_pitch_initial": 1.5,
+    "dense_patch_cells_initial": 32,
+    "cap_radius_initial": 0.34,
+    "cap_height_initial": 0.24,
+    "cap_vertices": 33,
+    "cap_triangles": 56,
+    "near_cap_instance_budget_initial_desktop": 768,
+    "near_cap_instance_budget_initial_portrait": 384
+  },
+  "light": {
+    "rings": "share actual current fixed front origins/time/speed; visual colour only",
+    "ground": "deformed-terrain emission overlay; no water geometry",
+    "masks": "original numerical cell masks; revise generic heart/star vectors against actual playback",
+    "max_dominant_layers_initial": 2,
+    "clock": "existing AudioTransport presentation clock",
+    "beats": "reuse current rhythmic controls; no older-event overwrite or new master BPM"
+  },
+  "acceptance": "REVIEW.md; tests validate mathematical assets, not actual video fidelity or scene quality"
+}

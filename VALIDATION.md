@@ -1,19 +1,67 @@
-# Handoff validation — 2026-10-09
+# Current floor-only verification
 
-This is an implementation handoff, not a built or visually approved website. All numerical test fixtures are synthetic. The actual requested recording was not decoded or listened to in this session.
+Visible app name is now Visual Music. The name change modifies only the page and
+Start heading; scene/camera/audio/control implementation is preserved. Current
+name-bound captures live in evidence/dance-floor-only/visual-music-capture; earlier
+final-capture files remain recoverable as the preceding brand's evidence.
+Repository banners/gallery/README follow the inspected portfolio and user-confirmed
+Kona Desktop reference; source hashes and export details: showcase/github/sources.json.
 
-| Check | Observed result | What it establishes |
-| --- | --- | --- |
-| `node --test core/audio-time.test.mjs` | 11 passed, 0 failed | Pure clock arithmetic, scheduling hold, output timestamp/fallback selection, positive lead, frozen pause, offset/seek/replay sampling, non-accumulated time, half-open section selection, pulses and invalid input rejection. |
-| `python3 -m unittest discover -s tools -p 'test_*.py' -v` | 10 passed, 0 failed | Record consistency and rejection of wrong cue hash, unresolved identity/times, gaps/overlaps, malformed marker/asset fields, unsorted/out-of-range markers, changed asset bytes, escaping paths and undocumented bundled audio. |
-| `python3 tools/validate_pack.py --root . --mode scaffold` | Passed | Included templates and acquisition register have the expected handoff structure. |
-| Same validator with `--mode release` | Failed as expected | Untouched templates cannot pass as acquired, reviewed, exact-song production records. |
-| `prepare_audio.py` on a temporary 2.25-second mono test tone | Passed; 108,000 decoded samples, 225 waveform rows, 225 feature rows; input hash matched | Hashing, probing, measured curves and metadata output function on the synthetic fixture. Identity stayed pending; browser duration stayed null; audio was not copied to the output directory. |
+Evidence: evidence/dance-floor-only.119 individual Node tests pass outside the
+sandbox; earlier file-level sandbox summaries are retained, not added to that
+count. Build/type/runtime checks pass.18 guarded foundations plus six extra
+shader/UI/input/font/lockfile files match65787fd exactly. Five retired model bytes
+match exact identities outside public.15 current production files contain no
+model payloads or active model-loader/family identifiers.
 
-Test environment: Node v24.19.0; Python 3.12.14; NumPy 2.3.5; FFmpeg 6.1.1-3ubuntu5. These are the verification environment, not mandated production versions.
+Actual-browser20 distinct contracts: initial19 passed, one graphics-ready race
+failed; six affected recovery contracts pass after a restored-frame commit fix.
+Three direct removal/recovery cases passed after fixing default Vector4.w=1 and
+waiting for the paused graph-time dirty render in the new snapshot test. All first
+failures remain. No actor/landscape diagnostics/snapshots, no model requests,
+borrow[0,0,0,0] and four zero structure parameters through former chapters/replay.
 
-No song recording, synthetic test audio, downloaded model, texture, font binary or rendered website is included. `manifests/assets.json` records acquisition candidates and original-code roles. It is not an inventory of acquired source bytes.
+Actual NVIDIA GPU:147576 activation probes,80586OFF, OFF emission/spill0;384
+point/cap profile cases, max error8.48e-8;313078 canonical current terrain probes,
+max CPU/GPU error.000271623m. Analytic global14m raw/.96m idle bounds and true
+terrain depth remain. Background star depth cases pass in four viewport/DPR states.
+Current desktop/portrait/short/DPR2 frames are renderer evidence, not motion approval.
 
-Still to establish during website implementation: exact recording identity and hash; browser decode; reviewed cue times; real scene rendering; asset/license evidence for the chosen runtime files; uninterrupted listening and browser capture; measured presentation sync; portrait interaction and real-device performance. See `ASSETFILE.md` for the complete delivery contract.
+Full new VP9/Opus desktop/portrait recordings retain actual master audio and the
+complete sample-zero219.66579s song, presented tail,8s return/two12s idle periods.
+Frozen runtime/source/recorder identities and continuous no-scene/no-borrow/mask
+trace checks are separate from audio-band provenance, packet/container identity,
+CPU/GPU tests and clean source extraction/build/HTTP output comparisons.
 
-`PACKAGE_MANIFEST.json` inventories and hashes every other payload file. It deliberately excludes itself to avoid a self-referential hash. The final ZIP is checked for CRC errors and inventory/byte consistency before delivery. This verifies package integrity only.
+Previous native foreground ownership and quiet-tail comparison limits remain
+until fresh evidence addresses the specific metric. Headless capture scope is
+separate; RAF intervals are not GPU time. Human continuous perception/listening,
+physical devices/touch/AV and formal flash approval remain pending. No push/deploy.
+
+Fresh AV verification completed: both source-bound recordings passed complete
+source-zero/tail/8s-return/two12s-idle and no-scenery/no-borrow/mask invariants.
+All16 current audio-band windows exceed.99 (minimum.991886922); original source
+and delivered media are unchanged. The prior.989652 quiet-tail failure remains
+historical, not relabelled. Current Opus provenance is not lossless fidelity or
+physical AV/listening approval. One portrait attempt paused at113.38s, was rejected
+and preserved; a fresh standalone uninterrupted retry passed, cause unisolated.
+
+Candidate fresh archive extraction verified every payload/CRC/SHA, offline lockfile
+installation/build/all119 individual tests/runtime integrity. ALL15 rebuilt files
+match the current build and actual owned HTTP preview. Proof: evidence/dance-floor-only/clean-extraction-build.json.
+The final metadata-only seal receives independent outer verification. This proves
+artifact/rebuild integrity, not human/device/foreground approval.
+
+Current Visual Music captures independently pass all67 runtime/source identities,
+no model/owner/borrow/mask samples, full219.66579s audio/return/two idle periods
+and16/16 audio-band windows (minimum.991060045). Indexed/raw packets are equal.
+Naming build proof:14 non-HTML payloads identical; HTML changes only two visible
+names. Headless NVIDIA GPU P95:desktop4.374528ms, portrait3.127296ms; this is
+GPU elapsed evidence for the captures, separate from native foreground approval.
+README/banners use actual current recordings and original DOM composition.
+
+Fresh Visual Music archive extraction passed all630 payload hashes/CRC, offline
+lockfile installation/build/119 checks/runtime integrity and all15 owned HTTP
+production-byte comparisons. Embedded proof: clean-extraction-build.json. The
+pre-name proof is preserved separately. Final seal changes evidence only and
+receives its own complete outer archive/extraction verification.

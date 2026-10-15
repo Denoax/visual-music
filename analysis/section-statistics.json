@@ -1,0 +1,156 @@
+{
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "status": "measured_statistics_on_proposed_ranges",
+  "columns": [
+    "low",
+    "mid",
+    "high",
+    "flux"
+  ],
+  "sections": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 10,
+      "mean_bands": [
+        0.022753,
+        0.415769,
+        0.233571,
+        0.08276
+      ],
+      "mean_rms": 0.133431,
+      "low_onset_candidates": 18
+    },
+    {
+      "start_seconds": 10,
+      "end_seconds": 25,
+      "mean_bands": [
+        0.024554,
+        0.629534,
+        0.305326,
+        0.165828
+      ],
+      "mean_rms": 0.192698,
+      "low_onset_candidates": 40
+    },
+    {
+      "start_seconds": 25,
+      "end_seconds": 40,
+      "mean_bands": [
+        0.518155,
+        0.601448,
+        0.404809,
+        0.313197
+      ],
+      "mean_rms": 0.321577,
+      "low_onset_candidates": 30
+    },
+    {
+      "start_seconds": 40,
+      "end_seconds": 75,
+      "mean_bands": [
+        0.495463,
+        0.644085,
+        0.58763,
+        0.452431
+      ],
+      "mean_rms": 0.338475,
+      "low_onset_candidates": 75
+    },
+    {
+      "start_seconds": 75,
+      "end_seconds": 92,
+      "mean_bands": [
+        0.48281,
+        0.58748,
+        0.43885,
+        0.377521
+      ],
+      "mean_rms": 0.32135,
+      "low_onset_candidates": 35
+    },
+    {
+      "start_seconds": 92,
+      "end_seconds": 106,
+      "mean_bands": [
+        0.478882,
+        0.603501,
+        0.531962,
+        0.455509
+      ],
+      "mean_rms": 0.328651,
+      "low_onset_candidates": 27
+    },
+    {
+      "start_seconds": 106,
+      "end_seconds": 139,
+      "mean_bands": [
+        0.485765,
+        0.686614,
+        0.624662,
+        0.480669
+      ],
+      "mean_rms": 0.345132,
+      "low_onset_candidates": 70
+    },
+    {
+      "start_seconds": 139,
+      "end_seconds": 158,
+      "mean_bands": [
+        0.453836,
+        0.639781,
+        0.641681,
+        0.441474
+      ],
+      "mean_rms": 0.331655,
+      "low_onset_candidates": 39
+    },
+    {
+      "start_seconds": 158,
+      "end_seconds": 175,
+      "mean_bands": [
+        0.169384,
+        0.54697,
+        0.426487,
+        0.24794
+      ],
+      "mean_rms": 0.212353,
+      "low_onset_candidates": 41
+    },
+    {
+      "start_seconds": 175,
+      "end_seconds": 207,
+      "mean_bands": [
+        0.464378,
+        0.716541,
+        0.60999,
+        0.501639
+      ],
+      "mean_rms": 0.344801,
+      "low_onset_candidates": 66
+    },
+    {
+      "start_seconds": 207,
+      "end_seconds": 214,
+      "mean_bands": [
+        0.40541,
+        0.858344,
+        0.699492,
+        0.517977
+      ],
+      "mean_rms": 0.360681,
+      "low_onset_candidates": 15
+    },
+    {
+      "start_seconds": 214,
+      "end_seconds": 219.6658125,
+      "mean_bands": [
+        0.111584,
+        0.22567,
+        0.160762,
+        0.131326
+      ],
+      "mean_rms": 0.095568,
+      "low_onset_candidates": 11
+    }
+  ]
+}

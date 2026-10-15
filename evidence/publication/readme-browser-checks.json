@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "scope": "GitHub Markdown API-sanitized HTML with local documentation-preview styling; desktop/portrait normal+reduced motion; actual live GitHub verification follows publication.",
+  "rows": [
+    {
+      "kind": "project",
+      "width": 1280,
+      "documentWidth": 1280,
+      "currentSrc": "http://127.0.0.1:36787/project/showcase/github/visual-music-loop.gif",
+      "natural": [
+        990,
+        352
+      ],
+      "reducedSrc": "http://127.0.0.1:36787/project/showcase/github/visual-music-loop-poster.webp"
+    },
+    {
+      "kind": "project",
+      "width": 390,
+      "documentWidth": 390,
+      "currentSrc": "http://127.0.0.1:36787/project/showcase/github/visual-music-loop.gif",
+      "natural": [
+        990,
+        352
+      ],
+      "reducedSrc": "http://127.0.0.1:36787/project/showcase/github/visual-music-loop-poster.webp"
+    },
+    {
+      "kind": "profile",
+      "width": 1280,
+      "documentWidth": 1280,
+      "currentSrc": "http://127.0.0.1:36787/profile/assets/tabs/visual-music-loop.gif",
+      "natural": [
+        990,
+        352
+      ],
+      "separators": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "order": [
+        "https://github.com/Denoax/portfolio",
+        "https://github.com/Denoax/pelagic-jellyfish-webgl",
+        "https://github.com/Denoax/codex-hermes-router",
+        "https://github.com/Denoax/konata-hyprland-dotfiles",
+        "https://github.com/Denoax/Kattis",
+        "https://github.com/Denoax/bumer-exe",
+        "https://www.linkedin.com/in/mani-marami-milani-8713a7309/"
+      ],
+      "visualToCanadaGap": 1,
+      "reducedSrc": "http://127.0.0.1:36787/profile/assets/tabs/visual-music-loop-poster.webp"
+    },
+    {
+      "kind": "profile",
+      "width": 390,
+      "documentWidth": 390,
+      "currentSrc": "http://127.0.0.1:36787/profile/assets/tabs/visual-music-loop.gif",
+      "natural": [
+        990,
+        352
+      ],
+      "separators": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "order": [
+        "https://github.com/Denoax/portfolio",
+        "https://github.com/Denoax/pelagic-jellyfish-webgl",
+        "https://github.com/Denoax/codex-hermes-router",
+        "https://github.com/Denoax/konata-hyprland-dotfiles",
+        "https://github.com/Denoax/Kattis",
+        "https://github.com/Denoax/bumer-exe",
+        "https://www.linkedin.com/in/mani-marami-milani-8713a7309/"
+      ],
+      "visualToCanadaGap": 1,
+      "reducedSrc": "http://127.0.0.1:36787/profile/assets/tabs/visual-music-loop-poster.webp"
+    }
+  ]
+}

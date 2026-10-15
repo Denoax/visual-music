@@ -1,0 +1,67 @@
+{
+  "skill": "reference-led-design",
+  "no_generated_visual_media": true,
+  "no_reference_source_or_media_redistributed": true,
+  "approved_baseline": "f340403bdf4e8aa0d8acb3f2beeae74036b07a8a",
+  "observations": [
+    {
+      "source": "HelloEnjoy Lights",
+      "url": "https://helloenjoy.itch.io/lights",
+      "creator": "HelloEnjoy",
+      "licence": "Reference only; no redistribution permission established",
+      "inspected": "Actual published creator stills, public source, handoff observations, and normal loaded original entry/playback in compatible NVIDIA Chromium",
+      "normal_playback_observed_seconds": 15.673696,
+      "playback": "Visible original Play button, delay150ms; audio advanced from zero without seeking",
+      "opened_frame": "Actual sparse rounded opening field, angled layers, luminous movement head/wake",
+      "limits": "Complete reference and exact UP sequence not continuously watched. No independent audio listening approval.",
+      "adaptation": [
+        "Dark gaps and sparse local lights",
+        "Distinct field silhouettes/material modes rather than palette alone",
+        "Coherent low glide and locally luminous cursor/wake"
+      ],
+      "implementation": [
+        "src/scene/field.ts",
+        "src/scene/modes.ts",
+        "src/scene/cursor.ts",
+        "src/show/arrangement.ts"
+      ]
+    },
+    {
+      "source": "Three.js MeshPhysicalMaterial documentation",
+      "url": "https://threejs.org/docs/pages/MeshPhysicalMaterial.html",
+      "creator": "Three.js contributors",
+      "inspected": "Transmission with opacity1, thickness/IOR and environment reflection",
+      "adaptation": "Actual optical transmissive ellipsoid lenses, original geometric studio PMREM",
+      "implementation": [
+        "src/scene/modes.ts",
+        "src/scene/lighting.ts"
+      ]
+    },
+    {
+      "source": "Three.js InstancedMesh documentation",
+      "url": "https://threejs.org/docs/pages/InstancedMesh.html",
+      "creator": "Three.js contributors",
+      "inspected": "Fixed instanced geometry/material with per-instance transforms and colours",
+      "adaptation": "Bounded volumetric matrix/bubble pools with stable world cell identities and zero-radius recycling",
+      "implementation": [
+        "src/scene/modes.ts"
+      ]
+    },
+    {
+      "source": "User-supplied original continuation support and music-control helpers",
+      "path": "sources/cursor-modes-handoff/CURSOR_GEOMETRY.md",
+      "inspected": "Complete helper tests/source, support proof and choreography proposal",
+      "adaptation": "Exact triangles, current full-body support, whole old segment ceiling; deterministic score envelopes and original glyph targets",
+      "implementation": [
+        "core/sphere-support.mjs",
+        "core/music-controls.mjs",
+        "src/scene/terrain.ts",
+        "src/scene/led-geometry.ts"
+      ]
+    }
+  ],
+  "musical_timing": "Candidates retained without fabricated audition/beat approval",
+  "media_assets": "No new runtime image/texture/model files. Original renderer-authored geometric reflection panels and glyph polylines.",
+  "superseded_by": "show/correction.as-built.json and sources/grid-flight-reference-record.json",
+  "historical_status": "Prior ac250b7 cursor/material/camera direction rejected; retained as history, not active authority"
+}

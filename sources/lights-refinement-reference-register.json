@@ -1,0 +1,75 @@
+[
+  {
+    "id": "portfolio-controls",
+    "source": [
+      "https://manimarami.com/",
+      "https://github.com/Denoax/portfolio/tree/74d9326c71a5bcf21398e8bf25335b6823ab4a11"
+    ],
+    "creator": "Mani Marami / Denoax; Rare UI credit in owned source",
+    "inspected_detail": "Actual pane/button/source interactions;380px pane,140/160ms motion, Close and focus return observed. GPU artwork unavailable.",
+    "adaptation": "Port actual control geometry, typography, state and motion into current vanilla app; existing playback actions.",
+    "provenance_and_reuse": "User-owned source explicitly authorized; Rare UI MIT, font OFL, optional audio CC0 notices bundled.",
+    "output_evidence": {
+      "status": "proposed; not integrated into BUMER by this handoff",
+      "required": "Compare desktop/portrait states, hover/press/focus, drag cancellation, interrupted pane motion and live music continuity."
+    }
+  },
+  {
+    "id": "lights-field",
+    "source": [
+      "https://helloenjoy.itch.io/lights",
+      "https://github.com/C4RL05/Lights/tree/44e2b0aaa11764f37c2ad29feea9afc84a5bb380"
+    ],
+    "creator": "Carlos Ulloa and Libertad Aguilera / HelloEnjoy",
+    "inspected_detail": "Source: A/B actual off; separate MapGlows/MapLines; map decay; active StarManager fades/parallax; Player opening; View blur. Live WebGL failed; author video did not decode.",
+    "adaptation": "True final emitter gates, thin strips/local glow, cinematic scaled opening, stable ground-only beat motion, closer fading stars.",
+    "provenance_and_reuse": "Author-linked human-made project; independent code only; no root reuse licence found or runtime media bundled.",
+    "output_evidence": {
+      "status": "proposed; not integrated into BUMER by this handoff",
+      "required": "Compatible live reference and continuous normal-speed comparison; actual OFF contrast, star depth and camera stability."
+    }
+  },
+  {
+    "id": "wled-sparse-chase",
+    "source": [
+      "https://kno.wled.ge/features/effects/",
+      "https://kno.wled.ge/features/palettes/"
+    ],
+    "creator": "WLED community",
+    "inspected_detail": "Official effects and sampled frames of linked Twinklefox, Theater Rainbow and Chase Rainbow GIFs show lit/dark membership and ordered colour motion.",
+    "adaptation": "Seeded musical-epoch dropouts, one-on/two-off ordered rainbow bands, repeating restrained chases.",
+    "provenance_and_reuse": "Official human-authored software/documentation and linked real demonstrations; no code or GIF redistribution.",
+    "output_evidence": {
+      "status": "proposed; not integrated into BUMER by this handoff",
+      "required": "Audition phrase placement; verify periodic seams, sparse dark gaps and frame cost in actual field."
+    }
+  },
+  {
+    "id": "phased-dimmers",
+    "source": [
+      "https://help.malighting.com/grandMA3/2.5/HTML/qsg_phasers.html"
+    ],
+    "creator": "MA Lighting",
+    "inspected_detail": "Official phaser states and phase-offset/dimmer instructions.",
+    "adaptation": "Musical groups use real0/1 dimmer states, held plateaus and timed crossfades.",
+    "provenance_and_reuse": "Technique reference; original masks, no software or fixture assets copied.",
+    "output_evidence": {
+      "status": "proposed; not integrated into BUMER by this handoff",
+      "required": "Post-pipeline alternating-group comparison and listening/beat review."
+    }
+  },
+  {
+    "id": "palette-paths",
+    "source": [
+      "https://www.w3.org/TR/css-color-4/"
+    ],
+    "creator": "W3C",
+    "inspected_detail": "Official perceptual colour/hue interpolation/gamut guidance.",
+    "adaptation": "Small once-authored linear RGB palette LUT with controlled hue/lightness/chroma; neutral breaks between conflicting families.",
+    "provenance_and_reuse": "Original conservative gamut helper; not a CSS MINDE claim.",
+    "output_evidence": {
+      "status": "proposed; not integrated into BUMER by this handoff",
+      "required": "Actual exposure/output conversion and continuous palette transitions on the renderer."
+    }
+  }
+]

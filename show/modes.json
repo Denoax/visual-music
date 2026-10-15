@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "standing_skill": "$reference-led-design",
+  "status": "original_implementation_specification_not_rendered",
+  "shared_contract": "All modes use approved current transformed triangle terrain and the same audio presentation clock.",
+  "pool_caps": {
+    "morph_points": 1024,
+    "solid_matrix_spheres": 48,
+    "air_bubbles": 96,
+    "transmissive_heroes_desktop": 3,
+    "transmissive_heroes_portrait": 2,
+    "beams": 6,
+    "cursor_glints": 24,
+    "trail_samples": 64,
+    "dominant_layers_at_once": 2
+  },
+  "modes": [
+    {
+      "id": "white_waves",
+      "topology": "Approved displaced point grid and emitter fronts",
+      "distinctive_behaviour": "White pulse scale/emission with stable masked rows and the existing large crests.",
+      "entry": "Preserve sample-zero white opening and black sky.",
+      "exit": "Crossfade a stable mask, preserving physical waves.",
+      "layers": [
+        "approved_field",
+        "cursor"
+      ],
+      "palette_policy": "white or restrained final held pair"
+    },
+    {
+      "id": "neo_led",
+      "topology": "Segmented contour ribbons / narrow luminous dashes over exact triangle surface",
+      "distinctive_behaviour": "Alternating contour bands ripple with bass; deliberate missing segments create negative space.",
+      "entry": "Fade most ordinary points while ribbon segments rise in brightness; no geometry popping.",
+      "exit": "Reduce ribbon emission before changing topology.",
+      "layers": [
+        "ribbon_field",
+        "sparse_approved_field",
+        "cursor"
+      ],
+      "palette_policy": "cool held palette after entry; light moves, base hues can hold"
+    },
+    {
+      "id": "sphere_matrix",
+      "topology": "Shared smooth opaque 3D spheres in staggered groups over the wave terrain",
+      "distinctive_behaviour": "A/B groups swell and exchange localized gradient/emission states; silhouettes have volume.",
+      "entry": "Small spheres appear from dark groups while underlying points dim.",
+      "exit": "Shrink/fade groups smoothly; do not delete on a frame boundary.",
+      "layers": [
+        "sphere_groups",
+        "sparse_approved_field",
+        "cursor"
+      ],
+      "palette_policy": "white/cyan/blue gradient held; local accents alternate stable groups"
+    },
+    {
+      "id": "colour_shapes",
+      "topology": "Real moving point targets plus masked field groups",
+      "distinctive_behaviour": "Dots form circle, diamond and chevron; localized coral/cyan or lime/violet pairs swap at selected accents without a global brightness flash.",
+      "entry": "Stable slot assignment and eased actual position morph.",
+      "exit": "Dissolve targets toward field anchors and fade before optical mode.",
+      "layers": [
+        "morph_pool",
+        "sparse_approved_field",
+        "cursor"
+      ],
+      "palette_policy": "section-led paired hue changes; bounded transitions, not permanent global rainbow"
+    },
+    {
+      "id": "liquid_glass",
+      "topology": "Sparse smooth 3D lens/gel volumes with actual transmission/refraction",
+      "distinctive_behaviour": "Underlying lights refract through readable curved volumes; shape swells gently with the mid-band envelope.",
+      "entry": "Fade busy shapes down, then reveal a few optical heroes with useful reflection lighting.",
+      "exit": "Remove glass optical weight before dense air-bubble groups appear.",
+      "layers": [
+        "optical_heroes",
+        "minimal_field",
+        "cursor"
+      ],
+      "palette_policy": "held warm reflection environment; minor localized edge hue shifts"
+    },
+    {
+      "id": "overview_icons",
+      "topology": "The same bounded morph pool with original icons then monoline UP",
+      "distinctive_behaviour": "One short planned pullback gives silhouettes room; return to low frame with strong group breathing.",
+      "entry": "Single camera owner lifts smoothly; surrounding field density falls.",
+      "exit": "UP dissolves/low camera returns smoothly on the reviewed return phrase.",
+      "layers": [
+        "morph_pool",
+        "sparse_approved_field",
+        "cursor"
+      ],
+      "palette_policy": "white/cyan on a dark sky; no copied avatars/branding"
+    },
+    {
+      "id": "air_bubbles",
+      "topology": "Sparse volumetric sphere groups with varied radii in near/mid/far layers",
+      "distinctive_behaviour": "Alternating groups swell/lift gently on selected musical accents; world-space clearances prevent hill penetration.",
+      "entry": "Return from overview; introduce a few nearby volumes and deeper small spheres.",
+      "exit": "Fade near cluster before beam passage becomes dominant.",
+      "layers": [
+        "air_spheres",
+        "approved_field",
+        "cursor"
+      ],
+      "palette_policy": "localized blue/violet/teal gradients; some groups remain dark"
+    },
+    {
+      "id": "rave_lights",
+      "topology": "Four to six soft sky beams and restrained localized light pools rooted at emitter regions",
+      "distinctive_behaviour": "Phrase-led beam aim changes with bounded on-beat pulse; sky gets a held coloured horizon.",
+      "entry": "Beams arrive in pairs with soft angular falloff; no stage/architecture props.",
+      "exit": "Lose beam intensity gradually; return emphasis to waves through the genuine end.",
+      "layers": [
+        "beam_pool",
+        "approved_field",
+        "cursor"
+      ],
+      "palette_policy": "paired magenta/amber and cyan light, dark zenith held"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "size": [
+    990,
+    352
+  ],
+  "frames": 179,
+  "distinct": 169,
+  "total_ms": 5960,
+  "delays_ms": [
+    30,
+    40
+  ],
+  "loop": 0,
+  "wrap_mean_rgb_delta": 12.824171640648913,
+  "max_adjacent_mean_rgb_delta": 16.55843568258341,
+  "poster_pixels_equal_first_gif_frame": true,
+  "scope": "GIF encoding/motion evidence; actual browser cadence and subjective approval separate."
+}

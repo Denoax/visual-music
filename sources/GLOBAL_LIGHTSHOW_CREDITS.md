@@ -1,0 +1,9 @@
+# Global lightshow credits
+
+Original Three.js/GLSL renderer, world-space choreography and numerical star tier/clearance code by this implementation. Numerical integration helpers in core/global-lightshow.mjs and original cap/motif math in core/led-floor.mjs were provided by Mani’s continuation packs. No generated visual media or reference footage is loaded by the website.
+
+Creator study: WHITEvoid/Christopher Bauder — [SKALAR](https://www.whitevoid.com/skalar/) with Kangding Ray; [DEEP WEB](https://www.whitevoid.com/deep-web/) with Robert Henke; [CIRCULAR](https://www.whitevoid.com/circular/). The locally saved published photographs are study evidence with creator rights retained; no runtime reuse or redistribution licence is implied. Original shader adaptations borrow broad light direction, complementary dark/light intervals and simple luminous spacing. The tested original canopy was omitted. These pages’ videos were not viewed continuously here.
+
+Official MA Lighting [MAtricks Wings](https://help.malighting.com/grandMA3/2.5/HTML/matricks_wings.html) supplies the opposing group-direction principle; pack source register records phaser/group research and its limits. Lights and Fantasynth remain established movement/rendering references; no new claim of playing a previously blocked page. The four earlier LED-floor clip observations remain historical in sources/neon-floor-video-match.json. Original retained heart/star contours are adaptations, not certified pixel copies.
+
+Around the World MP3 is the unchanged user-supplied local-review recording, SHA-25647119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0. Licensing was not independently verified; no push/deployment. The full recordings contain the actual shared master output, rather than a replacement soundtrack. Three.js and pinned build/test tools retain their upstream package licences.

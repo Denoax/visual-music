@@ -1,0 +1,43 @@
+{
+  "baseline": "3bddfb2325b056b58d327eeba9e7c29310153842",
+  "clock": "AudioTransport.presentation and pause-correct unbounded presented end age; no extra production clock/source",
+  "lighting": {
+    "profile": "core/beauty.mjs CPU and src/scene/field-adapter-snippets.mjs point/cap shader helpers, after existing all-tier gates",
+    "OFF": "zero input RGB emits exactly0 core/shoulder/halo; owned spill independently gated; environmental fog is not lamp spill",
+    "brightness": "linear calibrated exposure; no automatic white core; uniform landscape presence independent of exposure",
+    "cap_point": "same pearl-core/saturated-shoulder family, real cap normal shading, bounded radial halo, existing complementary nested coverage",
+    "softness": "Existing two quarter-size Gaussian passes; composite blur mix.105 and glow.035; one OutputPass"
+  },
+  "horizon": {
+    "shared": "core/beauty.mjs beautyHorizon, actual world-direction background and ground fragment fog",
+    "zenith": "black above .23 world-ray height; band narrowed to.055 after actual low-view inspection",
+    "range_m": [
+      520,
+      600
+    ],
+    "density": 0.00135,
+    "background_radius_m": 620,
+    "orientation": "camera translation only; no camera rotation copied; world azimuth .4+.22*sin(songSeconds*.013)",
+    "song_gain": "entry7-15s times (.18+.12*slowEnergy) times brightness",
+    "idle_gain": ".18\u00b1.04 (12s period), convex return blend"
+  },
+  "stars": {
+    "positions": "Existing fixed72m IDs,33\u201394.875m heights; depth/lifetime/support unchanged",
+    "glints": "23% seeded near stars, soft .28 exp(-65r\u00b2), entirely inside existing sprite",
+    "post_clock": "six-second wrapped phase; velocity eases1\u2192.5 during8s return then.5, so idle repeats12s",
+    "reduced": "constant phase in idle"
+  },
+  "ending": {
+    "start": "Only after graph completion AND destination-presented final sample",
+    "return_seconds": 8,
+    "idle_period_seconds": 12,
+    "surface": "same canonical terrain triangles; final raw fronts drain within return; idle sum .48+.32+.16m bounded waves",
+    "route": "freeze current approved rig pose; no idle travel/reseed/reset",
+    "audio": "single source remains ended; only explicit Replay repeats exact MP3",
+    "pause_recovery": "Shared controller toggle, cancellable pending resume, context/tab/replay recovery; unbounded end age retained",
+    "idle_render": "visible unpaused target30fps, RAF quantization measured ~20\u201330fps; reduced demand-only/static",
+    "legacy": "waves.ts brightness field still contains historical214s fade but is not used by production field or new ending"
+  },
+  "timing_status": "Existing authored structural sections/numerical microfeatures retained; no invented semantic listening or beat approval",
+  "human_approval": "pending continuous perceptual/listening/device/AV/formal-flash review"
+}

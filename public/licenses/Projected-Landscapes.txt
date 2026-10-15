@@ -1,0 +1,52 @@
+PROJECTED LANDSCAPES — original geometry and adaptation record
+
+The seven geometry-only GLBs were supplied by Mani in
+BUMER_EXE_PROJECTED_LANDSCAPES_CONTINUATION_c9b7180.zip. Their explicit
+ridge profiles and folded fin are reproducibly authored by the included
+standard-library Python script, preserved unchanged under
+sources/projected-landscapes-handoff/code/bake_landscapes.py. No external
+artist model, texture, reference footage or model-generated visual media
+is used. Hashes and original provenance are in assets/manifest.json and the
+supplied ASSET_INDEX.json. No new third-party licence or CC0 grant is inferred.
+
+Original runtime Three.js/GLSL adaptation: bounded world anchors, selective
+contours, travelling washes, positive uniform scale/Y rotation, terrain depth,
+LOD blending, footprint lighting gates and near-camera visibility fades.
+
+Research only; no publication grants asset reuse:
+Studio Lemercier / Joanie Lemercier — Fuji (2013), La Montagne (2016–2018),
+No-logram (2017). Fuji credits music Paul Jebanasam and concept/story/scenography
+Juliette Bibasse. Universal Everything, Radiohead, Nigel Godrich and Stanley
+Donwood — Polyfauna (2014). HelloEnjoy — Lights and Fantasynth.
+Official pages and inspection limits: sources/projected-landscapes-record.md.
+Research photographs remain separate from runtime and are included only as
+attributed private review evidence. Existing audio/font/UI/Three.js notices apply.
+
+CURRENT RETROWAVE REPLACEMENT
+The six older mountain runtime meshes are retired and recoverable. Four new
+retro_range/retro_saddle near/far GLBs are original supplied deterministic geometry
+from BUMER_EXE_RETROWAVE_BEAUTY_CONTINUATION_3bddfb2/code/bake_retrowave.py.
+The folded_light_fin is retained. Active assets: assets/landscapes.json.
+Original independent quad-wire/LED/horizon/return adaptation records:
+sources/retrowave-beauty-record.md. Matt DesLauriers' published barycentric
+wireframe research is credited; accompanying MIT notice is retained below.
+The MIT License (MIT)
+Copyright (c) 2017 Matt DesLauriers
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+OR OTHER DEALINGS IN THE SOFTWARE.

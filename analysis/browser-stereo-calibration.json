@@ -1,0 +1,105 @@
+{
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "status": "measured_browser_decode_and_gain_not_listening_or_physical_sync_approval",
+  "rows": [
+    {
+      "orientation": "desktop",
+      "decode": {
+        "hash": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+        "duration": 219.66579166666668,
+        "sampleRate": 48000,
+        "length": 10543958,
+        "channels": 2,
+        "musicGain": 0.6847518086433411,
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+      },
+      "channels": [
+        {
+          "channel": 0,
+          "frames": 10543958,
+          "peak": 1.1664674282073975,
+          "rms": 0.3240303455515552,
+          "lastNonzeroFrame": 10543957,
+          "lastSecondRms": 0.014966522049622387,
+          "musicGain": 0.6847518086433411,
+          "volume": 0.7,
+          "calibratedPeak": 0.5591184768319933
+        },
+        {
+          "channel": 1,
+          "frames": 10543958,
+          "peak": 1.166459083557129,
+          "rms": 0.32403053013672617,
+          "lastNonzeroFrame": 10543957,
+          "lastSecondRms": 0.014966513708753664,
+          "musicGain": 0.6847518086433411,
+          "volume": 0.7,
+          "calibratedPeak": 0.5591144770219386
+        }
+      ],
+      "completion": [
+        {
+          "kind": "graph_end",
+          "contextSeconds": 221.14133333333334,
+          "presentedContextSeconds": 221.08559466666668
+        },
+        {
+          "kind": "presented_end",
+          "contextSeconds": 221.19466666666668,
+          "presentedContextSeconds": 221.138803999997
+        }
+      ],
+      "offset_zero": 0
+    },
+    {
+      "orientation": "portrait",
+      "decode": {
+        "hash": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+        "duration": 219.66579166666668,
+        "sampleRate": 48000,
+        "length": 10543958,
+        "channels": 2,
+        "musicGain": 0.6847518086433411,
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+      },
+      "channels": [
+        {
+          "channel": 0,
+          "frames": 10543958,
+          "peak": 1.1664674282073975,
+          "rms": 0.3240303455515552,
+          "lastNonzeroFrame": 10543957,
+          "lastSecondRms": 0.014966522049622387,
+          "musicGain": 0.6847518086433411,
+          "volume": 0.7,
+          "calibratedPeak": 0.5591184768319933
+        },
+        {
+          "channel": 1,
+          "frames": 10543958,
+          "peak": 1.166459083557129,
+          "rms": 0.32403053013672617,
+          "lastNonzeroFrame": 10543957,
+          "lastSecondRms": 0.014966513708753664,
+          "musicGain": 0.6847518086433411,
+          "volume": 0.7,
+          "calibratedPeak": 0.5591144770219386
+        }
+      ],
+      "completion": [
+        {
+          "kind": "graph_end",
+          "contextSeconds": 221.04,
+          "presentedContextSeconds": 220.9847926666667
+        },
+        {
+          "kind": "presented_end",
+          "contextSeconds": 221.10933333333332,
+          "presentedContextSeconds": 221.05067566667265
+        }
+      ],
+      "offset_zero": 0
+    }
+  ],
+  "note": "Exact MP3 unchanged. Stereo48000Hz10543958frames; conservative gain retained. Browser peak differs slightly from FFmpeg; default calibrated stereo peaks~.559. Every final decoded stereo frame is nonzero. Capture window provenance and destination output acknowledgement are independently measured, not hearing/physical AV approval."
+}

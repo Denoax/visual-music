@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "inspected_date": "2026-10-12",
+  "standing_skill": "$reference-led-design",
+  "policy": "No generated visual media used. Primary physical-installation photos ground the artistic direction; stock samples are secondary study. No reference media bundled.",
+  "implementation_status": "pending_local_codex",
+  "references": [
+    {
+      "id": "skalar",
+      "title": "SKALAR",
+      "creator": "Christopher Bauder / WHITEvoid and Kangding Ray",
+      "url": "https://www.whitevoid.com/skalar/",
+      "provenance": "Real kinetic light/sound installation; creator publication, with photography/video credits.",
+      "inspection": "Creator text and actual published photo inspected; no full video/motion review.",
+      "observed": "Blue luminous mirror rims and long coherent beams occupy a dark large interior. Shared colour and directional fans connect widely separated fixtures.",
+      "adaptation": "Apply coherent broad colour gestures over the entire floor; keep black negative space. Do not reproduce mirror hardware or claim their private software technique.",
+      "use": "Reference only; no images, video or third-party runtime assets bundled."
+    },
+    {
+      "id": "deep-web",
+      "title": "DEEP WEB",
+      "creator": "Christopher Bauder / WHITEvoid and Robert Henke",
+      "url": "https://www.whitevoid.com/deep-web/",
+      "provenance": "Creator publication of a real light/sound installation using 175 motorized spheres and 12 laser systems.",
+      "inspection": "Creator text and actual published photo inspected; motion timing not audited.",
+      "observed": "A large yellow-green geometric fan spans the whole room; bright nodes trace a descending diagonal, while the surrounding suspended array remains much darker.",
+      "adaptation": "Borrow spatial phase/contrast and mirrored movement across many cells. The proposed floor implementation does not need physical spheres or lasers.",
+      "use": "Reference only; no source media/code imported."
+    },
+    {
+      "id": "circular",
+      "title": "CIRCULAR",
+      "creator": "Christopher Bauder / WHITEvoid",
+      "url": "https://www.whitevoid.com/circular/",
+      "provenance": "Creator publication of three kinetic light-pixel rings.",
+      "inspection": "Creator text and actual published photo inspected; no continuous video review.",
+      "observed": "A few large red rings fill the composition. Only portions read as strongly emissive; their simple repeated silhouette carries the scene.",
+      "adaptation": "Optional brief sparse arc/ring enclosure, with fade and restrained geometry. This is a new adaptation, not a recreation of the installation.",
+      "use": "Reference only; no source media imported."
+    },
+    {
+      "id": "vecteezy-led-wall",
+      "title": "Stage Square Lights Background, 77850578",
+      "creator": "Faraz Shakir; published by Vecteezy",
+      "url": "https://www.vecteezy.com/video/77850578-stage-square-lights-background",
+      "provenance": "Listed in the supplied EDM collection after selecting its Non-AI filter. Named contributor; site classification, not an independent authorship certification.",
+      "inspection": "Decoded watermarked browser preview frames viewed. Ready state 4; replay checked at 0.253 s and 5.08 s. Continuous subjective motion review not performed.",
+      "observed": "Repeated rows of soft white/cyan bulb-like points form bright bars and dim gaps across the frame. Bright and dark members coexist.",
+      "adaptation": "Global row/block lighting and readable dim states; smooth musical offsets in our independent renderer. Not a single coloured patch.",
+      "use": "Study only. Page labels Free License / attribution required. No stock clip downloaded into the pack or licensed for runtime use."
+    },
+    {
+      "id": "vecteezy-flyby",
+      "title": "Neon disco grid fly-through, 56666488",
+      "creator": "alasabyss; published by Vecteezy",
+      "url": "https://www.vecteezy.com/video/56666488-flying-through-a-grid-of-glowing-red-and-blue-neon-disco-lights-this-glittering-celebration-party-background-is-full-hd-and-a-loop",
+      "provenance": "Appeared under the supplied collection Non-AI filter, with a named contributor. Use as secondary study; classification is not independent certification.",
+      "inspection": "Decoded watermarked browser preview sampled around 10.639 s; player reached the 20.02 s ending. No full motion/loop fidelity claim.",
+      "observed": "Small points gather toward a vanishing region while larger soft elongated lights occupy the edges. Pink/blue lights sit in a dark surrounding space.",
+      "adaptation": "Depth hierarchy and outward near-star swish under actual flight. Keep far points and black gaps; do not copy the dense tunnel or purple backdrop.",
+      "use": "Study only; Pro Standard License / trial advertised. No purchase, source-media bundle or runtime clip reuse."
+    },
+    {
+      "id": "ma-phasers",
+      "title": "grandMA3 Phasers quick start",
+      "creator": "MA Lighting",
+      "url": "https://help.malighting.com/grandMA3/2.0/HTML/qsg_phasers.html",
+      "provenance": "Official programming documentation; retrieved content identifies Version 1.9.",
+      "inspection": "Text/instructions inspected; not a watched performance.",
+      "observed": "The worked dimmer example distributes phases over fixtures and controls the transition curve between low/high steps. Phase 0 and 360 are the same point in a cycle.",
+      "adaptation": "Smooth phase-offset brightness on one musical clock; use half-open N-group phases to avoid a duplicated endpoint.",
+      "use": "Technical principle only; no console dependency or code copied."
+    },
+    {
+      "id": "ma-groups",
+      "title": "MAtricks Groups and Wings",
+      "creator": "MA Lighting",
+      "url": "https://help.malighting.com/grandMA3/2.5/HTML/matricks.html",
+      "detail_urls": [
+        "https://help.malighting.com/grandMA3/2.5/HTML/matricks_group.html",
+        "https://help.malighting.com/grandMA3/2.5/HTML/matricks_wings.html"
+      ],
+      "provenance": "Official grandMA3 2.5 manuals.",
+      "inspection": "Main manual plus Groups and Wings examples read; no private show file inspected.",
+      "observed": "Groups interleave selection members; wings select opposing directions. The grid system also exposes phase/fade/delay distribution.",
+      "adaptation": "Stable world-cell group IDs, broad bank sizes, complementary brightness and mirror wings. This is an original web adaptation, not an exact MAtricks emulator.",
+      "use": "Programming principles only; no copied diagrams or implementation."
+    },
+    {
+      "id": "wled",
+      "title": "WLED effects catalogue",
+      "creator": "WLED Project contributors",
+      "url": "https://kno.wled.ge/features/effects/",
+      "provenance": "Official open-source LED project documentation.",
+      "inspection": "Effect descriptions and parameters inspected. Linked GIF fetches failed; no animation/GIF fidelity claim.",
+      "observed": "The catalogue documents palette colour waves, grouped chases, fading/twinkles and rotating colour bursts, with controllable scale, fade and speed.",
+      "adaptation": "Select broad two-colour curtains and coherent phase shifts. Avoid per-frame random rainbow noise; original GLSL rather than transplanted controller code.",
+      "use": "Concept reference; no WLED source code/media bundled."
+    },
+    {
+      "id": "onyx-training",
+      "title": "ONYX club/EDM and DYLOS programming training",
+      "creator": "Elation / Obsidian Control Systems; ZYPER and Matthias Hinrichs",
+      "url": "https://www.elationlighting.com/pages/obsidian-training-videos",
+      "detail_urls": [
+        "https://www.youtube.com/watch?v=NvSuFFqSLEo",
+        "https://www.youtube.com/watch?v=sFNvxKXHqEo"
+      ],
+      "provenance": "Official training catalogue describes a club/EDM programming lesson with ZYPER and a DYLOS effects-composer webinar.",
+      "inspection": "Catalogue descriptions and official lesson links verified. YouTube fetch failed/throttled; lesson footage/transcripts not inspected.",
+      "observed": "Published training is directly about lighting programming/playback and a pixel composer.",
+      "adaptation": "Receiving Codex can use these for further operator workflow study. This pack does not attribute undisclosed recipes to an unwatched lesson.",
+      "use": "Further study links, not visual/technical proof of the proposed renderer."
+    },
+    {
+      "id": "derivative-led",
+      "title": "Project Breakdown: Getting started with DMX LED-CHAINS",
+      "creator": "Published contributor tutorial on Derivative",
+      "url": "https://derivative.ca/community-post/tutorial/project-breakdown-getting-started-dmx-led-chains/72372",
+      "provenance": "Developer-hosted tutorial about an actual 40-chain TouchDesigner/Art-Net LED stage project.",
+      "inspection": "Article description and project download listing inspected; linked video/project internals not inspected.",
+      "observed": "The author describes coordinated LED chain control and hardware/controller setup for an audio-reactive stage.",
+      "adaptation": "Treat the many floor emitters as one mapped instrument. Do not add DMX, Art-Net or TouchDesigner to the existing website for this task.",
+      "use": "Supplemental learning link only."
+    },
+    {
+      "id": "three-points",
+      "title": "Three.js PointsMaterial documentation",
+      "creator": "Three.js contributors",
+      "url": "https://threejs.org/docs/pages/PointsMaterial.html",
+      "provenance": "Official renderer documentation.",
+      "inspection": "Point size, perspective attenuation and hardware-cap notes read.",
+      "observed": "Point size is pixel-based, can be hardware capped, and perspective attenuation changes its apparent depth size.",
+      "adaptation": "Measure perceived star core size with DPR and the actual GL point-size range; use an economical near-billboard batch only if required.",
+      "use": "Technical documentation only."
+    }
+  ],
+  "excluded": [
+    "Moment Factory Phish Sphere 2024 page explicitly describes AI-generated visuals; not used as a visual target.",
+    "Unfiltered Vecteezy AI entries and uninspected stock clips are not accepted design authority."
+  ],
+  "output_review_status": "source/frame diagnosis only; new renderer, continuous listening/motion and physical-device checks pending"
+}

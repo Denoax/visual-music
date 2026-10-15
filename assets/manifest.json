@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "runtime_visual_assets": [],
+  "audio": [
+    {
+      "path": "public/audio/around-the-world.mp3",
+      "bytes": 8892231,
+      "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+      "licence": "not independently verified; supplied local-review recording"
+    }
+  ],
+  "retired_assets_recovery": "/home/mani/Downloads/BUMER_EXE_Recovery_Before_Wave_Focus_a46f5ec",
+  "reference_media_in_runtime": false,
+  "generated_media": false,
+  "original_numerical_sources": [
+    {
+      "path": "core/led-floor.mjs",
+      "use": "runtime cap geometry; historical motif helpers preserved, inactive",
+      "provenance": "user-supplied original neon-floor code"
+    },
+    {
+      "path": "assets/neon-floor-motifs.json",
+      "use": "retained original historical motif record; inactive",
+      "provenance": "original vectors; not certified clip contours"
+    },
+    {
+      "path": "core/global-lightshow.mjs",
+      "use": "runtime fitted phase lookup; historical global weave helpers preserved",
+      "provenance": "original helper code supplied in BUMER_EXE_GLOBAL_LIGHTSHOW pack; adapted in original GLSL"
+    },
+    {
+      "path": "core/reference-camera.mjs",
+      "provenance": "User supplied independently authored numerical rig, original source behavior studied at pinned44e2b0a; source original no reuse license established",
+      "use": "camera scalar interpolation/dynamics/orientation in single owned route"
+    }
+  ],
+  "retired_grid_flight_recovery": "evidence/neon-floor/recovery.json",
+  "current_reference_record": "sources/lyrical-lights-reference-study.json",
+  "owned_ui": {
+    "donor": "sources/portfolio-ui-donor",
+    "font": "public/fonts/instrument-sans-latin-variable.woff2",
+    "sha256": "2ee17598a98d8a59e4df8152d015bec9ab8e4d5672cc0ab42bef806b568e3971",
+    "notices": "public/licenses",
+    "optional_sounds": "retained donor WAVs inactive"
+  },
+  "owned_glass": {
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "identities": "sources/portfolio-glass-identities.json",
+    "runtime_port": "src/scene/start-glass.ts",
+    "same_renderer": true,
+    "native_label": true
+  },
+  "microfeatures": {
+    "path": "public/analysis/mixed-microfeatures.json",
+    "sha256": "e1a00664285c3292d0976a9e7d4b5e01a6c78c315fe0ad25c668cbdc2e7d5ab2",
+    "recording_hash": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+    "status": "mixed numerical proxies; semantic lanes unassigned"
+  },
+  "retired_stage_scenery": {
+    "status": "retired by latest human review; no active scene imports or public model files",
+    "models": "sources/retired-stage-scenery-65787fd/models",
+    "identities": "sources/retired-stage-scenery-65787fd/ASSET_IDENTITIES.json"
+  }
+}

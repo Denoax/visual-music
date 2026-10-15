@@ -1,0 +1,430 @@
+{
+  "schema_version": 1,
+  "status": "implemented_technical_evidence_separate_from_human_approval",
+  "base_commit": "e7c69ff8a069cafa147df08fa5a6bea62979daab",
+  "runtime_mp3_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "clock": "AudioTransport.visualPosition",
+  "duration_seconds": 219.66579166666668,
+  "lighting_scope": "unbounded world x/z; identical evaluator in near caps, fine/far points, actual terrain spill; rotate light coordinates only",
+  "period_m": 72,
+  "bank_block_m": 12,
+  "groups": 2,
+  "bank_low_high": [
+    0.04,
+    0.86
+  ],
+  "palette_angle_transition_s": 2.5,
+  "score": [
+    {
+      "start": 0,
+      "end": 25,
+      "configured": {
+        "id": "opening",
+        "mode": "aligned_white_rest",
+        "phase": 0,
+        "phaseActive": false,
+        "angle": 0,
+        "curtain": 0,
+        "bank": 0,
+        "cross": 0,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 0,
+        "symbol": 1,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#ffffff",
+            "#ffffff"
+          ],
+          [
+            "#ffffff",
+            "#ffffff"
+          ]
+        ],
+        "skyAccent": 0,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "configured": {
+        "id": "first_rise",
+        "mode": "two_broad_alternating_banks",
+        "phase": 13.893274257175612,
+        "phaseActive": true,
+        "angle": 0,
+        "curtain": 0,
+        "bank": 1,
+        "cross": 0,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 0,
+        "symbol": 1,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#ffffff",
+            "#ffffff"
+          ],
+          [
+            "#ffffff",
+            "#87dbff"
+          ]
+        ],
+        "skyAccent": 0,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 40,
+      "end": 75,
+      "configured": {
+        "id": "led",
+        "mode": "retained_global_wave_rings_with_weave",
+        "phase": 62.47564080141472,
+        "phaseActive": true,
+        "angle": 0.5235987755982988,
+        "curtain": 1,
+        "bank": 0,
+        "cross": 0,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 0,
+        "symbol": 1,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#ffffff",
+            "#87dbff"
+          ],
+          [
+            "#19fff0",
+            "#c1eaff"
+          ]
+        ],
+        "skyAccent": 0,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 75,
+      "end": 106,
+      "configured": {
+        "id": "global_hold",
+        "mode": "global_diagonal_curtains",
+        "phase": 126.62532201775107,
+        "phaseActive": true,
+        "angle": -0.5235987755982988,
+        "curtain": 1,
+        "bank": 0,
+        "cross": 0,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 1,
+        "symbol": 1,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#19fff0",
+            "#c1eaff"
+          ],
+          [
+            "#18fff0",
+            "#ffab24"
+          ]
+        ],
+        "skyAccent": 0.896484375,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 106,
+      "end": 139,
+      "configured": {
+        "id": "mirrored_wings",
+        "mode": "global_mirrored_bank_spread",
+        "phase": 188.83401868432054,
+        "phaseActive": true,
+        "angle": 0.5235987755982988,
+        "curtain": 0,
+        "bank": 1,
+        "cross": 0,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 1,
+        "dense": 1,
+        "symbol": 1,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#18fff0",
+            "#ffab24"
+          ],
+          [
+            "#ff39ba",
+            "#b0ebff"
+          ]
+        ],
+        "skyAccent": 0,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 139,
+      "end": 158,
+      "configured": {
+        "id": "contrast",
+        "mode": "global_crossbar_scan_then_grid_rest",
+        "phase": 239.3795518207283,
+        "phaseActive": true,
+        "angle": 0,
+        "curtain": 0,
+        "bank": 0,
+        "cross": 1,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 1,
+        "symbol": 1,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#ff39ba",
+            "#b0ebff"
+          ],
+          [
+            "#9672ff",
+            "#bfecff"
+          ]
+        ],
+        "skyAccent": 0,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 158,
+      "end": 175,
+      "configured": {
+        "id": "overview",
+        "mode": "brief_global_repeated_heart_star_or_mirrored_banks",
+        "phase": 257,
+        "phaseActive": false,
+        "angle": 0,
+        "curtain": 0,
+        "bank": 0,
+        "cross": 0,
+        "motif": 1,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 1,
+        "symbol": 2,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#9672ff",
+            "#bfecff"
+          ],
+          [
+            "#ff3244",
+            "#ffdfab"
+          ]
+        ],
+        "skyAccent": 0,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 175,
+      "end": 195,
+      "configured": {
+        "id": "late_phrase",
+        "mode": "global_bank_weave",
+        "phase": 276.31903331486285,
+        "phaseActive": true,
+        "angle": -0.7853981633974483,
+        "curtain": 0.65,
+        "bank": 0.35,
+        "cross": 0,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 1,
+        "symbol": 2,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#ff3244",
+            "#ffdfab"
+          ],
+          [
+            "#20fff1",
+            "#ff36cd"
+          ]
+        ],
+        "skyAccent": 1,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 195,
+      "end": 210,
+      "configured": {
+        "id": "final_chase",
+        "mode": "global_red_cream_chase",
+        "phase": 310.3435504097524,
+        "phaseActive": true,
+        "angle": 0.7853981633974483,
+        "curtain": 1,
+        "bank": 0,
+        "cross": 0,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 0.5,
+        "symbol": 2,
+        "period": 72,
+        "cycle": 4,
+        "blend": 1,
+        "palettes": [
+          [
+            "#20fff1",
+            "#ff36cd"
+          ],
+          [
+            "#ff3244",
+            "#ffdfab"
+          ]
+        ],
+        "skyAccent": 0,
+        "modulation": 1
+      }
+    },
+    {
+      "start": 210,
+      "end": 219.66579166666668,
+      "configured": {
+        "id": "landing",
+        "mode": "aligned_white_rest_and_current_terminal_fade",
+        "phase": 332,
+        "phaseActive": false,
+        "angle": 0,
+        "curtain": 0,
+        "bank": 0,
+        "cross": 0,
+        "motif": 0,
+        "groups": 2,
+        "mirrored": 0,
+        "dense": 0,
+        "symbol": 2,
+        "period": 72,
+        "cycle": 8,
+        "blend": 1,
+        "palettes": [
+          [
+            "#ff3244",
+            "#ffdfab"
+          ],
+          [
+            "#ffffff",
+            "#ffffff"
+          ]
+        ],
+        "skyAccent": 0,
+        "modulation": 1
+      }
+    }
+  ],
+  "rests": "0-25s and after210s (2.5s recovery); crossbar calms151-154s; original terminal fade214s onward",
+  "motifs": "original32-cell heart/star repeated globally; crossfade165.5-166.5s; brief158-175s passage plus transition tails",
+  "floor": {
+    "pitch": 1.5,
+    "desktopCaps": 768,
+    "portraitCaps": 384,
+    "mount": 0.04,
+    "radius": 0.34,
+    "height": 0.24,
+    "physical_triangle_spacing_m": 3,
+    "coarse_points": 24192,
+    "fine_point_capacity": 4096,
+    "density_lod_desktop_m": [
+      30,
+      45
+    ],
+    "density_lod_portrait_m": [
+      22,
+      32
+    ],
+    "cap_lod_desktop_m": [
+      13,
+      22
+    ],
+    "cap_lod_portrait_m": [
+      9,
+      16
+    ],
+    "complete_foreground_without_truncation": true
+  },
+  "stars": {
+    "count_desktop": 392,
+    "count_portrait": 196,
+    "tiers": "near1/mid2/far5 per desktop cell; near1/mid2/far1 portrait",
+    "radii": {
+      "near": [
+        0.65,
+        1.05
+      ],
+      "mid": [
+        0.28,
+        0.5
+      ],
+      "far": [
+        0.12,
+        0.25
+      ]
+    },
+    "minimum_center_y": 32.35455262732008,
+    "core_exponent": 8,
+    "actual_point_range": "queried per WebGL context",
+    "maximum_css_sprite_width": 64,
+    "camera_depth": "all headings/pitch; real world parallax",
+    "subset_tint_ranges": [
+      [
+        79,
+        92
+      ],
+      [
+        179,
+        190
+      ]
+    ],
+    "neutral_default": true
+  },
+  "sky": "black background, no fog/sky mesh; only scored subset star tint",
+  "canopy": "tested then removed; see evidence/global-lightshow/canopy-decision.json",
+  "reduced_motion": "route and global scan phase held; sky tint suppressed; original waves attenuated; musical envelope remains",
+  "timing_status": "334 fitted-range phase candidates;15 sparse onset events excluded only from phase; original349-entry pulse envelope preserved; invalid gaps freeze phase",
+  "listening_approved": false,
+  "human_visual_approved": false
+}

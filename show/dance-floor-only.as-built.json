@@ -1,0 +1,36 @@
+{
+  "schema": "dance-floor-only-as-built-v1",
+  "continued_from": "65787fde4d1a24ed625b1779ad43c71bd04bc43e",
+  "scope": "Latest human review removes holographic scenery and physical beam structures; dance-floor foreground only",
+  "removed_live_owners": [
+    "createLandscapes",
+    "createLyricalActors"
+  ],
+  "removed_families": [
+    "retrowave mountains",
+    "folded-light fins",
+    "floating musical points",
+    "ribbons",
+    "crossed beams"
+  ],
+  "runtime_scenery_glbs": 0,
+  "foreground": "existing terrain and mounted LED fixtures",
+  "air_pass": "existing background stars only",
+  "floor_competition": "zero actor borrowing; no structure footprints",
+  "preserved": [
+    "raw wave kernel and event identity",
+    "camera and input owner",
+    "exact complete audio",
+    "floor lighting and true OFF banks",
+    "owned UI and native pointer",
+    "horizon and stars",
+    "8s return and12s post-song idle",
+    "pause/replay/context recovery"
+  ],
+  "retired_bytes": "sources/retired-stage-scenery-65787fd",
+  "verification": "Current evidence lives in evidence/dance-floor-only; human continuous perceptual/listening/device approval remains pending",
+  "floor_borrow_zero": "Explicit Vector4(0,0,0,0); default Three w=1 was detected and corrected in browser",
+  "clearance_record": "show/clearance.as-built.json (active floor/fixtures/stars only)",
+  "application_name": "Visual Music",
+  "name_change_scope": "Visible page/Start/documentation name only; retained renderer, source paths and history."
+}

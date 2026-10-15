@@ -1,0 +1,20 @@
+{
+  "standing_skill": "$reference-led-design",
+  "visual_thesis": "A programmable small-bulb neon board flows over the approved hills under black sky; original surface-registered source-inspired cell patterns replace cursor/aerial decoration.",
+  "inspected_primary_documentation": [
+    {
+      "url": "https://threejs.org/docs/pages/InstancedBufferGeometry.html",
+      "observed": "Instance count bounds shared geometry draws",
+      "adaptation": "One original diffuser/housing geometry with bounded per-instance center/membership attributes"
+    },
+    {
+      "url": "https://threejs.org/docs/pages/DataTexture.html",
+      "observed": "Typed raw buffer data, RGBA channels, nearest filters and NoColorSpace default",
+      "adaptation": "Original numerical32-cell vector masks; no reference raster loaded"
+    }
+  ],
+  "creator_runtime_inference": "No claim about the source publishers rendering stack, effort or hidden implementation",
+  "source_videos": "sources/neon-floor-video-match.json",
+  "code_permission": "Original supplied code/geometry and existing pinned Three.js dependency; no source-video runtime media/code copied",
+  "actual_output": "evidence/neon-floor/final-capture; current input hashes and full master audio"
+}

@@ -1,0 +1,124 @@
+{
+  "scope": "Actual MediaRecorder master output versus source PCM, both analysis decodes passed through the same 20Hz high-pass for DC/very-low-frequency robust provenance comparison; original media are untouched. Historical ac250b7 unfiltered quiet-tail comparison showed differing source/capture DC response; retained as history, not a result for this new capture. 1s stereo-downmixed 48kHz PCM windows, every eighth sample; One initial bounded +/-200ms digital source correlation measures MediaRecorder sample-zero alignment, seeded by graph lead +6.5ms Opus delay; each later window searches only +/-256frames around that measured constant. Graph reads and MediaRecorder PCM zero differed by10ms in the copy-sink diagnostic; no media timings are edited. Refines the coarse 2kHz comparison without changing any media. No soundtrack replacement, listening or speaker/display claim.",
+  "results": [
+    {
+      "file": "evidence/dance-floor-only/visual-music-capture/desktop-full.webm",
+      "captured_mono_seconds": 253.68,
+      "measured_initial_offset_ms": 89.16666666666667,
+      "graph_read_lead_ms": 82.66666666666667,
+      "alignment_correlation": 0.9998432722444287,
+      "sample_peak_after_mono_mix": 0.7671607732772827,
+      "windows": [
+        {
+          "source_seconds": 3,
+          "correlation": 0.9998403619107289,
+          "recorded_output_offset_ms": 89.16666666666667,
+          "fitted_gain": 0.4783920312662957
+        },
+        {
+          "source_seconds": 30,
+          "correlation": 0.9989632232403791,
+          "recorded_output_offset_ms": 89.16666666666667,
+          "fitted_gain": 0.47895858737435626
+        },
+        {
+          "source_seconds": 84,
+          "correlation": 0.9988089412826479,
+          "recorded_output_offset_ms": 89.16666666666667,
+          "fitted_gain": 0.4774934605804011
+        },
+        {
+          "source_seconds": 145,
+          "correlation": 0.998853676033108,
+          "recorded_output_offset_ms": 89.16666666666667,
+          "fitted_gain": 0.4789309470337671
+        },
+        {
+          "source_seconds": 180,
+          "correlation": 0.9991273397093593,
+          "recorded_output_offset_ms": 89.16666666666667,
+          "fitted_gain": 0.4788728102536034
+        },
+        {
+          "source_seconds": 212,
+          "correlation": 0.9992496963451988,
+          "recorded_output_offset_ms": 89.16666666666667,
+          "fitted_gain": 0.47875737705292
+        },
+        {
+          "source_seconds": 218.6,
+          "correlation": 0.9965441454580813,
+          "recorded_output_offset_ms": 89.16666666666667,
+          "fitted_gain": 0.47462513564029335
+        },
+        {
+          "source_seconds": 219.5,
+          "correlation": 0.9910600451427577,
+          "recorded_output_offset_ms": 89.08333333333333,
+          "fitted_gain": 0.47133633877389736
+        }
+      ]
+    },
+    {
+      "file": "evidence/dance-floor-only/visual-music-capture/portrait-full.webm",
+      "captured_mono_seconds": 259.32,
+      "measured_initial_offset_ms": 99.83333333333333,
+      "graph_read_lead_ms": 93.33333333333327,
+      "alignment_correlation": 0.9998621074804794,
+      "sample_peak_after_mono_mix": 0.7956297397613525,
+      "windows": [
+        {
+          "source_seconds": 3,
+          "correlation": 0.9998625465367174,
+          "recorded_output_offset_ms": 99.83333333333333,
+          "fitted_gain": 0.4790950666526017
+        },
+        {
+          "source_seconds": 30,
+          "correlation": 0.9989346068667138,
+          "recorded_output_offset_ms": 99.83333333333333,
+          "fitted_gain": 0.47835466391027187
+        },
+        {
+          "source_seconds": 84,
+          "correlation": 0.9986614593311056,
+          "recorded_output_offset_ms": 99.83333333333333,
+          "fitted_gain": 0.4783105280266797
+        },
+        {
+          "source_seconds": 145,
+          "correlation": 0.9989439683002707,
+          "recorded_output_offset_ms": 99.83333333333333,
+          "fitted_gain": 0.4796715299589408
+        },
+        {
+          "source_seconds": 180,
+          "correlation": 0.999142027033703,
+          "recorded_output_offset_ms": 99.83333333333333,
+          "fitted_gain": 0.4780392767193478
+        },
+        {
+          "source_seconds": 212,
+          "correlation": 0.9992129790093589,
+          "recorded_output_offset_ms": 99.83333333333333,
+          "fitted_gain": 0.4774549384080781
+        },
+        {
+          "source_seconds": 218.6,
+          "correlation": 0.9969451217285027,
+          "recorded_output_offset_ms": 99.83333333333333,
+          "fitted_gain": 0.47120754154594363
+        },
+        {
+          "source_seconds": 219.5,
+          "correlation": 0.9921807164038089,
+          "recorded_output_offset_ms": 99.75,
+          "fitted_gain": 0.46374868886605936
+        }
+      ]
+    }
+  ],
+  "status": "passed_audio_band_provenance_not_lossless_PCM",
+  "unfiltered_tail_difference": "Measured DC/very-low-frequency response differs in the Opus capture pipeline. This analysis filter corrects the comparison metric, not the delivered recording or runtime source.",
+  "physical_av_alignment": "unmeasured"
+}

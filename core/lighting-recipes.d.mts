@@ -1,0 +1,15 @@
+export function clamp01(x:number):number;
+export function smooth5(x:number):number;
+export function mod(x:number,n:number):number;
+export function hashCell(ix:number,iz:number,epoch?:number):number;
+export function worldBank(ix:number,iz:number,o?:{blockCells?:number;axis?:string}):number;
+export function pairedBankGate(bank:number,phase:number,o?:{beatsPerHandoff?:number;fadeFraction?:number}):number;
+export function dropoutGate(ix:number,iz:number,phase:number,o?:{beatsPerEpoch?:number;density?:number;fadeFraction?:number}):number;
+export function gateEmitter(e:{head:number[];halo:number[];spill:number[]},gate:number):{head:number[];halo:number[];spill:number[]};
+export function entryGain(t:number,o?:{delay?:number;duration?:number}):number;
+export function exitGain(t:number|null,o?:{hold?:number;duration?:number}):number;
+export function starLifeGain(t:number,o?:{lifetime?:number;fadeIn?:number;fadeOut?:number}):number;
+export function loopRing(d:number,phase:number,o?:{spacing?:number;width?:number}):number;
+export function stripeDistance(d:number,o?:{spacing?:number;phase?:number}):number;
+export function shortHue(a:number,b:number,t:number):number;
+export function paletteRgb(l:number,c:number,h:number):number[];

@@ -1,0 +1,180 @@
+{
+  "source_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "decoded_mono_sample_rate": 24000,
+  "samples": 5271979,
+  "duration_seconds": 219.66579166666668,
+  "feature_frames": 21967,
+  "candidates_by_channel": {
+    "bass_attack": 798,
+    "tonal_attack": 885,
+    "treble_attack": 1002
+  },
+  "intro_tonal_candidates": [
+    {
+      "seconds": 0.92,
+      "strength": 0.301
+    },
+    {
+      "seconds": 1.17,
+      "strength": 0.3108
+    },
+    {
+      "seconds": 1.7,
+      "strength": 0.2906
+    },
+    {
+      "seconds": 1.95,
+      "strength": 0.3418
+    },
+    {
+      "seconds": 2.2,
+      "strength": 0.3397
+    },
+    {
+      "seconds": 2.46,
+      "strength": 0.2742
+    },
+    {
+      "seconds": 2.72,
+      "strength": 0.2669
+    },
+    {
+      "seconds": 2.98,
+      "strength": 0.3191
+    },
+    {
+      "seconds": 3.23,
+      "strength": 0.2954
+    },
+    {
+      "seconds": 3.49,
+      "strength": 0.2835
+    },
+    {
+      "seconds": 3.75,
+      "strength": 0.3044
+    },
+    {
+      "seconds": 4.0,
+      "strength": 0.3058
+    },
+    {
+      "seconds": 4.26,
+      "strength": 0.335
+    },
+    {
+      "seconds": 4.52,
+      "strength": 0.3016
+    },
+    {
+      "seconds": 4.77,
+      "strength": 0.2643
+    },
+    {
+      "seconds": 5.02,
+      "strength": 0.36
+    },
+    {
+      "seconds": 5.29,
+      "strength": 0.2994
+    },
+    {
+      "seconds": 5.81,
+      "strength": 0.3227
+    },
+    {
+      "seconds": 6.06,
+      "strength": 0.3944
+    },
+    {
+      "seconds": 6.32,
+      "strength": 0.3377
+    },
+    {
+      "seconds": 6.58,
+      "strength": 0.2375
+    },
+    {
+      "seconds": 6.83,
+      "strength": 0.3332
+    },
+    {
+      "seconds": 7.09,
+      "strength": 0.3587
+    },
+    {
+      "seconds": 7.35,
+      "strength": 0.3151
+    },
+    {
+      "seconds": 7.61,
+      "strength": 0.2766
+    },
+    {
+      "seconds": 7.88,
+      "strength": 0.2921
+    },
+    {
+      "seconds": 8.12,
+      "strength": 0.3066
+    },
+    {
+      "seconds": 8.38,
+      "strength": 0.3111
+    },
+    {
+      "seconds": 8.63,
+      "strength": 0.583
+    },
+    {
+      "seconds": 8.9,
+      "strength": 0.5892
+    },
+    {
+      "seconds": 9.15,
+      "strength": 0.5064
+    },
+    {
+      "seconds": 9.42,
+      "strength": 0.7463
+    },
+    {
+      "seconds": 9.68,
+      "strength": 0.5706
+    },
+    {
+      "seconds": 9.98,
+      "strength": 0.5969
+    },
+    {
+      "seconds": 10.17,
+      "strength": 0.5825
+    },
+    {
+      "seconds": 10.44,
+      "strength": 0.482
+    },
+    {
+      "seconds": 10.95,
+      "strength": 0.4189
+    },
+    {
+      "seconds": 11.21,
+      "strength": 0.5026
+    },
+    {
+      "seconds": 11.47,
+      "strength": 0.4847
+    },
+    {
+      "seconds": 11.75,
+      "strength": 0.8633
+    },
+    {
+      "seconds": 11.98,
+      "strength": 0.7555
+    }
+  ],
+  "candidate_status": "No confirmed lyric timestamps; fill via actual audition/verified alignment, not website/video times.",
+  "original_audio_preserved": true
+}

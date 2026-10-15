@@ -1,0 +1,49 @@
+{
+  "standing_skill": "reference-led-design",
+  "no_generated_media": true,
+  "current_browser_creator_inspection": [
+    {
+      "slug": "skalar",
+      "url": "https://www.whitevoid.com/skalar/",
+      "photo": {
+        "src": "https://www.whitevoid.com/wordpress/wp-content/uploads/2019/02/16-9-Skalar-WHITEvoid-01-1920x1080.jpg",
+        "w": 1920,
+        "h": 1080,
+        "alt": ""
+      },
+      "scope": "Published creator photograph inspected; no motion claim, no runtime reuse"
+    },
+    {
+      "slug": "deep-web",
+      "url": "https://www.whitevoid.com/deep-web/",
+      "photo": {
+        "src": "https://www.whitevoid.com/wordpress/wp-content/uploads/2019/02/16-9-Deep-Web-WHITEvoid-01-1920x1080.jpg",
+        "w": 1920,
+        "h": 1080,
+        "alt": ""
+      },
+      "scope": "Published creator photograph inspected; no motion claim, no runtime reuse"
+    },
+    {
+      "slug": "circular",
+      "url": "https://www.whitevoid.com/circular/",
+      "photo": {
+        "src": "https://www.whitevoid.com/wordpress/wp-content/uploads/2019/02/16-9-Circular-WHITEvoid-01-1920x1080.jpg",
+        "w": 1920,
+        "h": 1080,
+        "alt": ""
+      },
+      "scope": "Published creator photograph inspected; no motion claim, no runtime reuse"
+    }
+  ],
+  "adaptation": {
+    "skalar": "Broad unified light directions/planes contrasted with dark intervals; original world-space curtain shader, no reference mesh or footage.",
+    "deep-web": "Complementary luminous banks and readable spacing; canonical stable cell groups and distributed numerical phase.",
+    "circular": "Simple sparse luminous enclosure considered in original point geometry, tested then omitted.",
+    "official_MA": "Distributed phase and opposing banks from official phaser/MAtricks principles, helper math authored in supplied pack."
+  },
+  "scope": "Actual published creator photographs opened; no claim of viewing creator videos. Pack references inherited with their per-source limits. Earlier four LED source videos remain historical study, not certified one-to-one masks.",
+  "runtime_reference_media": [],
+  "musical_listening": "No reliable hearing interface in this tool session. Exact song and candidate markers preserved, full real-audio playback captured; audition/beat/downbeat approval pending rather than invented.",
+  "canopy": "Tested original geometry removed; sources/tested-canopy and evidence/global-lightshow/canopy-decision.json"
+}

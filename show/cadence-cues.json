@@ -1,0 +1,55 @@
+{
+  "status": "Selected strong measured bass candidates near arrangement changes; not auditioned cadences",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "events": [
+    {
+      "id": "bass_attack-0113",
+      "seconds": 39.24,
+      "channel": "bass_attack",
+      "strength": 1.0,
+      "reviewed": false
+    },
+    {
+      "id": "bass_attack-0249",
+      "seconds": 74.22,
+      "channel": "bass_attack",
+      "strength": 1.0,
+      "reviewed": false
+    },
+    {
+      "id": "bass_attack-0371",
+      "seconds": 105.6,
+      "channel": "bass_attack",
+      "strength": 1.0,
+      "reviewed": false
+    },
+    {
+      "id": "bass_attack-0499",
+      "seconds": 138.54,
+      "channel": "bass_attack",
+      "strength": 1.0,
+      "reviewed": false
+    },
+    {
+      "id": "bass_attack-0634",
+      "seconds": 175.57,
+      "channel": "bass_attack",
+      "strength": 1.0,
+      "reviewed": false
+    },
+    {
+      "id": "bass_attack-0731",
+      "seconds": 200.27,
+      "channel": "bass_attack",
+      "strength": 1.0,
+      "reviewed": false
+    },
+    {
+      "id": "bass_attack-0767",
+      "seconds": 209.52,
+      "channel": "bass_attack",
+      "strength": 1.0,
+      "reviewed": false
+    }
+  ]
+}

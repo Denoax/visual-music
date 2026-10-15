@@ -1,8 +1,15 @@
-import { songAtContextTime, visualSongTime } from "../../core/audio-time.mjs";
+import {
+  songAtContextTime,
+  visualSongTime,
+  presentationContextTime,
+} from "../../core/audio-time.mjs";
+import { RETURN_SECONDS } from "../../core/visual-return.mjs";
+import { recordTrace } from "../trace";
 export type TransportState = "empty" | "ready" | "playing" | "paused" | "ended";
 export class AudioTransport {
   private context: AudioContext | null = null;
   private gain: GainNode | null = null;
+  private musicGain: GainNode | null = null;
   private buffer: AudioBuffer | null = null;
   private source: AudioBufferSourceNode | null = null;
   private generation = 0;
@@ -14,6 +21,18 @@ export class AudioTransport {
   };
   private frozenSeconds = 0;
   private lastPosition = 0;
+  private graphEnded = false;
+  private naturalPresented = false;
+  private finishAnchor: number | null = null;
+  private frozenFinishAge = 0;
+  private finishingPaused = false;
+  private finishCompleteNotified = false;
+  private lastFinishAge = 0;
+  readonly completionEvents: {
+    kind: "graph_end" | "presented_end";
+    contextSeconds: number;
+    presentedContextSeconds: number;
+  }[] = [];
   private volume = 0.7;
   private muted = false;
   state: TransportState = "empty";
@@ -23,10 +42,16 @@ export class AudioTransport {
   /** Positive values advance visuals. Zero until measured output calibration exists. */
   calibrationOffsetMs = 0;
   clockSamples = { output: 0, fallback: 0 };
+  readonly sourceEvents: {
+    contextSeconds: number;
+    offsetSeconds: number;
+    kind: "start" | "stop";
+  }[] = [];
   onChange: () => void = () => {};
   constructor(
     private readonly createContext: () => AudioContext = () =>
       new AudioContext({ latencyHint: "interactive" }),
+    private readonly displayNow: () => number = () => performance.now(),
   ) {}
   get volumeLevel() {
     return this.volume;
@@ -46,18 +71,42 @@ export class AudioTransport {
   get audioContext() {
     return this.context;
   }
+  get masterOutput() {
+    return this.gain;
+  }
+  get musicOutput() {
+    return this.musicGain;
+  }
+  get scheduledStart() {
+    return this.anchor.contextStartSeconds;
+  }
+  /** One user gesture unlocks the shared context without starting the song. */
+  async unlock() {
+    const context = this.ensureContext();
+    await context.resume();
+    if (context.state !== "running")
+      throw new Error("Audio could not resume. Try again.");
+    return context;
+  }
   private ensureContext() {
     if (!this.context) {
       this.context = this.createContext();
+      this.musicGain = this.context.createGain();
+      this.musicGain.gain.value = 1;
       this.gain = this.context.createGain();
       this.gain.gain.value = this.muted ? 0 : this.volume;
       this.gain.connect(this.context.destination);
+      this.musicGain.connect(this.gain);
       this.context.addEventListener("statechange", () => {
         if (this.context?.state !== "running" && this.state === "playing") {
           // Freeze at the graph coordinate; the wall clock never owns song state.
           this.frozenSeconds = this.position();
           this.stopSource();
           this.state = "paused";
+          this.onChange();
+        } else if (this.context?.state !== "running" && this.naturalPresented) {
+          this.frozenFinishAge = this.lastFinishAge;
+          this.finishingPaused = true;
           this.onChange();
         }
       });
@@ -100,6 +149,7 @@ export class AudioTransport {
       durationSeconds: buffer.duration,
     };
     this.frozenSeconds = this.lastPosition = 0;
+    this.resetCompletion();
     this.state = "ready";
     this.onChange();
     return true;
@@ -112,60 +162,194 @@ export class AudioTransport {
     );
     return this.lastPosition;
   }
-  visualPosition(displayPerformanceMs = performance.now()) {
-    if (this.state !== "playing" || !this.context) {
-      this.clockQuality = "frozen";
-      return this.frozenSeconds;
-    }
-    const result = visualSongTime(this.anchor, {
-      contextState: this.context.state,
-      contextCurrentSeconds: this.context.currentTime,
+  private sample(displayPerformanceMs = this.displayNow(), lead = 0) {
+    return {
+      contextState: this.context!.state,
+      contextCurrentSeconds: this.context!.currentTime,
       performanceNowMs: displayPerformanceMs,
       frozenSongSeconds: this.lastPosition,
-      outputTimestamp: this.context.getOutputTimestamp?.(),
-      visualLeadMs: this.calibrationOffsetMs,
-      estimatedDisplayLeadMs: 0,
-    });
-    this.clockQuality = result.clockQuality;
-    if (result.clockQuality === "output_estimate") this.clockSamples.output++;
+      outputTimestamp: this.context!.getOutputTimestamp?.(),
+      visualLeadMs: lead,
+      fallbackLatencySeconds:
+        (this.context!.baseLatency ?? 0) + (this.context!.outputLatency ?? 0),
+    };
+  }
+  presentation(displayPerformanceMs = this.displayNow()) {
+    if (!this.context)
+      return {
+        seconds: this.frozenSeconds,
+        endAge: null as number | null,
+        quality: "frozen",
+      };
+    if (
+      this.state !== "playing" &&
+      !(this.state === "ended" && this.naturalPresented)
+    )
+      return {
+        seconds: this.frozenSeconds,
+        endAge: null as number | null,
+        quality: "frozen",
+      };
+    const sample = this.sample(displayPerformanceMs, this.calibrationOffsetMs);
+    const view = visualSongTime(this.anchor, sample);
+    this.clockQuality = view.clockQuality;
+    if (view.clockQuality === "output_estimate") this.clockSamples.output++;
     else this.clockSamples.fallback++;
-    return result.seconds;
+    const raw = presentationContextTime({ ...sample, visualLeadMs: 0 });
+    const end =
+      this.anchor.contextStartSeconds +
+      this.duration -
+      this.anchor.sourceOffsetSeconds;
+    if (
+      this.state === "playing" &&
+      this.graphEnded &&
+      raw.contextSeconds >= end
+    ) {
+      this.naturalPresented = true;
+      this.finishAnchor = raw.contextSeconds;
+      this.frozenSeconds = this.duration;
+      this.state = "ended";
+      recordTrace(this.completionEvents, {
+        kind: "presented_end",
+        contextSeconds: this.context.currentTime,
+        presentedContextSeconds: raw.contextSeconds,
+      });
+      this.onChange();
+    }
+    const age = this.naturalPresented
+      ? this.finishingPaused
+        ? this.frozenFinishAge
+        : Math.max(
+            this.lastFinishAge,
+            0,
+            raw.contextSeconds - this.finishAnchor!,
+          )
+      : null;
+    this.lastFinishAge = age ?? 0;
+    if (age !== null && age >= RETURN_SECONDS && !this.finishCompleteNotified) {
+      this.finishCompleteNotified = true;
+      this.onChange();
+    }
+    return {
+      seconds: this.state === "ended" ? this.duration : view.seconds,
+      endAge: age,
+      quality: view.clockQuality,
+    };
+  }
+  visualPosition(displayPerformanceMs = this.displayNow()) {
+    return this.presentation(displayPerformanceMs).seconds;
+  }
+  get visualOutroPaused() {
+    return this.finishingPaused && this.naturalPresented;
+  }
+  get presentationEndAge() {
+    return this.presentation().endAge;
+  }
+  get visualOutroComplete() {
+    const age = this.presentationEndAge;
+    return age !== null && age >= RETURN_SECONDS;
+  }
+  get hasPresentedEnd() {
+    return this.naturalPresented;
+  }
+  get visualActive() {
+    return this.naturalPresented && !this.finishingPaused;
+  }
+  get visualPaused() {
+    return this.naturalPresented && this.finishingPaused;
+  }
+  // Compatibility names now cover the complete return and ambient lifecycle.
+  private resetCompletion() {
+    this.graphEnded = false;
+    this.naturalPresented = false;
+    this.finishAnchor = null;
+    this.frozenFinishAge = 0;
+    this.finishingPaused = false;
+    this.finishCompleteNotified = false;
+    this.lastFinishAge = 0;
   }
   private stopSource() {
     ++this.generation;
     if (this.source) {
+      recordTrace(this.sourceEvents, {
+        kind: "stop",
+        contextSeconds: this.context?.currentTime ?? 0,
+        offsetSeconds: this.position(),
+      });
       this.source.onended = null;
       this.source.stop();
       this.source.disconnect();
       this.source = null;
     }
   }
-  private start(offset: number) {
+  private start(offset: number, contextStart?: number) {
     if (!this.context || !this.buffer || !this.gain) return;
     this.stopSource();
     const source = this.context.createBufferSource();
     source.buffer = this.buffer;
     source.playbackRate.value = 1;
-    source.connect(this.gain);
+    source.connect(this.musicGain!);
     const token = this.generation;
     this.anchor = {
-      contextStartSeconds: this.context.currentTime + 0.04,
+      contextStartSeconds: contextStart ?? this.context.currentTime + 0.04,
       sourceOffsetSeconds: offset,
       durationSeconds: this.duration,
     };
     this.frozenSeconds = this.lastPosition = offset;
+    this.resetCompletion();
     source.onended = () => {
       if (token !== this.generation) return;
       source.disconnect();
       this.source = null;
-      this.frozenSeconds = this.duration;
-      this.state = "ended";
-      this.onChange();
+      // Graph completion is not destination presentation. Keep sampling the
+      // same output clock until the queued final samples are acknowledged.
+      this.graphEnded = true;
+      recordTrace(this.completionEvents, {
+        kind: "graph_end",
+        contextSeconds: this.context!.currentTime,
+        presentedContextSeconds: presentationContextTime(this.sample())
+          .contextSeconds,
+      });
     };
     this.source = source;
     source.start(this.anchor.contextStartSeconds, offset);
+    recordTrace(this.sourceEvents, {
+      kind: "start",
+      contextSeconds: this.anchor.contextStartSeconds,
+      offsetSeconds: offset,
+    });
     this.state = "playing";
     this.onChange();
+  }
+  /** Only the controller's guarded, ready field handoff calls this. */
+  scheduleFromZero(contextStart: number) {
+    if (!this.context || this.context.state !== "running" || !this.buffer)
+      throw new Error("Prepare and unlock audio before field handoff.");
+    if (
+      this.source ||
+      this.frozenSeconds !== 0 ||
+      !Number.isFinite(contextStart) ||
+      contextStart < this.context.currentTime
+    )
+      throw new Error("Invalid or repeated field handoff.");
+    this.start(0, contextStart);
+    return contextStart;
+  }
+  presentationHasStarted(displayMs = this.displayNow()) {
+    if (!this.context || this.state !== "playing") return false;
+    const timestamp = this.context.getOutputTimestamp?.();
+    let estimate = this.context.currentTime;
+    if (
+      timestamp &&
+      typeof timestamp.performanceTime === "number" &&
+      typeof timestamp.contextTime === "number" &&
+      timestamp.performanceTime > 0 &&
+      displayMs - timestamp.performanceTime >= -50 &&
+      displayMs - timestamp.performanceTime <= 250
+    )
+      estimate =
+        timestamp.contextTime + (displayMs - timestamp.performanceTime) / 1000;
+    return estimate >= this.anchor.contextStartSeconds;
   }
   async play() {
     if (!this.buffer || this.state === "playing") return;
@@ -175,19 +359,44 @@ export class AudioTransport {
     if (token !== this.generation) return;
     if (context.state !== "running")
       throw new Error("Audio could not resume. Press Play to retry.");
+    if (
+      this.state === "paused" &&
+      this.graphEnded &&
+      this.frozenSeconds >= this.duration &&
+      !this.naturalPresented
+    ) {
+      this.state = "playing";
+      this.onChange();
+      return; // remaining destination drain, no duplicate music source
+    }
     this.start(this.state === "ended" ? 0 : this.frozenSeconds);
   }
   pause() {
+    if (this.state === "ended" && this.naturalPresented) {
+      this.frozenFinishAge = this.presentationEndAge ?? 0;
+      this.finishingPaused = true;
+      this.onChange();
+      return;
+    }
+    const wasPlaying = this.state === "playing";
     this.frozenSeconds = this.position();
+    if (wasPlaying && this.frozenSeconds >= this.duration)
+      this.graphEnded = true;
     this.stopSource();
     if (this.buffer)
-      this.state = this.frozenSeconds >= this.duration ? "ended" : "paused";
+      this.state =
+        wasPlaying && this.graphEnded
+          ? "paused"
+          : this.frozenSeconds >= this.duration
+            ? "ended"
+            : "paused";
     this.onChange();
   }
   seek(seconds: number) {
     if (!this.buffer || !Number.isFinite(seconds)) return;
     const playing = this.state === "playing";
     this.stopSource();
+    this.resetCompletion();
     this.frozenSeconds = this.lastPosition = Math.max(
       0,
       Math.min(this.duration, seconds),
@@ -200,6 +409,18 @@ export class AudioTransport {
     )
       this.start(this.frozenSeconds);
     else this.onChange();
+  }
+  resumeVisualOutro() {
+    if (
+      this.naturalPresented &&
+      this.finishingPaused &&
+      this.context?.state === "running"
+    ) {
+      this.finishAnchor =
+        presentationContextTime(this.sample()).contextSeconds -
+        this.frozenFinishAge;
+      this.finishingPaused = false;
+    }
   }
   async replay() {
     this.seek(0);

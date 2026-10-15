@@ -1,0 +1,14 @@
+export type Pose = {x:number;z:number;yaw:number;pitch:number};
+export type Board = {anchorX?:number;anchorZ?:number;shiftX?:number;shiftZ?:number;angle?:number};
+export type Event = {id:number;time:number;strength:number};
+export type Origin = Event & {x:number;z:number};
+export function heading(yaw:number):{x:number;z:number};
+export function advanceFlight(pose:Pose,input:{turn?:number;tilt?:number},deltaSong:number,options?:{speed?:number;maxYawRate?:number;maxPitch?:number;deadZone?:number}):Pose;
+export function transformLight(x:number,z:number,board?:Board):{x:number;z:number};
+export function inverseLight(x:number,z:number,board?:Board):{x:number;z:number};
+export function lightWindowCell(x:number,z:number,board?:Board,spacing?:number):{ix:number;iz:number};
+export function rowMembership(ix:number,iz:number,dropout?:number,group?:number):number;
+export function lockEmitter(registry:Map<number,Origin>,event:Event,pose:Pose,options?:{ahead?:number;previewSeconds?:number;speed?:number;lateral?:number;spacing?:number}):Origin;
+export function starSample(cx:number,cz:number,index:number,options?:{cellSize?:number;terrainBound?:number}):{id:string;x:number;y:number;z:number;radius:number;phase:number;twinkleHz:number};
+export function starCells(x:number,z:number,options?:{cellSize?:number;radiusCells?:number}):{cx:number;cz:number;key:string}[];
+export function ease(x:number):number;

@@ -1,0 +1,24 @@
+{
+  "standing_skill": "$reference-led-design",
+  "primary_reference": "https://helloenjoy.itch.io/lights",
+  "live_entry": "https://html-classic.itch.zone/html/1645328/lights/index.html",
+  "observed": "Original scene loaded in compatible RTX4070 Chromium; visible PLAY activated; original audio progressed normally from zero to 23.710102 seconds while mouse moved right, then left, then neutral. Opening tilted-grid framing, soft stars and luminous head/wake images were opened. No seeking or complete-reference-playback claim.",
+  "adaptation": "Original heading-integrated route, centered canonical depth grid, light-only board transform, fixed emitter registry, additive gradient light shells and world-cell stars, restrained linear separable spatial softness. No creator code/media copied or redistributed.",
+  "documents": [
+    "https://threejs.org/docs/pages/Material.html",
+    "https://threejs.org/manual/pages/post-processing.html"
+  ],
+  "permission": "Reference-only; original code and exact owned/user-supplied song. No externally sourced or generated visual media.",
+  "limitations": "No reliable hearing approval, complete reference motion approval, physical device/AV calibration. Supplied chapter/phase/onset candidates remain numerical aids.",
+  "output_evidence": {
+    "source": [
+      "src/scene/flight.ts",
+      "src/scene/field.ts",
+      "src/scene/light-material.ts",
+      "src/scene/stars.ts",
+      "src/scene/softness.ts"
+    ],
+    "browser": "evidence/grid-flight; current full captures bind exact runtime input hashes",
+    "pending": "Full subjective listening/motion and physical device approval"
+  }
+}

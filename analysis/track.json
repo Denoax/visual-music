@@ -1,53 +1,50 @@
 {
   "schema_version": 1,
-  "requested_spotify_id": "0iVj13fDCDRM7rfYEGF50X",
-  "requested_artist": "Seryoga",
-  "requested_title": "Чёрный бумер",
-  "identity_review_status": "user_designated_not_independently_listened",
-  "identity_review_notes": "User supplied this MP3 in the current project correction and explicitly instructed including it from now on. No independent full-song listening was performed in this pack-creation turn.",
-  "runtime_sha256": "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
-  "source_sha256": "67d55f6e9551e77002fecb2752b835761da84a5db2a7679e91599e4dc94c2780",
-  "source_filename": "Чёрный бумер - Серёга.mp3",
-  "source_size_bytes": 9771885,
-  "runtime_audio_mode": "bundled_user_supplied_recording",
-  "runtime_audio_path": "public/audio/chernyy-bumer.mp3",
-  "distribution_permission": {
-    "status": "user_authorised_local_private_project_inclusion",
-    "record": "Current user instruction: include the supplied MP3 from now on. Public redistribution licence not established."
-  },
+  "user_designation": "The exact newest attached MP3",
+  "source_filename": "Around the World (La La La La La)(2).mp3",
+  "runtime_audio_path": "/audio/around-the-world.mp3",
+  "runtime_audio_mode": "bundled_exact_bytes",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "source_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "encoded_size_bytes": 8892231,
   "source_probe": {
     "codec": "mp3",
-    "sample_rate_hz": "44100",
+    "sample_rate_hz": 44100,
     "channels": 2,
-    "duration_seconds": "244.297125"
+    "encoded_duration_seconds": 219.715918,
+    "container_start_time_seconds": 0.025056
   },
+  "embedded_tags": {
+    "title": "Around the World (La La La La La)",
+    "artist": "A Touch Of Class, Pete Konemann",
+    "album": "Planet Pop",
+    "track": "2",
+    "encoder": "Lavf61.1.100"
+  },
+  "tag_note": "Embedded metadata is not an independently verified attribution or distribution licence. Embedded cover art is not a requested runtime visual.",
   "analysis": {
+    "decoder": "FFmpeg stereo 48kHz float32; arithmetic channel average for controls",
+    "frame_count": 10543959,
     "sample_rate_hz": 48000,
-    "channels": 1,
-    "duration_seconds": 244.29714583333333,
-    "frame_count": 11726263,
-    "decoded_pcm_sha256": "83cd826b351b93b4fd55deaae41a2ad080feb2b6a83d16233b6b5714efd6a000",
-    "decode_command": [
-      "ffmpeg",
-      "-v",
-      "error",
-      "-i",
-      "<INPUT_AUDIO>",
-      "-map",
-      "0:a:0",
-      "-vn",
-      "-ac",
-      "1",
-      "-ar",
-      "48000",
-      "-f",
-      "f32le",
-      "pipe:1"
-    ]
+    "channels": 2,
+    "duration_seconds": 219.6658125,
+    "decoded_pcm_sha256": "fed30da2b8de336dbf0333e85d4c8d036ec7223e4eb1b5a42e9c571d3284bc74",
+    "feature_rows": 21967
   },
-  "runtime_decoded_duration_seconds": null,
-  "runtime_sample_rate_hz": null,
-  "runtime_decoder_record": null,
-  "measurement_note": "Song identity and cue times require listening; browser decode must be measured independently.",
-  "identity_basis": "user_designated_upload"
+  "browser_decode": {
+    "sampleRate": 48000,
+    "duration": 219.66579166666668,
+    "length": 10543958,
+    "channels": 2,
+    "peaks": [
+      1.1664674282073975,
+      1.166459083557129
+    ],
+    "decoder_delta_frames_to_48k_analysis": -1
+  },
+  "listening_review": "pending; no listening tool available; numerical event selection is not approval",
+  "approved_beats": [],
+  "distribution_licence": null,
+  "timing_note": "Browser-decoded sample zero owns transport. Record actual browser length/sample rate; do not subtract MP3 container start time or apply a constant duration rescale.",
+  "starting_music_gain_for_review": 0.684751836
 }

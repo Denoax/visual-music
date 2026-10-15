@@ -1,0 +1,54 @@
+{
+  "status": "implemented_pending_human_review",
+  "baseline": "bae9b32d679e274337ad4811b7fdd21ad7e23bac",
+  "owner": "src/scene/flight.ts",
+  "math": "core/reference-camera.mjs",
+  "score": "show/camera-score.json",
+  "comparison_score": "show/reference-camera-score.json (dev=1&referenceCamera=1 only)",
+  "clock": "AudioTransport.presentation",
+  "scale": 0.4125,
+  "terrain_pitch": 3,
+  "lens_degrees": [
+    25,
+    30,
+    40
+  ],
+  "clip": [
+    0.4125,
+    660
+  ],
+  "integration_hz": 240,
+  "render_interpolation": true,
+  "orientation": "Ry(referenceAngle) Rz(-inputBank) Rx(cameraPitchX); basis -> quaternion, no lookAt",
+  "input_y": "One app-up to source-down inversion",
+  "initial_yaw_degrees": -30,
+  "turbo": {
+    "held": 2.5,
+    "hold_rate": 4,
+    "release_target": 1,
+    "release_rate": 2
+  },
+  "bank_rate": 0.3,
+  "pitch_rate": 2,
+  "steering": "pointerX*turbo*referenceSpeed*.001; preceding heading owns translation",
+  "opening": {
+    "seconds": 8,
+    "rise": [
+      -16.5,
+      24.75
+    ],
+    "lens": 25,
+    "speed": 0,
+    "terrain_visibility": 7,
+    "launch_seconds": 8,
+    "launch_duration": 1,
+    "scene_speed_target": 61.875
+  },
+  "other_shots": "Full source target relationships; production role mappings in score. Interrupted brake continuity retained. Separate96m overview removed.",
+  "forecast": "Active curve integrated with current held input; event origins snap once. show/camera-origins.json diagnostic only.",
+  "coverage_record": "evidence/reference-camera/coverage.json",
+  "clearance_record": "show/clearance.as-built.json",
+  "differences": "sources/camera-deviations.json",
+  "timing_listening_approved": false,
+  "no_push_or_deployment": true
+}

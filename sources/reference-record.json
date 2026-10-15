@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "standing_skill": "$reference-led-design",
+  "reference_inspection_basis": "Actual creator stills, published source and official documentation; no claim of continuous live-reference playback.",
+  "visual_media_generated": false,
+  "runtime_visual_assets_acquired": false,
+  "records": [
+    {
+      "name": "Lights, creator project page",
+      "creator": "HelloEnjoy",
+      "url": "https://helloenjoy.itch.io/lights",
+      "retrieved_utc_date": "2026-10-11",
+      "inspected": "Creator page; identifies Three.js experience released October 2011.",
+      "reuse": "Reference attribution only."
+    },
+    {
+      "name": "Lights, original creator stills",
+      "creator": "HelloEnjoy",
+      "urls": [
+        "https://helloenjoy.com/images/lights-1.jpg",
+        "https://helloenjoy.com/images/lights-3.jpg"
+      ],
+      "retrieved_utc_date": "2026-10-11",
+      "inspected": "First: round light samples across rolling terrain. Third: coloured crests against black, with readable layered depth.",
+      "adaptation": "Rounded field lights and raised wave readability; use the user-requested black sky, without copying props or composition.",
+      "licence": "Redistribution permission not established.",
+      "bundled": false,
+      "continuous_motion_inspected": false
+    },
+    {
+      "name": "Lights, publicly served source",
+      "creator": "HelloEnjoy",
+      "url": "https://html-classic.itch.zone/html/1645328/lights/js/Lights.js",
+      "sha256": "987aa2b1308f3623d51b24445d5a4c83716061b5ebd8d24f082f7fec0bce0a53",
+      "inspected_symbols": [
+        "TerrainDisplacement.update",
+        "TerrainDisplacement.updateSpectrum",
+        "BallsManager.beat"
+      ],
+      "observed": "Section-specific displacement modes and alternation of orb groups on selected beats.",
+      "adaptation": "Independent mode-based wave and limited-palette arrangement.",
+      "licence": "No redistribution licence established; no code copied into runtime or pack.",
+      "bundled": false
+    },
+    {
+      "name": "Three.js color management",
+      "creator": "Three.js contributors",
+      "url": "https://threejs.org/manual/pages/color-management.html",
+      "inspected": "Official working/output colour-space documentation.",
+      "adaptation": "Correct shader/output colour conversion, with bounded halo rendering."
+    },
+    {
+      "name": "Web Audio API timing",
+      "creator": "W3C Web Audio Working Group",
+      "url": "https://www.w3.org/TR/webaudio-1.0/",
+      "inspected": "Official currentTime and scheduled-source timing contracts.",
+      "adaptation": "Keep the existing context/presentation clock; direct-start once and freeze/resume coherent visuals."
+    }
+  ],
+  "creative_choices_from_latest_user": [
+    "Black sky throughout",
+    "White opening orbs",
+    "Closer eye-level wave view",
+    "Dynamic fades and some held colour sections",
+    "Remove room and focus on waves/music only"
+  ],
+  "local_inspection": {
+    "date": "2026-10-11",
+    "creator_images_opened": [
+      "lights-1.jpg",
+      "lights-3.jpg"
+    ],
+    "observations": "Rounded light samples and layered rolling contours; local bright crests against black. Balloon/skyline/branding/trail motifs are excluded. No third-party reference source or imagery copied into runtime.",
+    "adaptation_files": [
+      "src/scene/field.ts",
+      "src/show/waves.ts",
+      "src/scene/world.ts"
+    ],
+    "normal_speed_live_reference_playback": "not performed",
+    "original_creator_images_sha256": {
+      "lights-1.jpg": "c7d5b3f7f176a8d1a3ce5fd6e00fb90effc8310869cc631e18c5cded5ee2331d",
+      "lights-3.jpg": "867d134a6b87ce6ebaeb1c00a6d6b4767aa59284a5296c9c38bfe8be441640a4"
+    }
+  },
+  "scope": "Historical approved wave-focus record. Its exclusions are superseded by the latest rolling-cursor/modes request.",
+  "superseded_by": "sources/cursor-modes-reference-record.json",
+  "current_authority": {
+    "baseline": "4c1732a2c9931d2303fb6dd0d1820ebc9a2e5b43",
+    "user_requested": "Owned portfolio UI, actual OFF banks/sparse membership, coherent palettes/lines/rings, complete presented audio tail before exit, stable low camera and lower depth-tested stars",
+    "standing_rejections": [
+      "glossy spheres",
+      "cursor ball/trace/glints",
+      "room/login/SAO",
+      "canopy"
+    ],
+    "approved_wave_foundation": "f340403bdf4e8aa0d8acb3f2beeae74036b07a8a",
+    "new_refinement_approved": false,
+    "current_record": "sources/lights-refinement-reference-study.json"
+  }
+}

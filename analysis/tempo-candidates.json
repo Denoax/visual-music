@@ -1,0 +1,19 @@
+{
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "status": "unapproved_periodicity_candidates",
+  "selected_bpm": null,
+  "approved_grid": null,
+  "candidates": [
+    {
+      "lag_seconds": 0.51,
+      "bpm": 117.647059,
+      "autocorrelation": 0.58293
+    },
+    {
+      "lag_seconds": 0.39,
+      "bpm": 153.846154,
+      "autocorrelation": -0.157626
+    }
+  ],
+  "limitations": "Whole-track autocorrelation cannot establish downbeats, subdivisions, musical boundaries or phase."
+}

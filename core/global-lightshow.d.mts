@@ -1,0 +1,12 @@
+export type PhaseSample = {seconds:number;phase:number;activeFromPrevious:boolean};
+export const TAU:number;
+export function positiveMod(x:number,n:number):number;
+export function clamp01(x:number):number;
+export function effectCoordinates(x:number,z:number,options?:{anchorX?:number;anchorZ?:number;angle?:number}):{u:number;v:number};
+export function globalWeave(x:number,z:number,phase:number,options?:{anchorX?:number;anchorZ?:number;angle?:number;period?:number;beatsPerCycle?:number}):number;
+export function fixtureBank(ix:number,iz:number,options?:{blockCells?:number;groups?:number;mirrored?:boolean}):number;
+export function bankDimmer(bank:number,groups:number,phase:number,options?:{beatsPerCycle?:number;low?:number;high?:number}):number;
+export function buildPulsePhaseTrack(seconds:number[],options?:{minGap?:number;maxGap?:number}):PhaseSample[];
+export function pulsePhaseAt(t:number,track:PhaseSample[]):{phase:number;active:boolean};
+export function gaussianCoreFwhmPixels(width:number,exponent?:number):number;
+export function projectedSpriteWidth(options:{radius:number;depth:number;viewportHeight:number;fovDegrees:number;dpr?:number;maxPixels?:number}):number;

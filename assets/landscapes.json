@@ -1,0 +1,161 @@
+{
+  "schema": "retrowave-assets-v1",
+  "generated_by": "code/bake_retrowave.py",
+  "no_external_media": true,
+  "files": [
+    {
+      "path": "retro_range_near.glb",
+      "profile": "retro_range",
+      "lod": "near",
+      "bytes": 231492,
+      "sha256": "efe54c1841fe1723fd44f37f6a7405d015ba43dfecb8828189077e609c228e3a",
+      "vertices": 4800,
+      "triangles": 1600,
+      "grid": [
+        41,
+        21
+      ],
+      "bounds": {
+        "min": [
+          -220.0,
+          0.0,
+          -100.0
+        ],
+        "max": [
+          220.0,
+          110.0,
+          100.0
+        ]
+      },
+      "attributes": [
+        "position",
+        "normal",
+        "_barycentric",
+        "_edge_mask"
+      ],
+      "closed": false
+    },
+    {
+      "path": "retro_range_far.glb",
+      "profile": "retro_range",
+      "lod": "far",
+      "bytes": 58688,
+      "sha256": "fe2dfaf4400594372f531e9794e1b5d3077c044f07eb6193e838c4f8471aeb83",
+      "vertices": 1200,
+      "triangles": 400,
+      "grid": [
+        21,
+        11
+      ],
+      "bounds": {
+        "min": [
+          -220.0,
+          0.0,
+          -100.0
+        ],
+        "max": [
+          220.0,
+          110.0,
+          100.0
+        ]
+      },
+      "attributes": [
+        "position",
+        "normal",
+        "_barycentric",
+        "_edge_mask"
+      ],
+      "closed": false
+    },
+    {
+      "path": "retro_saddle_near.glb",
+      "profile": "retro_saddle",
+      "lod": "near",
+      "bytes": 231492,
+      "sha256": "5be875bec49cb0f0e165c28fd52c29feb403499bb376daba21286b4473791dd1",
+      "vertices": 4800,
+      "triangles": 1600,
+      "grid": [
+        41,
+        21
+      ],
+      "bounds": {
+        "min": [
+          -200.0,
+          0.0,
+          -100.0
+        ],
+        "max": [
+          200.0,
+          120.0,
+          100.0
+        ]
+      },
+      "attributes": [
+        "position",
+        "normal",
+        "_barycentric",
+        "_edge_mask"
+      ],
+      "closed": false
+    },
+    {
+      "path": "retro_saddle_far.glb",
+      "profile": "retro_saddle",
+      "lod": "far",
+      "bytes": 58688,
+      "sha256": "3ddbe7f6761081e7e37533c53d91cc1dae2f49f1b5416bbd856e9416191bce26",
+      "vertices": 1200,
+      "triangles": 400,
+      "grid": [
+        21,
+        11
+      ],
+      "bounds": {
+        "min": [
+          -200.0,
+          0.0,
+          -100.0
+        ],
+        "max": [
+          200.0,
+          120.0,
+          100.0
+        ]
+      },
+      "attributes": [
+        "position",
+        "normal",
+        "_barycentric",
+        "_edge_mask"
+      ],
+      "closed": false
+    },
+    {
+      "path": "folded_light_fin.glb",
+      "bytes": 1332,
+      "sha256": "f7f5c7054ed5b2dd66b2587cf86e70cbb58ebda30e6457a897d23df7117ce7f3",
+      "vertices": 8,
+      "triangles": 6,
+      "bounds": {
+        "min": [
+          -18,
+          0,
+          -9
+        ],
+        "max": [
+          18,
+          100,
+          12
+        ]
+      },
+      "topology": "open non-watertight surface; additive projection material intended",
+      "extras": {
+        "family": "folded-fin",
+        "nominalHeight": 100,
+        "origin": "foot-centre",
+        "material": "two-sided single-pass thin projection sheet; no reflection"
+      }
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "schema": "reference-camera-study-v1",
+  "clock": "original Lights song seconds; not verified timestamps for supplied MP3",
+  "scale": {
+    "referenceTile": 480,
+    "referenceResolution": 66,
+    "projectCanonicalPitch": 3,
+    "uniformScale": 0.4125,
+    "status": "grid-based initial calibration, not measured pixel match"
+  },
+  "initial": {
+    "altitude": -40,
+    "vfov": 25,
+    "tilt": -9,
+    "cameraPitchX": -9,
+    "speed": 0,
+    "angle": 30,
+    "turbo": 1,
+    "roll": 0
+  },
+  "cues": [
+    {
+      "id": "opening",
+      "seconds": 0,
+      "duration": 8,
+      "target": {
+        "altitude": 60,
+        "vfov": 25,
+        "tilt": 9,
+        "speed": 0
+      }
+    },
+    {
+      "id": "third-opening-beat",
+      "seconds": 8,
+      "duration": 1,
+      "target": {
+        "altitude": 60,
+        "vfov": 25,
+        "tilt": 9,
+        "speed": 150
+      }
+    },
+    {
+      "id": "first-lift",
+      "seconds": 40,
+      "duration": 4,
+      "target": {
+        "altitude": 110,
+        "vfov": 30,
+        "tilt": 9,
+        "speed": 250
+      }
+    },
+    {
+      "id": "low-return",
+      "seconds": 72,
+      "duration": 2,
+      "target": {
+        "altitude": 80,
+        "vfov": 30,
+        "tilt": 9,
+        "speed": 150
+      }
+    },
+    {
+      "id": "second-rise",
+      "seconds": 88,
+      "duration": 4,
+      "target": {
+        "altitude": 120,
+        "vfov": 30,
+        "tilt": 13.5,
+        "speed": 200
+      }
+    },
+    {
+      "id": "low-power",
+      "seconds": 104,
+      "duration": 4,
+      "target": {
+        "altitude": 80,
+        "vfov": 30,
+        "tilt": 9,
+        "speed": 250
+      }
+    },
+    {
+      "id": "high-field",
+      "seconds": 120,
+      "duration": 4,
+      "target": {
+        "altitude": 200,
+        "vfov": 40,
+        "tilt": 27,
+        "speed": 200
+      }
+    },
+    {
+      "id": "high-spectrum",
+      "seconds": 136,
+      "duration": 8,
+      "target": {
+        "altitude": 200,
+        "vfov": 40,
+        "tilt": 18,
+        "speed": 200
+      }
+    },
+    {
+      "id": "brake",
+      "seconds": 149.75,
+      "duration": 3,
+      "target": {
+        "altitude": 200,
+        "vfov": 40,
+        "tilt": 18,
+        "speed": 0
+      }
+    },
+    {
+      "id": "restart",
+      "seconds": 152,
+      "duration": 2,
+      "target": {
+        "altitude": 90,
+        "vfov": 30,
+        "tilt": 9,
+        "speed": 200
+      }
+    },
+    {
+      "id": "renewed-rise",
+      "seconds": 160,
+      "duration": 4,
+      "target": {
+        "altitude": 130,
+        "vfov": 30,
+        "tilt": 13.5,
+        "speed": 200
+      }
+    },
+    {
+      "id": "closing-flight",
+      "seconds": 184,
+      "duration": 4,
+      "target": {
+        "altitude": 100,
+        "vfov": 40,
+        "tilt": 9,
+        "speed": 200
+      }
+    },
+    {
+      "id": "outro-rise",
+      "seconds": 200,
+      "duration": 8,
+      "target": {
+        "altitude": 200,
+        "vfov": 40,
+        "tilt": 27,
+        "speed": 100
+      }
+    }
+  ],
+  "nominalEnd": 210,
+  "tail_policy": "existing supplied song219.66579166666668s plus output-clock outro remains; do not end at reference210"
+}

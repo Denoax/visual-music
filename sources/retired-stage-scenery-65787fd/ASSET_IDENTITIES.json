@@ -1,0 +1,40 @@
+{
+  "retired_from_review": "65787fde4d1a24ed625b1779ad43c71bd04bc43e",
+  "files": [
+    {
+      "path": "public/models/landscapes/retro_range_near.glb",
+      "bytes": 231492,
+      "sha256": "efe54c1841fe1723fd44f37f6a7405d015ba43dfecb8828189077e609c228e3a",
+      "provenance": "Original supplied authored geometry, byte-identical; see assets/landscapes.json",
+      "notice": "public/licenses/Projected-Landscapes.txt"
+    },
+    {
+      "path": "public/models/landscapes/retro_range_far.glb",
+      "bytes": 58688,
+      "sha256": "fe2dfaf4400594372f531e9794e1b5d3077c044f07eb6193e838c4f8471aeb83",
+      "provenance": "Original supplied authored geometry, byte-identical; see assets/landscapes.json",
+      "notice": "public/licenses/Projected-Landscapes.txt"
+    },
+    {
+      "path": "public/models/landscapes/retro_saddle_near.glb",
+      "bytes": 231492,
+      "sha256": "5be875bec49cb0f0e165c28fd52c29feb403499bb376daba21286b4473791dd1",
+      "provenance": "Original supplied authored geometry, byte-identical; see assets/landscapes.json",
+      "notice": "public/licenses/Projected-Landscapes.txt"
+    },
+    {
+      "path": "public/models/landscapes/retro_saddle_far.glb",
+      "bytes": 58688,
+      "sha256": "3ddbe7f6761081e7e37533c53d91cc1dae2f49f1b5416bbd856e9416191bce26",
+      "provenance": "Original supplied authored geometry, byte-identical; see assets/landscapes.json",
+      "notice": "public/licenses/Projected-Landscapes.txt"
+    },
+    {
+      "path": "public/models/landscapes/folded_light_fin.glb",
+      "bytes": 1332,
+      "sha256": "f7f5c7054ed5b2dd66b2587cf86e70cbb58ebda30e6457a897d23df7117ce7f3",
+      "provenance": "Original supplied authored geometry, byte-identical; see assets/landscapes.json",
+      "notice": "public/licenses/Projected-Landscapes.txt"
+    }
+  ]
+}

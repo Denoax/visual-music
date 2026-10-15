@@ -1,0 +1,134 @@
+{
+  "source_policy": "Inspected real human references, owned source and original code; no generated media or original Lights code/assets in runtime",
+  "references": {
+    "Lights": {
+      "url": "https://helloenjoy.itch.io/lights",
+      "actual_local_playback": "18s at normal playback rate in compatible native browser; experiencePlaying true and actual audio progression observed",
+      "evidence": "evidence/lyrical-lights/references/reference-inspection.json",
+      "limit": "sampled frame inspection and short source playback, not full source/continuous human comparison"
+    },
+    "portfolio": {
+      "url": "https://manimarami.com/",
+      "local_url": "http://127.0.0.1:4177/",
+      "inspection": "actual owned existing local build, entry/Projects/GitHub profile GPU scene; glass diagnostics confirm final-output GPU lens",
+      "material": "provided small-lens shader/parameters ported, native label separate, same output conversion stage",
+      "limit": "GitHub mark not isolated for a perceptual1:1 material measurement; subjective material match pending"
+    }
+  },
+  "families": [
+    {
+      "family": "note-painted-opening",
+      "source_detail": "Player staged launch and TerrainDots selective paint",
+      "implementation": "src/show/paint.ts,src/show/floor.ts",
+      "song_window_seconds": "0\u201312",
+      "evidence_status": "measured tonal proxies, not confirmed notes",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "wave-local-chunk-exchange",
+      "source_detail": "Selective group exchange and local ground maps",
+      "implementation": "src/show/drivers.ts,src/show/floor.ts",
+      "song_window_seconds": "12\u2013139,158\u2013210",
+      "evidence_status": "actual physical-front arrival; full driver life, no global flash",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "soft-painted-pools",
+      "source_detail": "MapGlows/MapDots local paint",
+      "implementation": "src/show/paint.ts,src/show/floor.ts",
+      "song_window_seconds": "0\u2013219.66",
+      "evidence_status": "bounded emitter footprints and analytical note decay",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "growing-circle-trains",
+      "source_detail": "MapCircles growth lifecycle",
+      "implementation": "src/show/floor.ts",
+      "song_window_seconds": "40\u201356,158\u2013175",
+      "evidence_status": "actual wave origins, musical time; no pulse-gap freeze",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "evolving-line-density",
+      "source_detail": "MapLines and staged density changes",
+      "implementation": "src/show/floor.ts",
+      "song_window_seconds": "56\u201375,123\u2013139,201\u2013210",
+      "evidence_status": "thin displaced linework, regional transition",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "radial-spectrum-light",
+      "source_detail": "Source spectrum/light map family",
+      "implementation": "src/show/floor.ts,src/show/microcues.ts",
+      "song_window_seconds": "94\u2013106",
+      "evidence_status": "mixed harmonic energy, raw wave shape untouched",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "colour-chase-and-holds",
+      "source_detail": "Source staged colour/multiply/additive language",
+      "implementation": "src/show/floor.ts",
+      "song_window_seconds": "106\u2013123 and held chapters",
+      "evidence_status": "bounded linear palettes; ordered rainbow; black gaps",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "pixel-gather-and-dissolve",
+      "source_detail": "Dot borrowing/gather/disperse/reform",
+      "implementation": "src/scene/lyrical-actors.ts,src/show/floor.ts",
+      "song_window_seconds": "75\u201394,190\u2013201",
+      "evidence_status": "actual source IDs, current-terrain clearance; original geometric ring motif",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "musical-air-echoes",
+      "source_detail": "Move-up/launch lifecycles",
+      "implementation": "src/scene/lyrical-actors.ts",
+      "song_window_seconds": "12\u201325,158\u2013175",
+      "evidence_status": "soft depth-tested light points, no glossy spheres",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "musical-ribbon",
+      "source_detail": "Vox musical volume/spectrum strip principle",
+      "implementation": "src/scene/lyrical-actors.ts",
+      "song_window_seconds": "25\u201340,175\u2013190",
+      "evidence_status": "mixed harmonic proxy; verified singer/refrain timing pending",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "crossed-plane-beams",
+      "source_detail": "Creator/source cheap intersecting planes",
+      "implementation": "src/scene/lyrical-actors.ts",
+      "song_window_seconds": "123\u2013139,201\u2013210",
+      "evidence_status": "three original analytic planes per fixed front, sparse depth-tested sweeps",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "cadence-spark-bursts",
+      "source_detail": "Pooled source explosion language",
+      "implementation": "src/scene/lyrical-actors.ts,show/cadence-cues.json",
+      "song_window_seconds": "seven measured candidates",
+      "evidence_status": "cadence meaning unapproved; no click trigger",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "depth-star-breathing",
+      "source_detail": "Source recycled/fading world stars",
+      "implementation": "core/near-stars.mjs,src/scene/stars.ts",
+      "song_window_seconds": "all song",
+      "evidence_status": "existing depth/fade contract, heights paired+1.2m",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    },
+    {
+      "family": "quiet-rest-and-complete-exit",
+      "source_detail": "Staged rests and current presented-end owner",
+      "implementation": "src/show/floor.ts,src/audio/transport.ts",
+      "song_window_seconds": "139\u2013158,210\u2013tail+outro",
+      "evidence_status": "unchanged complete audible tail, no auto-loop",
+      "normal_speed_evidence": "evidence/lyrical-lights/final-capture/desktop-full.webm and portrait-full.webm"
+    }
+  ],
+  "semantic_timing": "no reliable hearing/alignment modality; roles remain unassigned; original annotation tool supplied outside runtime",
+  "human_approval": false
+}

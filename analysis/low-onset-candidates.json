@@ -1,0 +1,2811 @@
+{
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "status": "measured_candidates_not_reviewed_beats",
+  "method": "Positive log-spectral flux, 20-180 Hz, centered 4096-sample Hann window; median subtraction, Gaussian smoothing; 280ms minimum spacing.",
+  "scale_95th_percentile": 2.8839779948254765,
+  "candidates": [
+    {
+      "seconds": 0.14,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 2.4e-05
+    },
+    {
+      "seconds": 0.75,
+      "strength": 0.301084,
+      "prominence": 0.296912,
+      "low_energy": 0.022018
+    },
+    {
+      "seconds": 1.16,
+      "strength": 0.958546,
+      "prominence": 0.958546,
+      "low_energy": 0.019727
+    },
+    {
+      "seconds": 1.68,
+      "strength": 0.712682,
+      "prominence": 0.712682,
+      "low_energy": 0.020908
+    },
+    {
+      "seconds": 2.19,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.02075
+    },
+    {
+      "seconds": 2.71,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.021101
+    },
+    {
+      "seconds": 3.23,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.022018
+    },
+    {
+      "seconds": 3.54,
+      "strength": 0.344546,
+      "prominence": 0.2603,
+      "low_energy": 0.019736
+    },
+    {
+      "seconds": 4.25,
+      "strength": 0.918569,
+      "prominence": 0.918534,
+      "low_energy": 0.024549
+    },
+    {
+      "seconds": 5.02,
+      "strength": 0.983371,
+      "prominence": 0.983371,
+      "low_energy": 0.021392
+    },
+    {
+      "seconds": 6.05,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.021615
+    },
+    {
+      "seconds": 6.56,
+      "strength": 0.459412,
+      "prominence": 0.458356,
+      "low_energy": 0.018347
+    },
+    {
+      "seconds": 7.08,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.021072
+    },
+    {
+      "seconds": 7.59,
+      "strength": 0.771912,
+      "prominence": 0.771879,
+      "low_energy": 0.021118
+    },
+    {
+      "seconds": 8.12,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.019586
+    },
+    {
+      "seconds": 8.61,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.025182
+    },
+    {
+      "seconds": 9.15,
+      "strength": 0.812533,
+      "prominence": 0.812533,
+      "low_energy": 0.017846
+    },
+    {
+      "seconds": 9.64,
+      "strength": 0.475847,
+      "prominence": 0.471683,
+      "low_energy": 0.036264
+    },
+    {
+      "seconds": 10.19,
+      "strength": 0.454661,
+      "prominence": 0.434009,
+      "low_energy": 0.026304
+    },
+    {
+      "seconds": 10.68,
+      "strength": 0.581949,
+      "prominence": 0.581795,
+      "low_energy": 0.024944
+    },
+    {
+      "seconds": 11.13,
+      "strength": 0.791331,
+      "prominence": 0.791286,
+      "low_energy": 0.021516
+    },
+    {
+      "seconds": 11.57,
+      "strength": 0.655838,
+      "prominence": 0.651135,
+      "low_energy": 0.017525
+    },
+    {
+      "seconds": 11.86,
+      "strength": 0.382627,
+      "prominence": 0.231113,
+      "low_energy": 0.025702
+    },
+    {
+      "seconds": 12.16,
+      "strength": 0.548563,
+      "prominence": 0.548497,
+      "low_energy": 0.020744
+    },
+    {
+      "seconds": 12.44,
+      "strength": 0.3737,
+      "prominence": 0.274771,
+      "low_energy": 0.025319
+    },
+    {
+      "seconds": 12.73,
+      "strength": 0.802808,
+      "prominence": 0.802743,
+      "low_energy": 0.029714
+    },
+    {
+      "seconds": 13.2,
+      "strength": 0.508647,
+      "prominence": 0.50746,
+      "low_energy": 0.024064
+    },
+    {
+      "seconds": 13.81,
+      "strength": 0.508889,
+      "prominence": 0.508481,
+      "low_energy": 0.025162
+    },
+    {
+      "seconds": 14.28,
+      "strength": 0.899419,
+      "prominence": 0.898742,
+      "low_energy": 0.023555
+    },
+    {
+      "seconds": 14.6,
+      "strength": 0.447185,
+      "prominence": 0.445701,
+      "low_energy": 0.026317
+    },
+    {
+      "seconds": 15.01,
+      "strength": 0.454923,
+      "prominence": 0.452645,
+      "low_energy": 0.019223
+    },
+    {
+      "seconds": 15.38,
+      "strength": 0.935336,
+      "prominence": 0.93524,
+      "low_energy": 0.022564
+    },
+    {
+      "seconds": 15.68,
+      "strength": 0.337945,
+      "prominence": 0.28242,
+      "low_energy": 0.024772
+    },
+    {
+      "seconds": 15.97,
+      "strength": 0.572381,
+      "prominence": 0.572134,
+      "low_energy": 0.018614
+    },
+    {
+      "seconds": 16.26,
+      "strength": 0.327211,
+      "prominence": 0.304642,
+      "low_energy": 0.022172
+    },
+    {
+      "seconds": 16.56,
+      "strength": 0.500044,
+      "prominence": 0.481586,
+      "low_energy": 0.025166
+    },
+    {
+      "seconds": 16.85,
+      "strength": 0.759212,
+      "prominence": 0.75905,
+      "low_energy": 0.061786
+    },
+    {
+      "seconds": 17.37,
+      "strength": 0.705285,
+      "prominence": 0.704994,
+      "low_energy": 0.026962
+    },
+    {
+      "seconds": 17.66,
+      "strength": 0.701091,
+      "prominence": 0.70022,
+      "low_energy": 0.035306
+    },
+    {
+      "seconds": 17.97,
+      "strength": 0.280507,
+      "prominence": 0.276245,
+      "low_energy": 0.027424
+    },
+    {
+      "seconds": 18.4,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.018606
+    },
+    {
+      "seconds": 18.73,
+      "strength": 0.983758,
+      "prominence": 0.971983,
+      "low_energy": 0.039246
+    },
+    {
+      "seconds": 19.09,
+      "strength": 0.304213,
+      "prominence": 0.301372,
+      "low_energy": 0.020221
+    },
+    {
+      "seconds": 19.38,
+      "strength": 0.803389,
+      "prominence": 0.803294,
+      "low_energy": 0.025482
+    },
+    {
+      "seconds": 19.82,
+      "strength": 0.476788,
+      "prominence": 0.471373,
+      "low_energy": 0.026974
+    },
+    {
+      "seconds": 20.12,
+      "strength": 0.417459,
+      "prominence": 0.411209,
+      "low_energy": 0.029163
+    },
+    {
+      "seconds": 20.47,
+      "strength": 0.39726,
+      "prominence": 0.387728,
+      "low_energy": 0.022
+    },
+    {
+      "seconds": 20.85,
+      "strength": 0.59665,
+      "prominence": 0.589631,
+      "low_energy": 0.029625
+    },
+    {
+      "seconds": 21.22,
+      "strength": 0.480651,
+      "prominence": 0.472963,
+      "low_energy": 0.026627
+    },
+    {
+      "seconds": 21.5,
+      "strength": 0.463901,
+      "prominence": 0.453589,
+      "low_energy": 0.027884
+    },
+    {
+      "seconds": 21.94,
+      "strength": 0.821452,
+      "prominence": 0.821426,
+      "low_energy": 0.022988
+    },
+    {
+      "seconds": 22.25,
+      "strength": 0.480394,
+      "prominence": 0.479388,
+      "low_energy": 0.017956
+    },
+    {
+      "seconds": 22.78,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.019498
+    },
+    {
+      "seconds": 23.08,
+      "strength": 0.310423,
+      "prominence": 0.284443,
+      "low_energy": 0.018307
+    },
+    {
+      "seconds": 23.54,
+      "strength": 0.742165,
+      "prominence": 0.741086,
+      "low_energy": 0.018996
+    },
+    {
+      "seconds": 24.01,
+      "strength": 0.404446,
+      "prominence": 0.404401,
+      "low_energy": 0.018495
+    },
+    {
+      "seconds": 24.39,
+      "strength": 0.527123,
+      "prominence": 0.527078,
+      "low_energy": 0.022798
+    },
+    {
+      "seconds": 24.87,
+      "strength": 0.49586,
+      "prominence": 0.4935,
+      "low_energy": 0.025191
+    },
+    {
+      "seconds": 25.35,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.029222
+    },
+    {
+      "seconds": 25.85,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.360299
+    },
+    {
+      "seconds": 26.13,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.232548
+    },
+    {
+      "seconds": 26.65,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.098191
+    },
+    {
+      "seconds": 27.05,
+      "strength": 0.716609,
+      "prominence": 0.698402,
+      "low_energy": 0.624508
+    },
+    {
+      "seconds": 27.42,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.356591
+    },
+    {
+      "seconds": 27.91,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.355218
+    },
+    {
+      "seconds": 28.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.270069
+    },
+    {
+      "seconds": 28.96,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.225873
+    },
+    {
+      "seconds": 29.47,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.352527
+    },
+    {
+      "seconds": 29.99,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.345517
+    },
+    {
+      "seconds": 30.41,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.41407
+    },
+    {
+      "seconds": 31.01,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.366332
+    },
+    {
+      "seconds": 31.54,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.275511
+    },
+    {
+      "seconds": 31.94,
+      "strength": 0.276235,
+      "prominence": 0.275935,
+      "low_energy": 0.417397
+    },
+    {
+      "seconds": 32.3,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.092783
+    },
+    {
+      "seconds": 32.65,
+      "strength": 0.463676,
+      "prominence": 0.384719,
+      "low_energy": 0.805138
+    },
+    {
+      "seconds": 33.07,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.408484
+    },
+    {
+      "seconds": 33.59,
+      "strength": 0.964621,
+      "prominence": 0.957515,
+      "low_energy": 0.405596
+    },
+    {
+      "seconds": 34.09,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.609513
+    },
+    {
+      "seconds": 34.6,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.666153
+    },
+    {
+      "seconds": 35.14,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.303285
+    },
+    {
+      "seconds": 35.65,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.31006
+    },
+    {
+      "seconds": 36.16,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.358114
+    },
+    {
+      "seconds": 36.68,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.312442
+    },
+    {
+      "seconds": 37.19,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.327731
+    },
+    {
+      "seconds": 37.7,
+      "strength": 0.596016,
+      "prominence": 0.577277,
+      "low_energy": 0.365903
+    },
+    {
+      "seconds": 38.29,
+      "strength": 0.770957,
+      "prominence": 0.767598,
+      "low_energy": 1.0
+    },
+    {
+      "seconds": 38.73,
+      "strength": 0.84262,
+      "prominence": 0.842608,
+      "low_energy": 0.486734
+    },
+    {
+      "seconds": 39.24,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.30834
+    },
+    {
+      "seconds": 40.01,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.156779
+    },
+    {
+      "seconds": 40.44,
+      "strength": 0.616884,
+      "prominence": 0.578962,
+      "low_energy": 0.524638
+    },
+    {
+      "seconds": 40.79,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.23178
+    },
+    {
+      "seconds": 41.3,
+      "strength": 0.922458,
+      "prominence": 0.922449,
+      "low_energy": 0.329787
+    },
+    {
+      "seconds": 41.84,
+      "strength": 0.706315,
+      "prominence": 0.702253,
+      "low_energy": 0.466466
+    },
+    {
+      "seconds": 42.36,
+      "strength": 0.88658,
+      "prominence": 0.884506,
+      "low_energy": 0.629813
+    },
+    {
+      "seconds": 42.74,
+      "strength": 0.634163,
+      "prominence": 0.627659,
+      "low_energy": 0.442344
+    },
+    {
+      "seconds": 43.04,
+      "strength": 0.275159,
+      "prominence": 0.241884,
+      "low_energy": 0.562477
+    },
+    {
+      "seconds": 43.36,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.215251
+    },
+    {
+      "seconds": 43.87,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.240576
+    },
+    {
+      "seconds": 44.4,
+      "strength": 0.844674,
+      "prominence": 0.843612,
+      "low_energy": 0.347086
+    },
+    {
+      "seconds": 44.9,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.206038
+    },
+    {
+      "seconds": 45.3,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.257886
+    },
+    {
+      "seconds": 45.94,
+      "strength": 0.716353,
+      "prominence": 0.701687,
+      "low_energy": 0.425982
+    },
+    {
+      "seconds": 46.43,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.326153
+    },
+    {
+      "seconds": 46.74,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.248461
+    },
+    {
+      "seconds": 47.04,
+      "strength": 0.49949,
+      "prominence": 0.331322,
+      "low_energy": 1.0
+    },
+    {
+      "seconds": 47.48,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.294828
+    },
+    {
+      "seconds": 48.0,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.289711
+    },
+    {
+      "seconds": 48.51,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.29639
+    },
+    {
+      "seconds": 49.04,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.385241
+    },
+    {
+      "seconds": 49.52,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.50479
+    },
+    {
+      "seconds": 49.86,
+      "strength": 0.65181,
+      "prominence": 0.611532,
+      "low_energy": 0.526778
+    },
+    {
+      "seconds": 50.3,
+      "strength": 0.858064,
+      "prominence": 0.857629,
+      "low_energy": 0.135816
+    },
+    {
+      "seconds": 50.83,
+      "strength": 0.662111,
+      "prominence": 0.618126,
+      "low_energy": 0.297897
+    },
+    {
+      "seconds": 51.33,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.146633
+    },
+    {
+      "seconds": 51.85,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.073565
+    },
+    {
+      "seconds": 52.32,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.539935
+    },
+    {
+      "seconds": 52.62,
+      "strength": 0.848292,
+      "prominence": 0.8065,
+      "low_energy": 0.323234
+    },
+    {
+      "seconds": 53.14,
+      "strength": 0.973889,
+      "prominence": 0.973473,
+      "low_energy": 0.380933
+    },
+    {
+      "seconds": 53.65,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.555733
+    },
+    {
+      "seconds": 54.16,
+      "strength": 0.7511,
+      "prominence": 0.745432,
+      "low_energy": 0.558047
+    },
+    {
+      "seconds": 54.74,
+      "strength": 0.666007,
+      "prominence": 0.659782,
+      "low_energy": 0.864651
+    },
+    {
+      "seconds": 55.22,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.573477
+    },
+    {
+      "seconds": 55.97,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.146594
+    },
+    {
+      "seconds": 56.46,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.104756
+    },
+    {
+      "seconds": 56.74,
+      "strength": 0.947456,
+      "prominence": 0.947456,
+      "low_energy": 0.323893
+    },
+    {
+      "seconds": 57.25,
+      "strength": 0.817437,
+      "prominence": 0.816856,
+      "low_energy": 0.256078
+    },
+    {
+      "seconds": 57.76,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.244913
+    },
+    {
+      "seconds": 58.28,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.486003
+    },
+    {
+      "seconds": 58.78,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.466103
+    },
+    {
+      "seconds": 59.31,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.42374
+    },
+    {
+      "seconds": 59.75,
+      "strength": 0.430892,
+      "prominence": 0.415377,
+      "low_energy": 0.28484
+    },
+    {
+      "seconds": 60.08,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.070923
+    },
+    {
+      "seconds": 60.86,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.194634
+    },
+    {
+      "seconds": 61.37,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.259039
+    },
+    {
+      "seconds": 61.88,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.271399
+    },
+    {
+      "seconds": 62.4,
+      "strength": 0.870557,
+      "prominence": 0.865275,
+      "low_energy": 0.276459
+    },
+    {
+      "seconds": 62.9,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.250694
+    },
+    {
+      "seconds": 63.18,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.110069
+    },
+    {
+      "seconds": 63.68,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.124704
+    },
+    {
+      "seconds": 64.0,
+      "strength": 0.781818,
+      "prominence": 0.359573,
+      "low_energy": 0.864281
+    },
+    {
+      "seconds": 64.46,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.223195
+    },
+    {
+      "seconds": 64.97,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.230355
+    },
+    {
+      "seconds": 65.47,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.18861
+    },
+    {
+      "seconds": 66.02,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.58488
+    },
+    {
+      "seconds": 66.37,
+      "strength": 0.585298,
+      "prominence": 0.56753,
+      "low_energy": 0.624481
+    },
+    {
+      "seconds": 66.75,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.069829
+    },
+    {
+      "seconds": 67.28,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.101981
+    },
+    {
+      "seconds": 67.8,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.111872
+    },
+    {
+      "seconds": 68.31,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.079529
+    },
+    {
+      "seconds": 68.66,
+      "strength": 0.310952,
+      "prominence": 0.224225,
+      "low_energy": 1.0
+    },
+    {
+      "seconds": 69.08,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.297571
+    },
+    {
+      "seconds": 69.59,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.33761
+    },
+    {
+      "seconds": 70.11,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.363303
+    },
+    {
+      "seconds": 70.49,
+      "strength": 0.409567,
+      "prominence": 0.409425,
+      "low_energy": 0.545697
+    },
+    {
+      "seconds": 70.88,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.100455
+    },
+    {
+      "seconds": 71.4,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.186567
+    },
+    {
+      "seconds": 71.92,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.165253
+    },
+    {
+      "seconds": 72.42,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.083286
+    },
+    {
+      "seconds": 72.95,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.101592
+    },
+    {
+      "seconds": 73.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.083905
+    },
+    {
+      "seconds": 73.78,
+      "strength": 0.381779,
+      "prominence": 0.262388,
+      "low_energy": 0.489738
+    },
+    {
+      "seconds": 74.22,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.443589
+    },
+    {
+      "seconds": 74.73,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.413229
+    },
+    {
+      "seconds": 75.19,
+      "strength": 0.452377,
+      "prominence": 0.424274,
+      "low_energy": 0.526874
+    },
+    {
+      "seconds": 75.5,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.146753
+    },
+    {
+      "seconds": 76.03,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.216292
+    },
+    {
+      "seconds": 76.36,
+      "strength": 0.579177,
+      "prominence": 0.193713,
+      "low_energy": 1.0
+    },
+    {
+      "seconds": 76.8,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.310746
+    },
+    {
+      "seconds": 77.32,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.253342
+    },
+    {
+      "seconds": 78.08,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.049271
+    },
+    {
+      "seconds": 78.6,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.102068
+    },
+    {
+      "seconds": 79.1,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.052727
+    },
+    {
+      "seconds": 79.38,
+      "strength": 0.69893,
+      "prominence": 0.676172,
+      "low_energy": 0.291386
+    },
+    {
+      "seconds": 79.88,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.261068
+    },
+    {
+      "seconds": 80.41,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.26538
+    },
+    {
+      "seconds": 80.92,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.310761
+    },
+    {
+      "seconds": 81.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.53626
+    },
+    {
+      "seconds": 81.96,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.501052
+    },
+    {
+      "seconds": 82.46,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.288564
+    },
+    {
+      "seconds": 82.98,
+      "strength": 0.845356,
+      "prominence": 0.843531,
+      "low_energy": 0.383148
+    },
+    {
+      "seconds": 83.49,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.290691
+    },
+    {
+      "seconds": 83.99,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.268534
+    },
+    {
+      "seconds": 84.52,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.24098
+    },
+    {
+      "seconds": 85.02,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.303097
+    },
+    {
+      "seconds": 85.55,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.271282
+    },
+    {
+      "seconds": 86.05,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.257999
+    },
+    {
+      "seconds": 86.59,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.328484
+    },
+    {
+      "seconds": 87.1,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.304028
+    },
+    {
+      "seconds": 87.61,
+      "strength": 0.823824,
+      "prominence": 0.820727,
+      "low_energy": 0.385842
+    },
+    {
+      "seconds": 87.99,
+      "strength": 0.939674,
+      "prominence": 0.93884,
+      "low_energy": 0.680122
+    },
+    {
+      "seconds": 88.37,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.13643
+    },
+    {
+      "seconds": 88.88,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.0561
+    },
+    {
+      "seconds": 89.4,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.096187
+    },
+    {
+      "seconds": 89.92,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.094234
+    },
+    {
+      "seconds": 90.38,
+      "strength": 0.501546,
+      "prominence": 0.273982,
+      "low_energy": 0.410018
+    },
+    {
+      "seconds": 90.69,
+      "strength": 0.77637,
+      "prominence": 0.776253,
+      "low_energy": 0.392641
+    },
+    {
+      "seconds": 91.21,
+      "strength": 0.770419,
+      "prominence": 0.77008,
+      "low_energy": 0.374517
+    },
+    {
+      "seconds": 91.71,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.460275
+    },
+    {
+      "seconds": 92.23,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.602744
+    },
+    {
+      "seconds": 93.0,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.098379
+    },
+    {
+      "seconds": 93.52,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.155096
+    },
+    {
+      "seconds": 94.02,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.104096
+    },
+    {
+      "seconds": 94.54,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.094183
+    },
+    {
+      "seconds": 95.07,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.11654
+    },
+    {
+      "seconds": 95.58,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.065612
+    },
+    {
+      "seconds": 96.02,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.432277
+    },
+    {
+      "seconds": 96.35,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.495712
+    },
+    {
+      "seconds": 96.88,
+      "strength": 0.939314,
+      "prominence": 0.922997,
+      "low_energy": 0.445481
+    },
+    {
+      "seconds": 97.38,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.2881
+    },
+    {
+      "seconds": 97.9,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.259027
+    },
+    {
+      "seconds": 98.41,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.266278
+    },
+    {
+      "seconds": 98.93,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.291061
+    },
+    {
+      "seconds": 99.45,
+      "strength": 0.956168,
+      "prominence": 0.948509,
+      "low_energy": 0.349556
+    },
+    {
+      "seconds": 99.95,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.305331
+    },
+    {
+      "seconds": 100.46,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.376404
+    },
+    {
+      "seconds": 100.98,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.164368
+    },
+    {
+      "seconds": 101.48,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.26404
+    },
+    {
+      "seconds": 102.26,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.077896
+    },
+    {
+      "seconds": 102.78,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.079189
+    },
+    {
+      "seconds": 103.29,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.091917
+    },
+    {
+      "seconds": 103.81,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.124094
+    },
+    {
+      "seconds": 104.57,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.221489
+    },
+    {
+      "seconds": 104.86,
+      "strength": 0.791979,
+      "prominence": 0.785616,
+      "low_energy": 0.163173
+    },
+    {
+      "seconds": 105.35,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.11412
+    },
+    {
+      "seconds": 105.87,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.160593
+    },
+    {
+      "seconds": 106.38,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.088336
+    },
+    {
+      "seconds": 107.14,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.36056
+    },
+    {
+      "seconds": 107.42,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.248385
+    },
+    {
+      "seconds": 107.74,
+      "strength": 0.613211,
+      "prominence": 0.435622,
+      "low_energy": 0.827715
+    },
+    {
+      "seconds": 108.17,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.47333
+    },
+    {
+      "seconds": 108.66,
+      "strength": 0.894891,
+      "prominence": 0.871671,
+      "low_energy": 0.505038
+    },
+    {
+      "seconds": 108.95,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.197524
+    },
+    {
+      "seconds": 109.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.085969
+    },
+    {
+      "seconds": 109.97,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.063521
+    },
+    {
+      "seconds": 110.32,
+      "strength": 0.306983,
+      "prominence": 0.180991,
+      "low_energy": 1.0
+    },
+    {
+      "seconds": 110.75,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.335452
+    },
+    {
+      "seconds": 111.27,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.382116
+    },
+    {
+      "seconds": 111.81,
+      "strength": 0.757966,
+      "prominence": 0.749614,
+      "low_energy": 0.601619
+    },
+    {
+      "seconds": 112.3,
+      "strength": 0.968273,
+      "prominence": 0.965668,
+      "low_energy": 0.362652
+    },
+    {
+      "seconds": 112.66,
+      "strength": 0.602649,
+      "prominence": 0.601121,
+      "low_energy": 0.582312
+    },
+    {
+      "seconds": 112.98,
+      "strength": 0.531199,
+      "prominence": 0.514873,
+      "low_energy": 0.732518
+    },
+    {
+      "seconds": 113.31,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.284691
+    },
+    {
+      "seconds": 113.83,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.269761
+    },
+    {
+      "seconds": 114.36,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.293092
+    },
+    {
+      "seconds": 114.87,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.2598
+    },
+    {
+      "seconds": 115.39,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.242046
+    },
+    {
+      "seconds": 115.89,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.401932
+    },
+    {
+      "seconds": 116.23,
+      "strength": 0.260513,
+      "prominence": 0.199766,
+      "low_energy": 0.511619
+    },
+    {
+      "seconds": 116.52,
+      "strength": 0.719881,
+      "prominence": 0.719604,
+      "low_energy": 0.767529
+    },
+    {
+      "seconds": 116.92,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.447213
+    },
+    {
+      "seconds": 117.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.239185
+    },
+    {
+      "seconds": 117.96,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.228946
+    },
+    {
+      "seconds": 118.48,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.344885
+    },
+    {
+      "seconds": 119.0,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.216263
+    },
+    {
+      "seconds": 119.51,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.171998
+    },
+    {
+      "seconds": 120.02,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.229388
+    },
+    {
+      "seconds": 120.51,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.377585
+    },
+    {
+      "seconds": 121.04,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.194086
+    },
+    {
+      "seconds": 121.34,
+      "strength": 0.672668,
+      "prominence": 0.670597,
+      "low_energy": 0.34413
+    },
+    {
+      "seconds": 121.81,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.05495
+    },
+    {
+      "seconds": 122.24,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.706152
+    },
+    {
+      "seconds": 122.59,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.233916
+    },
+    {
+      "seconds": 123.09,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.275027
+    },
+    {
+      "seconds": 123.62,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.251382
+    },
+    {
+      "seconds": 124.15,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.419701
+    },
+    {
+      "seconds": 124.65,
+      "strength": 0.956304,
+      "prominence": 0.952377,
+      "low_energy": 0.250183
+    },
+    {
+      "seconds": 125.17,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.51274
+    },
+    {
+      "seconds": 125.67,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.214003
+    },
+    {
+      "seconds": 126.43,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.079043
+    },
+    {
+      "seconds": 126.95,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.077238
+    },
+    {
+      "seconds": 127.46,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.226232
+    },
+    {
+      "seconds": 127.74,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.22696
+    },
+    {
+      "seconds": 128.25,
+      "strength": 0.835084,
+      "prominence": 0.82356,
+      "low_energy": 0.353239
+    },
+    {
+      "seconds": 128.76,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.38778
+    },
+    {
+      "seconds": 129.28,
+      "strength": 0.585818,
+      "prominence": 0.574281,
+      "low_energy": 0.51934
+    },
+    {
+      "seconds": 129.78,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.412274
+    },
+    {
+      "seconds": 130.31,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.337414
+    },
+    {
+      "seconds": 130.81,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.342465
+    },
+    {
+      "seconds": 131.33,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.375429
+    },
+    {
+      "seconds": 131.84,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.277684
+    },
+    {
+      "seconds": 132.36,
+      "strength": 0.899878,
+      "prominence": 0.899602,
+      "low_energy": 0.498079
+    },
+    {
+      "seconds": 132.86,
+      "strength": 0.857851,
+      "prominence": 0.857669,
+      "low_energy": 0.500451
+    },
+    {
+      "seconds": 133.21,
+      "strength": 0.736932,
+      "prominence": 0.731949,
+      "low_energy": 0.692071
+    },
+    {
+      "seconds": 133.51,
+      "strength": 0.415069,
+      "prominence": 0.326512,
+      "low_energy": 0.610702
+    },
+    {
+      "seconds": 133.89,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.227503
+    },
+    {
+      "seconds": 134.43,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.250838
+    },
+    {
+      "seconds": 134.94,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.173494
+    },
+    {
+      "seconds": 135.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.247111
+    },
+    {
+      "seconds": 135.95,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.340808
+    },
+    {
+      "seconds": 136.48,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.204221
+    },
+    {
+      "seconds": 136.92,
+      "strength": 0.598483,
+      "prominence": 0.52032,
+      "low_energy": 0.603993
+    },
+    {
+      "seconds": 137.26,
+      "strength": 0.865462,
+      "prominence": 0.864832,
+      "low_energy": 0.306817
+    },
+    {
+      "seconds": 137.77,
+      "strength": 0.802591,
+      "prominence": 0.796079,
+      "low_energy": 0.289778
+    },
+    {
+      "seconds": 138.27,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.085297
+    },
+    {
+      "seconds": 138.79,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.107084
+    },
+    {
+      "seconds": 139.3,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.040381
+    },
+    {
+      "seconds": 139.59,
+      "strength": 0.671343,
+      "prominence": 0.191807,
+      "low_energy": 0.214952
+    },
+    {
+      "seconds": 140.07,
+      "strength": 0.940668,
+      "prominence": 0.937983,
+      "low_energy": 0.212201
+    },
+    {
+      "seconds": 140.61,
+      "strength": 0.999207,
+      "prominence": 0.99864,
+      "low_energy": 0.314662
+    },
+    {
+      "seconds": 141.1,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.255956
+    },
+    {
+      "seconds": 141.62,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.318162
+    },
+    {
+      "seconds": 142.14,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.227145
+    },
+    {
+      "seconds": 142.65,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.236453
+    },
+    {
+      "seconds": 143.43,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.129293
+    },
+    {
+      "seconds": 143.76,
+      "strength": 0.431022,
+      "prominence": 0.217057,
+      "low_energy": 1.0
+    },
+    {
+      "seconds": 144.19,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.246237
+    },
+    {
+      "seconds": 144.64,
+      "strength": 0.509704,
+      "prominence": 0.463695,
+      "low_energy": 0.418872
+    },
+    {
+      "seconds": 144.96,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.068502
+    },
+    {
+      "seconds": 145.48,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.144771
+    },
+    {
+      "seconds": 145.99,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.10034
+    },
+    {
+      "seconds": 146.49,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.059105
+    },
+    {
+      "seconds": 146.78,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.16152
+    },
+    {
+      "seconds": 147.27,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.360259
+    },
+    {
+      "seconds": 147.8,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.339904
+    },
+    {
+      "seconds": 148.3,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.390007
+    },
+    {
+      "seconds": 148.83,
+      "strength": 0.980807,
+      "prominence": 0.967853,
+      "low_energy": 0.353232
+    },
+    {
+      "seconds": 149.33,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.545199
+    },
+    {
+      "seconds": 149.83,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.362595
+    },
+    {
+      "seconds": 150.28,
+      "strength": 0.272658,
+      "prominence": 0.263414,
+      "low_energy": 0.351963
+    },
+    {
+      "seconds": 150.63,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.163256
+    },
+    {
+      "seconds": 151.13,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.06321
+    },
+    {
+      "seconds": 151.65,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.059644
+    },
+    {
+      "seconds": 152.11,
+      "strength": 0.432679,
+      "prominence": 0.358346,
+      "low_energy": 0.153567
+    },
+    {
+      "seconds": 152.42,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.385505
+    },
+    {
+      "seconds": 152.92,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.370501
+    },
+    {
+      "seconds": 153.44,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.539766
+    },
+    {
+      "seconds": 153.95,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.49992
+    },
+    {
+      "seconds": 154.48,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.270016
+    },
+    {
+      "seconds": 155.25,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.087929
+    },
+    {
+      "seconds": 155.77,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.075123
+    },
+    {
+      "seconds": 156.29,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.409735
+    },
+    {
+      "seconds": 156.75,
+      "strength": 0.710293,
+      "prominence": 0.400145,
+      "low_energy": 0.185668
+    },
+    {
+      "seconds": 157.06,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.466019
+    },
+    {
+      "seconds": 157.66,
+      "strength": 0.837389,
+      "prominence": 0.835611,
+      "low_energy": 0.127646
+    },
+    {
+      "seconds": 158.09,
+      "strength": 0.998138,
+      "prominence": 0.996815,
+      "low_energy": 0.150808
+    },
+    {
+      "seconds": 158.4,
+      "strength": 0.914879,
+      "prominence": 0.907073,
+      "low_energy": 0.292976
+    },
+    {
+      "seconds": 158.71,
+      "strength": 0.252222,
+      "prominence": 0.240751,
+      "low_energy": 0.323182
+    },
+    {
+      "seconds": 159.01,
+      "strength": 0.649906,
+      "prominence": 0.632947,
+      "low_energy": 0.247876
+    },
+    {
+      "seconds": 159.37,
+      "strength": 0.86631,
+      "prominence": 0.861658,
+      "low_energy": 0.230867
+    },
+    {
+      "seconds": 159.86,
+      "strength": 0.860125,
+      "prominence": 0.846177,
+      "low_energy": 0.203921
+    },
+    {
+      "seconds": 160.15,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.146095
+    },
+    {
+      "seconds": 160.55,
+      "strength": 0.591944,
+      "prominence": 0.571533,
+      "low_energy": 0.285587
+    },
+    {
+      "seconds": 160.9,
+      "strength": 0.533287,
+      "prominence": 0.523873,
+      "low_energy": 0.128735
+    },
+    {
+      "seconds": 161.31,
+      "strength": 0.715352,
+      "prominence": 0.71163,
+      "low_energy": 0.181472
+    },
+    {
+      "seconds": 161.86,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.135766
+    },
+    {
+      "seconds": 162.21,
+      "strength": 0.6632,
+      "prominence": 0.640926,
+      "low_energy": 0.142349
+    },
+    {
+      "seconds": 162.72,
+      "strength": 0.84902,
+      "prominence": 0.841982,
+      "low_energy": 0.285125
+    },
+    {
+      "seconds": 163.22,
+      "strength": 0.575662,
+      "prominence": 0.566631,
+      "low_energy": 0.245163
+    },
+    {
+      "seconds": 163.5,
+      "strength": 0.976227,
+      "prominence": 0.976052,
+      "low_energy": 0.252359
+    },
+    {
+      "seconds": 163.78,
+      "strength": 0.555201,
+      "prominence": 0.551679,
+      "low_energy": 0.224842
+    },
+    {
+      "seconds": 164.29,
+      "strength": 0.832784,
+      "prominence": 0.83201,
+      "low_energy": 0.214644
+    },
+    {
+      "seconds": 164.75,
+      "strength": 0.528244,
+      "prominence": 0.525959,
+      "low_energy": 0.220931
+    },
+    {
+      "seconds": 165.05,
+      "strength": 0.542033,
+      "prominence": 0.531824,
+      "low_energy": 0.143837
+    },
+    {
+      "seconds": 165.34,
+      "strength": 0.500595,
+      "prominence": 0.480055,
+      "low_energy": 0.112628
+    },
+    {
+      "seconds": 165.79,
+      "strength": 0.715594,
+      "prominence": 0.71523,
+      "low_energy": 0.077879
+    },
+    {
+      "seconds": 166.32,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.021346
+    },
+    {
+      "seconds": 166.71,
+      "strength": 0.572889,
+      "prominence": 0.57149,
+      "low_energy": 0.167461
+    },
+    {
+      "seconds": 167.08,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.151634
+    },
+    {
+      "seconds": 167.59,
+      "strength": 0.564621,
+      "prominence": 0.543851,
+      "low_energy": 0.270766
+    },
+    {
+      "seconds": 168.05,
+      "strength": 0.316502,
+      "prominence": 0.303013,
+      "low_energy": 0.051722
+    },
+    {
+      "seconds": 168.36,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.028966
+    },
+    {
+      "seconds": 168.89,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.054657
+    },
+    {
+      "seconds": 169.4,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.107714
+    },
+    {
+      "seconds": 169.92,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.056132
+    },
+    {
+      "seconds": 170.36,
+      "strength": 0.373965,
+      "prominence": 0.337253,
+      "low_energy": 0.023568
+    },
+    {
+      "seconds": 170.68,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.214329
+    },
+    {
+      "seconds": 171.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.130496
+    },
+    {
+      "seconds": 172.1,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.106601
+    },
+    {
+      "seconds": 172.48,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.030747
+    },
+    {
+      "seconds": 172.87,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.131286
+    },
+    {
+      "seconds": 173.19,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.124279
+    },
+    {
+      "seconds": 173.52,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.135139
+    },
+    {
+      "seconds": 173.99,
+      "strength": 0.400286,
+      "prominence": 0.396631,
+      "low_energy": 0.018033
+    },
+    {
+      "seconds": 174.33,
+      "strength": 0.625592,
+      "prominence": 0.624427,
+      "low_energy": 0.027037
+    },
+    {
+      "seconds": 174.63,
+      "strength": 0.613146,
+      "prominence": 0.61123,
+      "low_energy": 0.034667
+    },
+    {
+      "seconds": 175.1,
+      "strength": 0.538604,
+      "prominence": 0.53828,
+      "low_energy": 0.036866
+    },
+    {
+      "seconds": 175.57,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.130169
+    },
+    {
+      "seconds": 176.08,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.237086
+    },
+    {
+      "seconds": 176.61,
+      "strength": 0.982292,
+      "prominence": 0.982277,
+      "low_energy": 0.395661
+    },
+    {
+      "seconds": 177.13,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.371434
+    },
+    {
+      "seconds": 177.63,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.331503
+    },
+    {
+      "seconds": 177.94,
+      "strength": 0.459323,
+      "prominence": 0.204846,
+      "low_energy": 0.397439
+    },
+    {
+      "seconds": 178.39,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.051061
+    },
+    {
+      "seconds": 178.91,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.055031
+    },
+    {
+      "seconds": 179.43,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.062514
+    },
+    {
+      "seconds": 179.83,
+      "strength": 0.740449,
+      "prominence": 0.656243,
+      "low_energy": 0.727113
+    },
+    {
+      "seconds": 180.46,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.204904
+    },
+    {
+      "seconds": 180.75,
+      "strength": 0.527102,
+      "prominence": 0.148238,
+      "low_energy": 0.808348
+    },
+    {
+      "seconds": 181.23,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.292147
+    },
+    {
+      "seconds": 181.76,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.295177
+    },
+    {
+      "seconds": 182.27,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.218005
+    },
+    {
+      "seconds": 182.77,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.340272
+    },
+    {
+      "seconds": 183.29,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.261127
+    },
+    {
+      "seconds": 183.8,
+      "strength": 0.879719,
+      "prominence": 0.868944,
+      "low_energy": 0.272957
+    },
+    {
+      "seconds": 184.32,
+      "strength": 0.911035,
+      "prominence": 0.910534,
+      "low_energy": 0.431374
+    },
+    {
+      "seconds": 184.64,
+      "strength": 0.416264,
+      "prominence": 0.257077,
+      "low_energy": 0.522561
+    },
+    {
+      "seconds": 185.1,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.138893
+    },
+    {
+      "seconds": 185.59,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.069221
+    },
+    {
+      "seconds": 186.12,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.223134
+    },
+    {
+      "seconds": 186.63,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.111561
+    },
+    {
+      "seconds": 187.15,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.086256
+    },
+    {
+      "seconds": 187.66,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.086706
+    },
+    {
+      "seconds": 188.43,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.256879
+    },
+    {
+      "seconds": 188.93,
+      "strength": 0.536988,
+      "prominence": 0.51354,
+      "low_energy": 0.569645
+    },
+    {
+      "seconds": 189.46,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.370001
+    },
+    {
+      "seconds": 189.98,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.399005
+    },
+    {
+      "seconds": 190.5,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.273626
+    },
+    {
+      "seconds": 191.0,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.387635
+    },
+    {
+      "seconds": 191.51,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.311906
+    },
+    {
+      "seconds": 191.92,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.303833
+    },
+    {
+      "seconds": 192.55,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.250588
+    },
+    {
+      "seconds": 193.05,
+      "strength": 0.594618,
+      "prominence": 0.586116,
+      "low_energy": 0.288486
+    },
+    {
+      "seconds": 193.59,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.279184
+    },
+    {
+      "seconds": 194.1,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.274784
+    },
+    {
+      "seconds": 194.6,
+      "strength": 0.871732,
+      "prominence": 0.87162,
+      "low_energy": 0.281844
+    },
+    {
+      "seconds": 195.12,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.221217
+    },
+    {
+      "seconds": 195.64,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.247634
+    },
+    {
+      "seconds": 196.15,
+      "strength": 0.96482,
+      "prominence": 0.963903,
+      "low_energy": 0.207152
+    },
+    {
+      "seconds": 196.67,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.198043
+    },
+    {
+      "seconds": 197.17,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.192616
+    },
+    {
+      "seconds": 197.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.072403
+    },
+    {
+      "seconds": 197.95,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.0723
+    },
+    {
+      "seconds": 198.46,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.083396
+    },
+    {
+      "seconds": 198.74,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.215269
+    },
+    {
+      "seconds": 199.23,
+      "strength": 0.95134,
+      "prominence": 0.938336,
+      "low_energy": 0.447858
+    },
+    {
+      "seconds": 199.75,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.382917
+    },
+    {
+      "seconds": 200.26,
+      "strength": 0.73922,
+      "prominence": 0.706629,
+      "low_energy": 0.353491
+    },
+    {
+      "seconds": 200.55,
+      "strength": 0.781747,
+      "prominence": 0.779654,
+      "low_energy": 0.314112
+    },
+    {
+      "seconds": 200.99,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.407109
+    },
+    {
+      "seconds": 201.29,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.419953
+    },
+    {
+      "seconds": 201.74,
+      "strength": 0.337783,
+      "prominence": 0.215126,
+      "low_energy": 0.469251
+    },
+    {
+      "seconds": 202.08,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.103635
+    },
+    {
+      "seconds": 202.59,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.131802
+    },
+    {
+      "seconds": 203.11,
+      "strength": 0.977944,
+      "prominence": 0.977656,
+      "low_energy": 0.325549
+    },
+    {
+      "seconds": 203.86,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.451015
+    },
+    {
+      "seconds": 204.39,
+      "strength": 0.8085,
+      "prominence": 0.788572,
+      "low_energy": 0.295342
+    },
+    {
+      "seconds": 204.91,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.256894
+    },
+    {
+      "seconds": 205.67,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.201632
+    },
+    {
+      "seconds": 206.19,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.132431
+    },
+    {
+      "seconds": 206.7,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.094571
+    },
+    {
+      "seconds": 206.98,
+      "strength": 0.601869,
+      "prominence": 0.283936,
+      "low_energy": 0.198017
+    },
+    {
+      "seconds": 207.28,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.232198
+    },
+    {
+      "seconds": 207.72,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.243644
+    },
+    {
+      "seconds": 208.03,
+      "strength": 0.565109,
+      "prominence": 0.142676,
+      "low_energy": 0.293507
+    },
+    {
+      "seconds": 208.33,
+      "strength": 0.82389,
+      "prominence": 0.81841,
+      "low_energy": 0.672888
+    },
+    {
+      "seconds": 208.75,
+      "strength": 0.820852,
+      "prominence": 0.820706,
+      "low_energy": 0.097275
+    },
+    {
+      "seconds": 209.26,
+      "strength": 0.911964,
+      "prominence": 0.911717,
+      "low_energy": 0.149901
+    },
+    {
+      "seconds": 209.79,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.136083
+    },
+    {
+      "seconds": 210.29,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.058166
+    },
+    {
+      "seconds": 210.63,
+      "strength": 0.711402,
+      "prominence": 0.505531,
+      "low_energy": 0.954369
+    },
+    {
+      "seconds": 211.07,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.369509
+    },
+    {
+      "seconds": 211.58,
+      "strength": 0.732894,
+      "prominence": 0.73271,
+      "low_energy": 0.292442
+    },
+    {
+      "seconds": 212.1,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.216615
+    },
+    {
+      "seconds": 212.61,
+      "strength": 0.935145,
+      "prominence": 0.934841,
+      "low_energy": 0.198502
+    },
+    {
+      "seconds": 213.13,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.150188
+    },
+    {
+      "seconds": 213.64,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.225121
+    },
+    {
+      "seconds": 214.16,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.186808
+    },
+    {
+      "seconds": 214.67,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.13661
+    },
+    {
+      "seconds": 215.17,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.103684
+    },
+    {
+      "seconds": 215.45,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.085978
+    },
+    {
+      "seconds": 215.73,
+      "strength": 0.554966,
+      "prominence": 0.51359,
+      "low_energy": 0.22007
+    },
+    {
+      "seconds": 216.21,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.072015
+    },
+    {
+      "seconds": 216.73,
+      "strength": 0.850503,
+      "prominence": 0.845441,
+      "low_energy": 0.058061
+    },
+    {
+      "seconds": 217.24,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.044009
+    },
+    {
+      "seconds": 217.76,
+      "strength": 0.974088,
+      "prominence": 0.973785,
+      "low_energy": 0.031446
+    },
+    {
+      "seconds": 218.29,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.021652
+    },
+    {
+      "seconds": 219.55,
+      "strength": 1.0,
+      "prominence": 1.0,
+      "low_energy": 0.019392
+    }
+  ],
+  "limitations": "Bass changes and vocal leakage can trigger candidates; weak kicks can be missed. Audition and correct timestamps before describing synchronization as approved."
+}

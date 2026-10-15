@@ -1,0 +1,70 @@
+{
+  "baseline": "bae9b32d679e274337ad4811b7fdd21ad7e23bac",
+  "status": "analytic_and_cpu_gpu_verified_pending_device_review",
+  "passage": "disabled; canonical raw vertices and exact triangle interpolation throughout",
+  "raw_terrain_bound": 14,
+  "fixture_top_above_raw": 0.28,
+  "ground_visible_seconds": 7,
+  "eye_at_activation": 23.180015358045285,
+  "minimum_active_flight_eye": 24.75,
+  "activation_fixture_vertical_gap": 8.900015358045286,
+  "rounding_reserve": 0.03,
+  "flight_normal_max_eye": 82.5,
+  "maximum_source_speed": 250,
+  "maximum_turbo": 2.5,
+  "maximum_scene_speed": 257.8125,
+  "maximum_input_bank_radians": 0.25,
+  "near_clip": 0.4125,
+  "far_clip_depth": 660,
+  "proof": "Raw14*tanh remains bounded. Canonical triangle heights are convex vertex combinations. Whole mounted fixture faces add at most.28m. At the first visible terrain sample7s eye23.1797m gives>=8.8997m vertical fixture gap before.03m measured rounding reserve; normal flight eye>=24.75m. Near clip is inside this margin for every yaw/pitch/bank; hidden-ground opening is separate staging. No terrain-following camera or crater. Reduced motion immediately selects safe24.75m eye.",
+  "stars": "Fixed world33\u201394.875m; maximum effective halo radius<=.31m with r42 screen-height rule under25\u201340VFOV; >18m terrain separation. Hardware point cap only shrinks. Post-softness true terrain depth occludes complete sprites.",
+  "musical_points": "Exact current-terrain ceiling over the complete world-space halo footprint; centre raised to at least ceiling+radius+.25m. Hardware cap only shrinks the halo; points below minimum size are discarded. .20m conservative practical halo reserve after coordinate/height rounding.",
+  "ribbon": "Every complete segment and maximum side width+.04m XZ padding is swept against CURRENT canonical triangles; both endpoint heights exceed segment ceiling by>=.7m. Convex interpolation preserves complete-strip clearance. Geometry reconstructed every presented sample, no stale-height history.",
+  "beam_bounds": {
+    "top_max_metres": 50.08,
+    "side_max_metres": 7.55,
+    "base": "actual terrain attachment; rooted beam fragments may be terrain-occluded intentionally",
+    "depth": "all planes/points/ribbon in existing post-softness terrain-depth stage; no blur after or drawing through"
+  },
+  "field": "448x448 canonical3m vertices. Complete optical radius600m plus emitter mount/glow guard .4m lies inside minimum666m square window for arbitrary headings/tile offsets. All air fades end<=330m. Far frustum corners beyond radial lighting fade remain deliberately black.",
+  "depth_pipeline": "Floor and faint horizon -> single existing softness -> identical current terrain depth -> depth-tested stars/actors/retrowave mountain/fins -> one OutputPass -> owned Start lens only while visible",
+  "evidence": [
+    "evidence/reference-camera/coverage.json",
+    "evidence/reference-camera/terrain-gpu-audit.json",
+    "evidence/reference-camera/star-depth-audit.json",
+    "evidence/reference-camera/actor-depth-audit.json"
+  ],
+  "projected_landscapes": {
+    "score": "show/structures.json",
+    "geometry": "Four supplied retrowave GLBs plus retained original folded fin, five SHA bindings",
+    "pool": 4,
+    "family_limits": "at most two mountains, one in high/return; or four fins",
+    "max_world_top_m": 51,
+    "base_y_m": -4,
+    "maximum_xz_support_m": 120.83045973594572,
+    "placement": "One-second current-input route sweep sampled8 segments, radius+72m guard. Future gestures are unknown. Placement can reject, leaving open field. No route forces.",
+    "near_visibility": "Whole-object quintic reaches0 at38m outside complete support disk; full at38+max(95,sceneSpeed*turbo*1.25). Barycentric glow lies inside actual triangle coverage; no screen-space blur after structures. Zero visible gain inside support; forecast guard is conditional, not physical all-future collision proof.",
+    "interpolation": "Fixed positive uniform scale/Y rotation preserves normals. Complementary LOD weights sum1. Fine detail is gated; differing non-key facets may ghost subtly.",
+    "depth": "Post-softness shared exact terrain depth, then additive mountain/fin meshes; depthTest true, depthWrite false. Fins two-sided; no hidden opaque shell or drawing through terrain.",
+    "floor_mask": "Inverse Three Y rotation;1.25x asset AABB footprint; max dim.55-.75 by score, overlapping masks use max, every tier and own spill multiplied once. TrueOFF remains0.",
+    "evidence": [
+      "evidence/retrowave-beauty/depth-gpu.json",
+      "tests/browser/landscapes.spec.ts",
+      "core/landscape-math.test.mjs",
+      "core/retrowave-edges.test.mjs"
+    ]
+  },
+  "post_song_surface": {
+    "return_seconds": 8,
+    "idle_period_seconds": 12,
+    "idle_vertex_bound_m": 0.96,
+    "proof": "Return is a convex blend of original globally14m-bounded raw vertices and .96m-bounded idle vertices. All colour/depth/caps/currentTerrain support use identical presented vertices and the same canonical diagonal. Source song seconds stop at219.66579; geometric time advances only final fixed fronts for<=8s. Idle is bounded periodic phase, not waves/events/music.",
+    "camera": "Existing final pose freezes, no duplicate camera owner; no floor rise to follow camera. Reduced idle is0m flat/static.",
+    "star_support": "Complete star size/lifetime/world-height bounds unchanged; sparse glint energy remains inside the existing bounded billboard. Wrapped lifetime phase reduces to6s at half rate in idle; continuous easing at return boundary.",
+    "evidence": [
+      "evidence/retrowave-beauty/terrain-gpu.json",
+      "evidence/retrowave-beauty/depth-gpu.json",
+      "tests/post-surface.test.ts"
+    ]
+  }
+}

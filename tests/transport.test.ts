@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { AudioTransport } from "../src/audio/transport.ts";
+import { ShowPlayback } from "../src/show/playback.ts";
 class Source {
   buffer: unknown;
   playbackRate = { value: 1 };
@@ -67,10 +68,24 @@ async function setup() {
   const context = new Context();
   const transport = new AudioTransport(
     () => context as unknown as AudioContext,
+    () => 1000,
   );
   await transport.load(new File(["synthetic fixture"], "fixture.wav"));
   return { transport, context };
 }
+test("Repeated sessions keep source diagnostics bounded and release every stopped source", async () => {
+  const { transport, context } = await setup();
+  for (let i = 0; i < 400; i++) {
+    await transport.play();
+    context.currentTime += 0.2;
+    transport.pause();
+    transport.seek(0);
+  }
+  assert.ok(transport.sourceEvents.length <= 600);
+  assert.equal(transport.sourceEvents.at(-1)?.kind, "stop");
+  assert.ok(context.sources.every((source) => source.stopped));
+  assert.equal(transport.position(), 0);
+});
 test("pause/resume and seek replace sources and preserve offsets and volume", async () => {
   const { transport, context } = await setup();
   transport.setVolume(0.35);
@@ -116,7 +131,11 @@ test("obsolete source end cannot end a replacement and replay starts at zero", a
   transport.seek(30);
   oldEnd();
   assert.equal(transport.state, "playing");
+  context.currentTime = transport.scheduledStart + 70;
   context.sources[1].onended!();
+  assert.equal(transport.state, "playing");
+  context.currentTime += 0.03;
+  transport.presentation(1000);
   assert.equal(transport.state, "ended");
   assert.equal(transport.position(), 100);
   await transport.replay();
@@ -158,6 +177,7 @@ test("the same encoded recording may decode at a different sample rate", async (
   context.decodeAudioData = async () => ({ duration: 100, sampleRate: 44100 });
   const transport = new AudioTransport(
     () => context as unknown as AudioContext,
+    () => 1000,
   );
   const file = new File(["same encoded bytes"], "fixture.mp3");
   await transport.load(file);
@@ -165,4 +185,124 @@ test("the same encoded recording may decode at a different sample rate", async (
   await transport.load(file, hash);
   assert.equal(transport.sampleRate, 44100);
   assert.equal(transport.hash, hash);
+});
+test("Unlock and decode never start music; the field gate schedules one exact offset-zero source", async () => {
+  const { transport, context } = await setup();
+  await transport.unlock();
+  assert.equal(context.sources.length, 0);
+  assert.equal(transport.position(), 0);
+  context.currentTime = 15;
+  transport.scheduleFromZero(15.1);
+  assert.equal(transport.position(), 0);
+  assert.equal(context.sources.length, 1);
+  assert.equal(context.sources[0].offset, 0);
+  assert.equal(transport.sourceEvents[0].contextSeconds, 15.1);
+  assert.throws(() => transport.scheduleFromZero(15.2), /repeated/);
+  context.currentTime = 15.6;
+  assert.ok(Math.abs(transport.position() - 0.5) < 1e-10);
+});
+test("Pause cancels a pending handoff source without consuming the recording", async () => {
+  const { transport, context } = await setup();
+  transport.scheduleFromZero(0.1);
+  transport.pause();
+  assert.equal(transport.position(), 0);
+  assert.equal(context.sources[0].stopped, true);
+  context.currentTime = 5;
+  transport.scheduleFromZero(5.1);
+  assert.equal(context.sources[1].offset, 0);
+});
+
+test("Direct Start is idempotent; pending unlock is cancellable; replay returns to sample zero", async () => {
+  const { transport, context } = await setup();
+  const show = new ShowPlayback(transport);
+  let release!: () => void;
+  context.resumeBlock = new Promise((r) => (release = r));
+  const a = show.start(),
+    b = show.start();
+  release();
+  await Promise.all([a, b]);
+  assert.equal(context.sources.length, 1);
+  assert.equal(context.sources[0].offset, 0);
+  assert.equal(show.started, true);
+  context.currentTime = 3;
+  show.replay();
+  assert.equal(show.started, false);
+  assert.equal(transport.position(), 0);
+  context.resumeBlock = new Promise((r) => (release = r));
+  const pending = show.start();
+  show.pause();
+  release();
+  await pending;
+  assert.equal(context.sources.length, 1);
+  assert.equal(show.started, false);
+});
+
+test("graph completion waits for the presented tail; the visual return and indefinite idle freeze without looping audio", async () => {
+  const { transport, context } = await setup();
+  await transport.play();
+  const end = transport.scheduledStart + transport.duration;
+  context.currentTime = end;
+  context.sources[0].onended!();
+  assert.equal(transport.presentation(1000).endAge, null);
+  assert.equal(transport.state, "playing");
+  context.currentTime = end + 0.03;
+  assert.equal(transport.presentation(1000).endAge, 0);
+  context.currentTime += 0.5;
+  const age = transport.presentation(1000).endAge!;
+  assert.ok(Math.abs(age - 0.5) < 1e-8);
+  // Supply the same timestamp mapping for the public pause call.
+  context.getOutputTimestamp = () => ({
+    contextTime: context.currentTime - 0.02,
+    performanceTime: 1000,
+  });
+  transport.pause();
+  const frozen = transport.presentationEndAge;
+  context.currentTime += 10;
+  assert.equal(transport.presentationEndAge, frozen);
+  transport.resumeVisualOutro();
+  context.currentTime += 3;
+  assert.ok(Math.abs(transport.presentationEndAge! - frozen! - 3) < 1e-6);
+  context.currentTime += 30;
+  assert(transport.presentationEndAge! > 32);
+  assert.equal(transport.visualOutroComplete, true);
+  transport.pause();
+  const idleFrozen = transport.presentationEndAge;
+  context.currentTime += 40;
+  assert.equal(transport.presentationEndAge, idleFrozen);
+  assert.equal(transport.visualPaused, true);
+  transport.resumeVisualOutro();
+  context.currentTime += 12;
+  assert.ok(Math.abs(transport.presentationEndAge! - idleFrozen! - 12) < 1e-6);
+  assert.equal(context.sources.length, 1);
+  assert.deepEqual(
+    transport.completionEvents.map((e) => e.kind),
+    ["graph_end", "presented_end"],
+  );
+  await transport.replay();
+  assert.equal(context.sources.at(-1)!.offset, 0);
+  assert.equal(transport.presentationEndAge, null);
+});
+
+test("completed-song controller toggles only visual pause; a duplicate Start cannot repeat audio", async () => {
+  const { transport, context } = await setup();
+  const show = new ShowPlayback(transport);
+  await show.start();
+  context.currentTime = transport.scheduledStart + transport.duration + 0.03;
+  context.sources[0].onended!();
+  transport.presentation(1000);
+  assert.equal(transport.hasPresentedEnd, true);
+  await show.start();
+  assert.equal(context.sources.length, 1);
+  await show.toggle();
+  assert.equal(transport.visualPaused, true);
+  context.currentTime += 10;
+  const frozen = transport.presentationEndAge;
+  await show.toggle();
+  context.currentTime += 12;
+  assert.ok(Math.abs(transport.presentationEndAge! - frozen! - 12) < 1e-6);
+  assert.equal(context.sources.length, 1);
+  show.replay();
+  await show.start();
+  assert.equal(context.sources.length, 2);
+  assert.equal(context.sources[1].offset, 0);
 });
