@@ -8,4 +8,4 @@ Exact inputs, outputs and processing: [animated-banner-source.json](animated-ban
 
 The portfolio and [Kona Desktop](https://github.com/Denoax/konata-hyprland-dotfiles) READMEs informed the animated header, centered introduction, real gallery and practical documentation. Their artwork is not copied. The actual gallery stills remain lossless copies of the reviewed scene frames. Original font notice: [Instrument Sans OFL](../../public/licenses/Instrument-Sans-OFL.txt). No model-generated media.
 
-The previous static branded banner/social PNG and source records remain historical documentation assets; the active README uses the animated header. Current public-source provenance: [RELEASE.md](../../RELEASE.md).
+The previous static branded banner/social PNG and source records remain historical documentation assets; the active README uses the animated header. Current source provenance: [RELEASE.md](../../RELEASE.md).

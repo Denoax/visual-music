@@ -6,4 +6,4 @@ Preserve the approved floor, true OFF lighting, raw wave kernel, sole camera/inp
 
 The2026-10-14 user request authorizes updating this GitHub repository and then adding its GIF banner above Government of Canada on Denoax/Denoax with the existing separator. No hosting deployment. Future remote changes require explicit authorization.
 
-The local review checkout/history and full recordings remain separate from this clean public snapshot. See RELEASE.md for runtime provenance. Validate changes proportionally: npm run build, npm test and npm run validate; use browser evidence for visual claims. Do not equate technical checks with human/device/listening approval.
+The local review checkout/history and full recordings remain separate from this clean GitHub snapshot. See RELEASE.md for runtime provenance. Validate changes proportionally: npm run build, npm test and npm run validate; use browser evidence for visual claims. Do not equate technical checks with human/device/listening approval.
