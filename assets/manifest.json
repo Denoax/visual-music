@@ -61,5 +61,14 @@
     "status": "retired by latest human review; no active scene imports or public model files",
     "models": "sources/retired-stage-scenery-65787fd/models",
     "identities": "sources/retired-stage-scenery-65787fd/ASSET_IDENTITIES.json"
+  },
+  "slow_entry_finish": {
+    "owned_glass_ref": "08eb0e5c1fd14b683eb4e34fee644ed41069ea90",
+    "source_identities": "sources/slow-entry-owned-portfolio/SOURCE_IDENTITIES.json",
+    "helpers": "core/loading-model.mjs, comfort-motion.mjs, opening-layers.mjs, ui-tones.mjs, confetti.mjs",
+    "new_audio_files": [],
+    "ui_audio": "Original bounded harmonic synthesis through the sole existing AudioContext/master; music peak reservation via transport owner.",
+    "landing_ball": "Authored DOM/CSS only, no scene cursor ball",
+    "finish": "Presented tail, black fade, thank you, finite flat confetti; no ambient loop"
   }
 }

@@ -237,7 +237,7 @@ test("Direct Start is idempotent; pending unlock is cancellable; replay returns 
   assert.equal(show.started, false);
 });
 
-test("graph completion waits for the presented tail; the visual return and indefinite idle freeze without looping audio", async () => {
+test("graph completion waits for the presented tail; the end clock freezes without looping audio", async () => {
   const { transport, context } = await setup();
   await transport.play();
   const end = transport.scheduledStart + transport.duration;
@@ -305,4 +305,76 @@ test("completed-song controller toggles only visual pause; a duplicate Start can
   await show.start();
   assert.equal(context.sources.length, 2);
   assert.equal(context.sources[1].offset, 0);
+});
+
+test("Continue schedules exactly one sample-zero source after its chime lead; cancelled unlock schedules none", async () => {
+  const { transport, context } = await setup();
+  const show = new ShowPlayback(transport);
+  let notes = 0;
+  const a = show.enter(() => notes++, 0.8),
+    b = show.enter(() => notes++, 0.8);
+  await a;
+  assert.equal(await b, false);
+  assert.equal(notes, 1);
+  assert.equal(context.sources.length, 1);
+  assert.equal(context.sources[0].offset, 0);
+  assert.equal(transport.scheduledStart, 0.8);
+  assert.equal(transport.presentationHasStarted(1000), false);
+  context.currentTime = 0.9;
+  assert.equal(transport.presentationHasStarted(1000), true);
+  const second = await setup(),
+    cancelled = new ShowPlayback(second.transport);
+  let release!: () => void;
+  second.context.resumeBlock = new Promise((r) => (release = r));
+  const pending = cancelled.enter(() => {
+    throw Error("Cancelled chime must not run");
+  });
+  cancelled.pause();
+  release();
+  assert.equal(await pending, false);
+  assert.equal(second.context.sources.length, 0);
+});
+
+test("UI peak reservations use only the music bus, retain the longest window, and preserve user master gain", async () => {
+  const context = new Context();
+  const gains: any[] = [];
+  context.createGain = () => {
+    const events: any[] = [];
+    const node = {
+      gain: {
+        value: 1,
+        cancelScheduledValues: (at: number) => events.push(["cancel", at]),
+        setTargetAtTime: (v: number, at: number, tau: number) =>
+          events.push(["target", v, at, tau]),
+      },
+      connect() {},
+      events,
+    };
+    gains.push(node);
+    return node as any;
+  };
+  context.decodeAudioData = async () =>
+    ({
+      duration: 100,
+      sampleRate: 48000,
+      numberOfChannels: 2,
+      getChannelData: () => new Float32Array([-0.7, 1.2]),
+    }) as any;
+  const t = new AudioTransport(() => context as any);
+  await t.load(new File(["fixture"], "f.wav"));
+  t.setVolume(0.42);
+  t.reserveUiHeadroom(0.2, 0.025, 1);
+  t.reserveUiHeadroom(0.1, 0.1, 0.5);
+  const music = gains[0],
+    master = gains[1];
+  assert.ok(
+    music.events.some(
+      (e: any) =>
+        e[0] === "target" &&
+        Math.abs(e[1] - (0.95 - 0.2) / t.decodedPeak) < 1e-6,
+    ),
+  );
+  assert.equal(music.events.at(-1)[2], 1.015);
+  assert.equal(master.events.at(-1)[1], 0.42);
+  assert.equal(t.volumeLevel, 0.42);
 });

@@ -374,11 +374,11 @@ export function createField(
     const key = `${Math.floor(center.x / 3)},${Math.floor(center.z / 3)}:${camera.quaternion
       .toArray()
       .map((v) => v.toFixed(3))
-      .join(",")}:${camera.fov.toFixed(1)}:${light.dense > 0}:${height}`;
+      .join(",")}:${camera.fov.toFixed(1)}:${light.densePrepare}:${height}`;
     if (key !== fineKey) {
       fineKey = key;
       fineCells = [];
-      if (light.dense > 0) {
+      if (light.densePrepare) {
         const span = Math.min(600, Math.ceil((fineDepth + 32) / 3) * 3);
         const xmin = Math.floor((center.x - span) / 1.5),
           xmax = Math.ceil((center.x + span) / 1.5),
@@ -428,7 +428,7 @@ export function createField(
           nearCells.push({ x: i * 3, z: j * 3, fine: false });
     // Allocate the complete local patch; a projected detail fade is shared by
     // caps, points and spill. Never gate points for a missing cap instance.
-    if (light.dense > 0) {
+    if (light.densePrepare) {
       const span = Math.ceil(radius / 1.5);
       const ix = Math.floor(detail.x / 1.5),
         iz = Math.floor(detail.y / 1.5);
@@ -453,15 +453,17 @@ export function createField(
   return {
     group,
     depthMesh,
-    setGroundVisible(value: boolean) {
+    setGroundVisible(value: boolean, gain = value ? 1 : 0) {
       ground.visible = depthMesh.visible = caps.visible = value;
-      uniforms.uTerrainVisible.value = value ? 1 : 0;
+      uniforms.uTerrainVisible.value = value ? gain : 0;
     },
     groundVisible: () => ground.visible,
     update,
     uniforms,
     pointCount: NX * NZ,
     diagnostics: () => ({
+      surfaceGain: uniforms.uTerrainVisible.value,
+      denseWeight: uniforms.uFineEnabled.value,
       nearCaps: nearCells.length,
       visualPhase: uniforms.uVisualPhase.value.toArray(),
       surfacePhase: {

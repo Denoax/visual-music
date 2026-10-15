@@ -1,3 +1,5 @@
+> Historical release record below. The current slow-entry/finite-finish request supersedes prior toolbar, entry, speed, ambient-loop, recording-tail and no-push requirements. Read [the current handoff](sources/slow-entry-handoff/START_CODEX.md), [as-built contracts](show/slow-entry-finish.as-built.json) and [current evidence/limits](evidence/slow-entry-finish/REVIEW.md). Deliver ONE complete ZIP through the thank-you/confetti settle; a normal push to the existing BUMER source remote is authorized, with no hosting deployment.
+
 # Current floor-only verification
 
 Visible app name is now Visual Music. The name change modifies only the page and

@@ -3,7 +3,7 @@ import {
   visualSongTime,
   presentationContextTime,
 } from "../../core/audio-time.mjs";
-import { RETURN_SECONDS } from "../../core/visual-return.mjs";
+import { FINISH_SECONDS } from "../../core/opening-layers.mjs";
 import { recordTrace } from "../trace";
 export type TransportState = "empty" | "ready" | "playing" | "paused" | "ended";
 export class AudioTransport {
@@ -35,6 +35,10 @@ export class AudioTransport {
   }[] = [];
   private volume = 0.7;
   private muted = false;
+  private musicTrim = 0.684751836;
+  private reservedPeak = 0;
+  private reservedUntil = 0;
+  decodedPeak = 0;
   state: TransportState = "empty";
   hash = "";
   filename = "";
@@ -113,7 +117,7 @@ export class AudioTransport {
     }
     return this.context;
   }
-  async load(file: File, expectedHash?: string) {
+  async load(file: File, expectedHash?: string, onBytesAccepted?: () => void) {
     const request = ++this.loadingGeneration;
     this.pause();
     if (!file.size || file.size > 80 * 1024 * 1024)
@@ -128,6 +132,7 @@ export class AudioTransport {
       throw new Error(
         "The recording does not match the supplied song. Restore the original MP3.",
       );
+    onBytesAccepted?.();
     let buffer: AudioBuffer;
     try {
       buffer = await context.decodeAudioData(bytes.slice(0));
@@ -141,6 +146,12 @@ export class AudioTransport {
       throw new Error("The recording is empty. Choose another file.");
     this.stopSource();
     this.buffer = buffer;
+    this.decodedPeak = 0;
+    for (let channel = 0; channel < buffer.numberOfChannels; channel++) {
+      for (const sample of buffer.getChannelData(channel))
+        this.decodedPeak = Math.max(this.decodedPeak, Math.abs(sample));
+    }
+    this.musicGain!.gain.value = this.musicTrim;
     this.hash = hash;
     this.filename = file.name;
     this.anchor = {
@@ -226,7 +237,7 @@ export class AudioTransport {
           )
       : null;
     this.lastFinishAge = age ?? 0;
-    if (age !== null && age >= RETURN_SECONDS && !this.finishCompleteNotified) {
+    if (age !== null && age >= FINISH_SECONDS && !this.finishCompleteNotified) {
       this.finishCompleteNotified = true;
       this.onChange();
     }
@@ -247,7 +258,7 @@ export class AudioTransport {
   }
   get visualOutroComplete() {
     const age = this.presentationEndAge;
-    return age !== null && age >= RETURN_SECONDS;
+    return age !== null && age >= FINISH_SECONDS;
   }
   get hasPresentedEnd() {
     return this.naturalPresented;
@@ -258,7 +269,7 @@ export class AudioTransport {
   get visualPaused() {
     return this.naturalPresented && this.finishingPaused;
   }
-  // Compatibility names now cover the complete return and ambient lifecycle.
+  // Presented end age also owns the finite thank-you lifecycle.
   private resetCompletion() {
     this.graphEnded = false;
     this.naturalPresented = false;
@@ -441,6 +452,30 @@ export class AudioTransport {
         this.context.currentTime,
         0.015,
       );
+  }
+  /** Reserve on the music bus; master volume/mute remain authoritative. Multiple
+   * reservations share the longest decay window and conservative peak bound. */
+  reserveUiHeadroom(peak: number, at: number, until: number) {
+    if (
+      !this.context ||
+      !this.musicGain ||
+      !Number.isFinite(peak) ||
+      peak < 0 ||
+      until < at
+    )
+      return;
+    const now = this.context.currentTime;
+    this.reservedPeak =
+      now < this.reservedUntil ? Math.max(peak, this.reservedPeak) : peak;
+    this.reservedUntil = Math.max(until, this.reservedUntil);
+    const allowed = Math.min(
+      this.musicTrim,
+      Math.max(0, (0.95 - this.reservedPeak) / Math.max(1, this.decodedPeak)),
+    );
+    const gain = this.musicGain.gain;
+    gain.cancelScheduledValues(now);
+    gain.setTargetAtTime(allowed, now, 0.004);
+    gain.setTargetAtTime(this.musicTrim, this.reservedUntil + 0.015, 0.02);
   }
   /** Developer recording tap, downstream of volume. It never creates a second source. */
   captureOutput() {

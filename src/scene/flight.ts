@@ -1,7 +1,8 @@
 import {
   compileCues,
   initialState,
-  step,
+  step as referenceStep,
+  targetsAt,
   pose as cameraPose,
   UNIT_SCALE,
   type CameraInput,
@@ -10,12 +11,27 @@ import {
 import type { Origin } from "../../core/grid-flight.mjs";
 import score from "../../show/camera-score.json";
 import { events, WAVE } from "../show/waves";
+import { comfortIntegrate, COMFORT } from "../../core/comfort-motion.mjs";
 const HZ = 240;
 type Input = { turn: number; tilt: number; held?: boolean };
 /** Single camera/route owner. Input is sampled at presentation boundaries;
  * fixed ticks retain source update ordering through stalls and recovery. */
-export function createFlight(cues: CameraCue[] = score.cues) {
+export function createFlight(
+  cues: CameraCue[] = score.cues,
+  reference = false,
+) {
   const segments = compileCues(cues);
+  const step = (
+    s: ReturnType<typeof initialState>,
+    t: number,
+    dt: number,
+    controls: CameraInput,
+    scale = UNIT_SCALE,
+    _segments = segments,
+  ) =>
+    reference
+      ? referenceStep(s, t, dt, controls, scale, segments)
+      : comfortIntegrate(s, targetsAt(t, segments), t, dt, controls, scale);
   let state = initialState(segments),
     tick = 0,
     seconds = 0,
@@ -57,7 +73,8 @@ export function createFlight(cues: CameraCue[] = score.cues) {
         z: s.z,
         y: s.altitude * UNIT_SCALE,
         yaw: -s.angle,
-        speed: s.speed * UNIT_SCALE * s.turbo,
+        speed:
+          s.speed * UNIT_SCALE * s.turbo * (reference ? 1 : COMFORT.travel),
       };
     });
   }
@@ -221,6 +238,7 @@ export function createFlight(cues: CameraCue[] = score.cues) {
       forecast:
         "Integrated score + held-current steering/turbo, snapped once at introduction; no future-input claim",
       fixedHz: HZ,
+      motionPolicy: reference ? "source-reference" : COMFORT,
       renderInterpolation: true,
       reduced,
     }),

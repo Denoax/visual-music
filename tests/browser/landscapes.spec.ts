@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Former scenery chapters stay floor-only through steering, restore and replay", async ({
+test("Former scenery chapters stay floor-only through steering, restore and explicit reset", async ({
   page,
 }) => {
   const errors: string[] = [],
@@ -12,7 +12,10 @@ test("Former scenery chapters stay floor-only through steering, restore and repl
   });
   await page.goto("/?dev=1");
   await page.waitForSelector("#start:not([disabled])");
-  await page.locator("#start").click();
+  await page.locator("#start").press("Enter");
+  await page.waitForFunction(
+    () => (window as any).__BUMER__.lifecycle().fieldEntered,
+  );
   const rows = await page.evaluate(() => {
     const b = (window as any).__BUMER__;
     b.transport.pause();

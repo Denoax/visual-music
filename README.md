@@ -10,25 +10,27 @@
 **A dance floor you can fly through.**<br>
 Raised waves, luminous grids and a continuous journey through *Around the World (La La La La La)*.
 
-[![Three.js](https://img.shields.io/badge/Three.js-0.186-20232a?logo=threedotjs&logoColor=white)](https://threejs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-7-20232a?logo=typescript&logoColor=3178c6)](https://www.typescriptlang.org/) [![Vite](https://img.shields.io/badge/Vite-8-20232a?logo=vite&logoColor=bd34fe)](https://vite.dev/)
+[![Three.js](https://img.shields.io/badge/Three.js-0.186-20232a?logo=threedotjs&logoColor=white)](https://threejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-7-20232a?logo=typescript&logoColor=3178c6)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-8-20232a?logo=vite&logoColor=bd34fe)](https://vite.dev/)
 
 [**Play Visual Music**](https://denoax.github.io/visual-music/) · [Experience](#the-experience) · [Controls](#controls) · [Run locally](#run-locally) · [Architecture](#architecture) · [Verification](#verification) · [Credits](#credits)
 
-*The banner uses actual scene footage with a short lap edit. Reduced motion selects a still.*
+*The banner uses actual scene footage with a short lap edit. Reduced motion selects a still. The live Pages link is the preceding release; this source-only review is available at the local preview until a separate hosting update is authorized.*
 
 </div>
 
 ## The experience
 
-One Start action opens the music scene. Fly low over an endless LED floor while physical waves spread from fixed emitters. Local chunks trade light as the waves arrive: bulbs genuinely switch off, leaving dark space between coloured grids, chases and held palettes. Soft stars move through the same world.
+The page loads automatically and silently. After real recording/analysis/font/shader readiness, a small landing-page ball falls onto Play and “click to continue” fades in. One Continue action unlocks the existing audio context, plays a soft chime and starts the exact recording at sample zero after a 0.8s lead. Fly low over an endless LED floor while physical waves spread from fixed emitters. Local chunks trade light as the waves arrive: bulbs genuinely switch off, leaving dark space between coloured grids, chases and held palettes. Soft stars move through the same world.
 
 | Cool light | Warm light |
 |:---:|:---:|
 | <img src="showcase/github/floor-cool.webp" alt="Cyan raised LED terrain with dark unlit regions" width="100%"> | <img src="showcase/github/floor-warm.webp" alt="Amber and rose LED waves beneath depth-tested stars" width="100%"> |
 
-Steering changes the travelled path. Holding the scene accelerates; releasing settles the flight. The floor carries the musical movement while the horizon stays stable.
+Steering changes the travelled path. Normal travel is 45% of the preceding route speed. Holding the scene gently eases toward 1.2× that speed over a 1.25s time constant; releasing settles over 0.85s. Camera height/lens and raw wave timing are unchanged. The floor carries the musical movement while the horizon stays stable.
 
-The complete recording plays once. After its audible tail, the scene eases back over eight seconds into a repeating twelve-second visual idle. The visuals continue; the song only restarts when you choose Replay.
+The complete recording plays once. Only after its destination-presented tail, the whole scene fades to black over 2.6s. A minimal thank-you page appears with a single restrained 36-piece/four-second confetti burst (omitted for reduced motion). The render loop then stops; there is no perpetual ambient scene or automatic replay.
 
 <details>
 <summary><strong>Portrait view</strong></summary>
@@ -47,15 +49,14 @@ The recorded portrait view uses browser-emulated touch and viewport geometry. Ph
 
 | Action | Input |
 |:---|:---|
-| Begin | Start |
+| Begin | Native Play / click to continue, after automatic silent loading |
 | Turn and tilt | Move the pointer; drag one primary finger; focus the scene and use arrows or WASD |
 | Accelerate | Hold the left pointer button or primary touch on the scene |
-| Pause / resume | Playback menu or Space |
-| Replay from sample zero | Replay |
+| Pause / resume | Inside Settings, or Space while the scene is focused |
 | Adjust playback and rendering | Settings: volume, mute, brightness and reduced motion |
 | Close a pane | Close or Escape |
 
-Opening Settings keeps the music running. The native pointer remains visible. Playback interruptions and graphics recovery retain the presentation position; duplicate activation is guarded.
+Settings is the only visible top-level control during the song. Opening it keeps the music running. Owned portfolio GPU glass samples one clean scene frame for all native button surfaces; quiet original mallet notes share the transport master and respect mute/volume. The native pointer remains visible. Playback interruptions and graphics recovery retain the presentation position; duplicate activation is guarded. Failed loads can be retried, and interrupted entry returns to the invitation.
 
 ## Run locally
 
@@ -85,7 +86,7 @@ SHA-256: 47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0
 | Rendering | [`src/scene/world.ts`](src/scene/world.ts), [`src/scene/field.ts`](src/scene/field.ts) | Terrain, mounted bulbs, floor lighting, stars and depth |
 | Score | [`analysis`](analysis), [`show`](show) | Hash-bound measurements, events and current as-built records |
 | Provenance | [`assets`](assets), [`sources`](sources) | Notices, source studies and recoverable retired work |
-| Review | [`tools`](tools), [`evidence/dance-floor-only`](evidence/dance-floor-only) | Runtime checks, capture tools and documentation exports |
+| Review | [`tools`](tools), [`evidence/slow-entry-finish`](evidence/slow-entry-finish) | Runtime checks, captures, audio comparisons and archive verification |
 
 The current scene is dance-floor-only. Mountains, folded fins, floating actors, ribbons and beams have no live construction, update, reset or recovery paths, and no models ship in the production build. Their originals remain under [`sources/retired-stage-scenery-65787fd`](sources/retired-stage-scenery-65787fd) and the local recovery branch. The existing BUMER.EXE source paths and history remain intact. Historical modules and scores are retained records; [`show/CURRENT_AUTHORITY.md`](show/CURRENT_AUTHORITY.md) identifies the active implementation.
 
@@ -100,9 +101,9 @@ npm run test:browser
 
 Set `BUMER_CHROME` to an installed compatible Chromium executable for browser checks. The historical checkout and developer API names stay intact.
 
-The floor-only review includes 119 passing individual Node checks, targeted real-browser interaction/recovery checks and actual GPU probes for OFF emission, surface registration and star depth. The retained local review recordings cover the complete audio, ending and two visual-idle periods. The published snapshot is independently rebuilt and compared with that reviewed runtime. Full recordings and review archives remain local; compact technical receipts are under `evidence/dance-floor-only`.
+The current slow-entry review has 138 passing core/TypeScript checks, targeted browser entry/settings/pause/recovery/finish checks, native short-screen hit testing at DPR 1–2 and emulated primary-touch cancellation. A stereo-master sample audit covers repeated button notes at the recording peak, mute and headroom. The exact MP3 and built preview are hash-bound to the recordings. Full-page desktop/portrait captures include the complete presented audio tail and finite thank-you finish.
 
-These are technical checks. Continuous human visual/listening approval, physical-device touch and audiovisual alignment, native foreground performance ownership and formal flash review remain pending. One interrupted portrait attempt is preserved as a failure; the fresh standalone recording passed. See [`VALIDATION.md`](VALIDATION.md) and [`RELEASE.md`](RELEASE.md) for scope and remaining limits.
+Native GPU context creation was resource-blocked; the current rendered evidence uses software WebGL. Its measured frame cadence is reported rather than treated as hardware performance. Continuous human visual/listening approval, physical-device touch and audiovisual alignment, native foreground performance and exact portfolio optical parity remain pending. See the [current review and limits](evidence/slow-entry-finish/REVIEW.md); historical validation documents describe earlier releases.
 
 ## Credits
 
@@ -112,4 +113,19 @@ These are technical checks. Continuous human visual/listening approval, physical
 - Music: the exact user-supplied *Around the World (La La La La La)* recording; [asset manifest](assets/manifest.json). Bundling does not grant additional music redistribution rights.
 - Current repository presentation: real Visual Music browser captures, following the wide banner, centered introduction and screenshot-led structure of [Mani's portfolio](https://github.com/Denoax/portfolio) and [Kona Desktop](https://github.com/Denoax/konata-hyprland-dotfiles). [Showcase source record](showcase/github/README.md).
 
-Retired asset credits remain preserved. No model-generated visual media are used. Apply `$reference-led-design` to visual continuations and preserve the current approval boundary. This private repository contains the source and documentation. [The public Pages repository](https://github.com/Denoax/visual-music) contains only the built website and credits. Complete review recordings remain local. [Hosting and update instructions](PAGES.md).
+Retired asset credits remain preserved. No model-generated visual media are used. Apply `$reference-led-design` to visual continuations and preserve the current approval boundary. The source repository stays private. [Play the public GitHub Pages website](https://denoax.github.io/visual-music/); [deployment instructions](PAGES.md). The public deployment repository contains only the exact built website and credits.
+
+
+## Slow entry and finite finish review
+
+Current authority: [as-built record](show/slow-entry-finish.as-built.json) and
+[evidence/review scope](evidence/slow-entry-finish/REVIEW.md). The current review
+records complete desktop/portrait full-page journeys with their real stereo
+master, including the Continue chime, full recording, black fade and thank you.
+The README GIF/gallery retain the earlier floor-only review footage; they do
+not demonstrate the updated entry, travel speed or finish.
+
+The latest user request authorizes a source push only. The existing public
+Pages deployment is deliberately unchanged in this review. Human continuous
+visual/listening approval, physical devices/AV and hardware foreground
+performance remain separate from build, software-browser and digital-audio checks.

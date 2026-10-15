@@ -11,3 +11,7 @@ Publication checks cover a fresh locked build,119 unit/integration checks, runti
 Human visual/listening approval, physical-device/AV coverage and native foreground performance ownership remain pending. Captured hardware timings and browser emulation do not establish those approvals.
 
 The project repository is private; visibility was preserved. Its README/content hashes were verified through the authenticated GitHub API and its Markdown rendered locally through GitHub. Anonymous project browsing therefore returns404. The GIF is copied into the public Denoax profile so its banner displays independently.
+
+## Slow entry and finite finish source update
+
+The current continuation preserves the floor-only scene, exact recording and original camera height/lens/wave timing, while slowing route/input, smoothing layer introductions, replacing entry/toolbar with the loading/Continue/Settings sequence, adding owned glass and original DSP button audio, and replacing ambient idle with a finite presented-end thank-you finish. Current authority and evidence are listed in README and show/slow-entry-finish.as-built.json. The complete review and recordings stay local; no hosting or visibility change is part of this source push. Native GPU initialization was resource-blocked; software checks and captures are separately labelled, with physical/human/foreground approval pending.

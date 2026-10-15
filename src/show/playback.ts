@@ -20,6 +20,28 @@ export class ShowPlayback {
       if (token === this.operation) this.pending = false;
     }
   }
+  /** Trusted Continue unlocks once, then schedules sample zero after its chime. */
+  async enter(onUnlocked: (context: AudioContext) => void, lead = 0.8) {
+    if (
+      this.pending ||
+      this.running ||
+      this.started ||
+      this.music.hasPresentedEnd
+    )
+      return false;
+    const token = ++this.operation;
+    this.pending = true;
+    try {
+      const context = await this.music.unlock();
+      if (token !== this.operation) return false;
+      onUnlocked(context);
+      this.music.scheduleFromZero(context.currentTime + lead);
+      this.started = true;
+      return true;
+    } finally {
+      if (token === this.operation) this.pending = false;
+    }
+  }
   async toggle() {
     if (this.music.hasPresentedEnd) {
       if (this.pending || !this.music.visualPaused) {

@@ -1,113 +1,45 @@
 import { test, expect } from "@playwright/test";
-test("reduced-motion idle stays pixel-static through a fresh current-clock render", async ({
+test.use({ viewport: { width: 960, height: 600 }, reducedMotion: "reduce" });
+test("Presented completion fades to thank you; no ambient loop, confetti or automatic replay under reduced motion", async ({
   page,
 }) => {
   await page.goto("/?dev=1");
-  await page.waitForSelector("#start:not([disabled])");
-  await page.locator("#settings-button").click();
-  await page.locator("#reduced").check();
-  await page.locator("#settings .settings-close").click();
-  await page.locator("#start").click();
+  await expect(page.locator("#start")).toBeEnabled({ timeout: 120000 });
+  await page.locator("#start").press("Enter");
+  await page.waitForFunction(
+    () => (window as any).__BUMER__.lifecycle().fieldEntered,
+  );
   await page.evaluate(() => {
     const b = (window as any).__BUMER__;
-    b.seek(b.transport.duration - 0.04);
+    b.seek(b.transport.duration - 0.08);
   });
+  await expect(page.locator("#thank-you")).toBeVisible({ timeout: 45000 });
   await page.waitForFunction(
-    () => (window as any).__BUMER__.transport.presentationEndAge >= 8,
+    () => (window as any).__BUMER__.lifecycle().finish.pageGain === 1,
+    {},
+    { timeout: 30000 },
   );
-  async function frame() {
-    await page.evaluate(() => {
-      const b = (window as any).__BUMER__;
-      b.world.render(
-        b.transport.visualPosition(),
-        { x: 0 },
-        true,
-        b.features,
-        false,
-        b.transport.presentationEndAge,
-        1,
-      );
-    });
-    return page.locator("#world").screenshot();
-  }
-  const before = await frame();
-  await page.waitForTimeout(220);
-  const after = await frame();
-  expect(after.equals(before)).toBe(true);
-  expect(
-    await page.evaluate(
-      () => (window as any).__BUMER__.world.diagnostics().visual.phase,
-    ),
-  ).toBe("idle");
-});
-test("natural return and idle pause, graphics recovery and Replay preserve the sole audio owner", async ({
-  page,
-}) => {
-  const errors: string[] = [];
-  page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/?dev=1");
-  await page.waitForSelector("#start:not([disabled])");
-  await page.locator("#start").click();
-  await page.evaluate(() => {
-    const b = (window as any).__BUMER__;
-    b.seek(b.transport.duration - 0.04);
-  });
+  const sources = await page.evaluate(
+    () => (window as any).__BUMER__.transport.sourceEvents.length,
+  );
   await page.waitForFunction(
-    () => (window as any).__BUMER__.transport.presentationEndAge >= 8,
+    () => (window as any).__BUMER__.lifecycle().raf === 0,
+    {},
+    { timeout: 30000 },
   );
-  await page.locator("#play").click();
-  await expect(page.locator("#play")).toHaveText("Resume");
-  const a = await page.evaluate(() => {
-    const b = (window as any).__BUMER__;
-    return {
-      age: b.transport.presentationEndAge,
-      pose: b.world.diagnostics().camera,
-      sources: b.transport.sourceEvents.filter((e: any) => e.kind === "start")
-        .length,
-    };
-  });
-  await page.waitForTimeout(200);
+  expect(await page.locator("button:visible").count()).toBe(0);
+  expect(await page.locator(".thank-you-confetti").count()).toBe(0);
+  await expect(page.locator("#thank-you")).toBeFocused();
   expect(
     await page.evaluate(
-      () => (window as any).__BUMER__.transport.presentationEndAge,
+      () => (window as any).__BUMER__.transport.sourceEvents.length,
     ),
-  ).toBe(a.age);
-  await page.evaluate(() => (window as any).__BUMER__.world.loseContext());
-  await expect(page.locator("#retry")).toBeVisible();
-  await page.locator("#retry").click();
-  await expect(page.locator("#retry")).toBeHidden();
-  expect(
-    await page.evaluate(
-      () => (window as any).__BUMER__.transport.presentationEndAge,
-    ),
-  ).toBe(a.age);
-  expect(
-    await page.evaluate(
-      () => (window as any).__BUMER__.world.diagnostics().camera,
-    ),
-  ).toEqual(a.pose);
-  await page.locator("#play").click();
-  await page.waitForTimeout(160);
-  expect(
-    await page.evaluate(
-      () => (window as any).__BUMER__.transport.presentationEndAge,
-    ),
-  ).toBeGreaterThan(a.age);
-  expect(
-    await page.evaluate(
-      () =>
-        (window as any).__BUMER__.transport.sourceEvents.filter(
-          (e: any) => e.kind === "start",
-        ).length,
-    ),
-  ).toBe(a.sources);
-  await page.locator("#replay").click();
-  await expect(page.locator("#start")).toBeVisible();
-  await page.locator("#start").click();
-  expect(
-    await page.evaluate(() =>
-      (window as any).__BUMER__.transport.visualPosition(),
-    ),
-  ).toBeLessThan(0.3);
-  expect(errors).toEqual([]);
+  ).toBe(sources);
+  const end = await page.evaluate(
+    () => (window as any).__BUMER__.transport.completionEvents,
+  );
+  expect(end.map((e: any) => e.kind)).toEqual(["graph_end", "presented_end"]);
+  const scheduledEnd=await page.evaluate(()=>{const b=(window as any).__BUMER__,s=b.transport.sourceEvents.filter((e:any)=>e.kind==='start').at(-1);return s.contextSeconds+b.transport.duration-s.offsetSeconds;});
+  expect(end[1].contextSeconds).toBeGreaterThanOrEqual(end[0].contextSeconds);
+  expect(end[1].presentedContextSeconds).toBeGreaterThanOrEqual(scheduledEnd);
 });

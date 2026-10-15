@@ -1,0 +1,67 @@
+{
+  "state": "playing",
+  "lifecycle": {
+    "visibleSeconds": 5.6664000000000145,
+    "fieldEntered": true,
+    "raf": 276,
+    "ready": true,
+    "lost": false,
+    "loading": {
+      "phase": "entering",
+      "progress": 1,
+      "realReady": true,
+      "error": "",
+      "ball": {
+        "x": 0,
+        "y": 94,
+        "rotation": 6.283185307179586,
+        "scaleX": 1,
+        "scaleY": 1
+      },
+      "playOpacity": 1,
+      "textOpacity": 0.9681978847877529,
+      "settingsOpacity": 0.9710692438548023,
+      "canContinue": false
+    },
+    "finish": {
+      "phase": "song",
+      "worldGain": 1,
+      "pageGain": 0,
+      "confettiAge": null
+    },
+    "tones": 0
+  },
+  "pointer": {
+    "x": 0.28205128205128216,
+    "y": -0.13744075829383884,
+    "present": true,
+    "touch": true,
+    "turn": 0.28205128205128216,
+    "tilt": -0.13744075829383884,
+    "held": true
+  },
+  "events": [
+    {
+      "type": "pointerdown",
+      "target": "world",
+      "button": 0,
+      "primary": true,
+      "pointerId": 3,
+      "pointerType": "touch"
+    },
+    {
+      "type": "pointermove",
+      "target": "world",
+      "button": -1,
+      "primary": true,
+      "pointerId": 3,
+      "pointerType": "touch"
+    }
+  ],
+  "hit": "<canvas id=\"world\" aria-label=\"Music-reactive LED waves. Move to steer; hold the scene to fly faster, or drag one finger; focus the scene for arrow keys or WASD. The native pointer stays visible.\" tab",
+  "open": false,
+  "size": [
+    390,
+    844
+  ]
+}

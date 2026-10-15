@@ -1,3 +1,4 @@
+import { denseLayerAt } from "../../core/opening-layers.mjs";
 import { WAVE } from "./waves";
 import sections from "../../show/lyrical-sections.json";
 import {
@@ -43,7 +44,8 @@ export function globalLightingAt(seconds: number, reduced = false) {
     density: s.kind === 0 ? 0.36 : s.kind === 10 ? 0.46 : 0.5,
     axis: 0,
     angle: s.kind === 3 ? Math.PI / 6 : s.kind === 5 ? -Math.PI / 6 : 0,
-    dense: s.kind !== 0 && s.kind !== 10 ? 1 : 0,
+    dense: denseLayerAt(seconds, sections.sections).weight,
+    densePrepare: denseLayerAt(seconds, sections.sections).prepare,
     strips:
       s.kind === 3
         ? Math.min(0.75, 0.25 + (seconds - s.start) * 0.022)

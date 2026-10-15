@@ -53,7 +53,9 @@ showcase/github/visual-music-banner.png
 
 showcase/github/bumer-*
 
-# Complete local review archives and raw capture streams stay local.
-*.zip
-*.stream.webm
+# Preserve temporary banner layers locally, outside committed source.
 evidence/github-publication/banner-work/
+
+# Preserve preliminary/current raw capture originals outside the curated source commit.
+evidence/slow-entry-finish/**/raw/
+evidence/slow-entry-finish/*-preliminary*/

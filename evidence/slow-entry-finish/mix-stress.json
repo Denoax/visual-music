@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "scope": "Actual browser stereo master AudioWorklet sample audit, repeated native Settings actions around the decoded recording peak at master volume1; no duplicate output (meter emits zeros), no music replacement. Frame scheduling intentionally stopped for audio-only isolation; not motion/performance evidence.",
+  "stress": {
+    "peak": 0.8011762499809265,
+    "clippedSamples": 0,
+    "samples": 292864,
+    "sourcePeakSeconds": 182.23035416666667,
+    "master": 1
+  },
+  "mute": {
+    "peak": 0,
+    "clippedSamples": 0,
+    "samples": 19456
+  },
+  "human_listening": "pending; digital sample bounds do not approve timbre or speakers/headphones"
+}

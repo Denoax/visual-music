@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+import { openingLayers } from "../../core/opening-layers.mjs";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { createHorizon } from "./horizon.mjs";
 import { createField } from "./field";
@@ -45,6 +47,7 @@ export async function createWorld(canvas: HTMLCanvasElement) {
         new URLSearchParams(location.search).get("referenceCamera") === "1"
         ? referenceScore.cues
         : undefined,
+      new URLSearchParams(location.search).get("referenceCamera") === "1",
     ),
     arrange = createArrangement();
   // The floor keeps its own phrase/ripple lighting; no aerial actor borrows it.
@@ -61,6 +64,14 @@ export async function createWorld(canvas: HTMLCanvasElement) {
   air.add(stars.group);
   const airPass = new StarPass(camera, field.depthMesh, air);
   composer.addPass(airPass);
+  const fade = new ShaderPass({
+    uniforms: { tDiffuse: { value: null }, gain: { value: 1 } },
+    vertexShader:
+      "varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}",
+    fragmentShader:
+      "uniform sampler2D tDiffuse;uniform float gain;varying vec2 vUv;void main(){gl_FragColor=vec4(texture2D(tDiffuse,vUv).rgb*gain,1.);}",
+  });
+  composer.addPass(fade);
   composer.addPass(new OutputPass());
   const startGlass = createStartGlass(renderer);
   const timer = createGpuTimer(
@@ -68,6 +79,9 @@ export async function createWorld(canvas: HTMLCanvasElement) {
     new URLSearchParams(location.search).get("dev") === "1",
   );
   const loss = renderer.getContext().getExtension("WEBGL_lose_context");
+  let prewarming = false;
+  let warmPrograms = 0;
+  let layers = openingLayers(0, 4);
   let last = 0,
     x = 0,
     z = 0,
@@ -145,8 +159,12 @@ export async function createWorld(canvas: HTMLCanvasElement) {
       azimuth: arrangement.horizonAzimuth,
     });
     const actualTerrain = currentTerrain(state, undefined, arrangement.visual);
-    const groundVisible = reduced || seconds >= 7;
-    field.setGroundVisible(groundVisible);
+    layers = openingLayers(seconds, y, {
+      heightBound: WAVE.heightBound,
+      fixture: 0.28,
+      reduced,
+    });
+    field.setGroundVisible(layers.depthAllowed, layers.surfaceGain);
     clear = camera.position.y - actualTerrain.height(x, z);
     camera.updateMatrixWorld();
     const route = new THREE.Vector3(x, y, z);
@@ -172,22 +190,50 @@ export async function createWorld(canvas: HTMLCanvasElement) {
     renderer.info.autoReset = false;
     renderer.info.reset();
     timer.begin();
-    composer.render();
-    startGlass.draw();
+    fade.uniforms.gain.value = arrangement.finish.worldGain;
+    // At sample zero every scored scene layer is exactly black. Keep loading
+    // and its native UI responsive without repeatedly evaluating invisible
+    // terrain. Real variants were already warmed offscreen below.
+    if (!prewarming && seconds === 0 && !_playing && endAge === null) {
+      renderer.setRenderTarget(null);
+      renderer.setClearColor(0, 1);
+      renderer.clear();
+    } else composer.render();
+    if (!prewarming && endAge === null) startGlass.draw();
     timer.end();
   }
-  render(0, { x: 0 }, false, null);
-  await renderer.compileAsync(scene, camera);
-  await airPass.prewarm(renderer);
-  await startGlass.prewarm();
-  // Match the default framebuffer and postprocessing targets after prewarming.
-  resize();
+  // Warm the actual hidden terrain/caps/fine variants and compositor in this
+  // renderer's offscreen chain; none of the warm-up route reaches the visitor.
+  const originalScreen = composer.renderToScreen;
+  prewarming = true;
+  composer.renderToScreen = false;
+  renderer.setSize(4, 4, false);
+  composer.setSize(4, 4);
+  try {
+    render(14, { x: 0 }, false, null);
+    await renderer.compileAsync(scene, camera);
+    await airPass.prewarm(renderer);
+    await startGlass.prewarm();
+    warmPrograms = renderer.info.programs?.length ?? 0;
+  } finally {
+    prewarming = false;
+    composer.renderToScreen = originalScreen;
+    reset();
+    resize();
+  }
   render(0, { x: 0 }, false, null);
   function diagnostics() {
     const gl = renderer.getContext(),
       ext = gl.getExtension("WEBGL_debug_renderer_info");
     return {
       startGlass: startGlass.diagnostics(),
+      openingLayers: layers,
+      prewarm: {
+        programs: warmPrograms,
+        currentPrograms: renderer.info.programs?.length ?? 0,
+        offscreen: true,
+      },
+      finish: arrangement.finish,
       renderer: ext
         ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)
         : gl.getParameter(gl.RENDERER),

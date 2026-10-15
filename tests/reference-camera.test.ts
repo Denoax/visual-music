@@ -13,8 +13,8 @@ import {
 } from "../core/reference-camera.mjs";
 import ref from "../show/reference-camera-score.json";
 import features from "../analysis/features.json";
-test("Production owner matches the source-score neutral rig and freezes route through the whole delayed opening", () => {
-  const f = createFlight(ref.cues),
+test("Diagnostic reference owner matches the original source-score neutral rig and freezes route through the whole delayed opening", () => {
+  const f = createFlight(ref.cues, true),
     segments = compileCues(ref.cues);
   let s = initialState(segments);
   for (let tick = 1; tick <= 240 * 210; tick++) {
@@ -67,13 +67,19 @@ test("Held input smoothly changes turbo and travelled path; release, pause, snap
   f.reset(28);
   const before = f.snapshot();
   f.advance(29, { turn: 1, tilt: 1, held: true }, false);
-  assert.ok(f.pose().turbo > 2.47);
+  assert.ok(
+    Math.abs(f.pose().turbo - (1.2 - 0.2 * Math.exp(-1 / 1.25))) < 0.000001,
+  );
   assert.ok(f.pose().roll > 0);
   assert.ok(f.pose().yaw > before.pose.yaw);
   assert.ok(f.pose().pitch > before.pose.pitch);
   const held = f.snapshot();
   f.advance(30, { turn: 0, tilt: 0 }, false);
-  assert.ok(f.pose().turbo < 1.21);
+  assert.ok(
+    Math.abs(
+      f.pose().turbo - (1 + (held.pose.turbo - 1) * Math.exp(-1 / 0.85)),
+    ) < 0.000001,
+  );
   f.restore(held);
   assert.deepEqual(f.snapshot(), held);
   f.advance(29, { turn: 0, tilt: 0 }, false);

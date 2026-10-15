@@ -1,4 +1,5 @@
 import { visualReturn } from "../../core/visual-return.mjs";
+import { thankYouAt } from "../../core/opening-layers.mjs";
 import { Color } from "three";
 import pulses from "../../show/light-pulses.json";
 import proposal from "../../show/arrangement.proposal.json";
@@ -66,7 +67,9 @@ export function createArrangement() {
       familyColour(lighting.family, 0.3),
       familyColour(lighting.family, 0.7),
     ];
-    const visual = visualReturn(endAge, { reduced });
+    // Retired ambient deformation stays recoverable, never active in production.
+    const visual = visualReturn(null, { reduced });
+    const finish = thankYouAt(endAge, { reduced });
     const terminal = reveal.exit;
     const horizon = new Color(0);
     const board = { anchorX: 0, anchorZ: 0, shiftX: 0, shiftZ: 0, angle: 0 };
@@ -80,25 +83,10 @@ export function createArrangement() {
       colours,
       horizon,
       visual,
-      airTime:
-        seconds +
-        (visual.phase === "song"
-          ? 0
-          : reduced
-            ? 6
-            : visual.phase === "idle"
-              ? 6 + visual.idleSeconds * 0.5
-              : visual.blendAge -
-                4 *
-                  (Math.pow(visual.blendAge / 8, 6) -
-                    3 * Math.pow(visual.blendAge / 8, 5) +
-                    2.5 * Math.pow(visual.blendAge / 8, 4))),
+      finish,
+      airTime: seconds,
       horizonGain:
-        (ease((seconds - 7) / 8) *
-          (0.18 + 0.12 * ease(music.sky)) *
-          (1 - visual.blend) +
-          (visual.phase === "song" ? 0 : visual.horizonGain) * visual.blend) *
-        brightness,
+        ease((seconds - 7) / 8) * (0.18 + 0.12 * ease(music.sky)) * brightness,
       horizonAzimuth: 0.4 + 0.22 * Math.sin(seconds * 0.013),
       board,
       gridRest,

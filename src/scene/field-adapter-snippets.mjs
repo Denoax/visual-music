@@ -38,7 +38,7 @@ export const groundFragmentMain = `
    float transmission=beautyFogTransmission(distanceMetres,.00135);
    vec3 scattered=beautyHorizon(p-cameraPosition,uHorizonAzimuth,uHorizonGain);
    vec3 emitted=surfaceLight(vWorld,fineWeight(vWorld))*uGroundGain;
-   gl_FragColor=vec4(emitted*transmission*ownership+scattered*(1.-transmission*ownership),1.);
+   gl_FragColor=vec4((emitted*transmission*ownership+scattered*(1.-transmission*ownership))*uTerrainVisible,1.);
  }`;
 
 // Keep the current quarter-size two-pass Gaussian. Initial candidate values

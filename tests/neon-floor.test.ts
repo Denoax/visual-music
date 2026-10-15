@@ -69,7 +69,9 @@ test("The score retains stable rests, local wave chunks, ordered palettes and la
   const arrange = createArrangement();
   assert.equal(arrange(219.66579, features, false).reveal.exit, 1);
   assert.equal(arrange(219.66579, features, false, 32).reveal.exit, 1);
-  assert.equal(arrange(219.66579, features, false, 32).visual.phase, "idle");
+  assert.equal(arrange(219.66579, features, false, 32).visual.blend, 0);
+  assert.equal(arrange(219.66579, features, false, 32).finish.worldGain, 0);
+  assert.equal(arrange(219.66579, features, false, 32).finish.pageGain, 1);
   assert.equal(arrange(0, features, false).reveal.core, 0);
   assert.equal(arrange(1, features, false).reveal.ground, 0);
 });

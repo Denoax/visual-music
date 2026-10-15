@@ -5,6 +5,10 @@ import { acceptMicrofeatures } from "./show/microcues";
 import { ShowPlayback } from "./show/playback";
 import { createWorld } from "./scene/world";
 import { bindGlideInput } from "./input";
+import { LoadingModel } from "../core/loading-model.mjs";
+import { thankYouAt, FINISH_SECONDS } from "../core/opening-layers.mjs";
+import { confettiAt } from "../core/confetti.mjs";
+import { createUiTones } from "../core/ui-tones.mjs";
 import {
   TRACK_HASH,
   ANALYSIS_DURATION,
@@ -16,21 +20,20 @@ const get = <T extends HTMLElement>(id: string) =>
   document.getElementById(id) as T;
 const button = (id: string) => get<HTMLButtonElement>(id);
 const canvas = get<HTMLCanvasElement>("world"),
-  transport = new AudioTransport(),
-  playback = new ShowPlayback(transport);
+  landing = get("entrance"),
+  stage = document.querySelector<HTMLElement>(".landing-stage")!,
+  thanks = get("thank-you");
+const transport = new AudioTransport(),
+  playback = new ShowPlayback(transport),
+  loading = new LoadingModel();
 const gentle = get<HTMLInputElement>("reduced");
-gentle.checked = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const pointer = bindGlideInput(canvas, () => playback.running && !ui.anyOpen());
-const ui = bindPortfolioControls(
-  () => pointer.clear(),
-  (v) => transport.setVolume(v),
-  () => {
-    dirty = true;
-  },
-);
+gentle.checked = matchMedia("(prefers-reduced-motion:reduce)").matches;
 const dev = new URLSearchParams(location.search).get("dev") === "1";
 let world: Awaited<ReturnType<typeof createWorld>> | null = null,
   features: Features | null = null;
+let tones: ReturnType<typeof createUiTones> | null = null;
+let worldPreparation: Promise<Awaited<ReturnType<typeof createWorld>>> | null =
+  null;
 let ready = false,
   lost = false,
   dirty = true,
@@ -38,9 +41,13 @@ let ready = false,
   generation = 0,
   raf = 0,
   previous = 0,
-  lastUI = 0,
-  lastIdleDraw = 0,
-  error = "";
+  lastUI = 0;
+let error = "",
+  visibleSeconds = 0,
+  lastVisible = 0,
+  uiUntil = 0,
+  fieldEntered = false,
+  announcedThanks = false;
 const metrics = {
   intervals: [] as number[],
   timing: [] as {
@@ -50,47 +57,40 @@ const metrics = {
     method: string;
   }[],
 };
-const status = (message: string) => {
-  get("status").textContent = message;
-};
+function invalidate(milliseconds = 220) {
+  dirty = true;
+  uiUntil = Math.max(uiUntil, performance.now() + milliseconds);
+  if (!raf && !disposed && !document.hidden) raf = requestAnimationFrame(tick);
+}
+const pointer = bindGlideInput(
+  canvas,
+  () =>
+    playback.running &&
+    fieldEntered &&
+    !ui.anyOpen() &&
+    !transport.hasPresentedEnd,
+);
+const ui = bindPortfolioControls(
+  () => {
+    pointer.clear();
+    invalidate();
+  },
+  (v) => transport.setVolume(v),
+  () => invalidate(),
+);
 function controls() {
-  const started =
-    playback.started ||
-    transport.state === "playing" ||
-    transport.state === "ended";
-  get("entrance").hidden = started;
-  get("controls").hidden = !ready;
-  button("start").disabled = !ready || lost;
-  button("start").textContent = ready ? "Start" : "Preparing…";
-  button("play").hidden = button("replay").hidden = !started;
-  button("play").disabled = lost;
-  button("play").textContent = transport.visualPaused
-    ? "Resume"
-    : transport.hasPresentedEnd
-      ? "Pause"
-      : transport.state === "ended"
-        ? "Play again"
-        : playback.running
-          ? "Pause"
-          : "Resume";
   button("mute").textContent = transport.isMuted ? "Unmute" : "Mute";
   button("mute").setAttribute("aria-pressed", String(transport.isMuted));
+  button("pause").hidden = !fieldEntered || transport.visualOutroComplete;
+  button("pause").textContent =
+    playback.running || transport.visualActive ? "Pause" : "Resume";
+  button("pause").disabled = lost;
   button("retry").hidden = !(error || lost);
-  if (error) status(error);
-  else if (lost) status("Graphics interrupted. Restore to continue.");
-  else if (ready)
-    status(
-      transport.hasPresentedEnd
-        ? transport.visualOutroComplete
-          ? "Ambient visuals · Replay repeats the song"
-          : "Settling into ambient visuals…"
-        : transport.state === "ended"
-          ? "Finished"
-          : "",
-    );
+  get("status").textContent =
+    error || (lost ? "Graphics interrupted. Restore to continue." : "");
   if (!playback.running) pointer.clear();
-  ui.updateNav();
-  dirty = true;
+  if (transport.audioContext?.state !== "running") tones?.silence();
+  invalidate();
 }
 transport.onChange = controls;
 async function fetchData(path: string) {
@@ -101,71 +101,115 @@ async function fetchData(path: string) {
   return r;
 }
 async function load() {
-  const token = ++generation;
+  const token = ++generation,
+    loadGeneration = loading.reset();
+  playback.replay();
+  tones?.silence();
+  fieldEntered = false;
+  visibleSeconds = 0;
+  lastVisible = 0;
   ready = false;
   error = "";
   controls();
-  status("Preparing the recording…");
+  const mark = (task: string) => {
+    if (token === generation && !disposed)
+      loading.markReady(task, loadGeneration);
+  };
   try {
-    const [audio, analysis, micro] = await Promise.all([
-      fetchData("audio/around-the-world.mp3"),
+    const font = document.fonts
+      .load('400 14px "Instrument Sans Variable"')
+      .then(() => document.fonts.ready)
+      .then(() => mark("font"));
+    const analysis = Promise.all([
       fetchData("analysis/features.json"),
       fetchData("analysis/mixed-microfeatures.json"),
-    ]);
-    const data = validateFeatures(await analysis.json());
-    acceptMicrofeatures(await micro.json());
-    const accepted = await transport.load(
-      new File([await audio.arrayBuffer()], "around-the-world.mp3", {
-        type: "audio/mpeg",
-      }),
-      TRACK_HASH,
-    );
-    if (!accepted || token !== generation || disposed) return;
-    if (Math.abs(transport.duration - ANALYSIS_DURATION) > 0.03)
-      throw Error(
-        "Browser audio decode differs from measured analysis; restore the supplied recording.",
-      );
-    // Encoded bytes are untouched; gain accounts for decoded floating-point peaks.
-    transport.musicOutput!.gain.value = 0.684751836;
-    features = data;
-    if (!world) world = await createWorld(canvas);
+    ]).then(async ([a, m]) => {
+      const data = validateFeatures(await a.json());
+      acceptMicrofeatures(await m.json());
+      mark("analysis");
+      return data;
+    });
+    const decode = fetchData("audio/around-the-world.mp3")
+      .then(async (r) =>
+        transport.load(
+          new File([await r.arrayBuffer()], "around-the-world.mp3", {
+            type: "audio/mpeg",
+          }),
+          TRACK_HASH,
+          () => mark("audioBytes"),
+        ),
+      )
+      .then((accepted) => {
+        if (!accepted) throw Error("Recording load interrupted; retry.");
+        mark("audioDecode");
+      });
+    const graphics = (async () => {
+      // Retry shares an in-flight graphics preparation; two renderers must never
+      // race for this canvas when an earlier network task fails first.
+      if (!world) {
+        if (!worldPreparation) {
+          canvas.style.visibility = "hidden";
+          worldPreparation = createWorld(canvas)
+            .then((value) => {
+              world = value;
+              canvas.style.visibility = "visible";
+              return value;
+            })
+            .finally(() => {
+              worldPreparation = null;
+            });
+        }
+        await worldPreparation;
+      }
+      mark("shaders");
+    })();
+    const [data] = await Promise.all([analysis, decode, font, graphics]);
     if (token !== generation || disposed) return;
+    if (Math.abs(transport.duration - ANALYSIS_DURATION) > 0.03)
+      throw Error("Decoded recording differs from the measured analysis.");
+    features = data;
     ready = true;
-    controls();
+    tones?.dispose();
+    tones = createUiTones(transport.audioContext!, transport.masterOutput!, {
+      reserveHeadroom: (peak: number, at: number, until: number) =>
+        transport.reserveUiHeadroom(peak, at, until),
+      muted: () => transport.isMuted,
+    });
     if (dev) expose();
+    controls();
   } catch (e) {
-    if (token === generation) {
+    if (token === generation && !disposed) {
       error = e instanceof Error ? e.message : String(e);
+      loading.fail(error, loadGeneration);
       controls();
     }
   }
 }
-async function act(action: () => Promise<void>) {
-  if (!ready || lost) return;
+async function enter() {
+  if (!ready || lost || !loading.beginContinue()) return;
+  ui.close();
+  invalidate();
   try {
-    await action();
-    error = "";
-    controls();
+    const accepted = await playback.enter(() => tones?.play("continue"), 0.8);
+    if (!accepted)
+      loading.continueFailed(
+        "Entry interrupted. Click to continue when ready.",
+      );
   } catch (e) {
     error = e instanceof Error ? e.message : String(e);
-    controls();
+    loading.continueFailed(error);
   }
-}
-button("start").onclick = () => void act(() => playback.start());
-button("play").onclick = () => {
-  if (transport.state === "ended" && !transport.hasPresentedEnd) {
-    playback.replay();
-    world?.reset();
-    pointer.clear();
-  }
-  void act(() => playback.toggle());
-};
-button("replay").onclick = () => {
-  playback.replay();
-  pointer.clear();
-  world?.reset();
   controls();
-};
+}
+button("start").onclick = () => void enter();
+button("pause").onclick = () =>
+  void playback
+    .toggle()
+    .then(controls)
+    .catch((e) => {
+      error = String(e);
+      controls();
+    });
 button("retry").onclick = () => {
   if (lost) world?.restoreContext();
   else void load();
@@ -186,36 +230,79 @@ button("reset-settings").onclick = () => {
 };
 gentle.onchange = () => {
   pointer.clear();
-  dirty = true;
+  invalidate();
 };
-button("fullscreen").onclick = () =>
-  void act(async () => {
-    if (document.fullscreenElement) await document.exitFullscreen();
-    else await document.documentElement.requestFullscreen();
+button("fullscreen").onclick = () => {
+  const action = document.fullscreenElement
+    ? document.exitFullscreen()
+    : document.documentElement.requestFullscreen();
+  void action.catch(() => {
+    get("status").textContent = "Fullscreen is unavailable in this browser.";
+    invalidate();
   });
+};
+// Exactly one note per accepted native button click. Hover and slider motion are silent.
+document.addEventListener("click", (e) => {
+  const b = (e.target as HTMLElement).closest<HTMLButtonElement>("button");
+  if (
+    !e.isTrusted ||
+    !b ||
+    b.disabled ||
+    b.id === "start" ||
+    !ready ||
+    disposed
+  )
+    return;
+  void transport
+    .unlock()
+    .then(() => {
+      if (!document.hidden && !disposed) tones?.play("button");
+    })
+    .catch(() => {});
+  invalidate();
+});
+for (const event of [
+  "pointerdown",
+  "pointerup",
+  "pointerover",
+  "pointerout",
+  "focusin",
+]) {
+  document.addEventListener(event, (e) => {
+    if ((e.target as HTMLElement).closest("button,dialog")) invalidate();
+  });
+}
 function pause() {
-  if (playback.running) {
-    playback.pause();
-    pointer.clear();
-    controls();
-  } else if (transport.hasPresentedEnd) {
-    transport.pause();
-    pointer.clear();
-    controls();
+  const entering = loading.phase === "entering" && !fieldEntered;
+  if (playback.running || transport.hasPresentedEnd) playback.pause();
+  if (entering) {
+    playback.replay();
+    loading.continueFailed("Entry interrupted. Click to continue.");
   }
+  tones?.silence();
+  pointer.clear();
+  controls();
 }
 window.addEventListener("blur", pause);
 document.addEventListener("visibilitychange", () => {
-  if (document.hidden) pause();
+  lastVisible = 0;
+  if (document.hidden) {
+    pause();
+    cancelAnimationFrame(raf);
+    raf = 0;
+  } else invalidate();
 });
 window.addEventListener("keydown", (e) => {
   if (ui.anyOpen() || (e.target as HTMLElement).matches("input,button,a"))
     return;
-  if (e.code === "Space") {
+  if (
+    e.code === "Space" &&
+    fieldEntered &&
+    !e.repeat &&
+    !transport.visualOutroComplete
+  ) {
     e.preventDefault();
-    if (e.repeat) return;
-    // Keyboard and visible Play share replay/outro ownership.
-    button("play").click();
+    void playback.toggle().then(controls);
   }
   if (e.code === "KeyM") {
     transport.setMuted(!transport.isMuted);
@@ -224,85 +311,179 @@ window.addEventListener("keydown", (e) => {
 });
 window.addEventListener("resize", () => {
   world?.resize();
-  dirty = true;
+  invalidate();
 });
 canvas.addEventListener("webglcontextlost", (e) => {
   e.preventDefault();
   lost = true;
-  playback.pause();
-  pointer.clear();
-  controls();
+  pause();
 });
 canvas.addEventListener("webglcontextrestored", async () => {
-  const seconds = transport.position();
-  const saved = world?.snapshot();
+  const seconds = transport.position(),
+    saved = world?.snapshot();
   world?.dispose();
   world = null;
   try {
     world = await createWorld(canvas);
     if (saved) world.restore(saved);
     else world.reset(seconds);
-    // Commit the restored frame before exposing ready controls. The new
-    // renderer starts at the intro pose until its first presented render.
-    const presentation = transport.presentation();
+    const p = transport.presentation();
     world.render(
-      presentation.seconds,
+      p.seconds,
       pointer.state,
       gentle.checked,
       features,
       false,
-      presentation.endAge,
+      p.endAge,
       ui.brightnessValue,
     );
     lost = false;
     error = "";
-    controls();
     if (dev) expose();
+    controls();
   } catch (e) {
     error = String(e);
     controls();
   }
 });
+function drawConfetti(age: number | null) {
+  let layer = document.querySelector<HTMLCanvasElement>(".thank-you-confetti");
+  if (age === null) {
+    layer?.remove();
+    return;
+  }
+  if (!layer) {
+    layer = document.createElement("canvas");
+    layer.className = "thank-you-confetti";
+    layer.setAttribute("aria-hidden", "true");
+    thanks.append(layer);
+  }
+  const dpr = Math.min(devicePixelRatio, 2),
+    w = innerWidth,
+    h = innerHeight;
+  if (
+    layer.width !== Math.round(w * dpr) ||
+    layer.height !== Math.round(h * dpr)
+  ) {
+    layer.width = Math.round(w * dpr);
+    layer.height = Math.round(h * dpr);
+  }
+  const ctx = layer.getContext("2d")!;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  for (const piece of confettiAt(age, { reduced: gentle.checked })) {
+    ctx.save();
+    ctx.translate(piece.x * w, piece.y * h);
+    ctx.rotate((piece.rotation * Math.PI) / 180);
+    ctx.globalAlpha = piece.opacity;
+    ctx.fillStyle = piece.colour;
+    ctx.fillRect(
+      -piece.width / 2,
+      -piece.height / 2,
+      piece.width,
+      piece.height,
+    );
+    ctx.restore();
+  }
+}
 function tick(now: number) {
-  if (disposed) return;
-  const presentation = transport.presentation(now);
-  const returning =
+  raf = 0;
+  if (disposed || document.hidden) return;
+  if (!fieldEntered) {
+    if (lastVisible) visibleSeconds += Math.max(0, (now - lastVisible) / 1000);
+    lastVisible = now;
+  }
+  const presentation = transport.presentation(now),
+    finish = thankYouAt(presentation.endAge, { reduced: gentle.checked });
+  if (
+    !fieldEntered &&
+    loading.phase === "entering" &&
+    transport.presentationHasStarted(now)
+  ) {
+    fieldEntered = true;
+    canvas.focus({ preventScroll: true });
+  }
+  const model = loading.sample(visibleSeconds, { reduced: gentle.checked });
+  landing.hidden = fieldEntered;
+  landing.dataset.phase = model.phase;
+  const values = {
+    "--progress": String(model.progress),
+    "--ball-x": `${model.ball.x}px`,
+    "--ball-y": `${model.ball.y}px`,
+    "--ball-rotation": `${model.ball.rotation}rad`,
+    "--ball-sx": String(model.ball.scaleX),
+    "--ball-sy": String(model.ball.scaleY),
+    "--play-opacity": String(model.playOpacity),
+    "--invitation-opacity": String(model.textOpacity),
+  };
+  for (const [key, value] of Object.entries(values))
+    stage.style.setProperty(key, value);
+  button("start").disabled = !ready || lost || !model.canContinue;
+  button("start").tabIndex = model.canContinue ? 0 : -1;
+  if (
+    !fieldEntered &&
+    model.phase === "entering" &&
+    transport.state === "playing"
+  ) {
+    const lead = Math.max(
+      0,
+      transport.scheduledStart - (transport.audioContext?.currentTime ?? 0),
+    );
+    landing.style.opacity = String(Math.min(1, lead / 0.65));
+  } else landing.style.opacity = "1";
+  const showSettings =
+    (fieldEntered || model.settingsOpacity > 0.001) && finish.pageGain === 0;
+  button("settings-button").hidden = !showSettings;
+  button("settings-button").style.opacity = String(
+    fieldEntered ? 1 : model.settingsOpacity,
+  );
+  thanks.hidden = finish.pageGain === 0;
+  thanks.style.opacity = String(finish.pageGain);
+  if (finish.phase === "thanks" && !announcedThanks) {
+    announcedThanks = true;
+    ui.close();
+    thanks.focus({ preventScroll: true });
+  }
+  drawConfetti(finish.confettiAge);
+  const finishing =
     transport.visualActive &&
     presentation.endAge !== null &&
-    presentation.endAge < 8;
-  const idle =
-    transport.visualActive &&
-    presentation.endAge !== null &&
-    presentation.endAge >= 8;
-  const idleDue = idle && !gentle.checked && now - lastIdleDraw >= 1000 / 30;
-  const active = playback.running || returning || idleDue;
-  if (world && !lost && (active || dirty || world.startVisible())) {
+    presentation.endAge < FINISH_SECONDS;
+  const active = playback.running || finishing;
+  const animating =
+    (!fieldEntered && model.settingsOpacity < 1 && model.phase !== "error") ||
+    (model.phase === "entering" && !fieldEntered) ||
+    now < uiUntil;
+  if (world && !lost && (active || dirty || animating || ui.anyOpen())) {
     if (active && previous) {
       metrics.intervals.push(now - previous);
       if (metrics.intervals.length > 60000) metrics.intervals.shift();
     }
     previous = active ? now : 0;
-    if (idle) lastIdleDraw = now;
-    const t = presentation.seconds;
     world.render(
-      t,
+      presentation.seconds,
       pointer.state,
       gentle.checked,
       features,
-      active,
+      active && fieldEntered,
       presentation.endAge,
       ui.brightnessValue,
     );
     if (dev && now - lastUI > 250) {
       metrics.timing.push({
         wallMs: now,
-        song: t,
+        song: presentation.seconds,
         graph: transport.position(),
         method: transport.clockQuality,
       });
       if (metrics.timing.length > 2000) metrics.timing.shift();
       get("debug").textContent = JSON.stringify(
-        { state: transport.state, seconds: t, ...world.diagnostics() },
+        {
+          state: transport.state,
+          seconds: presentation.seconds,
+          loading: model,
+          ...world.diagnostics(),
+        },
         null,
         2,
       );
@@ -310,7 +491,8 @@ function tick(now: number) {
     }
     dirty = false;
   }
-  raf = requestAnimationFrame(tick);
+  if (active || animating || ui.anyOpen() || dirty)
+    raf = requestAnimationFrame(tick);
 }
 function expose() {
   get("developer").hidden = false;
@@ -322,10 +504,23 @@ function expose() {
       features,
       metrics,
       pointer,
+      loading,
+      lifecycle: () => ({
+        visibleSeconds,
+        fieldEntered,
+        raf,
+        ready,
+        lost,
+        loading: loading.sample(visibleSeconds, { reduced: gentle.checked }),
+        finish: thankYouAt(transport.presentationEndAge, {
+          reduced: gentle.checked,
+        }),
+        tones: tones?.activeVoices(),
+      }),
       seek: (t: number) => {
         transport.seek(t);
         world?.reset(t);
-        dirty = true;
+        invalidate();
       },
       resetMetrics: () => {
         metrics.intervals.length = 0;
@@ -339,6 +534,7 @@ function expose() {
         length: transport.decodedBuffer!.length,
         channels: transport.decodedBuffer!.numberOfChannels,
         musicGain: transport.musicOutput!.gain.value,
+        decodedPeak: transport.decodedPeak,
         userAgent: navigator.userAgent,
       }),
     },
@@ -350,6 +546,7 @@ window.addEventListener(
     disposed = true;
     ++generation;
     cancelAnimationFrame(raf);
+    tones?.dispose();
     ui.dispose();
     pointer.dispose();
     world?.dispose();
@@ -358,4 +555,4 @@ window.addEventListener(
   { once: true },
 );
 void load();
-raf = requestAnimationFrame(tick);
+invalidate();

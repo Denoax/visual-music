@@ -1,0 +1,82 @@
+{
+  "authority": "Latest slow-entry/finite-finish request, current source and real evidence; timing is presentation-clock driven.",
+  "application": "Visual Music",
+  "previous_review": "67aaa72",
+  "music_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "music_duration_browser": 219.66579166666668,
+  "motion": {
+    "travel": 0.45,
+    "turn": 0.65,
+    "held_target": 1.2,
+    "held_tau": 1.25,
+    "release_tau": 0.85,
+    "fixed_hz": 240,
+    "height_lens_raw_wave_kernel": "unchanged",
+    "reference_diagnostic": "?dev=1&referenceCamera=1 retains source integration"
+  },
+  "opening": {
+    "surface_fade_seconds": [
+      6.1,
+      8.1
+    ],
+    "depth_min_eye_metres": 15.08,
+    "full_raw_height_bound": 14,
+    "fixture_bound": 0.28,
+    "margin": 0.8,
+    "dense_fade_seconds": 2,
+    "prepare_lead_seconds": 0.6,
+    "physical_grid_metres": 3,
+    "fine_grid_metres": 1.5,
+    "offscreen_prewarm": "same renderer;4x4 compositor warm-up, actual terrain/cap/fine/depth/star/glass programs, restore size and route before ready"
+  },
+  "entry": {
+    "silent_automatic_loading": true,
+    "tasks": [
+      "audioBytes",
+      "audioDecode",
+      "analysis",
+      "shaders",
+      "font"
+    ],
+    "minimum_visible_seconds": 3.2,
+    "ball_drop_seconds": 1.4,
+    "text_reveal_seconds": 1.25,
+    "music_lead_seconds": 0.8,
+    "repeat_activation": "LoadingModel plus ShowPlayback operation generation; one scheduled sample-zero source",
+    "pre_song_render": "At sample zero, all scored scene layers are black: clear and paint the real GPU glass, without rerendering invisible terrain. Every actual world variant is still prewarmed offscreen before ready."
+  },
+  "ui": {
+    "top_level_during_song": [
+      "Settings"
+    ],
+    "native_keyboard_pause": "Space or Settings pause/resume",
+    "preserved": [
+      "mute",
+      "volume",
+      "brightness",
+      "reduced motion",
+      "fullscreen",
+      "pane focus/Escape",
+      "native pointer",
+      "primary-touch handling",
+      "recovery"
+    ],
+    "glass_ref": "08eb0e5",
+    "glass_pipeline": "one clean encoded scene copy per draw for native surfaces; no own-composite feedback or second WebGL context",
+    "music_peak_trim": 0.684751836,
+    "sfx_bus_gain": 0.04,
+    "headroom": "Decoded stereo peak measured; conservative combined note reservations affect music bus only, preserving master mute/volume."
+  },
+  "finish": {
+    "trigger": "natural destination-presented completion only",
+    "fade_seconds": 2.6,
+    "thank_you_reveal_seconds": 1.25,
+    "confetti_count": 36,
+    "confetti_seconds": 4,
+    "remove_confetti_and_stop_main_raf": true,
+    "replay_or_ambient_loop": false
+  },
+  "scope": "No room, SAO, scene cursor/trail, holographic scenery or generated visual media. Hermes/portfolio and hosting unchanged.",
+  "evidence": "evidence/slow-entry-finish",
+  "approval": "Human continuous motion/listening/device/physical AV approval remains pending; measurements and renderer identity recorded separately."
+}
