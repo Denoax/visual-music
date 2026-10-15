@@ -1,3 +1,13 @@
+# Current serial UI source update
+
+The current source replaces the rejected rail/ball loader with a ring driven by real readiness, preserves silent one-action audio entry, improves the owned glass visibility and accessible solid/forced-colour modes, and staggers the existing paper confetti across about one second inside the unchanged finite finish. The mouse repair handles canvas-owned button chords and release/capture loss; ordinary M1 acceleration already worked and no base pace, lens, route, boost policy, music or floor choreography changes accompany it.
+
+Current authority: [show/ui-loops.as-built.json](show/ui-loops.as-built.json). Source/credits: [sources/ui-loops-source-record.md](sources/ui-loops-source-record.md) and the preserved LDRS Ring 2 MIT record. Current technical evidence and remaining human listening/motion, device and physical AV limits: [evidence/ui-loops](evidence/ui-loops). Full current actual-audio recordings are delivered in one local review ZIP. This is a normal source publication through the existing ancestry; no hosting deployment or visibility change is authorized.
+
+## Historical publication records
+
+The following prose describes preceding releases and retains its historical evidence scope; the current UI authority above supersedes earlier loader, glass and simultaneous-confetti descriptions.
+
 # Visual Music source publication
 
 Current update: black sky, event-born shared wave formations, crest-carried cohesive colour and faster gentle M1 attack. The exact music, base camera/route, silent loader, owned glass and finite thank-you finish remain. A first-entry Pause visibility repair is included. Current authority: show/black-sky-wave-colour.as-built.json; current technical evidence: evidence/black-sky-wave-colour. Only this source repository is updated; hosting and visibility are unchanged.

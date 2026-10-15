@@ -94,9 +94,9 @@ export function createStartGlass(renderer: THREE.WebGLRenderer) {
         vec3 softened=(texture2D(uBase,clamp(uv-bend+vec2(rough.x,0.),0.,1.)).rgb+texture2D(uBase,clamp(uv-bend-vec2(rough.x,0.),0.,1.)).rgb+texture2D(uBase,clamp(uv-bend+vec2(0.,rough.y),0.,1.)).rgb+texture2D(uBase,clamp(uv-bend-vec2(0.,rough.y),0.,1.)).rgb)*.25;
         color=mix(color,softened,.24);
         bool panel=vShape.z>.5;
-        // Neutral absorption preserves the source detail instead of lifting
-        // light-mode image luma toward white. Panels own white text in both modes.
-        vec3 film=panel?vec3(.018,.025,.035):mix(vec3(.025,.032,.044),vec3(.55,.59,.63),uLight);
+        // The encoded neutral substrate must remain visible on black. Keep the
+        // existing 12% film mix, backdrop detail and lens map unchanged.
+        vec3 film=panel?vec3(.018,.025,.035):mix(vec3(.52),vec3(.55,.59,.63),uLight);
         color=mix(color,film,panel?0.:vShape.z);
         // Pane absorption is applied once above both the GL and native DOM layers.
         float lighting=max(0.,dot(normal,normalize(vec2(-.5,1.))));

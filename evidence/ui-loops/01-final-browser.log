@@ -1,0 +1,11 @@
+
+Running 5 tests using 1 worker
+
+  ✓  1 tests/browser/loader-loop.spec.ts:4:1 › loader spins while a real task is pending, stops before Play and enters once (3.5s)
+  ✓  2 tests/browser/loader-loop.spec.ts:69:3 › primary-touch portrait › reduced motion has a stationary loader and one reachable touch entry (2.2s)
+STALE_AUDIO_RESPONSE {"before":{"position":0.06399999999999983,"sources":[{"kind":"start","contextSeconds":1.568,"offsetSeconds":0}],"hash":"47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0"},"after":{"state":"playing","sameBuffer":true,"position":0.08533333333333326,"sources":[{"kind":"start","contextSeconds":1.568,"offsetSeconds":0}],"hash":"47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0"}}
+  ✓  3 tests/browser/loader-loop.spec.ts:134:1 › a stale first audio response cannot interrupt a successfully retried song (2.1s)
+  ✓  4 tests/browser/site.spec.ts:18:1 › Silent real readiness, one Continue source and Settings-only music controls (2.3s)
+  ✓  5 tests/browser/site.spec.ts:89:1 › Failed bytes remain retryable while graphics prepare; entry interruption never silently starts music (2.2s)
+
+  5 passed (13.1s)

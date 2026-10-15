@@ -1,0 +1,11 @@
+# Four-task UI source record
+
+Read/apply $reference-led-design. Task01 adapts the supplied licensed human-authored [LDRS Ring2](https://uiball.com/ldrs/) principle in original SVG/CSS. The newest missing clip was not inspected or invented. Exact reference source and MIT notice remain in loader-loop-01. A real stale-response retry regression was corrected before accepting shared audio/analysis state.
+
+Task02 retains the owned portfolio GPU lens from08eb0e5, its0.12film blend, refraction, rounding and native labels. Only the neutral film RGB was raised to0.52, giving16/255 actual encoded interior on black instead of1/255. Matching CSS, opaque reduced-transparency and forced-colour paths were inspected. No floor/exposure/camera change. Actual screenshots, pixel probes and six interaction cases are in evidence/ui-loops/02-glass; human optical and device approval remain separate.
+
+Task03 extends the existing original texture-free paper confetti with six fixed birth cohorts over0–0.94s and upper-viewport origins. It retains36default/48maximum and the existing four-colour palette. All fades/deaths finish by3.82s inside the unchanged four-second confetti window and6.6s finish. Both initial tail diagnostics explicitly seek to212s; final complete recordings are separately identified. No repeating emitter or new asset/dependency.
+
+Task04 uses original input ownership code and trusted Chromium mouse events. [W3C Pointer Events3](https://www.w3.org/TR/pointerevents3/#chorded-button-interactions) documents chorded button changes through pointermove/button/buttons. Ordinary1.2x boost already worked; matched native runs measured18.715% more rendered travel over84.25–88.25s. The repair handles overlapped buttons and capture loss without changing flight policy, route, lens or music. The silent normal-speed diagnostic is separate from complete actual-audio recordings.
+
+Evidence is actual browser rendering and digital measurements. No generated visual media, new song, invented lyric/beat approval or copied reference footage is used. Human continuous motion/listening, physical-device/AV and current foreground performance approval remain pending. Historical evidence retains its original renderer and scope.

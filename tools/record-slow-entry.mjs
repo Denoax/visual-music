@@ -1,7 +1,7 @@
-/** Uninterrupted full-page (DOM + WebGL) original-pace evidence, with the real
- * shared stereo master. No soundtrack replacement or presentation-time seeks. */
+/** Full-page actual-master evidence. Default: uninterrupted complete song.
+ * Explicit --tail-from enables a labelled diagnostic seek, never a final run. */
 import {chromium} from 'playwright';
-import {mkdir,writeFile,appendFile,readFile,rename} from 'node:fs/promises';
+import {mkdir,writeFile,appendFile,readFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {prepareRecordingOutput,recordingOutput} from './recording-output.mjs';
@@ -9,6 +9,10 @@ import {focusOwnedPreview,foregroundState} from './native-foreground.mjs';
 const portrait=process.argv.includes('--portrait'),software=process.argv.includes('--software');
 const evidence=process.argv.find(a=>a.startsWith('--evidence='))?.slice(11)||'evidence/slow-entry-finish';
 const headed=process.argv.includes('--headed');
+const tailText=process.argv.find(a=>a.startsWith('--tail-from='))?.slice(12);
+const tailFrom=tailText===undefined?null:Number(tailText);
+if(tailFrom!==null&&(!Number.isFinite(tailFrom)||tailFrom<0))throw Error('Invalid diagnostic tail offset');
+const captureKind=tailFrom===null?'full-song':'tail-diagnostic';
 const view=portrait?'portrait':'desktop',viewport=portrait?{width:390,height:844}:{width:1280,height:720};
 const out=process.argv.find(a=>a.startsWith('--out='))?.slice(6)||`${evidence}/capture-${view}`;
 await mkdir(out,{recursive:true});
@@ -47,7 +51,9 @@ try{
  await page.locator('#settings-button').press('Enter');await page.waitForTimeout(350);await page.locator('#settings .pane-close').press('Enter');await page.waitForTimeout(250);
  if(portrait)await page.locator('#start').tap();else await page.locator('#start').click();
  await page.waitForFunction(()=>window.__BUMER__.lifecycle().fieldEntered,{timeout:120000});
- let next=0;const actions=[
+ if(tailFrom!==null)await page.evaluate(t=>{const b=window.__BUMER__;if(t>=b.transport.duration)throw Error('Tail offset exceeds recording');b.seek(t);},tailFrom);
+ let nextShower=0;const showerAges=[.15,.55,1.05,2.2,3.8];
+ let next=0;const actions=tailFrom!==null?[]:[
   {t:20,kind:'right'},{t:24,kind:'left'},{t:28,kind:'up'},{t:32,kind:'down'},{t:36,kind:'neutral'},
   {t:42,kind:'hold'},{t:48,kind:'release'},
  ];
@@ -67,20 +73,24 @@ try{
    if(action==='settings')await page.locator('#settings-button').press('Enter');
    if(action==='close')await page.locator('#settings .pane-close').press('Enter');
   }
+  if(tailFrom!==null&&row.presentation.endAge!==null&&nextShower<showerAges.length&&row.presentation.endAge>=2.6+showerAges[nextShower]){
+   await page.screenshot({path:`${out}/shower-${nextShower}.png`});nextShower++;
+  }
   if(row.presentation.endAge!==null&&row.presentation.endAge>=7.2)break;
-  await page.waitForTimeout(650);
+  await page.waitForTimeout(tailFrom===null?650:100);
  }
  await page.screenshot({path:`${out}/thanks.png`});
- const fullEnd=await page.evaluate(()=>{const b=window.__BUMER__,c=window.__capture;const gl=document.querySelector('#world').getContext('webgl2'),e=gl.getExtension('WEBGL_debug_renderer_info');return{decode:b.decodeRecord(),sourceEvents:b.transport.sourceEvents,completionEvents:b.transport.completionEvents,lifecycle:b.lifecycle(),audioEpoch:c.audioEpoch,captureStart:{contextSeconds:c.startContext},renderer:gl.getParameter(e.UNMASKED_RENDERER_WEBGL),intervals:b.metrics.intervals};});
+ const fullEnd=await page.evaluate(()=>{const b=window.__BUMER__,c=window.__capture;const gl=document.querySelector('#world').getContext('webgl2'),e=gl.getExtension('WEBGL_debug_renderer_info');return{confettiCanvases:document.querySelectorAll('.thank-you-confetti').length,decode:b.decodeRecord(),sourceEvents:b.transport.sourceEvents,completionEvents:b.transport.completionEvents,lifecycle:b.lifecycle(),audioEpoch:c.audioEpoch,captureStart:{contextSeconds:c.startContext},renderer:gl.getParameter(e.UNMASKED_RENDERER_WEBGL),intervals:b.metrics.intervals};});
  await page.evaluate(()=>window.__capture.recorder.stop());await page.waitForFunction(()=>window.__capture.done,{timeout:30000});await audioQueue;
  if(errors.length)throw Error(JSON.stringify(errors));
- await page.waitForTimeout(500);const video=page.video();await context.close();const raw=await video.path();await rename(raw,`${out}/page-video.webm`);
+ if(fullEnd.lifecycle.raf!==0||fullEnd.confettiCanvases!==0||fullEnd.lifecycle.finish.phase!=='thanks')throw Error('Finite finish did not settle cleanly');
+ await page.waitForTimeout(500);const video=page.video();await context.close();await video.saveAs(`${out}/page-video.webm`);
  const videoEpoch=(beforePage+afterPage)/2,delay=Math.max(0,fullEnd.audioEpoch-videoEpoch);
  // Insert only the measured pre-gesture silence. Preserve source video/Opus
  // packets; page video begins in the newPage() observation interval below.
- execFileSync('ffmpeg',['-v','error','-y','-i',`${out}/page-video.webm`,'-itsoffset',String(delay/1000),'-i',`${out}/master.webm`,'-map','0:v:0','-map','1:a:0','-c','copy',`${out}/${view}-full.webm`]);
- const media=await readFile(`${out}/${view}-full.webm`);
- await writeFile(`${out}/${view}-trace.json`,JSON.stringify({status:'captured',runtimeIdentitySha256,recorderSha256:createHash('sha256').update(await readFile(import.meta.filename)).digest('hex'),scope:'Uninterrupted normal-speed full-page browser recording plus actual master output. No seek, playback-rate change, replacement audio or viewport-quality reduction. Renderer and native foreground ownership are measured; capture cadence is not an uncaptured performance benchmark or human/device approval.',viewport,software,headed,foreground,fullEnd,trace,errors,videoEpochObservation:{beforePage,afterPage,selected:videoEpoch,uncertaintyMs:(afterPage-beforePage)/2},audioVideoOffsetMs:delay,alignmentLimit:'Page-video origin is bounded by newPage observation times; digital source correlation checks audio duration/drift separately. Physical AV alignment remains pending.',output:{bytes:media.length,sha256:createHash('sha256').update(media).digest('hex')}},null,2)+'\n');
- console.log('FULL_CAPTURE_PASS',view,media.length);
+ execFileSync('ffmpeg',['-v','error','-y','-i',`${out}/page-video.webm`,'-itsoffset',String(delay/1000),'-i',`${out}/master.webm`,'-map','0:v:0','-map','1:a:0','-c','copy',`${out}/${view}-${tailFrom===null?'full':'tail'}.webm`]);
+ const media=await readFile(`${out}/${view}-${tailFrom===null?'full':'tail'}.webm`);
+ await writeFile(`${out}/${view}-trace.json`,JSON.stringify({status:'captured',captureKind,diagnosticSeekSeconds:tailFrom,runtimeIdentitySha256,recorderSha256:createHash('sha256').update(await readFile(import.meta.filename)).digest('hex'),scope:(tailFrom===null?'Full-song uninterrupted capture. ':'Tail diagnostic with one explicit seek; not a full-song recording. ')+'Normal-speed full-page browser recording plus actual master output. No playback-rate change, replacement audio or viewport-quality reduction; any diagnostic seek is explicitly recorded. Renderer and native foreground ownership are measured; capture cadence is not an uncaptured performance benchmark or human/device approval.',viewport,software,headed,foreground,fullEnd,trace,errors,videoEpochObservation:{beforePage,afterPage,selected:videoEpoch,uncertaintyMs:(afterPage-beforePage)/2},audioVideoOffsetMs:delay,alignmentLimit:'Page-video origin is bounded by newPage observation times; digital source correlation checks audio duration/drift separately. Physical AV alignment remains pending.',output:{bytes:media.length,sha256:createHash('sha256').update(media).digest('hex')}},null,2)+'\n');
+ console.log(tailFrom===null?'FULL_CAPTURE_PASS':'TAIL_DIAGNOSTIC_PASS',view,media.length);
 }catch(e){await writeFile(`${out}/FAILED.json`,JSON.stringify({error:String(e),errors,trace},null,2));throw e;}
 finally{clearInterval(timer);await browser.close();}

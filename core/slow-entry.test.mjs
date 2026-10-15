@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {comfortIntegrate,COMFORT} from './comfort-motion.mjs';
 import {denseLayerAt,openingLayers,thankYouAt} from './opening-layers.mjs';
-import {LoadingModel,LOAD_TASKS,ballDrop} from './loading-model.mjs';
+import {LoadingModel,LOAD_TASKS} from './loading-model.mjs';
 import {confettiAt} from './confetti.mjs';import {tonePlan,createUiTones} from './ui-tones.mjs';
 const near=(a,b,e=1e-8)=>assert.ok(Math.abs(a-b)<e,`${a} != ${b}`);
 const state=()=>({seconds:0,x:0,z:0,angle:0,roll:0,pitchX:-9*Math.PI/180,turbo:1});
@@ -33,11 +33,12 @@ test('terrain/cap reveal stays dark below full physical support and has no7s ste
 test('loading cannot finish from elapsed time alone or before all real tasks',()=>{
   const l=new LoadingModel();assert.equal(l.sample(20).phase,'loading');
   for(const k of Object.keys(LOAD_TASKS).slice(0,-1))l.markReady(k);assert.equal(l.sample(20).canContinue,false);
-  l.markReady('font');assert.equal(l.sample(20).phase,'drop');assert.equal(l.sample(21.5).canContinue,true);
+  l.markReady('font');assert.equal(l.sample(20).phase,'settling');assert.equal(l.sample(20).spinning,false);assert.equal(l.sample(20.5).canContinue,true);
 });
-test('cached loading still respects the deliberate minimum presentation',()=>{
+test('cached readiness stops spinning immediately without an artificial minimum wait',()=>{
   const l=new LoadingModel();for(const k of Object.keys(LOAD_TASKS))l.markReady(k);
-  assert.equal(l.sample(.5).phase,'loading');assert.equal(l.sample(3.2).phase,'drop');
+  assert.equal(l.sample(.05).phase,'settling');assert.equal(l.sample(.05).spinning,false);
+  assert.equal(l.sample(.05).playOpacity,0);assert.equal(l.sample(.5).canContinue,true);
 });
 test('stale load completion cannot arm a retried page',()=>{
   const l=new LoadingModel(),old=l.generation;l.reset();assert.equal(l.markReady('shaders',old),false);
@@ -47,10 +48,16 @@ test('native Continue is one-shot while pending; a rejected unlock returns ready
   const l=new LoadingModel();for(const k of Object.keys(LOAD_TASKS))l.markReady(k);l.sample(3.2);l.sample(5);
   assert.equal(l.beginContinue(),true);assert.equal(l.beginContinue(),false);l.continueFailed('Audio did not unlock');assert.equal(l.beginContinue(),true);
 });
-test('ball joins the rail continuously and settles on the button',()=>{
-  near(ballDrop(0).x,-88+176*.94);for(const boundary of [.28,1]){
-    const a=ballDrop(boundary-1e-6),b=ballDrop(boundary+1e-6);assert.ok(Math.hypot(a.x-b.x,a.y-b.y)<.01);
-  }near(ballDrop(1.4).x,0);near(ballDrop(1.4).y,94);
+test('failed loading stops spinning, stays blocked and stale completions cannot recover it',()=>{
+  const l=new LoadingModel(),old=l.generation;l.fail('Network error');
+  assert.equal(l.sample(10).spinning,false);assert.equal(l.sample(10).canContinue,false);
+  assert.equal(l.markReady('font'),false);l.reset();assert.equal(l.markReady('font',old),false);
+  assert.equal(l.sample(0).spinning,true);
+});
+test('reduced motion presents ready immediately after real readiness',()=>{
+  const l=new LoadingModel();for(const k of Object.keys(LOAD_TASKS))l.markReady(k);
+  const m=l.sample(.1,{reduced:true});assert.equal(m.phase,'ready');
+  assert.equal(m.spinnerOpacity,0);assert.equal(m.playOpacity,1);assert.equal(m.settingsOpacity,1);
 });
 test('only presented completion can drive the black thank-you page',()=>{
   assert.equal(thankYouAt(null).worldGain,1);assert.equal(thankYouAt(null).pageGain,0);

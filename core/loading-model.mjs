@@ -1,41 +1,30 @@
 import {smooth5} from './opening-layers.mjs';
-const clamp=x=>Math.max(0,Math.min(1,x));
 export const LOAD_TASKS=Object.freeze({audioBytes:.30,audioDecode:.25,analysis:.10,shaders:.25,font:.10});
-export const MIN_LOADING_SECONDS=3.2, DROP_SECONDS=1.4;
-/** Original SVG/DOM animation math. The ball is a landing-page element only.
- * Call with the app's visible pre-song elapsed time. Do not use this for song
- * transport, alter song time or play audio during automatic loading.
- */
-export function ballDrop(age){
-  const t=Math.max(0,age);
-  if(t<.28){const q=smooth5(t/.28);return {x:77.44+(100-77.44)*q,y:6*q,rotation:.55*q,scaleX:1,scaleY:1};}
-  if(t<1){const q=(t-.28)/.72;return {x:100-92*q,y:6+88*q*q,rotation:.55+q*4.5,scaleX:1,scaleY:1};}
-  const q=clamp((t-1)/.4),bounce=Math.sin(Math.PI*q)*(1-q);
-  return {x:8*(1-smooth5(q)),y:94-11*bounce,rotation:5.05+(2*Math.PI-5.05)*smooth5(q),
-    scaleX:1+.14*(1-q)*Math.exp(-q*12),scaleY:1-.12*(1-q)*Math.exp(-q*12)};
-}
+export const READY_REVEAL_SECONDS=.42;
+/** Readiness owns the spinner. Visible pre-song time only controls the short
+ * reveal; it never fabricates readiness or changes the audio transport. */
 export class LoadingModel{
   constructor(){this.generation=0;this.reset();}
-  reset(){this.generation++;this.done=new Set();this.phase='loading';this.dropAt=null;this.error='';return this.generation;}
+  reset(){this.generation++;this.done=new Set();this.phase='loading';this.readyAt=null;this.error='';return this.generation;}
   markReady(task,generation=this.generation){
-    if(generation!==this.generation)return false;
-    if(!(task in LOAD_TASKS))throw Error('Unknown loading task');
+    if(generation!==this.generation||this.phase==='error')return false;
+    if(!Object.hasOwn(LOAD_TASKS,task))throw Error('Unknown loading task');
     this.done.add(task);return true;
   }
   fail(message,generation=this.generation){if(generation!==this.generation)return;this.error=message;this.phase='error';}
   sample(visibleSeconds,{reduced=false}={}){
     const real=[...this.done].reduce((v,k)=>v+LOAD_TASKS[k],0),ready=this.done.size===Object.keys(LOAD_TASKS).length;
-    if(this.phase==='loading'&&ready&&visibleSeconds>=MIN_LOADING_SECONDS){this.phase='drop';this.dropAt=visibleSeconds;}
-    const age=this.dropAt===null?0:Math.max(0,visibleSeconds-this.dropAt);
-    if(this.phase==='drop'&&(reduced||age>=DROP_SECONDS))this.phase='ready';
-    const settled=this.phase==='ready'||this.phase==='entering';
-    const progress=this.phase==='loading'?Math.min(real,.94*smooth5(visibleSeconds/MIN_LOADING_SECONDS)):1;
-    const revealAge=reduced?1:Math.max(0,age-DROP_SECONDS);
-    return {phase:this.phase,progress,realReady:ready,error:this.error,
-      ball:this.dropAt===null?{x:-88+176*progress,y:0,rotation:progress*2,scaleX:1,scaleY:1}:ballDrop(reduced?DROP_SECONDS:age),
-      playOpacity:this.dropAt===null?0:reduced?1:smooth5((age-.6)/.65),
-      textOpacity:settled?(reduced?1:smooth5(revealAge/1.25)):0,
-      settingsOpacity:settled?(reduced?1:smooth5((revealAge-.12)/1.1)):0,
+    if(this.phase==='loading'&&ready){this.phase='settling';this.readyAt=visibleSeconds;}
+    const age=this.readyAt===null?0:Math.max(0,visibleSeconds-this.readyAt);
+    if(this.phase==='settling'&&(reduced||age>=READY_REVEAL_SECONDS))this.phase='ready';
+    const revealed=this.phase==='settling'||this.phase==='ready'||this.phase==='entering';
+    const fade=(start,duration)=>revealed?(reduced?1:smooth5((age-start)/duration)):0;
+    return {phase:this.phase,progress:real,realReady:ready,error:this.error,
+      spinning:this.phase==='loading',
+      spinnerOpacity:this.phase==='error'?0:1-fade(0,.24),
+      playOpacity:fade(.10,.32),
+      textOpacity:fade(.30,.8),
+      settingsOpacity:fade(.38,.72),
       canContinue:this.phase==='ready'&&ready,
     };
   }

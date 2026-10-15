@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/browser/glass-visibility.spec.ts:6:5 › glass remains readable and native: desktop gpu (3.7s)
+  ✓  2 tests/browser/glass-visibility.spec.ts:6:5 › glass remains readable and native: desktop solid (3.8s)
+  ✓  3 tests/browser/glass-visibility.spec.ts:6:5 › glass remains readable and native: desktop forced (3.7s)
+  ✓  4 tests/browser/glass-visibility.spec.ts:6:5 › glass remains readable and native: portrait gpu (2.4s)
+  ✓  5 tests/browser/glass-visibility.spec.ts:6:5 › glass remains readable and native: portrait solid (2.4s)
+  ✓  6 tests/browser/glass-visibility.spec.ts:6:5 › glass remains readable and native: portrait forced (2.3s)
+
+  6 passed (18.8s)

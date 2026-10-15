@@ -1,0 +1,112 @@
+{
+  "application": "Visual Music",
+  "review_baseline": "1c86a4d317ebfc1512cbb5176c5ff08bc15cca70",
+  "publication_baseline": "ca4ef694b7978cf929bf4faa580ca995b2b0a89b",
+  "authority": "Four serial UI tasks, current source and executor evidence; not human approval",
+  "inherited": "black-sky-wave-colour.as-built.json owns unchanged floor, event-born waves and camera policy; this overlay supersedes its landing-ball, glass brightness and confetti descriptions.",
+  "loader": {
+    "tasks": {
+      "audioBytes": 0.3,
+      "audioDecode": 0.25,
+      "analysis": 0.1,
+      "shaders": 0.25,
+      "font": 0.1
+    },
+    "minimum_wait_seconds": 0,
+    "ready_reveal_seconds": 0.42,
+    "spinner": "Original SVG arc; spin only while actual gates are pending, pause at readiness/error; reduced motion stationary.",
+    "retry": "Generation checks before accepting audio bytes, analysis or decoded completion. Continue owns one unlock/source-zero start and existing chime."
+  },
+  "glass": {
+    "neutral_film_rgb": 0.52,
+    "film_mix": 0.12,
+    "source": "Owned portfolio optics unchanged; native labels, actual opaque reduced-transparency and forced system colours.",
+    "measured_button_body_rgb_before": 1,
+    "measured_button_body_rgb_after": 16
+  },
+  "confetti": {
+    "count": 36,
+    "cap": 48,
+    "cohorts": 6,
+    "birth_span_upper_bound_seconds": 0.94,
+    "death_upper_bound_seconds": 3.82,
+    "confetti_window_seconds": 4,
+    "finite_finish_seconds": 6.6,
+    "clock": "AudioTransport.presentation endAge; no repeating emitter, reduced motion omitted, canvas and RAF removed."
+  },
+  "motion": {
+    "travel": 0.45,
+    "turn": 0.65,
+    "heldTarget": 1.2,
+    "heldTau": 0.45,
+    "releaseTau": 0.85,
+    "change": "Only gesture/button ownership repair. Ordinary boost already worked; chorded pointermove buttons now reconciled for canvas-owned gestures. No base pace/lens/route change.",
+    "measured_ratio_4s": 1.1871514157619159,
+    "window_seconds": [
+      84.25,
+      88.25
+    ]
+  },
+  "audio": {
+    "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+    "decoded_seconds": 219.66579166666668,
+    "clock": "Sole AudioTransport.presentation; exact complete MP3 and .8s Continue lead preserved."
+  },
+  "identities": [
+    {
+      "path": "src/main.ts",
+      "sha256": "cc1872f6c940dee10828ff7d95cdb7c267448d3a9fac741a47c7f1cce67ac2d6"
+    },
+    {
+      "path": "src/input.ts",
+      "sha256": "2caa13c40a9d4902cfecb57b584bf492393edfacddb2b9d8d564da78d4111e84"
+    },
+    {
+      "path": "src/scene/start-glass.ts",
+      "sha256": "b27704dc87d8422c8e01f21b72cc310fc381204a8b9e5e8896b63ee97ea5fec9"
+    },
+    {
+      "path": "src/style.css",
+      "sha256": "8b0b1f9eaef3623ebd8fdc0adc592503de11545f4b297682ccbf6a18c166b307"
+    },
+    {
+      "path": "core/loading-model.mjs",
+      "sha256": "54fe2fc30e249516f9e0ee47e0fedbcd36d63a7426c9926fb1778a108bf39a85"
+    },
+    {
+      "path": "core/confetti.mjs",
+      "sha256": "6c91dd49f554ffb580263f4c16d5cce48c69a0f47b3c0c00a4600e3fe92d85c8"
+    },
+    {
+      "path": "core/comfort-motion.mjs",
+      "sha256": "95a5080a5398cb1a23d5c4bd4b72a292f05a5ee33583651f89f990443c2104df"
+    },
+    {
+      "path": "src/scene/flight.ts",
+      "sha256": "59a35e833ea38fbd5e415a9979cbf92e21ffa7694c613c0aa80e6ca957094bcb"
+    },
+    {
+      "path": "src/scene/world.ts",
+      "sha256": "ee611bb254f802f17dd74a11d77bae3ea514c7bd10bbc56755482ed9c143b418"
+    },
+    {
+      "path": "src/audio/transport.ts",
+      "sha256": "6c736a6cc2c898c65d033f83e25e7bdb1b8d7e7e67e389569579456f47e65804"
+    },
+    {
+      "path": "show/camera-score.json",
+      "sha256": "2db3fc4c9eafd850bc92f268a7d087686d545b943f180ea2cc636e49aed4d70f"
+    },
+    {
+      "path": "show/camera-origins.json",
+      "sha256": "a4986e93c6d14743d8fa71e8ed025f7f3be73ae8950ae595bd32a59638b41969"
+    },
+    {
+      "path": "public/audio/around-the-world.mp3",
+      "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0"
+    }
+  ],
+  "evidence": "evidence/ui-loops",
+  "source_record": "sources/ui-loops-source-record.md",
+  "limits": "Missing newest loader clip: declared human-authored ring fallback. Human continuous listening/motion, physical devices/AV and current uncaptured foreground performance approval remain separate. No generated media or hosting update."
+}

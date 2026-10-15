@@ -13,6 +13,7 @@ def decode(file):
 ref=decode(root/'public/audio/around-the-world.mp3');results=[]
 for view in ['desktop','portrait']:
  folder=e/f'capture-{view}';file=folder/f'{view}-full.webm';trace=json.loads((folder/f'{view}-trace.json').read_text());end=trace['fullEnd']
+ assert trace.get('captureKind','full-song')=='full-song' and trace.get('diagnosticSeekSeconds') is None
  assert trace['runtimeIdentitySha256']==identity_sha
  assert trace['recorderSha256']==hashlib.sha256((root/'tools/record-slow-entry.mjs').read_bytes()).hexdigest()
  assert trace['output']['sha256']==hashlib.sha256(file.read_bytes()).hexdigest()
@@ -26,7 +27,7 @@ for view in ['desktop','portrait']:
  starts=[x for x in end['sourceEvents'] if x['kind']=='start'];assert len(starts)==1 and starts[0]['offsetSeconds']==0
  assert [x['kind'] for x in end['completionEvents']]==['graph_end','presented_end']
  assert end['lifecycle']['finish']['worldGain']==0 and end['lifecycle']['finish']['pageGain']==1 and end['lifecycle']['finish']['confettiAge'] is None
- assert end['lifecycle']['raf']==0
+ assert end['lifecycle']['raf']==0 and end.get('confettiCanvases',0)==0
  assert end['decode']['channels']==2 and abs(end['decode']['duration']-219.66579166666668)<.0001
  assert not trace['errors']
  assert all(b['presentation']['seconds']>=a['presentation']['seconds'] for a,b in zip(trace['trace'],trace['trace'][1:]))

@@ -3,11 +3,13 @@ from pathlib import Path
 import hashlib
 import json
 import subprocess
+import sys
 from PIL import Image, ImageDraw
 
 root = Path(__file__).resolve().parents[1]
-evidence = root / 'evidence/black-sky-wave-colour'
+evidence = root / next((a.split('=',1)[1] for a in sys.argv if a.startswith('--evidence=')), 'evidence/black-sky-wave-colour')
 review = evidence / 'review'
+review.mkdir(exist_ok=True)
 records = []
 for view in ['desktop', 'portrait']:
     folder = evidence / f'capture-{view}'
@@ -31,8 +33,17 @@ for view in ['desktop', 'portrait']:
         sheet.paste(thumbnail, (x, y))
         draw.text((x + 5, y + size[1] + 4), f"song {row['presentation']['seconds']:.2f}s / video {seconds:.2f}s", fill='white')
         frames.append({'path': str(png.relative_to(root)), 'sha256': hashlib.sha256(png.read_bytes()).hexdigest(), 'presentationSeconds': row['presentation']['seconds'], 'videoSeconds': seconds})
+    # Inspect the complete new UI finish from these exact final recordings.
+    for target in [.15, .55, 1.05, 2.2, 3.8]:
+        age = 2.6 + target
+        candidates = [row for row in trace['trace'] if row['presentation']['endAge'] is not None]
+        row = min(candidates, key=lambda row: abs(row['presentation']['endAge'] - age))
+        seconds = (row['wall'] - trace['videoEpochObservation']['selected']) / 1000
+        png = review / f'final-{view}-confetti-{target}.png'
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', str(seconds), '-i', str(media), '-frames:v', '1', '-threads', '1', str(png)], check=True)
+        frames.append({'path':str(png.relative_to(root)), 'sha256':hashlib.sha256(png.read_bytes()).hexdigest(), 'confettiAge':row['presentation']['endAge']-2.6, 'videoSeconds':seconds})
     output = review / f'final-{view}-contact.png'
     sheet.save(output)
     records.append({'view': view, 'recordingSha256': hashlib.sha256(media.read_bytes()).hexdigest(), 'contactSheet': str(output.relative_to(root)), 'frames': frames})
 (review / 'final-frame-inspection.json').write_text(json.dumps({'scope': 'Actual decoded full-recording frames, labelled using nearest logged presentation sample and bounded page-video epoch. No retiming or invented frames; frame inspection is not continuous motion/listening approval.', 'records': records}, indent=2) + '\n')
-print('Extracted26 actual final-recording frames and two contact sheets')
+print('Extracted actual final-recording song/finish frames and two contact sheets')

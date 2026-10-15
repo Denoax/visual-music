@@ -121,7 +121,7 @@ console.log(
       max_active_fronts: maximum,
       clock: "Audio presentation time, field zero equals song zero",
       scope:
-        "Black-sky dance floor with event-born shared wave formations, crest-carried palette phase, unchanged base camera/route and 1.2x boost with .45s attack; true OFF banks, exact complete track, silent loader/owned glass and finite thank-you finish preserved",
+        "Black-sky dance floor with event-born shared wave formations, crest-carried palette phase, unchanged base camera/route and 1.2x boost with .45s attack; true OFF banks, exact complete track, readiness ring, brighter owned glass, staggered finite confetti and chord-safe input; exact floor/camera/audio preserved",
       listening: "unapproved candidates; human listening pending",
     },
     null,
@@ -129,7 +129,7 @@ console.log(
   ),
 );
 if (process.argv.includes("--review")) {
-  const evidence = await read("evidence/black-sky-wave-colour/review-status.json");
+  const evidence = await read("evidence/ui-loops/review-status.json");
   console.log(JSON.stringify(evidence, null, 2));
   if (!["passed", "verified_with_limits"].includes(evidence.technical_status))
     process.exitCode = 1;

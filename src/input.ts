@@ -81,6 +81,13 @@ export function bindGlideInput(
       (e.pointerType === "touch" && e.pointerId !== primary)
     )
       return;
+    // Chorded mouse presses/releases arrive as pointermove. Reconcile only
+    // a gesture born on this canvas, so a UI-origin drag cannot arm boost.
+    if (e.pointerType === "mouse" && e.pointerId === primary) {
+      const held = (e.buttons & 1) !== 0;
+      if (held && !state.held) canvas.focus({ preventScroll: true });
+      state.held = held;
+    }
     const r = canvas.getBoundingClientRect();
     state.x = Math.max(
       -1,
@@ -94,11 +101,15 @@ export function bindGlideInput(
     steering();
   }
   function down(e: PointerEvent) {
-    if (!enabled() || !e.isPrimary || e.button !== 0) return;
-    canvas.focus({ preventScroll: true });
+    if (!enabled() || !e.isPrimary) return;
+    const mouse = e.pointerType === "mouse";
+    if (!mouse && e.button !== 0) return;
+    const held = mouse ? (e.buttons & 1) !== 0 : true;
+    if (held) canvas.focus({ preventScroll: true });
+    // Own the whole mouse chord until its final button is released.
     primary = e.pointerId;
     state.touch = e.pointerType === "touch";
-    state.held = true;
+    state.held = held;
     canvas.setPointerCapture(primary);
     move(e);
   }
@@ -117,7 +128,7 @@ export function bindGlideInput(
     if (e.pointerType !== "touch" || e.pointerId === primary) clear();
   }
   function lost(e: PointerEvent) {
-    if (e.pointerId === primary && state.held) clear();
+    if (e.pointerId === primary) clear();
   }
   function leave() {
     if (primary === null) clear();

@@ -111,9 +111,9 @@ async function load() {
   ready = false;
   error = "";
   controls();
+  const current = () => token === generation && !disposed;
   const mark = (task: string) => {
-    if (token === generation && !disposed)
-      loading.markReady(task, loadGeneration);
+    if (current()) loading.markReady(task, loadGeneration);
   };
   try {
     const font = document.fonts
@@ -124,22 +124,32 @@ async function load() {
       fetchData("analysis/features.json"),
       fetchData("analysis/mixed-microfeatures.json"),
     ]).then(async ([a, m]) => {
-      const data = validateFeatures(await a.json());
-      acceptMicrofeatures(await m.json());
+      const [featureData, microfeatureData] = await Promise.all([
+        a.json(),
+        m.json(),
+      ]);
+      if (!current()) return null;
+      const data = validateFeatures(featureData);
+      acceptMicrofeatures(microfeatureData);
       mark("analysis");
       return data;
     });
     const decode = fetchData("audio/around-the-world.mp3")
-      .then(async (r) =>
-        transport.load(
-          new File([await r.arrayBuffer()], "around-the-world.mp3", {
+      .then(async (r) => {
+        const bytes = await r.arrayBuffer();
+        // A failed attempt's late response must not pause or replace the
+        // retried song. The transport owns generations once decoding starts.
+        if (!current()) return false;
+        return transport.load(
+          new File([bytes], "around-the-world.mp3", {
             type: "audio/mpeg",
           }),
           TRACK_HASH,
           () => mark("audioBytes"),
-        ),
-      )
+        );
+      })
       .then((accepted) => {
+        if (!current()) return;
         if (!accepted) throw Error("Recording load interrupted; retry.");
         mark("audioDecode");
       });
@@ -164,7 +174,7 @@ async function load() {
       mark("shaders");
     })();
     const [data] = await Promise.all([analysis, decode, font, graphics]);
-    if (token !== generation || disposed) return;
+    if (!current() || !data) return;
     if (Math.abs(transport.duration - ANALYSIS_DURATION) > 0.03)
       throw Error("Decoded recording differs from the measured analysis.");
     features = data;
@@ -409,13 +419,21 @@ function tick(now: number) {
   const model = loading.sample(visibleSeconds, { reduced: gentle.checked });
   landing.hidden = fieldEntered;
   landing.dataset.phase = model.phase;
+  landing.dataset.spinning = String(model.spinning);
+  landing.setAttribute("aria-busy", String(model.phase === "loading"));
+  const announcement =
+    model.phase === "error"
+      ? "Loading interrupted"
+      : model.canContinue
+        ? "Ready. Click to continue."
+        : model.phase === "entering"
+          ? "Starting music"
+          : "Loading";
+  const loadingAnnouncement = get("loading-announcement");
+  if (loadingAnnouncement.textContent !== announcement)
+    loadingAnnouncement.textContent = announcement;
   const values = {
-    "--progress": String(model.progress),
-    "--ball-x": `${model.ball.x}px`,
-    "--ball-y": `${model.ball.y}px`,
-    "--ball-rotation": `${model.ball.rotation}rad`,
-    "--ball-sx": String(model.ball.scaleX),
-    "--ball-sy": String(model.ball.scaleY),
+    "--spinner-opacity": String(model.spinnerOpacity),
     "--play-opacity": String(model.playOpacity),
     "--invitation-opacity": String(model.textOpacity),
   };
@@ -423,6 +441,7 @@ function tick(now: number) {
     stage.style.setProperty(key, value);
   button("start").disabled = !ready || lost || !model.canContinue;
   button("start").tabIndex = model.canContinue ? 0 : -1;
+  button("start").setAttribute("aria-hidden", String(!model.canContinue));
   if (
     !fieldEntered &&
     model.phase === "entering" &&

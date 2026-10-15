@@ -1,0 +1,10 @@
+{
+  "task": "02glassbrightness",
+  "status": "verified_with_limits",
+  "parent_commit": "aad3ab0646e1fbf4a8fc8640ef85d4979d313a80",
+  "scope": "GPUneutralfilm .52 at unchanged.12mix; CSSfallbackmatches; reduced-transparencytrulyopaque; forcedsystemcoloursretained",
+  "checks": "Buildpassed;6browsermode/viewportcasespassed;12actualpixel/labelcontrastprobespassed;desktop/portraitGPUandforcedframesinspected",
+  "metrics": "Label-freebuttonRGB1->16neutral; nativeglyphcontrast16.11\u201316.73:1 onGPU; blackpixelsoutsideunchanged",
+  "preserved": "glass-optics,flight,terrain/lighting,transport,MP3 exactbaselinebytes",
+  "limits": "Human motion/optical approval andphysicaldevicechecksremainpending"
+}

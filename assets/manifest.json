@@ -68,8 +68,8 @@
     "helpers": "core/loading-model.mjs, comfort-motion.mjs, opening-layers.mjs, ui-tones.mjs, confetti.mjs",
     "new_audio_files": [],
     "ui_audio": "Original bounded harmonic synthesis through the sole existing AudioContext/master; music peak reservation via transport owner.",
-    "landing_ball": "Authored DOM/CSS only, no scene cursor ball",
-    "finish": "Presented tail, black fade, thank you, finite flat confetti; no ambient loop"
+    "finish": "Presented tail, black fade, thank you, finite flat confetti; no ambient loop",
+    "landing_loader": "Original SVG/CSS ring guided by Griffin Johnston LDRS Ring 2; source and MIT notice in sources/loader-loop-01"
   },
   "black_sky_wave_colour": {
     "new_binary_assets": false,
@@ -80,5 +80,18 @@
     "sky": "black; discrete emitters and depth-tested stars only",
     "prior_lifecycle": "slow-entry-finish preserved",
     "approval": "Candidate score until human continuous visual/listening review; measured executor evidence separately recorded."
+  },
+  "ui_loops": {
+    "authority": "show/ui-loops.as-built.json",
+    "source_record": "sources/ui-loops-source-record.md",
+    "loader_reference": "Griffin Johnston LDRS Ring2; original implementation, preserved MIT reference in sources/loader-loop-01",
+    "new_binary_assets": false,
+    "changes": [
+      "readiness ring and retry generation safety",
+      "neutral GPU film brightness and accessible fallbacks",
+      "six-cohort finite confetti",
+      "trusted chorded mouse-button ownership"
+    ],
+    "unchanged": "Exact music, waves/colour, camera/comfort policy, controls/audio and finite finish window"
   }
 }

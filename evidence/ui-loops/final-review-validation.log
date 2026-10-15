@@ -1,0 +1,56 @@
+
+> bumer-exe@0.1.0 validate:review
+> node --import tsx tools/validate-show.ts --review
+
+{
+  "runtime_integrity": "pass",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "feature_rows": 21967,
+  "selected_candidate_events": 255,
+  "max_active_fronts": 12,
+  "clock": "Audio presentation time, field zero equals song zero",
+  "scope": "Black-sky dance floor with event-born shared wave formations, crest-carried palette phase, unchanged base camera/route and 1.2x boost with .45s attack; true OFF banks, exact complete track, readiness ring, brighter owned glass, staggered finite confetti and chord-safe input; exact floor/camera/audio preserved",
+  "listening": "unapproved candidates; human listening pending"
+}
+{
+  "technical_status": "verified_with_limits",
+  "four_serial_tasks": "verified_with_limits",
+  "build": "passed",
+  "tests": {
+    "core": 98,
+    "typescript": 59,
+    "total": 157
+  },
+  "source_build_preview_files": {
+    "source": 156,
+    "production": 15
+  },
+  "complete_actual_audio_captures": "Both full-song normal-speed journeys, actual stereo master, natural presented tail and settled thank-you verified",
+  "publication": "Prepared separate checkout:156source/15production bytes match; normal push pending",
+  "archive_clean_extraction": "External VERIFIED_EXTRACTION.json will be written only after actual successful clean extraction/build",
+  "limits": [
+    "human continuous listening/motion pending",
+    "physical devices/AV/AT/flash review pending",
+    "current uncaptured foreground GPU performance unmeasured",
+    "newest loader clip absent; declared ring fallback"
+  ],
+  "audio_window_checks": {
+    "passed": 16,
+    "minimum_correlation": 0.9929177041417266
+  },
+  "errors": 0,
+  "capture_scope": "Native NVIDIA headless GPU; desktop1280x720/portrait390x844,25fps full-page media. RAF intervals are capture cadence, not foreground GPU timing.",
+  "capture_cadence": {
+    "desktop": {
+      "median": 16.69999999999709,
+      "p95": 16.70000000001164,
+      "max": 33.400000000001455
+    },
+    "portrait": {
+      "median": 16.69999999999709,
+      "p95": 16.70000000001164,
+      "max": 83.30000000000291
+    }
+  },
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL ES 3.2)"
+}

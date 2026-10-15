@@ -38,12 +38,13 @@
       "shaders",
       "font"
     ],
-    "minimum_visible_seconds": 3.2,
-    "ball_drop_seconds": 1.4,
-    "text_reveal_seconds": 1.25,
+    "text_reveal_seconds": 0.8,
     "music_lead_seconds": 0.8,
     "repeat_activation": "LoadingModel plus ShowPlayback operation generation; one scheduled sample-zero source",
-    "pre_song_render": "At sample zero, all scored scene layers are black: clear and paint the real GPU glass, without rerendering invisible terrain. Every actual world variant is still prewarmed offscreen before ready."
+    "pre_song_render": "At sample zero, all scored scene layers are black: clear and paint the real GPU glass, without rerendering invisible terrain. Every actual world variant is still prewarmed offscreen before ready.",
+    "minimum_visible_seconds": 0,
+    "ready_reveal_seconds": 0.42,
+    "loader": "Original SVG/CSS arc; spin only during real loading, pause at readiness, fade into existing Play. No rail or ball."
   },
   "ui": {
     "top_level_during_song": [
