@@ -1,0 +1,24 @@
+{
+  "status": "LOCAL_CANDIDATE_VERIFIED",
+  "private_source_parent": "45752c08ca06da004821582c0e3e44d55f13dac7",
+  "public_site_parent": "84b527230038ccaa957d27bb048847926b8befb4",
+  "git_history": "Merge retains both remote main parents; separate local review history stays recoverable.",
+  "tests": {
+    "passed": 159,
+    "failed": 0
+  },
+  "runtime_equivalence": {
+    "source_files": 156,
+    "production_files": 15,
+    "production_mismatches": [],
+    "extra_production_metadata": [
+      "deployment.json"
+    ],
+    "status": "PASS"
+  },
+  "credential_scans": {
+    "source_history": "17 commits, no leaks found by local gitleaks",
+    "site_history": "1 commit, no leaks found by local gitleaks"
+  },
+  "authorization": "User explicitly approved public visual-music with source and website."
+}

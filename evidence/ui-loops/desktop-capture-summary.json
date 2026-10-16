@@ -1,0 +1,43 @@
+{
+  "captureKind": "full-song",
+  "runtimeIdentitySha256": "b6f428a6d58f1a968489517158304344f030500128926b0b72c7f2ed91d24913",
+  "recorderSha256": "9f0b14dda1468beccb1193d2d63e59b89effe2241ce2811b615a1bb9b62a02a8",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL ES 3.2)",
+  "sourceEvents": [
+    {
+      "kind": "start",
+      "contextSeconds": 1.408,
+      "offsetSeconds": 0
+    }
+  ],
+  "completionEvents": [
+    {
+      "kind": "graph_end",
+      "contextSeconds": 221.07733333333334,
+      "presentedContextSeconds": 221.02444866666664
+    },
+    {
+      "kind": "presented_end",
+      "contextSeconds": 221.12,
+      "presentedContextSeconds": 221.07716033333256
+    }
+  ],
+  "finish": {
+    "phase": "thanks",
+    "worldGain": 0,
+    "pageGain": 1,
+    "confettiAge": null
+  },
+  "raf": 0,
+  "confettiCanvases": 0,
+  "errors": [],
+  "output": {
+    "bytes": 77546208,
+    "sha256": "286ed96638be17e981f4d9ca6da53a5e3577e4b3a6da1e37abbd83314c53f142"
+  },
+  "full_recording_location": "ONE complete local review ZIP, not Git history"
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "standing_skill": "$reference-led-design",
+  "reported_base_commit": "049af86839b68c078b7f0dd008438864460d998d",
+  "inspected_attachment": "e7c69ff compact review; compare actual checkout before integration",
+  "status": "proposal_not_implemented_or_listening_approved",
+  "duration_seconds": 219.66579166666668,
+  "runtime_mp3_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "approved_beats": [],
+  "codex_listening_reviewed": false,
+  "mani_approved": false,
+  "timing_owner": "existing AudioTransport.visualPosition/presentation clock",
+  "scope": "unbounded_world_field_all_rendered_directions_and_tiers",
+  "preserve": [
+    "physical_wave_kernel",
+    "canonical_lattice_mounts",
+    "exact_mp3",
+    "free_flight",
+    "native_pointer",
+    "startup_reset_guard",
+    "recovery",
+    "single_audio_master",
+    "existing_controls"
+  ],
+  "minimum_polished_families": [
+    "global_curtains",
+    "complementary_banks"
+  ],
+  "star_flybys": "required",
+  "scored_sky_tint": "required_limited_accent",
+  "ring_canopy": "optional_after_core_quality",
+  "section_boundary_status": "inherited_numerical_candidate_ranges_audition_before_finalizing",
+  "sections": [
+    {
+      "id": "opening",
+      "start": 0,
+      "end": 25,
+      "floor": "aligned_white_rest",
+      "palette": "white",
+      "pattern_angle_degrees": 0,
+      "sky": "neutral_black_and_readable_white_stars",
+      "direction": "Keep the white lattice and original waves; establish stronger spatial stars without a new spectacle."
+    },
+    {
+      "id": "first_rise",
+      "start": 25,
+      "end": 40,
+      "floor": "two_broad_alternating_banks",
+      "palette": "white_ice",
+      "pattern_angle_degrees": 0,
+      "sky": "neutral_black",
+      "direction": "Introduce asynchronous-looking banks with complementary smooth dimmers; hold aligned geometry."
+    },
+    {
+      "id": "led",
+      "start": 40,
+      "end": 75,
+      "floor": "retained_global_wave_rings_with_weave",
+      "palette": "ice_cyan",
+      "pattern_angle_degrees": 30,
+      "sky": "neutral_black",
+      "direction": "Reveal broad whole-field curtains over retained rings, with dark lanes and shared low spill."
+    },
+    {
+      "id": "global_hold",
+      "start": 75,
+      "end": 106,
+      "floor": "global_diagonal_curtains",
+      "palette": "cyan_amber",
+      "pattern_angle_degrees": -30,
+      "sky": "one_soft_subset_tint_then_neutral",
+      "direction": "Rotate every lighting representation together over a phrase; hold the angle and palette before reversing."
+    },
+    {
+      "id": "mirrored_wings",
+      "start": 106,
+      "end": 139,
+      "floor": "global_mirrored_bank_spread",
+      "palette": "magenta_ice",
+      "pattern_angle_degrees": 30,
+      "sky": "neutral_black",
+      "direction": "Large mirrored banks trade brightness across the entire field; do not leave distant cells white."
+    },
+    {
+      "id": "contrast",
+      "start": 139,
+      "end": 158,
+      "floor": "global_crossbar_scan_then_grid_rest",
+      "palette": "violet_ice",
+      "pattern_angle_degrees": 0,
+      "sky": "neutral_black",
+      "direction": "One clear large scan, then a calmer grid rest before the existing overview."
+    },
+    {
+      "id": "overview",
+      "start": 158,
+      "end": 175,
+      "floor": "brief_global_repeated_heart_star_or_mirrored_banks",
+      "palette": "red_cream",
+      "pattern_angle_degrees": 0,
+      "sky": "neutral_black",
+      "direction": "Use existing camera ownership/overview. If motifs are retained, repeat over the whole field and match every tier."
+    },
+    {
+      "id": "late_phrase",
+      "start": 175,
+      "end": 195,
+      "floor": "global_bank_weave",
+      "palette": "cyan_magenta",
+      "pattern_angle_degrees": -45,
+      "sky": "brief_scored_tint_optional_ring_wrap",
+      "direction": "One limited sky accent; optional 6–10 s arc enclosure only after the core is polished."
+    },
+    {
+      "id": "final_chase",
+      "start": 195,
+      "end": 210,
+      "floor": "global_red_cream_chase",
+      "palette": "red_cream",
+      "pattern_angle_degrees": 45,
+      "sky": "return_to_neutral",
+      "direction": "Broad whole-field chase with dark opposing banks and clean easing; no localized islands."
+    },
+    {
+      "id": "landing",
+      "start": 210,
+      "end": 219.66579166666668,
+      "floor": "aligned_white_rest_and_current_terminal_fade",
+      "palette": "white",
+      "pattern_angle_degrees": 0,
+      "sky": "neutral_black",
+      "direction": "Recover the calm white field and current end/replay handling."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "source_files": 156,
+  "production_files": 15,
+  "status": "passed",
+  "scope": "Separate publication checkout targeted17checks/build/integrity; exact current canonical source and15production bytes."
+}

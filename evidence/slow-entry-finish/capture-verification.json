@@ -1,0 +1,168 @@
+{
+  "status": "passed",
+  "scope": "Identity, source-zero/whole presented tail, actual-mix audio provenance, full-page record, finite ending and measured frame intervals. Digital audio correlation is not lossless fidelity, physical AV or listening approval. Software cadence is not hardware performance.",
+  "results": [
+    {
+      "view": "desktop",
+      "bytes": 72701206,
+      "sha256": "b10fb6fed28e6d00334d2b41a3ff16dae6857e2c6648549eb80688d10b0ff0ea",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "software": true,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "vp9",
+            "codec_type": "video",
+            "width": 1280,
+            "height": 720,
+            "nb_read_frames": "6110"
+          },
+          {
+            "index": 1,
+            "codec_name": "opus",
+            "codec_type": "audio",
+            "channels": 2,
+            "nb_read_frames": "3936"
+          }
+        ],
+        "format": {
+          "duration": "244.400000"
+        }
+      },
+      "single_source_and_complete_presented_tail": true,
+      "finite_finish_raf_zero": true,
+      "audio_windows": [
+        {
+          "source_seconds": 3,
+          "correlation": 0.9998508153958944,
+          "offset_ms": 1457.1666666666667
+        },
+        {
+          "source_seconds": 30,
+          "correlation": 0.9989426711506678,
+          "offset_ms": 1457.1666666666667
+        },
+        {
+          "source_seconds": 84,
+          "correlation": 0.9987092371217703,
+          "offset_ms": 1457.1666666666667
+        },
+        {
+          "source_seconds": 145,
+          "correlation": 0.9989057008270242,
+          "offset_ms": 1457.1666666666667
+        },
+        {
+          "source_seconds": 180,
+          "correlation": 0.9991241458098148,
+          "offset_ms": 1457.1666666666667
+        },
+        {
+          "source_seconds": 212,
+          "correlation": 0.9992417323730467,
+          "offset_ms": 1457.1666666666667
+        },
+        {
+          "source_seconds": 218.6,
+          "correlation": 0.9966615422043825,
+          "offset_ms": 1457.1666666666667
+        },
+        {
+          "source_seconds": 219.5,
+          "correlation": 0.9936140321520862,
+          "offset_ms": 1456.9166666666667
+        }
+      ],
+      "cadence_ms": {
+        "median": 2499.899999999998,
+        "p95": 3149.899999999994,
+        "max": 3766.5000000000036
+      },
+      "av_origin_uncertainty_ms": 23.5
+    },
+    {
+      "view": "portrait",
+      "bytes": 38122182,
+      "sha256": "0677bf7a31b3aa676616c7b8a9a4b47b77e99840e5007fbc268094debf104d74",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "software": true,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "vp9",
+            "codec_type": "video",
+            "width": 390,
+            "height": 844,
+            "nb_read_frames": "5970"
+          },
+          {
+            "index": 1,
+            "codec_name": "opus",
+            "codec_type": "audio",
+            "channels": 2,
+            "nb_read_frames": "3838"
+          }
+        ],
+        "format": {
+          "duration": "238.800000"
+        }
+      },
+      "single_source_and_complete_presented_tail": true,
+      "finite_finish_raf_zero": true,
+      "audio_windows": [
+        {
+          "source_seconds": 3,
+          "correlation": 0.9998549977794008,
+          "offset_ms": 1499.8333333333333
+        },
+        {
+          "source_seconds": 30,
+          "correlation": 0.99892169870523,
+          "offset_ms": 1499.8333333333333
+        },
+        {
+          "source_seconds": 84,
+          "correlation": 0.9986501565662197,
+          "offset_ms": 1499.8333333333333
+        },
+        {
+          "source_seconds": 145,
+          "correlation": 0.998930434419966,
+          "offset_ms": 1499.8333333333333
+        },
+        {
+          "source_seconds": 180,
+          "correlation": 0.9991571929737316,
+          "offset_ms": 1499.8333333333333
+        },
+        {
+          "source_seconds": 212,
+          "correlation": 0.999226183836163,
+          "offset_ms": 1499.8333333333333
+        },
+        {
+          "source_seconds": 218.6,
+          "correlation": 0.9968280856263552,
+          "offset_ms": 1499.8333333333333
+        },
+        {
+          "source_seconds": 219.5,
+          "correlation": 0.9940075915582375,
+          "offset_ms": 1499.5833333333333
+        }
+      ],
+      "cadence_ms": {
+        "median": 1050,
+        "p95": 1216.699999999997,
+        "max": 2083.3000000000175
+      },
+      "av_origin_uncertainty_ms": 24.5
+    }
+  ]
+}

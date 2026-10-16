@@ -1,0 +1,156 @@
+{
+  "status": "passed",
+  "rows": [
+    {
+      "view": "desktop",
+      "file": "evidence/dance-floor-only/visual-music-capture/desktop-full.webm",
+      "bytes": 159869183,
+      "sha256": "6ce57c039b81e6aa4281eafa801e6ff02f22a36c51436e403b7014a239ddce52",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 1440,
+            "height": 900
+          },
+          {
+            "codec_name": "opus",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "253.712000"
+        }
+      },
+      "bound_files": 67,
+      "decode": {
+        "hash": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+        "duration": 219.66579166666668,
+        "sampleRate": 48000,
+        "length": 10543958,
+        "channels": 2,
+        "musicGain": 0.6847518086433411,
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+      },
+      "end_age": 33.85229100001192,
+      "idle_seconds": 25.7993126666845,
+      "RAF_ms": {
+        "count": 13995,
+        "median": 16.69999999999709,
+        "p95": 33.30000000000291,
+        "max": 66.70000000000073,
+        "above_50ms": 17
+      },
+      "GPU_elapsed_ms": {
+        "count": 12459,
+        "median": 2.803712,
+        "p95": 4.374528,
+        "max": 10.529792,
+        "above_50ms": 0
+      },
+      "trace_samples": 247,
+      "floor_trace_samples": 240,
+      "minimum_visible_ground_clearance": 12.096484275758948,
+      "source_events": [
+        {
+          "kind": "start",
+          "contextSeconds": 1.8426666666666667,
+          "offsetSeconds": 0
+        }
+      ],
+      "completion_events": [
+        {
+          "kind": "graph_end",
+          "contextSeconds": 221.51466666666667,
+          "presentedContextSeconds": 221.45311399999403
+        },
+        {
+          "kind": "presented_end",
+          "contextSeconds": 221.57866666666666,
+          "presentedContextSeconds": 221.52221299997618
+        }
+      ],
+      "recording_backend": "Headless hardware ANGLE/NVIDIA, real renderer and original bitrates; not native foreground/device approval",
+      "errors": []
+    },
+    {
+      "view": "portrait",
+      "file": "evidence/dance-floor-only/visual-music-capture/portrait-full.webm",
+      "bytes": 84799929,
+      "sha256": "4a6b5fbcd7d9c9db7b26f9dcf912b5548eaa331f2693d9bd9966e3a7c928f94c",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 390,
+            "height": 844
+          },
+          {
+            "codec_name": "opus",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "259.357000"
+        }
+      },
+      "bound_files": 67,
+      "decode": {
+        "hash": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+        "duration": 219.66579166666668,
+        "sampleRate": 48000,
+        "length": 10543958,
+        "channels": 2,
+        "musicGain": 0.6847518086433411,
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+      },
+      "end_age": 33.65450700001787,
+      "idle_seconds": 25.57752133333338,
+      "RAF_ms": {
+        "count": 14219,
+        "median": 16.69999999999709,
+        "p95": 16.80000000000291,
+        "max": 50.10000000000582,
+        "above_50ms": 14
+      },
+      "GPU_elapsed_ms": {
+        "count": 13709,
+        "median": 1.857536,
+        "p95": 3.127296,
+        "max": 11.83232,
+        "above_50ms": 0
+      },
+      "trace_samples": 251,
+      "floor_trace_samples": 243,
+      "minimum_visible_ground_clearance": 14.48354746993335,
+      "source_events": [
+        {
+          "kind": "start",
+          "contextSeconds": 1.5546666666666666,
+          "offsetSeconds": 0
+        }
+      ],
+      "completion_events": [
+        {
+          "kind": "graph_end",
+          "contextSeconds": 221.224,
+          "presentedContextSeconds": 221.17159899999402
+        },
+        {
+          "kind": "presented_end",
+          "contextSeconds": 221.26933333333332,
+          "presentedContextSeconds": 221.22288866667262
+        }
+      ],
+      "recording_backend": "Headless hardware ANGLE/NVIDIA, real renderer and original bitrates; not native foreground/device approval",
+      "errors": []
+    }
+  ],
+  "scope": "Current source/runtime/recorder hashes; uninterrupted sample-zero full219.66579s song, destination-presented tail, eight-second return and two12s idle periods with no automatic source loop, fixed post-song pose and no live scenery owners. Real master-output VP9/Opus media. Headless hardware captures are separate from native foreground/device evidence. RAF is not GPU time. Canvas captures exclude DOM controls. Audio-band provenance, CPU/GPU periodic geometry, OFF and depth receipts are separate. These checks do not approve semantic listening, continuous perceptual quality, physical device/AV or formal flash safety."
+}

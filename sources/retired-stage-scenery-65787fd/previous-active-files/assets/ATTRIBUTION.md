@@ -1,0 +1,3 @@
+Current credits: sources/LIGHTS_REFINEMENT_CREDITS.md, public/licenses and analysis/provenance.json. Historical owned/source records are retained in sources. Runtime uses original geometry/GLSL and the owned Instrument Sans/font/UI port; no reference or generated imagery. The exact supplied MP3 remains local-review media with independent redistribution rights unverified.
+
+Current projected landscape credits: public/licenses/Projected-Landscapes.txt and sources/projected-landscapes-record.md; seven supplied original baked GLBs, byte-bound runtime manifest. Studio Lemercier and Polyfauna research is not a runtime asset licence.

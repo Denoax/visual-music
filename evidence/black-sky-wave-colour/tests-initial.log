@@ -1,0 +1,888 @@
+
+> bumer-exe@0.1.0 test
+> node --test core/*.test.mjs && node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: scheduled start holds the source offset until the audio start
+ok 1 - scheduled start holds the source offset until the audio start
+  ---
+  duration_ms: 0.664892
+  type: 'test'
+  ...
+# Subtest: sampling clamps at the actual decoded track ending
+ok 2 - sampling clamps at the actual decoded track ending
+  ---
+  duration_ms: 0.159802
+  type: 'test'
+  ...
+# Subtest: output timestamp mapping accounts for an audible position behind graph time
+ok 3 - output timestamp mapping accounts for an audible position behind graph time
+  ---
+  duration_ms: 0.75471
+  type: 'test'
+  ...
+# Subtest: positive measured lead advances sampling exactly once
+ok 4 - positive measured lead advances sampling exactly once
+  ---
+  duration_ms: 0.11483
+  type: 'test'
+  ...
+# Subtest: stale, zero-initialized and implausible timestamps report fallback quality
+ok 5 - stale, zero-initialized and implausible timestamps report fallback quality
+  ---
+  duration_ms: 0.19249
+  type: 'test'
+  ...
+# Subtest: pause samples an explicit frozen position regardless of elapsed wall time
+ok 6 - pause samples an explicit frozen position regardless of elapsed wall time
+  ---
+  duration_ms: 0.319006
+  type: 'test'
+  ...
+# Subtest: seek and replay reconstruct from a new anchor without historical accumulation
+ok 7 - seek and replay reconstruct from a new anchor without historical accumulation
+  ---
+  duration_ms: 0.178719
+  type: 'test'
+  ...
+# Subtest: sparse and dense render schedules end at the same song position
+ok 8 - sparse and dense render schedules end at the same song position
+  ---
+  duration_ms: 0.112513
+  type: 'test'
+  ...
+# Subtest: section boundaries are unambiguous when seeking backwards or forwards
+ok 9 - section boundaries are unambiguous when seeking backwards or forwards
+  ---
+  duration_ms: 0.482333
+  type: 'test'
+  ...
+# Subtest: pulse peaks on the reviewed marker and is independent of playback history
+ok 10 - pulse peaks on the reviewed marker and is independent of playback history
+  ---
+  duration_ms: 0.460075
+  type: 'test'
+  ...
+# Subtest: invalid numerical anchors and offsets are rejected
+ok 11 - invalid numerical anchors and offsets are rejected
+  ---
+  duration_ms: 0.224258
+  type: 'test'
+  ...
+# Subtest: true OFF emitter stays exactly zero across core, shoulder, halo and LOD weights
+ok 12 - true OFF emitter stays exactly zero across core, shoulder, halo and LOD weights
+  ---
+  duration_ms: 3.501876
+  type: 'test'
+  ...
+# Subtest: brightness scaling remains linear for colored and near-white emitters
+ok 13 - brightness scaling remains linear for colored and near-white emitters
+  ---
+  duration_ms: 0.533516
+  type: 'test'
+  ...
+# Subtest: halo profile is bounded and vanishes at sprite boundary
+ok 14 - halo profile is bounded and vanishes at sprite boundary
+  ---
+  duration_ms: 0.414334
+  type: 'test'
+  ...
+# Subtest: fog attenuates monotonically, no negative-distance lift
+ok 15 - fog attenuates monotonically, no negative-distance lift
+  ---
+  duration_ms: 0.381364
+  type: 'test'
+  ...
+# Subtest: sky background stays exactly black in every direction at any cue gain
+ok 16 - sky background stays exactly black in every direction at any cue gain
+  ---
+  duration_ms: 0.311704
+  type: 'test'
+  ...
+# Subtest: visual return uses presented end age and does not alter the song phase
+ok 17 - visual return uses presented end age and does not alter the song phase
+  ---
+  duration_ms: 0.266732
+  type: 'test'
+  ...
+# Subtest: idle field and signals match value and first derivative at the period seam
+ok 18 - idle field and signals match value and first derivative at the period seam
+  ---
+  duration_ms: 0.305263
+  type: 'test'
+  ...
+# Subtest: reduced-motion idle is time invariant
+ok 19 - reduced-motion idle is time invariant
+  ---
+  duration_ms: 0.14414
+  type: 'test'
+  ...
+# Subtest: pattern repeats far beyond the old +/-24 m square in positive and negative world space
+ok 20 - pattern repeats far beyond the old +/-24 m square in positive and negative world space
+  ---
+  duration_ms: 0.464283
+  type: 'test'
+  ...
+# Subtest: one global rotation changes spatial orientation everywhere, preserving wave/fixture positions
+ok 21 - one global rotation changes spatial orientation everywhere, preserving wave/fixture positions
+  ---
+  duration_ms: 0.129112
+  type: 'test'
+  ...
+# Subtest: stable negative IDs, mirror wings and nested 3m/1.5m common cells agree
+ok 22 - stable negative IDs, mirror wings and nested 3m/1.5m common cells agree
+  ---
+  duration_ms: 0.701762
+  type: 'test'
+  ...
+# Subtest: banks trade brightness instead of flashing the entire stage together
+ok 23 - banks trade brightness instead of flashing the entire stage together
+  ---
+  duration_ms: 1.466557
+  type: 'test'
+  ...
+# Subtest: irregular clock gaps hold phase continuously; replay/seek reproduce lookup
+ok 24 - irregular clock gaps hold phase continuously; replay/seek reproduce lookup
+  ---
+  duration_ms: 0.895844
+  type: 'test'
+  ...
+# Subtest: core width quantifies why old sprites look tiny and respects hardware clamp
+ok 25 - core width quantifies why old sprites look tiny and respects hardware clamp
+  ---
+  duration_ms: 0.103455
+  type: 'test'
+  ...
+# Subtest: turning changes travel direction and constant-input route is independent of frame subdivision
+ok 26 - turning changes travel direction and constant-input route is independent of frame subdivision
+  ---
+  duration_ms: 1.901534
+  type: 'test'
+  ...
+# Subtest: board transform is invertible at negative and distant world cells; stable IDs survive window movement
+ok 27 - board transform is invertible at negative and distant world cells; stable IDs survive window movement
+  ---
+  duration_ms: 0.267827
+  type: 'test'
+  ...
+# Subtest: emitter identity locks its world origin across a large turn and retains timing
+ok 28 - emitter identity locks its world origin across a large turn and retains timing
+  ---
+  duration_ms: 0.162578
+  type: 'test'
+  ...
+# Subtest: star cell identities are deterministic, bounded, floor-safe and cover rear/side headings
+ok 29 - star cell identities are deterministic, bounded, floor-safe and cover rear/side headings
+  ---
+  duration_ms: 4.506774
+  type: 'test'
+  ...
+# Subtest: asymmetric folded support covers every corner through yaw and scale
+ok 30 - asymmetric folded support covers every corner through yaw and scale
+  ---
+  duration_ms: 1.095092
+  type: 'test'
+  ...
+# Subtest: whole-object near fade is zero before any protected support crossing
+ok 31 - whole-object near fade is zero before any protected support crossing
+  ---
+  duration_ms: 0.780114
+  type: 'test'
+  ...
+# Subtest: sweep rejects segment interior even when endpoints are safe
+ok 32 - sweep rejects segment interior even when endpoints are safe
+  ---
+  duration_ms: 0.103037
+  type: 'test'
+  ...
+# Subtest: floor dim follows Three Y rotation and cannot turn OFF bulbs on
+ok 33 - floor dim follows Three Y rotation and cannot turn OFF bulbs on
+  ---
+  duration_ms: 0.185704
+  type: 'test'
+  ...
+# Subtest: section envelopes have exact quiet boundaries and no implicit repetition
+ok 34 - section envelopes have exact quiet boundaries and no implicit repetition
+  ---
+  duration_ms: 0.203777
+  type: 'test'
+  ...
+# Subtest: heart and star masks retain symmetry, dark corners and distinct filled/outline coverage
+ok 35 - heart and star masks retain symmetry, dark corners and distinct filled/outline coverage
+  ---
+  duration_ms: 52.770986
+  type: 'test'
+  ...
+# Subtest: dense cells nest coarse members with stable negative-world identity and bounded growth
+ok 36 - dense cells nest coarse members with stable negative-world identity and bounded growth
+  ---
+  duration_ms: 2.97133
+  type: 'test'
+  ...
+# Subtest: diffuser cap has finite unit normals, bounded geometry and outward non-degenerate faces
+ok 37 - diffuser cap has finite unit normals, bounded geometry and outward non-degenerate faces
+  ---
+  duration_ms: 0.37676
+  type: 'test'
+  ...
+# Subtest: mask world coordinates are fixed to the patch, not camera position or heading
+ok 38 - mask world coordinates are fixed to the patch, not camera position or heading
+  ---
+  duration_ms: 0.084999
+  type: 'test'
+  ...
+# Subtest: ripple is born once, propagates at approved units and expires without changing the kernel
+ok 39 - ripple is born once, propagates at approved units and expires without changing the kernel
+  ---
+  duration_ms: 0.142419
+  type: 'test'
+  ...
+# Subtest: score phases drive scanning/chasing, and bounded composition preserves colour ratios
+ok 40 - score phases drive scanning/chasing, and bounded composition preserves colour ratios
+  ---
+  duration_ms: 0.141779
+  type: 'test'
+  ...
+# Subtest: scattered world chunks balance two ON/two OFF in every positive and negative2x2 patch
+ok 41 - scattered world chunks balance two ON/two OFF in every positive and negative2x2 patch
+  ---
+  duration_ms: 6.110574
+  type: 'test'
+  ...
+# Subtest: common nested cells and subcell locations share chunk identity without frame-random ownership
+ok 42 - common nested cells and subcell locations share chunk identity without frame-random ownership
+  ---
+  duration_ms: 0.632701
+  type: 'test'
+  ...
+# Subtest: exchange occurs at physical wave arrival and returns to the base state; other chunks stay unchanged
+ok 43 - exchange occurs at physical wave arrival and returns to the base state; other chunks stay unchanged
+  ---
+  duration_ms: 0.293761
+  type: 'test'
+  ...
+# Subtest: decorative exchange is bounded and deterministic with overlapping fronts and replay
+ok 44 - decorative exchange is bounded and deterministic with overlapping fronts and replay
+  ---
+  duration_ms: 1.066691
+  type: 'test'
+  ...
+# Subtest: chapter changes crossfade cells without a global black dip and preserve true OFF
+ok 45 - chapter changes crossfade cells without a global black dip and preserve true OFF
+  ---
+  duration_ms: 0.186016
+  type: 'test'
+  ...
+# Subtest: visual flow advances on song time even when beat-phase tracking holds
+ok 46 - visual flow advances on song time even when beat-phase tracking holds
+  ---
+  duration_ms: 0.092163
+  type: 'test'
+  ...
+# Subtest: cue support does not permit unsubstantiated lyric/semantic approval or another song
+ok 47 - cue support does not permit unsubstantiated lyric/semantic approval or another song
+  ---
+  duration_ms: 0.335571
+  type: 'test'
+  ...
+# Subtest: microcue envelopes and selection reconstruct identically after seeks and stay bounded
+ok 48 - microcue envelopes and selection reconstruct identically after seeks and stay bounded
+  ---
+  duration_ms: 0.296883
+  type: 'test'
+  ...
+# Subtest: chorus dispersion returns every borrowed point to its unchanged emitter at phrase boundaries
+ok 49 - chorus dispersion returns every borrowed point to its unchanged emitter at phrase boundaries
+  ---
+  duration_ms: 0.562454
+  type: 'test'
+  ...
+# Subtest: beam geometry uses three bounded planes and a zero-ended soft profile; comb loops seamlessly
+ok 50 - beam geometry uses three bounded planes and a zero-ended soft profile; comb loops seamlessly
+  ---
+  duration_ms: 0.481061
+  type: 'test'
+  ...
+# Subtest: paired raised-eye profile preserves the previous actual floor and increases gap 1.2m
+ok 51 - paired raised-eye profile preserves the previous actual floor and increases gap 1.2m
+  ---
+  duration_ms: 0.548048
+  type: 'test'
+  ...
+# Subtest: seek, pause repetition and replay give the same music-owned values
+ok 52 - seek, pause repetition and replay give the same music-owned values
+  ---
+  duration_ms: 2.527993
+  type: 'test'
+  ...
+# Subtest: A/B selection uses stable event index, not callback count
+ok 53 - A/B selection uses stable event index, not callback count
+  ---
+  duration_ms: 1.3847
+  type: 'test'
+  ...
+# Subtest: old quiet segment cannot inherit a future envelope after reverse seek
+ok 54 - old quiet segment cannot inherit a future envelope after reverse seek
+  ---
+  duration_ms: 0.57359
+  type: 'test'
+  ...
+# Subtest: sky changes much slower than local low-band breathing
+ok 55 - sky changes much slower than local low-band breathing
+  ---
+  duration_ms: 0.242182
+  type: 'test'
+  ...
+# Subtest: own motifs are deterministic, bounded and exact requested count
+ok 56 - own motifs are deterministic, bounded and exact requested count
+  ---
+  duration_ms: 1.710065
+  type: 'test'
+  ...
+# Subtest: Nearby stars keep stable world identities, bounded extents and zero-ended complete lives
+ok 57 - Nearby stars keep stable world identities, bounded extents and zero-ended complete lives
+  ---
+  duration_ms: 4.494407
+  type: 'test'
+  ...
+# Subtest: two banks have genuine OFF plateaus and swap, rather than both glowing faintly
+ok 58 - two banks have genuine OFF plateaus and swap, rather than both glowing faintly
+  ---
+  duration_ms: 2.531964
+  type: 'test'
+  ...
+# Subtest: final gate also extinguishes ring accents, halo and terrain spill
+ok 59 - final gate also extinguishes ring accents, halo and terrain spill
+  ---
+  duration_ms: 0.555883
+  type: 'test'
+  ...
+# Subtest: dropout is reproducible on pause/replay with dark and lit members across a large field
+ok 60 - dropout is reproducible on pause/replay with dark and lit members across a large field
+  ---
+  duration_ms: 4.760351
+  type: 'test'
+  ...
+# Subtest: stable bank ownership works behind origin and at common nested cells
+ok 61 - stable bank ownership works behind origin and at common nested cells
+  ---
+  duration_ms: 0.110817
+  type: 'test'
+  ...
+# Subtest: intro fades smoothly; exit cannot begin before natural presented end
+ok 62 - intro fades smoothly; exit cannot begin before natural presented end
+  ---
+  duration_ms: 0.087827
+  type: 'test'
+  ...
+# Subtest: stars genuinely disappear at both ends of their lifecycle
+ok 63 - stars genuinely disappear at both ends of their lifecycle
+  ---
+  duration_ms: 0.07095
+  type: 'test'
+  ...
+# Subtest: light ring train repeats continuously in unbounded space and phase
+ok 64 - light ring train repeats continuously in unbounded space and phase
+  ---
+  duration_ms: 0.185981
+  type: 'test'
+  ...
+# Subtest: palette is bounded linear RGB, neutral white stays neutral, hue wraps cleanly
+ok 65 - palette is bounded linear RGB, neutral white stays neutral, hue wraps cleanly
+  ---
+  duration_ms: 1.010249
+  type: 'test'
+  ...
+# Subtest: stable camera pocket protects the COMPLETE triangle containing the view
+ok 66 - stable camera pocket protects the COMPLETE triangle containing the view
+  ---
+  duration_ms: 0.620949
+  type: 'test'
+  ...
+# Subtest: clearance pocket leaves far approved waves intact and has a smooth spatial exit
+ok 67 - clearance pocket leaves far approved waves intact and has a smooth spatial exit
+  ---
+  duration_ms: 0.200928
+  type: 'test'
+  ...
+# Subtest: coarse quad strokes omit both diagonals and mid-cell fine strokes during LOD handover
+ok 68 - coarse quad strokes omit both diagonals and mid-cell fine strokes during LOD handover
+  ---
+  duration_ms: 1.611815
+  type: 'test'
+  ...
+# Subtest: production speed drops55 percent while altitude and lens stay unchanged
+ok 69 - production speed drops55 percent while altitude and lens stay unchanged
+  ---
+  duration_ms: 0.863275
+  type: 'test'
+  ...
+# Subtest: M1 ramps gently, is bounded at1.2 and releases without a speed jump
+ok 70 - M1 ramps gently, is bounded at1.2 and releases without a speed jump
+  ---
+  duration_ms: 0.754093
+  type: 'test'
+  ...
+# Subtest: exponential held response agrees across frame subdivisions
+ok 71 - exponential held response agrees across frame subdivisions
+  ---
+  duration_ms: 0.391393
+  type: 'test'
+  ...
+# Subtest: fine-grid membership prepares before visibility and fades across12s
+ok 72 - fine-grid membership prepares before visibility and fades across12s
+  ---
+  duration_ms: 0.761467
+  type: 'test'
+  ...
+# Subtest: terrain/cap reveal stays dark below full physical support and has no7s step
+ok 73 - terrain/cap reveal stays dark below full physical support and has no7s step
+  ---
+  duration_ms: 0.194717
+  type: 'test'
+  ...
+# Subtest: loading cannot finish from elapsed time alone or before all real tasks
+ok 74 - loading cannot finish from elapsed time alone or before all real tasks
+  ---
+  duration_ms: 0.424315
+  type: 'test'
+  ...
+# Subtest: cached loading still respects the deliberate minimum presentation
+ok 75 - cached loading still respects the deliberate minimum presentation
+  ---
+  duration_ms: 0.187832
+  type: 'test'
+  ...
+# Subtest: stale load completion cannot arm a retried page
+ok 76 - stale load completion cannot arm a retried page
+  ---
+  duration_ms: 0.068517
+  type: 'test'
+  ...
+# Subtest: native Continue is one-shot while pending; a rejected unlock returns ready
+ok 77 - native Continue is one-shot while pending; a rejected unlock returns ready
+  ---
+  duration_ms: 0.196988
+  type: 'test'
+  ...
+# Subtest: ball joins the rail continuously and settles on the button
+ok 78 - ball joins the rail continuously and settles on the button
+  ---
+  duration_ms: 0.231435
+  type: 'test'
+  ...
+# Subtest: only presented completion can drive the black thank-you page
+ok 79 - only presented completion can drive the black thank-you page
+  ---
+  duration_ms: 0.124338
+  type: 'test'
+  ...
+# Subtest: confetti is deterministic, bounded, finite and stops
+ok 80 - confetti is deterministic, bounded, finite and stops
+  ---
+  duration_ms: 0.502791
+  type: 'test'
+  ...
+# Subtest: musical button plans share a key and keep partial energy bounded
+ok 81 - musical button plans share a key and keep partial energy bounded
+  ---
+  duration_ms: 0.32821
+  type: 'test'
+  ...
+# Subtest: tones reuse the injected graph, respect mute and bound overlap without stealing voices
+ok 82 - tones reuse the injected graph, respect mute and bound overlap without stealing voices
+  ---
+  duration_ms: 0.66181
+  type: 'test'
+  ...
+# Subtest: Continue chime can follow a Settings note immediately without being throttled
+ok 83 - Continue chime can follow a Settings note immediately without being throttled
+  ---
+  duration_ms: 0.270932
+  type: 'test'
+  ...
+# Subtest: flat floor gives exact radius at negative, positive and seam positions
+ok 84 - flat floor gives exact radius at negative, positive and seam positions
+  ---
+  duration_ms: 1.651672
+  type: 'test'
+  ...
+# Subtest: planar slopes require full-body support, not centre height plus radius
+ok 85 - planar slopes require full-body support, not centre height plus radius
+  ---
+  duration_ms: 0.791009
+  type: 'test'
+  ...
+# Subtest: off-centre sharp crest would penetrate naive centre-height placement
+ok 86 - off-centre sharp crest would penetrate naive centre-height placement
+  ---
+  duration_ms: 0.635998
+  type: 'test'
+  ...
+# Subtest: support is continuous across a cell seam and triangle diagonal
+ok 87 - support is continuous across a cell seam and triangle diagonal
+  ---
+  duration_ms: 0.326847
+  type: 'test'
+  ...
+# Subtest: dense independent disk sampling never exceeds analytic support
+ok 88 - dense independent disk sampling never exceeds analytic support
+  ---
+  duration_ms: 23.696866
+  type: 'test'
+  ...
+# Subtest: old trail segment clearance must be recomputed when a hill rises in its middle
+ok 89 - old trail segment clearance must be recomputed when a hill rises in its middle
+  ---
+  duration_ms: 0.218198
+  type: 'test'
+  ...
+# Subtest: All seeded tiers clear the maximum rising terrain, full sprite and conservative post-filter support
+ok 90 - All seeded tiers clear the maximum rising terrain, full sprite and conservative post-filter support
+  ---
+  duration_ms: 14.053974
+  type: 'test'
+  ...
+# Subtest: DPR and hardware clamps cannot enlarge a visible point beyond its declared world radius
+ok 91 - DPR and hardware clamps cannot enlarge a visible point beyond its declared world radius
+  ---
+  duration_ms: 0.277077
+  type: 'test'
+  ...
+1..91
+# tests 91
+# suites 0
+# pass 91
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 94.631322
+TAP version 13
+# Subtest: Actual route, forecast and snapshots use the same 45-percent policy while altitude and lens retain the score
+ok 1 - Actual route, forecast and snapshots use the same 45-percent policy while altitude and lens retain the score
+  ---
+  duration_ms: 109.670672
+  type: 'test'
+  ...
+# Subtest: Every real density entry and exit is continuous and retains membership during retirement
+ok 2 - Every real density entry and exit is continuous and retains membership during retirement
+  ---
+  duration_ms: 0.657588
+  type: 'test'
+  ...
+# Subtest: Full turn travels off the original rail and visible origins never follow it
+ok 3 - Full turn travels off the original rail and visible origins never follow it
+  ---
+  duration_ms: 43.882885
+  type: 'test'
+  ...
+# Subtest: A multi-second stall preserves the interactive path, reduced toggles retain position, and snapshots recover exactly
+ok 4 - A multi-second stall preserves the interactive path, reduced toggles retain position, and snapshots recover exactly
+  ---
+  duration_ms: 17.327846
+  type: 'test'
+  ...
+# Subtest: Scored aligned rests restore every member and identity while the separate candidate pulse envelope breathes
+ok 5 - Scored aligned rests restore every member and identity while the separate candidate pulse envelope breathes
+  ---
+  duration_ms: 9.765168
+  type: 'test'
+  ...
+# Subtest: read-only landscape prediction leaves the camera owner and locked waves unchanged
+ok 6 - read-only landscape prediction leaves the camera owner and locked waves unchanged
+  ---
+  duration_ms: 35.38211
+  type: 'test'
+  ...
+# Subtest: continuous musical flow advances through the former phase gap; chapter changes cannot produce a master blackout
+ok 7 - continuous musical flow advances through the former phase gap; chapter changes cannot produce a master blackout
+  ---
+  duration_ms: 6.935801
+  type: 'test'
+  ...
+# Subtest: microfeatures reject the wrong recording and invalid channels; sampling is deterministic
+ok 8 - microfeatures reject the wrong recording and invalid channels; sampling is deterministic
+  ---
+  duration_ms: 5.252119
+  type: 'test'
+  ...
+# Subtest: paint anchor survives advancing origins and round-trips context recovery
+ok 9 - paint anchor survives advancing origins and round-trips context recovery
+  ---
+  duration_ms: 0.350454
+  type: 'test'
+  ...
+# Subtest: musical points and complete ribbon strips clear CURRENT terrain and reconstruct after pause/context recovery
+ok 10 - musical points and complete ribbon strips clear CURRENT terrain and reconstruct after pause/context recovery
+  ---
+  duration_ms: 19.063921
+  type: 'test'
+  ...
+# Subtest: decorative driver budget never evicts a live crest; physical fronts remain untouched
+ok 11 - decorative driver budget never evicts a live crest; physical fronts remain untouched
+  ---
+  duration_ms: 49.289913
+  type: 'test'
+  ...
+# Subtest: Every whole diffuser and housing face follows one rendered terrain triangle, including fine and negative cells
+ok 12 - Every whole diffuser and housing face follows one rendered terrain triangle, including fine and negative cells
+  ---
+  duration_ms: 19.296483
+  type: 'test'
+  ...
+# Subtest: The score retains stable rests, local wave chunks, ordered palettes and layered fades through the full tail
+ok 13 - The score retains stable rests, local wave chunks, ordered palettes and layered fades through the full tail
+  ---
+  duration_ms: 21.271294
+  type: 'test'
+  ...
+# Subtest: Fine LEDs remain nested with stable world identities and never change physical 3m spacing
+ok 14 - Fine LEDs remain nested with stable world identities and never change physical 3m spacing
+  ---
+  duration_ms: 2.672457
+  type: 'test'
+  ...
+# Subtest: Actual foreground batches keep complete nested coverage through tile crossings and retire dense cells on replay
+ok 15 - Actual foreground batches keep complete nested coverage through tile crossings and retire dense cells on replay
+  ---
+  duration_ms: 416.775319
+  type: 'test'
+  ...
+# Subtest: Diffuser and housing triangles have outward winding consistent with their authored normals
+ok 16 - Diffuser and housing triangles have outward winding consistent with their authored normals
+  ---
+  duration_ms: 0.564473
+  type: 'test'
+  ...
+# Subtest: Dense detail follows the visible ground across diagonal crossings and retains nested world identities
+ok 17 - Dense detail follows the visible ground across diagonal crossings and retains nested world identities
+  ---
+  duration_ms: 114.960305
+  type: 'test'
+  ...
+# Subtest: ordinary song surface remains the canonical raw vertices and triangles
+ok 18 - ordinary song surface remains the canonical raw vertices and triangles
+  ---
+  duration_ms: 1.758832
+  type: 'test'
+  ...
+# Subtest: return preserves the last field, drains fronts, remains bounded and joins periodic idle smoothly
+ok 19 - return preserves the last field, drains fronts, remains bounded and joins periodic idle smoothly
+  ---
+  duration_ms: 4.162086
+  type: 'test'
+  ...
+# Subtest: reduced idle is static on the same rendered terrain surface
+ok 20 - reduced idle is static on the same rendered terrain surface
+  ---
+  duration_ms: 0.159624
+  type: 'test'
+  ...
+# Subtest: Diagnostic reference owner matches the original source-score neutral rig and freezes route through the whole delayed opening
+ok 21 - Diagnostic reference owner matches the original source-score neutral rig and freezes route through the whole delayed opening
+  ---
+  duration_ms: 104.942033
+  type: 'test'
+  ...
+# Subtest: Every reference shot and maximum turbo clears the complete raw terrain and mounted fixtures after intro visibility
+ok 22 - Every reference shot and maximum turbo clears the complete raw terrain and mounted fixtures after intro visibility
+  ---
+  duration_ms: 311.560013
+  type: 'test'
+  ...
+# Subtest: Held input smoothly changes turbo and travelled path; release, pause, snapshot and reduced motion retain their ownership
+ok 23 - Held input smoothly changes turbo and travelled path; release, pause, snapshot and reduced motion retain their ownership
+  ---
+  duration_ms: 10.175602
+  type: 'test'
+  ...
+# Subtest: No-input diagnostic event origins share the production route and never alter IDs, strengths or front speed
+ok 24 - No-input diagnostic event origins share the production route and never alter IDs, strengths or front speed
+  ---
+  duration_ms: 92.594246
+  type: 'test'
+  ...
+# Subtest: Reduced motion at sample zero immediately selects a safe visible stationary pose
+ok 25 - Reduced motion at sample zero immediately selects a safe visible stationary pose
+  ---
+  duration_ms: 0.377084
+  type: 'test'
+  ...
+# Subtest: Terrain picker agrees with actual independently built grid triangles
+ok 26 - Terrain picker agrees with actual independently built grid triangles
+  ---
+  duration_ms: 53.293546
+  type: 'test'
+  ...
+# Subtest: Only the exact Around the World analysis is accepted; malformed samples fail
+ok 27 - Only the exact Around the World analysis is accepted; malformed samples fail
+  ---
+  duration_ms: 9.485227
+  type: 'test'
+  ...
+# Subtest: Controls interpolate measured sample centres and become zero outside the recording
+ok 28 - Controls interpolate measured sample centres and become zero outside the recording
+  ---
+  duration_ms: 0.740243
+  type: 'test'
+  ...
+# Subtest: Repeated sessions keep source diagnostics bounded and release every stopped source
+ok 29 - Repeated sessions keep source diagnostics bounded and release every stopped source
+  ---
+  duration_ms: 6.900133
+  type: 'test'
+  ...
+# Subtest: pause/resume and seek replace sources and preserve offsets and volume
+ok 30 - pause/resume and seek replace sources and preserve offsets and volume
+  ---
+  duration_ms: 0.956842
+  type: 'test'
+  ...
+# Subtest: repeated async play cannot overlap sources and pause cancels pending start
+ok 31 - repeated async play cannot overlap sources and pause cancels pending start
+  ---
+  duration_ms: 1.392939
+  type: 'test'
+  ...
+# Subtest: obsolete source end cannot end a replacement and replay starts at zero
+ok 32 - obsolete source end cannot end a replacement and replay starts at zero
+  ---
+  duration_ms: 3.709199
+  type: 'test'
+  ...
+# Subtest: unexpected context suspension freezes at graph time
+ok 33 - unexpected context suspension freezes at graph time
+  ---
+  duration_ms: 0.994073
+  type: 'test'
+  ...
+# Subtest: invalid or oversized input does not replace the accepted buffer
+ok 34 - invalid or oversized input does not replace the accepted buffer
+  ---
+  duration_ms: 1.011921
+  type: 'test'
+  ...
+# Subtest: a mismatched encoded recording cannot replace the accepted audio buffer
+ok 35 - a mismatched encoded recording cannot replace the accepted audio buffer
+  ---
+  duration_ms: 1.121077
+  type: 'test'
+  ...
+# Subtest: the same encoded recording may decode at a different sample rate
+ok 36 - the same encoded recording may decode at a different sample rate
+  ---
+  duration_ms: 3.153336
+  type: 'test'
+  ...
+# Subtest: Unlock and decode never start music; the field gate schedules one exact offset-zero source
+ok 37 - Unlock and decode never start music; the field gate schedules one exact offset-zero source
+  ---
+  duration_ms: 1.236271
+  type: 'test'
+  ...
+# Subtest: Pause cancels a pending handoff source without consuming the recording
+ok 38 - Pause cancels a pending handoff source without consuming the recording
+  ---
+  duration_ms: 1.692598
+  type: 'test'
+  ...
+# Subtest: Direct Start is idempotent; pending unlock is cancellable; replay returns to sample zero
+ok 39 - Direct Start is idempotent; pending unlock is cancellable; replay returns to sample zero
+  ---
+  duration_ms: 2.530291
+  type: 'test'
+  ...
+# Subtest: graph completion waits for the presented tail; the end clock freezes without looping audio
+ok 40 - graph completion waits for the presented tail; the end clock freezes without looping audio
+  ---
+  duration_ms: 1.591684
+  type: 'test'
+  ...
+# Subtest: completed-song controller toggles only visual pause; a duplicate Start cannot repeat audio
+ok 41 - completed-song controller toggles only visual pause; a duplicate Start cannot repeat audio
+  ---
+  duration_ms: 0.777068
+  type: 'test'
+  ...
+# Subtest: Continue schedules exactly one sample-zero source after its chime lead; cancelled unlock schedules none
+ok 42 - Continue schedules exactly one sample-zero source after its chime lead; cancelled unlock schedules none
+  ---
+  duration_ms: 4.864161
+  type: 'test'
+  ...
+# Subtest: UI peak reservations use only the music bus, retain the longest window, and preserve user master gain
+ok 43 - UI peak reservations use only the music bus, retain the longest window, and preserve user master gain
+  ---
+  duration_ms: 1.042055
+  type: 'test'
+  ...
+# Subtest: the approved circular kernel survives as the complete first 25 seconds
+ok 44 - the approved circular kernel survives as the complete first 25 seconds
+  ---
+  duration_ms: 4.546253
+  type: 'test'
+  ...
+# Subtest: new wave shapes are distinct, bounded and carry compact-support exchanges
+ok 45 - new wave shapes are distinct, bounded and carry compact-support exchanges
+  ---
+  duration_ms: 43.759147
+  type: 'test'
+  ...
+# Subtest: event-birth shape is stable across chapter changes, seeks and replay
+ok 46 - event-birth shape is stable across chapter changes, seeks and replay
+  ---
+  duration_ms: 0.851934
+  type: 'test'
+  ...
+# Subtest: raw vertices and exact terrain triangles retain the 14m bound in every passage
+ok 47 - raw vertices and exact terrain triangles retain the 14m bound in every passage
+  ---
+  duration_ms: 77.474935
+  type: 'test'
+  ...
+# Subtest: colour phases have no discontinuity at paired-ring or crossed-ridge seams
+ok 48 - colour phases have no discontinuity at paired-ring or crossed-ridge seams
+  ---
+  duration_ms: 0.617942
+  type: 'test'
+  ...
+# Subtest: M1 is more responsive, capped, and leaves all no-input route states unchanged
+ok 49 - M1 is more responsive, capped, and leaves all no-input route states unchanged
+  ---
+  duration_ms: 6.337581
+  type: 'test'
+  ...
+# Subtest: Seeks reconstruct only live fronts; replay and pause are deterministic
+ok 50 - Seeks reconstruct only live fronts; replay and pause are deterministic
+  ---
+  duration_ms: 8.808202
+  type: 'test'
+  ...
+# Subtest: Held sections keep palette and base coverage steady as fronts advance
+ok 51 - Held sections keep palette and base coverage steady as fronts advance
+  ---
+  duration_ms: 0.299108
+  type: 'test'
+  ...
+# Subtest: A pulse creates a raised moving ring, with finite smooth lifetime
+ok 52 - A pulse creates a raised moving ring, with finite smooth lifetime
+  ---
+  duration_ms: 0.517363
+  type: 'test'
+  ...
+# Subtest: Triangle guide agrees at grid vertices, stays bounded and crosses cells continuously
+ok 53 - Triangle guide agrees at grid vertices, stays bounded and crosses cells continuously
+  ---
+  duration_ms: 140.36366
+  type: 'test'
+  ...
+1..53
+# tests 53
+# suites 0
+# pass 53
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 853.136854

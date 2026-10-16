@@ -1,0 +1,32 @@
+{
+  "technical_status": "verified_with_limits",
+  "baseline": "65787fde4d1a24ed625b1779ad43c71bd04bc43e",
+  "scope": "Remove live scenery and its floor dimming; keep floor/camera/audio/UI/stars/horizon/ending",
+  "checks": {
+    "protected": "18 guarded source/audio foundations + six extra files byte-identical",
+    "unit_integration": "119 individual tests passed outside sandbox; sandbox file-level summaries retained separately",
+    "browser": "20 distinct flows covered;19 passed in suite, then all6 affected recovery contracts passed after the ready-frame fix; original failures retained",
+    "former_scenery_sections": "No owners, model requests, borrow or masks; exact snapshots/replay",
+    "gpu": "Actual GPU OFF/emission, point/cap profiles, canonical surface and star terrain-depth receipts",
+    "production": "15 production files; no models/scenery loader/family identifiers in output",
+    "capture_binding": "67 source/runtime/recorder hashes match both current videos; every trace has no model/owner/borrow/mask",
+    "audio_band": "16/16 current renamed-capture windows >.99; minimum0.991060045, original media untouched; not lossless/listening approval.",
+    "container": "raw/indexed video+audio packets identical for both recordings",
+    "clean_archive": "Current Visual Music candidate payload hashes/CRC pass; fresh offline lockfile install/build/all119 individual tests/integrity; all15 production files match current build and owned HTTP preview. Embedded proof clean-extraction-build.json, prior pre-name proof preserved separately.",
+    "name_scope": "All14 non-HTML production payloads unchanged; HTML changes only title and Start heading.",
+    "repository_presentation": "Local desktop/portrait GFM image/UTF-8/anchors/contained-width checks pass; real-scene banner/GIF/gallery provenance verified. GitHub-ready PNG1280x640,under1MB; exact file size in source manifest."
+  },
+  "captures": "Current name-bound desktop/portrait recordings under visual-music-capture; complete song, tail, return and two idle periods, all67 source hashes verified. Preceding captures remain preserved.",
+  "material_remaining_limits": [
+    "Human continuous perceptual/listening/physical-device/AV/formal-flash approval pending",
+    "Prior native foreground ownership benchmark remains incomplete; current headless GPU/RAF measures separate",
+    "One portrait attempt interrupted at113.38s and rejected; standalone full retry passed, cause unisolated",
+    "Prior quiet-tail threshold failure preserved as historical; current16/16 audio-band check passes but Opus is lossy and physical AV unmeasured"
+  ],
+  "no_push_or_deployment": true,
+  "implementation_commit": "b2d90a61d358b84749b1e5c4839362f898d17f74",
+  "credits_commit": "ffa6a60a13cd3418b11eafaad8e7334acdeefe5e",
+  "application_name": "Visual Music",
+  "naming_commit": "41076b775a7c3be27b1867aa410a518cf2be5073",
+  "presentation": "Local README/gallery/banner and GitHub-ready1280x640 PNG; inspected portfolio + user-confirmed Kona Desktop formatting; no generated media or remote publication."
+}

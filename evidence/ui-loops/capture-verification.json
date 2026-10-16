@@ -1,0 +1,176 @@
+{
+  "status": "passed",
+  "scope": "Identity, source-zero/whole presented tail, actual-mix audio provenance, full-page record, finite ending and measured frame intervals. Digital audio correlation is not lossless fidelity, physical AV or listening approval. Software cadence is not hardware performance.",
+  "results": [
+    {
+      "view": "desktop",
+      "bytes": 77546208,
+      "sha256": "286ed96638be17e981f4d9ca6da53a5e3577e4b3a6da1e37abbd83314c53f142",
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL ES 3.2)",
+      "software": false,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "vp9",
+            "codec_type": "video",
+            "width": 1280,
+            "height": 720,
+            "nb_read_frames": "5854"
+          },
+          {
+            "index": 1,
+            "codec_name": "opus",
+            "codec_type": "audio",
+            "channels": 2,
+            "nb_read_frames": "3816"
+          }
+        ],
+        "format": {
+          "duration": "234.160000"
+        }
+      },
+      "single_source_and_complete_presented_tail": true,
+      "finite_finish_raf_zero": true,
+      "mux_packet_payloads_identical": {
+        "audio_packets": 3816,
+        "video_packets": 5854
+      },
+      "audio_windows": [
+        {
+          "source_seconds": 3,
+          "correlation": 0.9998746669595038,
+          "offset_ms": 1414.5
+        },
+        {
+          "source_seconds": 30,
+          "correlation": 0.998942648409966,
+          "offset_ms": 1414.5
+        },
+        {
+          "source_seconds": 84,
+          "correlation": 0.998686706312917,
+          "offset_ms": 1414.5
+        },
+        {
+          "source_seconds": 145,
+          "correlation": 0.9988488511117775,
+          "offset_ms": 1414.5
+        },
+        {
+          "source_seconds": 180,
+          "correlation": 0.999163764003154,
+          "offset_ms": 1414.5
+        },
+        {
+          "source_seconds": 212,
+          "correlation": 0.9992081931513317,
+          "offset_ms": 1414.5
+        },
+        {
+          "source_seconds": 218.6,
+          "correlation": 0.9966872246517279,
+          "offset_ms": 1414.5
+        },
+        {
+          "source_seconds": 219.5,
+          "correlation": 0.9933493155574108,
+          "offset_ms": 1414.25
+        }
+      ],
+      "cadence_ms": {
+        "median": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "max": 33.400000000001455
+      },
+      "av_origin_uncertainty_ms": 30
+    },
+    {
+      "view": "portrait",
+      "bytes": 32640269,
+      "sha256": "ea2d5d94b545a88a0377c7b7261d63cacc31cd8bd30c99fceac2dfdb3744188d",
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL ES 3.2)",
+      "software": false,
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "vp9",
+            "codec_type": "video",
+            "width": 390,
+            "height": 844,
+            "nb_read_frames": "5824"
+          },
+          {
+            "index": 1,
+            "codec_name": "opus",
+            "codec_type": "audio",
+            "channels": 2,
+            "nb_read_frames": "3809"
+          }
+        ],
+        "format": {
+          "duration": "232.960000"
+        }
+      },
+      "single_source_and_complete_presented_tail": true,
+      "finite_finish_raf_zero": true,
+      "mux_packet_payloads_identical": {
+        "audio_packets": 3809,
+        "video_packets": 5824
+      },
+      "audio_windows": [
+        {
+          "source_seconds": 3,
+          "correlation": 0.9998477726492088,
+          "offset_ms": 1489.1666666666667
+        },
+        {
+          "source_seconds": 30,
+          "correlation": 0.9989544223470704,
+          "offset_ms": 1489.1666666666667
+        },
+        {
+          "source_seconds": 84,
+          "correlation": 0.9988068019932611,
+          "offset_ms": 1489.1666666666667
+        },
+        {
+          "source_seconds": 145,
+          "correlation": 0.9988561963072026,
+          "offset_ms": 1489.1666666666667
+        },
+        {
+          "source_seconds": 180,
+          "correlation": 0.9991430638458825,
+          "offset_ms": 1489.1666666666667
+        },
+        {
+          "source_seconds": 212,
+          "correlation": 0.9992386734278191,
+          "offset_ms": 1489.1666666666667
+        },
+        {
+          "source_seconds": 218.6,
+          "correlation": 0.996465025074758,
+          "offset_ms": 1489.1666666666667
+        },
+        {
+          "source_seconds": 219.5,
+          "correlation": 0.9929177041417266,
+          "offset_ms": 1488.9166666666667
+        }
+      ],
+      "cadence_ms": {
+        "median": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "max": 83.30000000000291
+      },
+      "av_origin_uncertainty_ms": 26.5
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "zip_sha256": "2864aef9d59cb2233eac816eae3571208c02967cb73e7f0966c7f172c074b74b",
+  "guarded_files": 17,
+  "pack_crc_and_payload_hashes": "passed",
+  "source_baseline": "10b98cf16e18146810860dda96298507ca767b8a",
+  "publication_baseline": "69ab1308a264905dc854420b88d8308cda55a9c7",
+  "preserved_audio_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "provider_build_tests": "Historical candidate evidence only, not executor runtime approval."
+}

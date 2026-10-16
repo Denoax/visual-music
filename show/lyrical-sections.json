@@ -1,0 +1,20 @@
+{
+  "status": "Authored arrangement anchors; semantic singer/refrain timing unverified",
+  "sections": [
+    {"start":0,"end":12,"kind":0,"family":0,"name":"note-painted-opening","actor":"none"},
+    {"start":12,"end":25,"kind":2,"family":0,"name":"soft-pools","actor":"echoes"},
+    {"start":25,"end":40,"kind":1,"family":1,"name":"local-exchange","actor":"ribbon"},
+    {"start":40,"end":56,"kind":2,"family":1,"name":"circle-trains","actor":"none"},
+    {"start":56,"end":75,"kind":3,"family":2,"name":"evolving-linework","actor":"none"},
+    {"start":75,"end":94,"kind":1,"family":2,"name":"borrowed-pixel-gather","actor":"gather"},
+    {"start":94,"end":106,"kind":4,"family":4,"name":"radial-spectrum","actor":"none"},
+    {"start":106,"end":123,"kind":5,"family":4,"name":"ordered-colour-chase","actor":"none"},
+    {"start":123,"end":139,"kind":3,"family":1,"name":"crossed-beam-build","actor":"beams"},
+    {"start":139,"end":158,"kind":10,"family":0,"name":"quiet-grid-rest","actor":"none"},
+    {"start":158,"end":175,"kind":2,"family":3,"name":"growing-circles-overview","actor":"echoes"},
+    {"start":175,"end":190,"kind":1,"family":2,"name":"musical-ribbon","actor":"ribbon"},
+    {"start":190,"end":201,"kind":1,"family":1,"name":"pixel-dissolve-return","actor":"gather"},
+    {"start":201,"end":210,"kind":3,"family":3,"name":"cadence-lightwork","actor":"beams"},
+    {"start":210,"end":219.66579166666668,"kind":10,"family":0,"name":"complete-tail-grid","actor":"none"}
+  ]
+}

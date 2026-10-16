@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "base_commit": "2bc1104413576465e47ebfe4807bf03808c30b8a",
+  "status": "historical_neon_floor_superseded_by_global-lightshow.as-built.json",
+  "cursor": "removed_with_all_hooks_native_pointer_restored",
+  "sky": "black_background_no_sky_mesh_no_fog_neutral_stars",
+  "physical_wave_kernel": "byte_unchanged src/show/waves.ts",
+  "physical_spacing_m": 3,
+  "dense_led_pitch_m": 1.5,
+  "motif_mask_resolution": [
+    32,
+    32
+  ],
+  "patch_capacity": 4,
+  "patch_half_size_m": 24,
+  "patch_lifetime_max_s": 8,
+  "intro_s": 1.2,
+  "exit_s": 1.5,
+  "fixed_patch_ownership": "createFloorScore snapshot/restore; first introduction anchors position/yaw once",
+  "section_scope": "CHOREOGRAPHY.md; show/floor.ts recipes and candidate pulse birth anchors",
+  "fixture": {
+    "radius_m": 0.34,
+    "height_m": 0.24,
+    "housing_radius_m": 0.39,
+    "radial_segments": 16,
+    "rings": 4,
+    "mount_m": 0.04,
+    "desktop_budget": 768,
+    "portrait_budget": 384,
+    "complementary_lod_desktop_m": [
+      13,
+      22
+    ],
+    "complementary_lod_portrait_m": [
+      9,
+      16
+    ],
+    "vertices": 97,
+    "triangles": 144,
+    "outward_winding": "verified complete authored normals; regression passed"
+  },
+  "light": "single GLSL evaluator; separate bounded emitted RGB and low terrain spill; physical front origins/time/speed34m/s shared",
+  "terrain_registration": "same canonical terrain topology; exact affine triangle height for each nested emitter/fixture vertex; whole-face wedge proof tests; GPU audit",
+  "stars": {
+    "desktop": 392,
+    "portrait": 196,
+    "colour": "neutral",
+    "brightness_gain": 0.45
+  },
+  "clock": "existing transport visualPosition, pause freezes phase; startup regression clamp preserved",
+  "source_fidelity": "observations and adaptations in sources/neon-floor-video-match.json; no1:1 certification",
+  "approved_beats": [],
+  "human_visual_listening_device_av_approval": "pending",
+  "light_parameters": {
+    "visual_ring_width_m": 3.2,
+    "propagation_m_per_s": 34,
+    "ground_ring_gain": 0.032,
+    "pattern_ground_gain": 0.008,
+    "coverage": "min(1,retained coverage*2.6)",
+    "emitter_colour": "retained arrangement hue with saturation.96/lightness.47 in linear Three colour pipeline",
+    "physical_wave_changes": false
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "standing_skill": "$reference-led-design",
+  "status": "local_decoded_observations_and_original_adaptation_partial_fidelity",
+  "inspected_here": "All four videos decoded at native normal playback in compatible Chromium. Actual source screenshots were opened. Selected ranges sampled separately; not a full continuous viewing claim for every clip.",
+  "source_media_bundled": false,
+  "references": [
+    {
+      "video_id": "mUL3_CfD05k",
+      "url": "https://www.youtube.com/watch?v=mUL3_CfD05k",
+      "title_observed": "Amazing RGBW LED Dance Floor Effects | DMX512 Lighting Floor System | AMA GAME",
+      "publisher_observed": "AMA amusement",
+      "duration_seconds_observed": 29,
+      "visual_frames_decoded": true,
+      "visual_match_verified": false,
+      "required_motifs": [],
+      "selected_sequences": [
+        "diagonal multicolour tile washes",
+        "alternating tiled warm/cool patches"
+      ],
+      "source_time_ranges_seconds": [
+        [
+          5,
+          16
+        ],
+        [
+          20,
+          25
+        ]
+      ],
+      "observed_matrix_resolution": null,
+      "observed_contour_fill_rules": "Rectangular tile groups with smaller perimeter LEDs; gradients lie in the floor, not aerial forms.",
+      "observed_colour_order": "Blue/cyan/green across one diagonal, yellow/orange/red toward the other; later blue/violet/pink/warm tile patches.",
+      "observed_direction_repeat_timing": "Neighbouring tile colours develop across a diagonal; exact velocities/repeat cycle unmeasured.",
+      "original_implementation_files": [
+        "src/show/floor.ts",
+        "src/scene/field.ts",
+        "core/led-floor.mjs"
+      ],
+      "show_time_ranges_seconds": [
+        [
+          75,
+          106
+        ]
+      ],
+      "retiming_or_projection_changes": "Original32-cell masks /1.5m nested world samples mapped to raised3m triangles; one-time heading orientation, low-flight foreshortening and existing overview; once-anchored8s patches with1.2s entry/1.5s exit at candidate pulse births. Source stage/palette order is adapted; exact contours, complete velocity/cycle timing and pixel identity are unapproved.",
+      "current_render_output_evidence": "evidence/neon-floor/inspection-refined and final full-song captures",
+      "matching_gap": "Decoded source imagery inspected; tight1:1 cell count, contour, repeat timing and uninterrupted subjective comparison remain pending."
+    },
+    {
+      "video_id": "4ds7VpSK-K4",
+      "url": "https://www.youtube.com/watch?v=4ds7VpSK-K4",
+      "title_observed": "Mutiple Effects Magnet Digital Led Dance Floor With IPad Online Control",
+      "publisher_observed": "TOP DANCE GROUP",
+      "duration_seconds_observed": 32,
+      "visual_frames_decoded": true,
+      "visual_match_verified": false,
+      "required_motifs": [
+        "heart",
+        "star"
+      ],
+      "selected_sequences": [
+        "filled red heart on a purple/pink LED matrix",
+        "large filled five-point star with contrasting colour regions",
+        "held solid colour",
+        "sparse starlight"
+      ],
+      "source_time_ranges_seconds": [
+        [
+          0.9,
+          3
+        ],
+        [
+          4.4,
+          8
+        ],
+        [
+          16,
+          22
+        ],
+        [
+          25,
+          31.43
+        ]
+      ],
+      "observed_matrix_resolution": null,
+      "observed_contour_fill_rules": "Filled heart and five-point star with background cells still on; dense aligned rows. Supplied editable contours are retained, not traced exact source pixels.",
+      "observed_colour_order": "Heart red over muted pink/violet; star samples show green/pink and red/cyan-blue alternation; later solid pale violet then magenta, then sparse white/blue/yellow points.",
+      "observed_direction_repeat_timing": "Symbols stay centred on the board while colour regions change. Heart precedes star (roughly first3s versus4\u20138s); observed full-board solid/starlight sections are later. Source matrix resolution and exact stage durations unmeasured.",
+      "original_implementation_files": [
+        "src/show/floor.ts",
+        "src/scene/field.ts",
+        "core/led-floor.mjs"
+      ],
+      "show_time_ranges_seconds": [
+        [
+          106,
+          139
+        ],
+        [
+          158,
+          175
+        ]
+      ],
+      "retiming_or_projection_changes": "Original32-cell masks /1.5m nested world samples mapped to raised3m triangles; one-time heading orientation, low-flight foreshortening and existing overview; once-anchored8s patches with1.2s entry/1.5s exit at candidate pulse births. Source stage/palette order is adapted; exact contours, complete velocity/cycle timing and pixel identity are unapproved.",
+      "current_render_output_evidence": "evidence/neon-floor/inspection-refined and final full-song captures",
+      "matching_gap": "Decoded source imagery inspected; tight1:1 cell count, contour, repeat timing and uninterrupted subjective comparison remain pending."
+    },
+    {
+      "video_id": "z72NR_A4Zh4",
+      "url": "https://www.youtube.com/watch?v=z72NR_A4Zh4",
+      "title_observed": "Pixel Dance Floor Effects |All in one part 1|",
+      "publisher_observed": "JOY ELECTRONICS",
+      "duration_seconds_observed": 253,
+      "visual_frames_decoded": true,
+      "visual_match_verified": false,
+      "required_motifs": [],
+      "selected_sequences": [
+        "green/yellow/red equalizer columns with light tips",
+        "magenta double-cell crossbar lattice on black"
+      ],
+      "source_time_ranges_seconds": [
+        [
+          25,
+          26
+        ],
+        [
+          50,
+          51
+        ]
+      ],
+      "observed_matrix_resolution": null,
+      "observed_contour_fill_rules": "Discrete square pixels, varying-height columns; later two-pixel-wide vertical/horizontal bands with broad black interiors.",
+      "observed_colour_order": "Equalizer green lower rows, yellow middle, red upper rows and pale tips; crossbars magenta.",
+      "observed_direction_repeat_timing": "Column heights vary; crossbar motion and complete repeat timing not established by sampled ranges. One attempt to seek80s timed out; later requested sections were not inspected.",
+      "original_implementation_files": [
+        "src/show/floor.ts",
+        "src/scene/field.ts",
+        "core/led-floor.mjs"
+      ],
+      "show_time_ranges_seconds": [
+        [
+          175,
+          195
+        ],
+        [
+          139,
+          158
+        ]
+      ],
+      "retiming_or_projection_changes": "Original32-cell masks /1.5m nested world samples mapped to raised3m triangles; one-time heading orientation, low-flight foreshortening and existing overview; once-anchored8s patches with1.2s entry/1.5s exit at candidate pulse births. Source stage/palette order is adapted; exact contours, complete velocity/cycle timing and pixel identity are unapproved.",
+      "current_render_output_evidence": "evidence/neon-floor/inspection-refined and final full-song captures",
+      "matching_gap": "Decoded source imagery inspected; tight1:1 cell count, contour, repeat timing and uninterrupted subjective comparison remain pending."
+    },
+    {
+      "video_id": "-CPP69pJ6_U",
+      "url": "https://www.youtube.com/watch?v=-CPP69pJ6_U",
+      "title_observed": "Illuminated LED Pixel RGB Visualisation Dance Floor | Animations and dmx",
+      "publisher_observed": "UK Events",
+      "duration_seconds_observed": 196,
+      "visual_frames_decoded": true,
+      "visual_match_verified": false,
+      "required_motifs": [],
+      "selected_sequences": [
+        "red floor cells with warm-white diagonal bands"
+      ],
+      "source_time_ranges_seconds": [
+        [
+          5.96,
+          16
+        ]
+      ],
+      "observed_matrix_resolution": null,
+      "observed_contour_fill_rules": "Aligned discrete small points on a dark physical board; selected broad red/white band treatment.",
+      "observed_colour_order": "Predominantly red with cream/warm-white highlights in the selected passage.",
+      "observed_direction_repeat_timing": "Normal playback decoded between the inspected frames; exact band direction/velocity/repeat timings remain unmeasured. Runtime diagonal direction is an explicit adaptation, not certified copying.",
+      "original_implementation_files": [
+        "src/show/floor.ts",
+        "src/scene/field.ts",
+        "core/led-floor.mjs"
+      ],
+      "show_time_ranges_seconds": [
+        [
+          195,
+          210
+        ]
+      ],
+      "retiming_or_projection_changes": "Original32-cell masks /1.5m nested world samples mapped to raised3m triangles; one-time heading orientation, low-flight foreshortening and existing overview; once-anchored8s patches with1.2s entry/1.5s exit at candidate pulse births. Source stage/palette order is adapted; exact contours, complete velocity/cycle timing and pixel identity are unapproved.",
+      "current_render_output_evidence": "evidence/neon-floor/inspection-refined and final full-song captures",
+      "matching_gap": "Decoded source imagery inspected; tight1:1 cell count, contour, repeat timing and uninterrupted subjective comparison remain pending."
+    }
+  ],
+  "research_evidence_bundled": true,
+  "reference_frame_use": "Research evidence only; not runtime textures/assets",
+  "source_playback_evidence": "evidence/neon-floor/references/local-playback.json",
+  "source_sampling_failure": "A later seek to80s in third video timed out. First two pattern-sample logs were sealed; third25/50s screenshots were retained; no later sequence is invented.",
+  "current_scope_note": "Historical neon-floor adaptation. New global scene supersedes once-anchored patch recipes; original heart/star masks retained briefly with global repetition. Refer to sources/global-lightshow-reference-study.json."
+}

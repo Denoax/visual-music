@@ -1,0 +1,39 @@
+{
+  "technical_status": "verified_with_limits",
+  "scope": "Held boost strengthened from1.2x to2x; normal45%glide/65%turn coefficient, camera score/lens,0.45s attack and0.85s release time constants retained. Existing turbo also scales turning rate along the travelled path.",
+  "tests": {
+    "core": 100,
+    "typescript": 59,
+    "total": 159,
+    "browser": 4
+  },
+  "baseline_evidence": "before/normal-entry.json; ordinary trusted holds registered but only20%speed excess; no dropped ordinary-held input reproduced in the fresh local context.",
+  "actual_rendered_travel": {
+    "window_seconds": [
+      84.25,
+      88.25
+    ],
+    "base_metres": 111.37500000014356,
+    "held_metres": 215.5949805185726,
+    "ratio": 1.935757400837663,
+    "unchanged_lens_degrees": 30,
+    "unchanged_height_metres": 33,
+    "release_turbo_after2s": 1.0946211555330685
+  },
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL ES 3.2)",
+  "runtime_errors": [],
+  "motion_evidence": "current-silent-diagnostic.webm is17.72s normal-rate silent diagnostic with explicit84s seeks; current-normal/normal-entry-silent.webm is default-media/no-seek opening/hold/release. No full-song or actual-audio capture claim.",
+  "limits": [
+    "Opening score keeps forward speed0 through8s; reduced motion intentionally freezes travel.",
+    "Paused/Settings/pre-entry gestures still require an active canvas press; not changed by this stronger cap.",
+    "Fresh browser flags/input proof does not establish the state of the user existing tab; refresh is required.",
+    "Human perceived quality, physical-device/AV and foreground performance approval remain pending."
+  ],
+  "publication": {
+    "status": "pushed and verified",
+    "commit": "03be660aa3375a3350c0bcff45d7cb9d4ce20309",
+    "remote_main_sha": "03be660aa3375a3350c0bcff45d7cb9d4ce20309",
+    "hosting_deployment": false,
+    "previous_approval_rejection": "Historical; resolved by user continuation after the explicit pending push question."
+  }
+}

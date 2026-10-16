@@ -1,0 +1,6 @@
+src/show/waves.ts 54ms
+src/show/floor.ts 12ms (unchanged)
+src/show/arrangement.ts 9ms (unchanged)
+src/scene/field.ts 53ms
+src/scene/world.ts 16ms
+src/scene/post-surface.ts 3ms (unchanged)

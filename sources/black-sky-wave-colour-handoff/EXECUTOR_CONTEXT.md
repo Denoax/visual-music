@@ -1,0 +1,3 @@
+# Historical input versus current implementation
+
+Read/apply $reference-led-design. This directory preserves the complete supplied candidate, original hashes and provider evidence as provenance. Candidate-files are donor source, not another runtime or approved final review. The current source at repository root includes additional GPU/contract audits, formatting, current authority/capture tooling and the first-entry Pause notification repair. Do not reapply this historical patch over later work. Current authority: show/black-sky-wave-colour.as-built.json and evidence/black-sky-wave-colour. The exact original ZIP remains local, SHA2562864aef9d59cb2233eac816eae3571208c02967cb73e7f0966c7f172c074b74b.

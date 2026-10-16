@@ -1,0 +1,14 @@
+
+> bumer-exe@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 64 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                 10.39 kB │ gzip:   2.35 kB
+dist/assets/main-8umkfjPa.css    9.27 kB │ gzip:   2.80 kB
+dist/assets/main-BKnAAc0X.js   786.95 kB │ gzip: 192.40 kB
+
+✓ built in 192ms

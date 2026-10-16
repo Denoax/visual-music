@@ -1,0 +1,60 @@
+{
+  "scope": "Approved wave foundation corrected with recurring aligned grids, soft light forms and genuine low flight; room/login/SAO/boost stay retired",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "entry": "One guarded direct Start; decoded sample zero; no visual age offset",
+  "clock": "AudioTransport.visualPosition using output timestamp estimate or graph fallback; zero external calibration offset",
+  "background": "Mostly black sky; slow dark section-led horizon plus world-space near/mid/far stars",
+  "geometry": {
+    "points": 24192,
+    "spacing": 3,
+    "grid_shape": [
+      144,
+      168
+    ],
+    "depth_surface": "144x168 centered canonical lattice, 47762 black triangles; all-heading radial light fade 155-198 m before the shortest floor-window edge",
+    "emitters": "Once-locked canonical origins introduced 1.5 song-seconds before each selective event; shared by visible emitters, CPU/GLSL fronts, picking and support",
+    "wave": "Gaussian radial fronts from selected candidate event centres; 34 units/s, width 10, attack .14s, lifetime 5.6s, final fade 1.4s",
+    "active_front_capacity": 16,
+    "observed_full_event_grid_max_active": 12,
+    "bound": "14*tanh(sum/14): analytic |height|<14; GPU float rounding can reach 14. Reduced-mode gain .3.",
+    "colour": "white, local wash and held limited palette; 2.5s smooth crossfades. Held palette and base coverage constant; beat lights and waves continue."
+  },
+  "camera": {
+    "forward_units_per_song_second": 18,
+    "lateral_limit": "none: heading changes the actual travelled path",
+    "eye_gap_minimum": 3.2,
+    "guide": "Barycentric height of rendered grid triangles, 12-unit lookahead, damped follow 2.4/s plus positive-clearance guard",
+    "downward_angle_degrees": 3.96,
+    "banking": false,
+    "fov_desktop": 58,
+    "fov_portrait": 68,
+    "near_plane": 0.2,
+    "reduced_motion": "Freeze x/z/yaw, suppress tilt/bank/overview; no catch-up on release; wave amplitude .3; star emission .3",
+    "webgl_restore": "Restore camera/input-mode state; audio remains paused until deliberate resume",
+    "eye_gap_gpu_note": "3.2-unit CPU guard; sampled GPU/CPU kernel error recorded separately. Not a physical near-plane/device certification.",
+    "overview": "One C2 96 m additional lift 158\u2013162 s, return 171\u2013177 s; route advances continuously; reduced mode skips lift",
+    "max_yaw_rate_radians_per_second": 0.7,
+    "max_pitch_radians": 0.2,
+    "bank_radians": 0.04,
+    "seek_policy": "Explicit developer seek reconstructs labelled nominal no-input route; context snapshots retain interactive path/input history/fixed origins",
+    "integration": "Midpoint-filtered input and exact constant-rate planar arc in <=1/240 song-second substeps; ordinary stalls integrate rather than reset"
+  },
+  "rendering": {
+    "linear_working_colour": true,
+    "output": "Linear half-float 4x MSAA RenderPass -> quarter-size separable Gaussian -> spatial composite -> OutputPass once",
+    "halos": "Local radial halos; .13 spatial soft mix plus .055 blurred light; no temporal smear and no blur on DOM",
+    "unresolved_lights": "Fade by projected core diameter and distance; do not force bright horizon pixels",
+    "depth_testing": true,
+    "max_dpr_desktop": 1.75,
+    "max_dpr_portrait": 1.5,
+    "antialiasing": "4x composer target MSAA; default framebuffer antialias false, no redundant MSAA",
+    "materials": "Original unlit additive gradient light shells; no PMREM, environment maps, physical transmission, clearcoat or light rigs"
+  },
+  "timing_status": "Numerically filtered candidates; 255 events. No approved BPM or beats.",
+  "listening_approval": "pending",
+  "physical_device_approval": "pending",
+  "cursor_modes_asbuilt": "show/arrangement.as-built.json",
+  "pulse_track": "show/light-pulses.json: separate numerically fitted local-phase candidates plus selective quiet accents; no approved BPM/beats/listening",
+  "current_scope_note": "Historical grid-flight record; current visual authority is show/global-lightshow.as-built.json and clearance.as-built.json. Physical waves, original transport and flight remain preserved.",
+  "status": "historical_superseded_by_global-lightshow.as-built.json"
+}

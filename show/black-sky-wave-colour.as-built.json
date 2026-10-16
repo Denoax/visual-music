@@ -1,0 +1,170 @@
+{
+  "authority": "Current human four-part review, actual source and new executor evidence; no inferred listening approval",
+  "application": "Visual Music",
+  "previous_review": "10b98cf16e18146810860dda96298507ca767b8a",
+  "previous_publication": "69ab1308a264905dc854420b88d8308cda55a9c7",
+  "song": {
+    "path": "public/audio/around-the-world.mp3",
+    "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+    "decoded_seconds_previous": 219.66579166666668,
+    "exact_bytes_preserved": true,
+    "source_clock": "AudioTransport.presentation; one sample-zero music source, complete presented tail"
+  },
+  "motion": {
+    "travel": 0.45,
+    "turn": 0.65,
+    "heldTarget": 1.2,
+    "heldTau": 0.45,
+    "releaseTau": 0.85,
+    "base_route_score_sha256": "2db3fc4c9eafd850bc92f268a7d087686d545b943f180ea2cc636e49aed4d70f",
+    "fixed_origins_sha256": "a4986e93c6d14743d8fa71e8ed025f7f3be73ae8950ae595bd32a59638b41969",
+    "route_owner_sha256": "59a35e833ea38fbd5e415a9979cbf92e21ffa7694c613c0aa80e6ca957094bcb",
+    "scope": "Base camera, no-input travel/turning, lens/altitude and fixed240Hz owner unchanged. Only held attack is .45s at existing1.2x cap/.85s release."
+  },
+  "waves": {
+    "lifetime": 5.6,
+    "fade": 1.4,
+    "attack": 0.14,
+    "speed": 34,
+    "width": 10,
+    "heightBound": 14,
+    "capacity": 16,
+    "travel": 18,
+    "spacing": 3,
+    "formations": [
+      {
+        "start": 0,
+        "end": 25,
+        "name": "circle",
+        "kind": 0,
+        "angle": 0,
+        "mix": 0
+      },
+      {
+        "start": 25,
+        "end": 40,
+        "name": "oval",
+        "kind": 1,
+        "angle": 0.25,
+        "mix": 0.82
+      },
+      {
+        "start": 40,
+        "end": 56,
+        "name": "circle",
+        "kind": 0,
+        "angle": 0,
+        "mix": 0
+      },
+      {
+        "start": 56,
+        "end": 75,
+        "name": "diagonal-ridge",
+        "kind": 2,
+        "angle": -1.0471975511965976,
+        "mix": 0.84
+      },
+      {
+        "start": 75,
+        "end": 94,
+        "name": "chevron",
+        "kind": 3,
+        "angle": -1.5707963267948966,
+        "mix": 0.8
+      },
+      {
+        "start": 94,
+        "end": 106,
+        "name": "crossed-ridges",
+        "kind": 4,
+        "angle": -1.5707963267948966,
+        "mix": 0.86
+      },
+      {
+        "start": 106,
+        "end": 123,
+        "name": "paired-rings",
+        "kind": 5,
+        "angle": 0,
+        "mix": 0.85
+      },
+      {
+        "start": 123,
+        "end": 139,
+        "name": "diagonal-ridge",
+        "kind": 2,
+        "angle": -0.5235987755982988,
+        "mix": 0.86
+      },
+      {
+        "start": 139,
+        "end": 158,
+        "name": "circle",
+        "kind": 0,
+        "angle": 0,
+        "mix": 0
+      },
+      {
+        "start": 158,
+        "end": 175,
+        "name": "oval",
+        "kind": 1,
+        "angle": -0.45,
+        "mix": 0.88
+      },
+      {
+        "start": 175,
+        "end": 190,
+        "name": "chevron",
+        "kind": 3,
+        "angle": -1.5707963267948966,
+        "mix": 0.84
+      },
+      {
+        "start": 190,
+        "end": 201,
+        "name": "crossed-ridges",
+        "kind": 4,
+        "angle": -1.0471975511965976,
+        "mix": 0.8
+      },
+      {
+        "start": 201,
+        "end": "presented song end",
+        "name": "circle",
+        "kind": 0,
+        "angle": 0,
+        "mix": 0
+      }
+    ],
+    "birth": "Immutable original event.time selects [kind,cos(angle),sin(angle),mix] for its full life; old and new births overlap",
+    "shared_surface": "Same CPU rawHeight / runtime heightGLSL / exact3m triangle interpolation; nested1.5m LEDs, depth, picking, clearance and star occlusion share it; no horizontal displacement",
+    "uniform_order": "uFrontForms follows state.fronts; uLocalForms follows decorationFronts; every unused slot resets to [0,1,0,0]",
+    "exchange_support": "Exact compact normal-distance window; directional transverse Gaussian footprint is not globally compact",
+    "musical_status": "Existing section anchors retained as authored proposals; no new lyric/downbeat approval"
+  },
+  "lighting": {
+    "sky": "Black at all elevations/chapters; atmosphere/scattered additive floor term removed",
+    "emitters": "Existing discrete LEDs, local halos/spill and depth-tested stars; no new pass/object/asset",
+    "colour": "Continuous signed crest phase within existing cohesive palette rows; low/accent controls retain local envelope; white rests and core/halo/spill OFF gate remain authoritative",
+    "off_cell_optimization": "When activation*landscapeGate is exactly zero and visualPhase.x is zero, return zero emission/spill/activation before wave and palette work; no epsilon, depth or independent line-art change. Historical idle blend retains its full path.",
+    "exposure_and_physical_spacing": "unchanged"
+  },
+  "preserved": [
+    "exact MP3",
+    "silent real-readiness loading",
+    "landing ball/Play/invitation",
+    "owned portfolio glass/click animation",
+    "musical notes/Continue chime/master headroom",
+    "one Settings surface",
+    "native pointer/primary touch",
+    "pause/recovery/reduced motion",
+    "smooth terrain/dense entry",
+    "complete tail/finite black thank-you/confetti/RAF stop"
+  ],
+  "evidence": "evidence/black-sky-wave-colour; historical identities remain under their original directories",
+  "source_record": "sources/black-sky-wave-colour-source-record.md",
+  "lifecycle_verification_repair": "On first field entry, queue the existing controls refresh after RAF scheduling so Pause appears immediately; no audio clock, camera or UI animation change",
+  "boundaries": "Floor only; no room/SAO/cursor ball/trace/scenery/extra air structures/generated media. No hosting, visibility or unrelated repo/app change.",
+  "approval": "Measurements, captures and tests are technical evidence; human continuous visual/listening, physical device/AV and exact display approval remain pending."
+}

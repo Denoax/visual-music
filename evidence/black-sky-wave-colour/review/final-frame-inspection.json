@@ -1,0 +1,175 @@
+{
+  "scope": "Actual decoded full-recording frames, labelled using nearest logged presentation sample and bounded page-video epoch. No retiming or invented frames; frame inspection is not continuous motion/listening approval.",
+  "records": [
+    {
+      "view": "desktop",
+      "recordingSha256": "07c9caa07536161da8b11ade94d1af801caf00a84cc57434735f4889d0bf0ad9",
+      "contactSheet": "evidence/black-sky-wave-colour/review/final-desktop-contact.png",
+      "frames": [
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-2.png",
+          "sha256": "260256903732dec012cd9ed5cfcab360de2582b66f6e4f26e4f73045056c87f1",
+          "presentationSeconds": 2.0038296666668063,
+          "videoSeconds": 10.0925
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-28.png",
+          "sha256": "3ea2a7d88e86ee25f2657364f8c115d589bb89ac767158e778a7b702ffa5ba48",
+          "presentationSeconds": 28.227391666666527,
+          "videoSeconds": 36.33639990234375
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-43.png",
+          "sha256": "e3188b1d2a3451cf22b0cf3bb1a754c5f36955f684ab48d991ca31cfbb27c9b9",
+          "presentationSeconds": 42.7144209999999,
+          "videoSeconds": 50.82189990234375
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-59.png",
+          "sha256": "da97152822a157028e378db9371dfa5041674cd671b94a46271cbf12404bd4bc",
+          "presentationSeconds": 59.10285500000009,
+          "videoSeconds": 67.21019995117187
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-78.png",
+          "sha256": "cd0cdc1ecdeddd78a73f90d221e393f731651a7e12de98a19b1ede30c39add53",
+          "presentationSeconds": 78.12138866666658,
+          "videoSeconds": 86.22810009765625
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-97.png",
+          "sha256": "62d014063c68fadfc7143a02070e80cff44c5d1db230d02c5fb7b0358807ecfa",
+          "presentationSeconds": 97.12073466666666,
+          "videoSeconds": 105.22969995117188
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-109.png",
+          "sha256": "66d0049ebf2fd0de5c794a5d3a1caa64f7d47ffe77ba7fbeecf10edf14bff5b7",
+          "presentationSeconds": 108.89936266666682,
+          "videoSeconds": 117.01039990234375
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-126.png",
+          "sha256": "81761b99f28a691aa9cea5f87137d51c610ebb33b4c9e1644b61f93cb2662b7c",
+          "presentationSeconds": 125.95306866666652,
+          "videoSeconds": 134.06439990234375
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-142.png",
+          "sha256": "1ce7203256b46bc35721d33470684797bff57ec3163f60a596fb2013aa05a249",
+          "presentationSeconds": 142.3197733333334,
+          "videoSeconds": 150.4305
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-161.png",
+          "sha256": "8effdb042b6a0903fc322539dc1956aec998449e169d0448738c125218e855bd",
+          "presentationSeconds": 160.69236699999985,
+          "videoSeconds": 168.80460009765625
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-178.png",
+          "sha256": "2e8157edba919813fd1065559ef4fa8d67af9fe705ae5a289bc290d8be8ad9e1",
+          "presentationSeconds": 177.7480973333333,
+          "videoSeconds": 185.8595
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-193.png",
+          "sha256": "4d25d545c8cac61a3077821c85698c8ea1573f21fc9d1d7878b681a6923902de",
+          "presentationSeconds": 192.8163433333332,
+          "videoSeconds": 200.93060009765625
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-desktop-song-204.png",
+          "sha256": "d0aa3e63f994c30d8e2f0110ccdceb718bf84bf9244f55f33ec348b5ad9ae25c",
+          "presentationSeconds": 203.95109233333324,
+          "videoSeconds": 212.06439990234375
+        }
+      ]
+    },
+    {
+      "view": "portrait",
+      "recordingSha256": "09191d2947711c5274486cd5faa72b1ae7f40478ce2f5f805daa7f4f307146a0",
+      "contactSheet": "evidence/black-sky-wave-colour/review/final-portrait-contact.png",
+      "frames": [
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-2.png",
+          "sha256": "40b15d16529a52928d9e702da8a0c8914441e623bcd877f1f6c2b8db6e9fa4e1",
+          "presentationSeconds": 2.0156233333333797,
+          "videoSeconds": 9.9857001953125
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-28.png",
+          "sha256": "1d90d77d7f0393baf59c3d84b1bcb7fc181ac427e01404b80f5692e5ede9e9c6",
+          "presentationSeconds": 27.751542666666854,
+          "videoSeconds": 35.74530004882813
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-43.png",
+          "sha256": "46e630bf2186810e512ae8272680f4ad76bf6d5ee33577e8077c7714f715e0af",
+          "presentationSeconds": 42.94262100000009,
+          "videoSeconds": 50.934
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-59.png",
+          "sha256": "5b2f17bbb33c8b32dbbbc399ad0bb50c36df3010be3c8b9bff2298622f8144f0",
+          "presentationSeconds": 58.814522999999994,
+          "videoSeconds": 66.80780004882813
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-78.png",
+          "sha256": "4b2d2da6997f00629cff9cb873237d684cae7e8e8ae8d53468be3575165d617e",
+          "presentationSeconds": 77.94170100000005,
+          "videoSeconds": 85.9372001953125
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-97.png",
+          "sha256": "81b676807f9c0c42e7408a530b51ec622452edf2f5a468d519b9de62dcfcc1a4",
+          "presentationSeconds": 97.09627566666677,
+          "videoSeconds": 105.0902001953125
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-109.png",
+          "sha256": "4d2428790db6d10896e02d4e4ff22bcc3190df17b05a39bf386fb5d3c6742704",
+          "presentationSeconds": 108.99474566666683,
+          "videoSeconds": 116.99030004882812
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-126.png",
+          "sha256": "9e8a6e780a343057935cec97fb72dd775778a4e9341bdd6f371e89b6e99fb43a",
+          "presentationSeconds": 126.12339933333342,
+          "videoSeconds": 134.1202001953125
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-142.png",
+          "sha256": "58f9bae15ceeaeac8fafbc16a389816d6a1b0121b037f9be559dc0cbffb285c3",
+          "presentationSeconds": 141.9613546666667,
+          "videoSeconds": 149.9565
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-161.png",
+          "sha256": "66d6844e47eea13f33ad1d53e536254bab238491c33b5d3fca93e7f9e6355fc8",
+          "presentationSeconds": 161.06503466666686,
+          "videoSeconds": 169.06130004882812
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-178.png",
+          "sha256": "791118172214a55cc9f860de0d5b37fa2f042328ba6b6b1e9f12e6d7b4ced3f6",
+          "presentationSeconds": 178.19923899999986,
+          "videoSeconds": 186.19490014648437
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-193.png",
+          "sha256": "64479a42e0844979a9ef413320c40c127a9c84b947e23473994396349286c7bd",
+          "presentationSeconds": 193.3267323333333,
+          "videoSeconds": 201.325
+        },
+        {
+          "path": "evidence/black-sky-wave-colour/review/final-portrait-song-204.png",
+          "sha256": "7c0126c473913d779bb62f2834cab86d90c34fc81ca3d6469d3878733cfd0757",
+          "presentationSeconds": 203.89238133333328,
+          "videoSeconds": 211.88810009765626
+        }
+      ]
+    }
+  ]
+}

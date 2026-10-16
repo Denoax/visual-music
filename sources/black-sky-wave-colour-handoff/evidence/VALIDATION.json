@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "tests": {
+    "core": 91,
+    "typescript": 53,
+    "total": 144,
+    "new": 6
+  },
+  "build": "TypeScript and Vite production passed",
+  "fresh_source_application": "17 target files match the guarded candidate; git apply --check passed; repeat application is idempotent",
+  "dependencies": "Existing installation linked, direct package versions match baseline; not a fresh npm download",
+  "audio_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "audit_html_script_syntax": "node --check passed; WebGL execution NOT RUN",
+  "browser": "Could not reach local preview: ERR_CONNECTION_REFUSED. No continuous motion evidence generated here.",
+  "github": "Repository and commit API returned404. No remote changes performed.",
+  "limits": [
+    "GPU shader execution",
+    "rendered sky sampling",
+    "continuous visual/listening review",
+    "hardware performance",
+    "physical device AV"
+  ]
+}

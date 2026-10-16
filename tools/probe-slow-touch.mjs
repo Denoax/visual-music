@@ -1,0 +1,8 @@
+import {chromium} from 'playwright';import {writeFile} from 'node:fs/promises';
+const browser=await chromium.launch({headless:true,executablePath:'/home/mani/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome',args:['--no-sandbox','--enable-unsafe-swiftshader']});
+try{const page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true});await page.goto('http://127.0.0.1:4175/?dev=1');await page.locator('#start:enabled').waitFor({timeout:120000});await page.locator('#start').tap();await page.waitForFunction(()=>window.__BUMER__.lifecycle().fieldEntered);
+ await page.evaluate(()=>{window.__touchEvents=[];for(const type of ['pointerdown','pointermove','pointercancel','blur','focus'])window.addEventListener(type,e=>window.__touchEvents.push({type,target:e.target.id,button:e.button,primary:e.isPrimary,pointerId:e.pointerId,pointerType:e.pointerType}),true);});
+ const cdp=await page.context().newCDPSession(page);await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:180,y:440}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:250,y:480}]});await page.waitForTimeout(500);
+ const result=await page.evaluate(()=>({state:__BUMER__.transport.state,lifecycle:__BUMER__.lifecycle(),pointer:__BUMER__.pointer.state,events:window.__touchEvents,hit:document.elementFromPoint(180,440)?.outerHTML?.slice(0,200),open:document.querySelector('#settings').open,size:[innerWidth,innerHeight]}));console.log(JSON.stringify(result));await writeFile('evidence/slow-entry-finish/touch-probe.json',JSON.stringify(result,null,2));
+ await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});
+}finally{await browser.close();}

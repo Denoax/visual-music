@@ -1,0 +1,9 @@
+# Deliberate loading minimum
+
+The latest user asked for a3–4second minimum and a normal GitHub source push. The ring now waits at least3.5visible seconds from each load/retry before the existing0.42s Play reveal, and waits longer if real assets are still pending. Reduced motion keeps the minimum with a stationary ring and no reveal animation. Existing hidden-tab clock/reset handling is unchanged; music remains unstarted until the visitor activates Play.
+
+17focused unit checks and build/integrity passed. Five native-browser scenarios passed across final runs: cached gates/minimum, late analysis gate, short-portrait reduced-motion touch, stale audio response and in-progress decode retry. Actual ready gates completed at0.716548visible seconds while the spinner/disabled Play stayed active; the later enabled observation was4.133148s. These are polling observations, not exact transition timestamps. Boundary math is covered deterministically. Screenshots and short normal-speed browser videos remain in browser-first/browser-final.
+
+The initial late-gate test incorrectly called the developer API before it is exposed. Four other scenarios passed; the test probe was corrected to use the page clock while its gate is intentionally pending, and that path passed on its focused rerun. Initial logs/video are preserved. One obsolete unit fixture was updated from its previous3.2s sample to the exported minimum/reveal boundary.
+
+This is an incremental entry-only check. Original complete audio recordings/review ZIP under evidence/ui-loops remain immutable and historical for the old entry duration. Exact music, camera/comfort/input, floor/waves/lighting, audio transport and finite finish are unchanged. No generated media, hosting/visibility or unrelated application change. The normal source publication keeps separate Git histories and recovery refs. Current preview/source/publication byte comparisons are recorded beside this review.

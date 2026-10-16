@@ -1,0 +1,11 @@
+export type Patch = { x: number; z: number; yaw?: number; halfSize?: number };
+export type Mask = { cells: number; data: Uint8Array; outline: boolean; outlineWidth: number };
+export function motifPolygon(name: 'heart' | 'star'): number[][];
+export function polygonDistance(x: number,y: number,points: number[][]): number;
+export function rasterMask(points: number[][],options?: {cells?: number;outline?: boolean;outlineWidth?: number}): Mask;
+export function sampleMask(mask: Mask,u: number,v: number): number;
+export function worldToPatch(x: number,z: number,patch: Patch): {u: number;v: number};
+export function densePatchCells(patch: Patch,options?: {coarsePitch?: number;factor?: number}): {id: string;ix: number;iz: number;x: number;z: number;coarse: boolean}[];
+export function bulbCapGeometry(options?: {radius?: number;height?: number;sides?: number;rings?: number}): {positions: number[];normals: number[];indices: number[];radius: number;height: number;sides: number;rings: number};
+export function ringIntensity(x:number,z:number,front:{x:number;z:number;time:number;strength?:number},seconds:number,options?:{lifetime?:number;width?:number;speed?:number;attack?:number;fade?:number}):number;
+export function composeLight(layers:{colour:number[];intensity:number}[],maximum?:number):number[];

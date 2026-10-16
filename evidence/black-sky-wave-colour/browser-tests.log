@@ -1,0 +1,61 @@
+
+Running 10 tests using 1 worker
+
+  ✓   1 tests/browser/flight-regression.spec.ts:14:1 › Fast reversals and controls preserve the floor and native pointer without a replacement orb (6.9s)
+  ✓   2 tests/browser/flight-regression.spec.ts:59:1 › Secondary touch cancellation does not steal a primary drag; primary cancel resets safely (6.1s)
+  ✓   3 tests/browser/flight-regression.spec.ts:110:1 › Focused keyboard steers the travelled path with all-direction floor, fixed origins and stable world stars (17.1s)
+  ✘   4 tests/browser/flight-regression.spec.ts:162:1 › Regressing presentation estimates hold the interactive route rather than resetting it (12.0s)
+  ✓   5 tests/browser/site.spec.ts:18:1 › Silent real readiness, one Continue source and Settings-only music controls (4.4s)
+  ✓   6 tests/browser/site.spec.ts:62:1 › Settings keeps time running; native volume/mute, pause and focus remain usable (4.9s)
+  ✓   7 tests/browser/site.spec.ts:88:1 › Failed bytes remain retryable while graphics prepare; entry interruption never silently starts music (4.5s)
+  ✓   8 tests/browser/site.spec.ts:124:1 › WebGL restore preserves route and frozen music before deliberate resume (5.0s)
+  ✓   9 tests/browser/visual-return.spec.ts:3:1 › Presented completion fades to thank you; no ambient loop, confetti or automatic replay under reduced motion (11.4s)
+  ✘  10 tests/browser/wave-colour.spec.ts:2:1 › Real M1 ramps gently sooner, releases, cancels capture and cannot latch through Settings (11.2s)
+
+
+  1) tests/browser/flight-regression.spec.ts:162:1 › Regressing presentation estimates hold the interactive route rather than resetting it 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      178 |       }),
+      179 |     )
+    > 180 |     .toBe(true);
+          |      ^
+      181 |   const result = await page.evaluate(() => {
+      182 |     const b = (window as any).__BUMER__,
+      183 |       before = b.world.snapshot();
+        at /home/mani/Downloads/bumer-exe/tests/browser/flight-regression.spec.ts:180:6
+
+    Error Context: test-results/flight-regression-Regressi-e8b78-te-rather-than-resetting-it/error-context.md
+
+  2) tests/browser/wave-colour.spec.ts:2:1 › Real M1 ramps gently sooner, releases, cancels capture and cannot latch through Settings 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      48 |       page.evaluate(() => (window as any).__BUMER__.pointer.state.held),
+      49 |     )
+    > 50 |     .toBe(false);
+         |      ^
+      51 |   await page.mouse.up();
+      52 |   await page.locator("#settings-button").press("Enter");
+      53 |   expect(
+        at /home/mani/Downloads/bumer-exe/tests/browser/wave-colour.spec.ts:50:6
+
+    Error Context: test-results/wave-colour-Real-M1-ramps--a1ce5-nnot-latch-through-Settings/error-context.md
+
+  2 failed
+    tests/browser/flight-regression.spec.ts:162:1 › Regressing presentation estimates hold the interactive route rather than resetting it 
+    tests/browser/wave-colour.spec.ts:2:1 › Real M1 ramps gently sooner, releases, cancels capture and cannot latch through Settings 
+  8 passed (1.4m)

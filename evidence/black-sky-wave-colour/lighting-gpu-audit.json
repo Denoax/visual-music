@@ -1,0 +1,15 @@
+{
+  "mismatches": [],
+  "count": 147576,
+  "off": 80466,
+  "on": 64008,
+  "error": 4.913188296207238e-7,
+  "offEmissionMax": 0,
+  "offSpillMax": 0,
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL 4.5.0)",
+  "status": "passed",
+  "headed": true,
+  "temporaryOwnedProfile": true,
+  "requestedBackend": "hardware-angle-gl",
+  "scope": "Actual shared runtime GLSL activation and complete emission/spill at canonical positive/negative near/fine/far identities; event-born formations use matching physical and decorative metadata order; accented rings and strips enabled. Unlit housings and independent neighboring surface strips are not lamp emission. This is GPU/math evidence, not visual/listening approval."
+}

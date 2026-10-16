@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "status": "proposal_not_implemented_or_visually_approved",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "scope": "One music-driven orb and wave field; direct entry; no room or world expansion",
+  "entry": {
+    "type": "direct_start",
+    "room": false,
+    "login": false,
+    "transition_media": false,
+    "foley": false,
+    "audio_start": "decoded sample zero after one user gesture and readiness",
+    "visual_age_offset_seconds": 0
+  },
+  "background": {
+    "colour": "#000000",
+    "whole_song": true,
+    "fog_colour": "#000000",
+    "white_floor": false,
+    "sky_colour_choreography": false
+  },
+  "orbs": {
+    "opening": "white rounded centres with small soft halos",
+    "emitter_type": "larger orb within the same field",
+    "beat_response": "visible local pulse followed by expanding raised front",
+    "initial_dot_spacing_range": [
+      2.5,
+      4
+    ],
+    "density_status": "Retune for low view; no approved count or screenshot implied",
+    "world_origins": "deterministic absolute coordinates; stable on recycling/replay"
+  },
+  "wave_system": {
+    "real_height_displacement": true,
+    "shared_height_function_for_points_emitters_depth_and_camera": true,
+    "active_front_limit": 16,
+    "initial_speed_range": [
+      28,
+      42
+    ],
+    "initial_width_range": [
+      8,
+      14
+    ],
+    "initial_lifetime_range_seconds": [
+      4.5,
+      6
+    ],
+    "initial_attack_range_seconds": [
+      0.08,
+      0.16
+    ],
+    "initial_ring_height_range": [
+      3,
+      8
+    ],
+    "initial_total_peak_height_range": [
+      10,
+      16
+    ],
+    "overlap": "smooth bounded saturation",
+    "events": "reviewed kicks or explicitly unreviewed candidates; sparse softer intro accents",
+    "reconstruction": "sample only events in the lifetime window at current song position",
+    "rate_independence": true
+  },
+  "camera": {
+    "type": "damped low forward glide",
+    "eye_clearance_initial_range": [
+      3,
+      4
+    ],
+    "initial_forward_speed_range": [
+      16,
+      22
+    ],
+    "free_flight": false,
+    "room_walking": false,
+    "boost": false,
+    "banking": false,
+    "optional_lateral_steering": "bounded and damped pointer/touch input",
+    "frame_target": "nearby crests approach at eye/horizon level",
+    "clearance": "sample rendered height including events; anticipate crests; retain positive clearance without aerial framing"
+  },
+  "cursor": {
+    "decorative_trail": false,
+    "plain_ui_pointer": true
+  },
+  "colour_modes": [
+    "white",
+    "local fading wash",
+    "held limited palette"
+  ],
+  "held_palette_contract": "Palette and base coverage remain steady; terrain, fronts and beat illumination continue.",
+  "colour_bleed": "Smooth spatial overlap on fronts/patches; fade towards white outside held sections.",
+  "controls_to_preserve": [
+    "play/pause/resume",
+    "mute/volume",
+    "replay",
+    "reduced motion",
+    "audio interruption handling"
+  ],
+  "reduced_motion": "less or no automatic travel; less height; softer pulse; same musical and colour timing",
+  "clock": "existing audio presentation position, never accumulated wall/frame time",
+  "rendering": "linear working space; one output conversion; antialiased size-aware cores; bounded selective bloom; unresolved-distance fade",
+  "new_runtime_visual_assets": [],
+  "retired_active_layers": [
+    "bedroom",
+    "walk/chair/profile/login states",
+    "passage media",
+    "room Foley",
+    "white simulator floor",
+    "free flight/rush UI",
+    "decorative cursor trail"
+  ],
+  "validation_status": {
+    "website_implemented_here": false,
+    "normal_speed_motion_reviewed": false,
+    "listening_reviewed": false,
+    "physical_device_av_verified": false
+  },
+  "scope_status": "Inherited proposal for the approved wave core; old cursor/sky/mode exclusions superseded by current arrangement.as-built.json and AGENTS.md."
+}

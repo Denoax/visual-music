@@ -1,0 +1,26 @@
+{
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "source_filename": "Around the World (La La La La La)(2).mp3",
+  "ffmpeg_version": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "numpy_version": "2.3.5",
+  "decode_command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-i",
+    "<INPUT_AUDIO>",
+    "-map",
+    "0:a:0",
+    "-vn",
+    "-ac",
+    "2",
+    "-ar",
+    "48000",
+    "-f",
+    "f32le",
+    "pipe:1"
+  ],
+  "controls_channel_mix": "0.5*(L+R)",
+  "human_listening_reviewed": false,
+  "reference_visuals_generated": false
+}

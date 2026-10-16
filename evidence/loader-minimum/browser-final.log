@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/browser/loader-loop.spec.ts:8:1 › loader waits for the minimum and real tasks, stops before Play and enters once (6.8s)
+
+  1 passed (7.3s)

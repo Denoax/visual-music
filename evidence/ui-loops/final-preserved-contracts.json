@@ -1,0 +1,24 @@
+{
+  "baseline": "1c86a4d / prior sealed production source",
+  "current_seal": "runtime-identity.json",
+  "identical_files": 143,
+  "changed_files": [
+    "src/input.ts",
+    "src/main.ts",
+    "src/scene/start-glass.ts",
+    "src/style.css",
+    "core/confetti.mjs",
+    "core/loading-model.mjs",
+    "core/slow-entry.test.mjs",
+    "show/CURRENT_AUTHORITY.md",
+    "show/slow-entry-finish.as-built.json",
+    "index.html",
+    "assets/manifest.json"
+  ],
+  "added_files": [
+    "core/confetti.test.mjs",
+    "show/ui-loops.as-built.json"
+  ],
+  "no_removed_files": true,
+  "protected": "All prior camera/route/flight/comfort, terrain/wave/shader lighting, audio transport, score/analysis, exact MP3 and existing runtime assets outside listed UI edits are byte-identical. Production source inventory compared in full; added as-built overlay is metadata."
+}

@@ -1,0 +1,65 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+evidence/**/*.webm
+evidence/**/*.mp4
+evidence/lights-v2/references/
+__pycache__/
+*.pyc
+*.wav
+*.flac
+*.m4a
+*.ogg
+*.aac
+*.opus
+*.mp3
+!public/audio/around-the-world.mp3
+
+evidence/nightcore-crt/references/
+assets/source-archives/
+
+evidence/cinematic-intro/first-capture/
+evidence/cinematic-intro/second-capture/
+evidence/cinematic-intro/third-capture/
+evidence/room-exploration/first-capture/
+
+evidence/room-polish-white-field/first-capture/
+evidence/room-polish-white-field/second-capture/
+evidence/room-polish-white-field/third-capture/
+
+evidence/room-polish-white-field/fourth-capture/
+
+evidence/room-polish-white-field/fifth-capture/
+
+evidence/room-polish-white-field/sixth-capture/
+
+# Preserve local iterative visual originals; final curated receipts are committed.
+evidence/projected-landscapes/first-pass/
+evidence/projected-landscapes/tuned-pass/
+evidence/projected-landscapes/inspection-final/
+evidence/projected-landscapes/final-capture/frames/
+evidence/projected-landscapes/before-brightness-scope-fix/
+
+# Retain original visual trials locally; commit only curated final stills.
+evidence/retrowave-beauty/**/*.png
+evidence/retrowave-beauty/**/*.jpg
+
+# Preserve floor-only visual originals locally; curate final review stills.
+evidence/dance-floor-only/**/*.png
+
+# Documentation export keeps its original PNG locally; lossless WebP ships once.
+showcase/github/visual-music-banner.png
+
+showcase/github/bumer-*
+
+# Preserve temporary banner layers locally, outside committed source.
+evidence/github-publication/banner-work/
+
+# Preserve preliminary/current raw capture originals outside the curated source commit.
+evidence/slow-entry-finish/**/raw/
+evidence/slow-entry-finish/*-preliminary*/
+
+# Preserve current review media originals without adding duplicate streams to Git.
+evidence/black-sky-wave-colour/**/raw/
+evidence/black-sky-wave-colour/*-preliminary*/

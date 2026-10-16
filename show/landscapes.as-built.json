@@ -1,0 +1,66 @@
+{
+  "baseline": "3bddfb2325b056b58d327eeba9e7c29310153842",
+  "score": "show/structures.json",
+  "clock": "AudioTransport.presentation only",
+  "runtime_assets": "assets/landscapes.json + assets/manifest.json",
+  "pipeline": "Existing terrain RenderPass / SoftnessPass / shared terrain depth / original projected meshes + stars + quieter older actors / OutputPass / owned Start glass",
+  "camera_owner": "Existing flight; forecastPath is read-only",
+  "world_anchors": "introduced once along traveled current-input forecast; fixed transform until gain zero; bounded4 slots, no camera parenting",
+  "placement_depth_m": 540,
+  "scale_mountain": [
+    0.4,
+    0.4,
+    0.5,
+    0.45
+  ],
+  "scale_fin": [
+    0.5,
+    0.55
+  ],
+  "LOD": "300-420m complementary quintic; near coarse subset matches far mask; fine stroke gain introduced as near gain passes .35-.85; defining crests/vertices match but non-key facets can differ.",
+  "emergence_seconds": 2.2,
+  "phrase_attack_release_seconds": [
+    3,
+    4
+  ],
+  "root_y_m": -4,
+  "surface": "Four supplied open retrowave range/saddle GLBs and retained folded fin; no textures/transmission/reflection",
+  "projection": "Derivative-filtered masked quad wire; dark faces, traveling muted complementary light. Coarse strokes retained through handover; new fine strokes fade in. Existing fin projection material retained.",
+  "competition": "Footprint-gated local bulb/core/halo/own spill/independent ground art; older actor presence and borrowing reduced up to95% only when structural gain visible",
+  "quiet_windows": [
+    [
+      0,
+      25
+    ],
+    [
+      75,
+      94
+    ],
+    [
+      139,
+      159
+    ],
+    [
+      210,
+      219.66579166666668
+    ]
+  ],
+  "timing_status": "Authored proposal anchors retained; semantic listening and human phrase approval pending",
+  "reduced_motion": "Preserved safe stationary camera/song wave attenuation; static idle surface/banks/stars; demand-only idle rendering",
+  "recovery": "Explicit reset and snapshot/restore, persistent immutable anchors, asset preload/identity check + both side variants prewarmed",
+  "limitations": [
+    "Narrow portrait may crop approaching peaks naturally",
+    "Frame-rate introduction samples can shift anchors slightly; not identical landmark positions across devices",
+    "Open translucent surfaces intentionally reveal floor behind them; no solid-rock occlusion",
+    "Human continuous motion/listening/device/AV/formal flash approval pending"
+  ],
+  "exposure": "Normalized presence/footprint dim independent of user80\u2013140% exposure; exposure multiplies shader emission only. Older actor presence>=.05 and max floor dim<=.75. Regression fails before and passes after.",
+  "wire_css_pixels": {
+    "core": 0.72,
+    "halo": 2.6,
+    "DPR": "actual renderer ratio (capped1.5) multiplies widths"
+  },
+  "material_ownership": "Preallocated near/far mountain and fin variants per slot; both families prewarmed; shared geometry disposed once.",
+  "ambient": "Final terrain and star phase use presented end age; structures/older actors fade during return; no new landmarks or flight during idle.",
+  "geometry_hashes": "assets/landscapes.json"
+}

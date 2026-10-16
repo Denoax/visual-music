@@ -1,0 +1,48 @@
+{
+  "repository": "Denoax/portfolio",
+  "ref": "08eb0e5c1fd14b683eb4e34fee644ed41069ea90",
+  "files": [
+    {
+      "path": "src/experience/glass/GlassLayer.tsx",
+      "bytes": 18518,
+      "sha256": "4d1ea8a67e1109e5b52877980382c7ed5d276627d605efbddf7157421377bf5e",
+      "git_blob_sha": "75dcfdd5d541d1fdb5cbedac6c6d54f74e855fec"
+    },
+    {
+      "path": "src/core/glassOptics.ts",
+      "bytes": 1680,
+      "sha256": "dd70722dbf685d28808c3a7f394fc063b4358223a391081d7e82f4ed762b2981",
+      "git_blob_sha": "82faacd394f9c7f0bb0921a1533a6c6124097f0f"
+    },
+    {
+      "path": "src/experience/hub/GlassField.ts",
+      "bytes": 2581,
+      "sha256": "5166682a089b0de2c984b2496fa3959179b25472d1fbfb4fd058709d5a69e969",
+      "git_blob_sha": "5bf847bd295652d0903d5fda5eb83ab83d40f351"
+    },
+    {
+      "path": "src/audio/InterfaceAudio.ts",
+      "bytes": 16916,
+      "sha256": "a4129146f95bc10201e1c59eae0c6b87db6f1df374a548801bb1c9fb033c32f6",
+      "git_blob_sha": "bc63f0aa3ad5d456b9fd1139cccb3076135555ea"
+    },
+    {
+      "path": "src/audio/audioBank.ts",
+      "bytes": 7389,
+      "sha256": "903e6cc313ee44f2515616fe830e0dc522d29ea51c81974b437930eafcb7bc50",
+      "git_blob_sha": "c3ae0dcd5dc6cedcde9eb4ee12a63581a105ef05"
+    },
+    {
+      "path": "public/licenses/Rare-UI.txt",
+      "bytes": 1069,
+      "sha256": "462930f8d54c9e96b4de326336f499dc7da70e3e5f5d9b28adedbb0080ff9ea9",
+      "git_blob_sha": "885e745d548a86d6f31a3e3ce916362896033e20"
+    },
+    {
+      "path": "public/licenses/Rare-UI-usage.txt",
+      "bytes": 451,
+      "sha256": "cce0c61e1f3e33c40cb40f81aaf2d177fdccf9ed4d5f9fdefe57f5f4e4087d5c",
+      "git_blob_sha": "d17a6a249103cb0df58403c41eea0a614208fe4b"
+    }
+  ]
+}

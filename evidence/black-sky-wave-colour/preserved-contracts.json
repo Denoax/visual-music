@@ -1,0 +1,127 @@
+{
+  "baseline": "10b98cf16e18146810860dda96298507ca767b8a",
+  "status": "passed",
+  "files": [
+    {
+      "path": "public/audio/around-the-world.mp3",
+      "bytes": 8892231,
+      "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+      "baseline_equal": true
+    },
+    {
+      "path": "core/loading-model.mjs",
+      "bytes": 2826,
+      "sha256": "f81a2f9a54f41ac5ac07e52fcbb035792b0cdb9506630f96f007b3c8eb67b2c1",
+      "baseline_equal": true
+    },
+    {
+      "path": "core/opening-layers.mjs",
+      "bytes": 1910,
+      "sha256": "932e4a15c5291b606d6f68dcdf72183e75f8ecd76431f0fdbd1b3f37b575577d",
+      "baseline_equal": true
+    },
+    {
+      "path": "core/ui-tones.mjs",
+      "bytes": 3342,
+      "sha256": "a559521854ce1cf9fbd8ad016ffcf463decacce6958f422e06362c6fdc02ad68",
+      "baseline_equal": true
+    },
+    {
+      "path": "core/confetti.mjs",
+      "bytes": 792,
+      "sha256": "6b8e2d32b9eb4da9030ca4fd9d2d89befa93617f7c3d1ec08162ae0e54a72a3b",
+      "baseline_equal": true
+    },
+    {
+      "path": "src/audio/transport.ts",
+      "bytes": 16328,
+      "sha256": "6c736a6cc2c898c65d033f83e25e7bdb1b8d7e7e67e389569579456f47e65804",
+      "baseline_equal": true
+    },
+    {
+      "path": "src/scene/flight.ts",
+      "bytes": 7118,
+      "sha256": "59a35e833ea38fbd5e415a9979cbf92e21ffa7694c613c0aa80e6ca957094bcb",
+      "baseline_equal": true
+    },
+    {
+      "path": "src/ui/controls.ts",
+      "bytes": 1981,
+      "sha256": "6d4c0121c1566581c7f6e3577ce1bf3e566ec28990d02137fbbb6f23f8ec6fbe",
+      "baseline_equal": true
+    },
+    {
+      "path": "src/ui/glass-optics.ts",
+      "bytes": 1701,
+      "sha256": "7f25fe569ac7b68c683d5c93b179ae9d0c3083cf5c981e484f922cf386abfb80",
+      "baseline_equal": true
+    },
+    {
+      "path": "src/scene/start-glass.ts",
+      "bytes": 10612,
+      "sha256": "b82ead3a8006a6d2c64a9ff6a6347b1bbabb510db8d0f08504f122026569a2f5",
+      "baseline_equal": true
+    },
+    {
+      "path": "src/style.css",
+      "bytes": 13387,
+      "sha256": "2fb187ee7f0a02bc51f58d3a4a89b6973b0b82ee8c05d897d098b57010ee4154",
+      "baseline_equal": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 6098,
+      "sha256": "d846fd290f78f4dd17124d1defcadf76b84e28e5885521f66fe7ac743fdf7392",
+      "baseline_equal": true
+    },
+    {
+      "path": "show/camera-score.json",
+      "bytes": 4766,
+      "sha256": "2db3fc4c9eafd850bc92f268a7d087686d545b943f180ea2cc636e49aed4d70f",
+      "baseline_equal": true
+    },
+    {
+      "path": "show/camera-origins.json",
+      "bytes": 27882,
+      "sha256": "a4986e93c6d14743d8fa71e8ed025f7f3be73ae8950ae595bd32a59638b41969",
+      "baseline_equal": true
+    },
+    {
+      "path": "show/events.json",
+      "bytes": 25767,
+      "sha256": "f07c297d4c1c970d1fd91986ca86fcb35d2fb1694740830784c27e59fe8b9f7f",
+      "baseline_equal": true
+    },
+    {
+      "path": "show/lyrical-sections.json",
+      "bytes": 1494,
+      "sha256": "cf9fd8bdeca39cdb3c9b7e08963ce9ce569cd77871fe4402842685a12079b162",
+      "baseline_equal": true
+    },
+    {
+      "path": "analysis/features.json",
+      "bytes": 1933215,
+      "sha256": "ef264a3b852c3661032374697312ccab1de175f6374712ab395a6f939ea372b4",
+      "baseline_equal": true
+    },
+    {
+      "path": "analysis/mixed-microfeatures.json",
+      "bytes": 1518666,
+      "sha256": "e1a00664285c3292d0976a9e7d4b5e01a6c78c315fe0ad25c668cbdc2e7d5ab2",
+      "baseline_equal": true
+    },
+    {
+      "path": "src/input.ts",
+      "bytes": 4016,
+      "sha256": "c974d57a7514ddb909d5ad7e62db0e4f4e3505545d12a2b1983267b3f659b70e",
+      "baseline_equal": true
+    },
+    {
+      "path": "src/scene/terrain.ts",
+      "bytes": 4312,
+      "sha256": "ef10e5515879c8f4891e77691e8a39490ea6abeec5766fab0a92091640f43db2",
+      "baseline_equal": true
+    }
+  ],
+  "controller_repair": "src/main.ts changes only first-entry control notification; public Pause hidden-state regression proved on baseline and fixed without modifying the preserved transport/camera/UI modules."
+}

@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "source_files": 156,
+  "production_files": 15,
+  "source_seal_sha256": "b6f428a6d58f1a968489517158304344f030500128926b0b72c7f2ed91d24913",
+  "scope": "Separate existing publication checkout; offline lockfile installation, build,157tests and integrity; exact canonical sealed runtime and all15built bytes. No remote action."
+}

@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: production speed drops55 percent while altitude and lens stay unchanged
+ok 1 - production speed drops55 percent while altitude and lens stay unchanged
+  ---
+  duration_ms: 1.01352
+  type: 'test'
+  ...
+# Subtest: M1 ramps gently, is bounded at1.2 and releases without a speed jump
+ok 2 - M1 ramps gently, is bounded at1.2 and releases without a speed jump
+  ---
+  duration_ms: 0.725984
+  type: 'test'
+  ...
+# Subtest: exponential held response agrees across frame subdivisions
+ok 3 - exponential held response agrees across frame subdivisions
+  ---
+  duration_ms: 0.249257
+  type: 'test'
+  ...
+# Subtest: fine-grid membership prepares before visibility and fades across12s
+ok 4 - fine-grid membership prepares before visibility and fades across12s
+  ---
+  duration_ms: 0.434919
+  type: 'test'
+  ...
+# Subtest: terrain/cap reveal stays dark below full physical support and has no7s step
+ok 5 - terrain/cap reveal stays dark below full physical support and has no7s step
+  ---
+  duration_ms: 0.09999
+  type: 'test'
+  ...
+# Subtest: loading cannot finish from elapsed time alone or before all real tasks
+ok 6 - loading cannot finish from elapsed time alone or before all real tasks
+  ---
+  duration_ms: 0.189653
+  type: 'test'
+  ...
+# Subtest: cached readiness waits3.5 visible seconds before the existing reveal
+ok 7 - cached readiness waits3.5 visible seconds before the existing reveal
+  ---
+  duration_ms: 0.118175
+  type: 'test'
+  ...
+# Subtest: retry restarts the minimum visible duration without accepting stale readiness
+ok 8 - retry restarts the minimum visible duration without accepting stale readiness
+  ---
+  duration_ms: 0.088353
+  type: 'test'
+  ...
+# Subtest: stale load completion cannot arm a retried page
+ok 9 - stale load completion cannot arm a retried page
+  ---
+  duration_ms: 0.136583
+  type: 'test'
+  ...
+# Subtest: native Continue is one-shot while pending; a rejected unlock returns ready
+ok 10 - native Continue is one-shot while pending; a rejected unlock returns ready
+  ---
+  duration_ms: 0.193287
+  type: 'test'
+  ...
+# Subtest: failed loading stops spinning, stays blocked and stale completions cannot recover it
+ok 11 - failed loading stops spinning, stays blocked and stale completions cannot recover it
+  ---
+  duration_ms: 0.094859
+  type: 'test'
+  ...
+# Subtest: reduced motion keeps the minimum duration but reveals without animation
+ok 12 - reduced motion keeps the minimum duration but reveals without animation
+  ---
+  duration_ms: 0.057791
+  type: 'test'
+  ...
+# Subtest: only presented completion can drive the black thank-you page
+ok 13 - only presented completion can drive the black thank-you page
+  ---
+  duration_ms: 0.074544
+  type: 'test'
+  ...
+# Subtest: confetti is deterministic, bounded, finite and stops
+ok 14 - confetti is deterministic, bounded, finite and stops
+  ---
+  duration_ms: 0.699292
+  type: 'test'
+  ...
+# Subtest: musical button plans share a key and keep partial energy bounded
+ok 15 - musical button plans share a key and keep partial energy bounded
+  ---
+  duration_ms: 0.136743
+  type: 'test'
+  ...
+# Subtest: tones reuse the injected graph, respect mute and bound overlap without stealing voices
+ok 16 - tones reuse the injected graph, respect mute and bound overlap without stealing voices
+  ---
+  duration_ms: 0.350244
+  type: 'test'
+  ...
+# Subtest: Continue chime can follow a Settings note immediately without being throttled
+ok 17 - Continue chime can follow a Settings note immediately without being throttled
+  ---
+  duration_ms: 0.163953
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 36.767759

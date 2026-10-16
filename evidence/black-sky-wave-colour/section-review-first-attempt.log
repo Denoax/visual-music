@@ -1,0 +1,8 @@
+file:///home/mani/Downloads/bumer-exe/tools/review-wave-colour.mjs:20
+   const ownership=foregroundState(focus.address);if(ownership.ownedActive===false)throw Error('Lost native foreground during section diagnostics');
+                                                                                         ^
+
+Error: Lost native foreground during section diagnostics
+    at file:///home/mani/Downloads/bumer-exe/tools/review-wave-colour.mjs:20:90
+
+Node.js v22.23.2

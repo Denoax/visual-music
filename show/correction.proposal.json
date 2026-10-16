@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "standing_skill": "$reference-led-design",
+  "base_commit": "ac250b7bebdcb6d0d03be9a07fe673ec0c2a1cce",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "status": "correction_proposal_not_implemented_or_listening_approved",
+  "duration_seconds": 219.66579166666668,
+  "codex_listening_reviewed": false,
+  "mani_approved": false,
+  "approved_beats": [],
+  "preserve": "Approved wave kernel, amplitudes, transport, current song and useful clearance/pooling work",
+  "supersedes": [
+    "PBR marble cursor",
+    "mandatory physical glass",
+    "always-random sparse grid",
+    "gradient-only sky",
+    "glide-only fixed-Z route",
+    "ban on scene-wide optical softness"
+  ],
+  "timing": {
+    "owner": "AudioTransport.visualPosition",
+    "boundaries": "Existing candidate chapter anchors; audition and document changes",
+    "pulse_input": "analysis/pulse-review.proposal.json is a review aid, not an approved rhythm grid",
+    "wave_events": "Preserve inputs/show/events.json as selective terrain events initially"
+  },
+  "sections": [
+    {
+      "id": "opening",
+      "start_seconds": 0,
+      "end_seconds": 25,
+      "visual_treatment": "aligned_white",
+      "default_grid_membership_fraction": 1,
+      "aligned_full_grid_rest_seconds": [
+        0,
+        25
+      ],
+      "transition_seconds": 0,
+      "direction": "Full aligned white lattice; black sky with sparse soft stars. Small light cursor establishes the shared language."
+    },
+    {
+      "id": "first_rise",
+      "start_seconds": 25,
+      "end_seconds": 40,
+      "visual_treatment": "aligned_white",
+      "default_grid_membership_fraction": 1,
+      "aligned_full_grid_rest_seconds": [
+        25,
+        40
+      ],
+      "transition_seconds": 2.5,
+      "direction": "Keep the board aligned while rhythmic rows breathe. Waves retain approved coefficients."
+    },
+    {
+      "id": "led",
+      "start_seconds": 40,
+      "end_seconds": 75,
+      "visual_treatment": "moving_light_rows",
+      "default_grid_membership_fraction": 0.72,
+      "aligned_full_grid_rest_seconds": [
+        55,
+        66
+      ],
+      "transition_seconds": 2.5,
+      "direction": "Coherent row fades, thin soft contours, small board shift/angle; settle into a full grid rest."
+    },
+    {
+      "id": "sphere_hold",
+      "start_seconds": 75,
+      "end_seconds": 106,
+      "visual_treatment": "translucent_light_samples",
+      "default_grid_membership_fraction": 0.92,
+      "aligned_full_grid_rest_seconds": [
+        85,
+        102
+      ],
+      "transition_seconds": 2.5,
+      "direction": "Replace the glossy matrix with sparse small translucent gradients; grid stays legible and returns fully aligned."
+    },
+    {
+      "id": "shape_switch",
+      "start_seconds": 106,
+      "end_seconds": 139,
+      "visual_treatment": "grouped_board_shapes",
+      "default_grid_membership_fraction": 0.72,
+      "aligned_full_grid_rest_seconds": [
+        121,
+        133
+      ],
+      "transition_seconds": 2.5,
+      "direction": "Brief original shapes/row movements and alternating colours; return members to a readable full lattice."
+    },
+    {
+      "id": "glass",
+      "start_seconds": 139,
+      "end_seconds": 158,
+      "visual_treatment": "soft_light_shells",
+      "default_grid_membership_fraction": 0.88,
+      "aligned_full_grid_rest_seconds": null,
+      "transition_seconds": 2.5,
+      "direction": "Restyle the existing optical-lens slot as sparse matching translucent light shells. No actual transmission mandate."
+    },
+    {
+      "id": "overview",
+      "start_seconds": 158,
+      "end_seconds": 175,
+      "visual_treatment": "quiet_aligned_grid",
+      "default_grid_membership_fraction": 1,
+      "aligned_full_grid_rest_seconds": [
+        161,
+        171
+      ],
+      "transition_seconds": 2.5,
+      "direction": "Retain the existing brief overview only with the unified camera owner; simple grid/icon light and restrained stars."
+    },
+    {
+      "id": "bubbles",
+      "start_seconds": 175,
+      "end_seconds": 195,
+      "visual_treatment": "small_air_lights",
+      "default_grid_membership_fraction": 0.8,
+      "aligned_full_grid_rest_seconds": null,
+      "transition_seconds": 2.5,
+      "direction": "Replace shiny floating balls with small sparse translucent air lights, and visible approaching stars."
+    },
+    {
+      "id": "beams",
+      "start_seconds": 195,
+      "end_seconds": 210,
+      "visual_treatment": "soft_beam_groups",
+      "default_grid_membership_fraction": 0.94,
+      "aligned_full_grid_rest_seconds": [
+        200,
+        210
+      ],
+      "transition_seconds": 2.5,
+      "direction": "Existing few soft beam groups follow phrase/pulse anchors; full grid rest returns; no four-second modulo gate."
+    },
+    {
+      "id": "finale",
+      "start_seconds": 210,
+      "end_seconds": 214,
+      "visual_treatment": "aligned_colour_breath",
+      "default_grid_membership_fraction": 1,
+      "aligned_full_grid_rest_seconds": [
+        210,
+        214
+      ],
+      "transition_seconds": 2.5,
+      "direction": "Readable aligned grid; local coloured breaths, flying stars and steady chosen palette."
+    },
+    {
+      "id": "outro",
+      "start_seconds": 214,
+      "end_seconds": 219.66579166666668,
+      "visual_treatment": "fade",
+      "default_grid_membership_fraction": 1,
+      "aligned_full_grid_rest_seconds": null,
+      "transition_seconds": 2.5,
+      "direction": "Preserve the actual song endpoint and approved fade; no new finale or extra audio."
+    }
+  ],
+  "camera": {
+    "default_speed_units_per_second": 18,
+    "initial_max_yaw_rate_radians": 0.7,
+    "initial_max_pitch_radians": 0.2,
+    "coverage": "Centred world floor/depth tiles, all headings",
+    "event_origins": "Once-anchored registry shared by CPU/GLSL/emitter",
+    "existing_overview": "Keep subordinate; starts 158 s, returns by 177 s, follows current heading through one camera owner",
+    "reduced_motion": "No automatic travel, banking, overview lift or strong star rushing"
+  },
+  "tuning": {
+    "cursor_radius_initial": 0.55,
+    "softness_mix_initial": 0.15,
+    "softness": "Original spatial blur/glow composite before OutputPass once; no temporal smear",
+    "star_cells_initial": {
+      "cell_size": 72,
+      "radius_cells": 3,
+      "stars_per_cell_desktop": 16,
+      "stars_per_cell_portrait": 8
+    },
+    "stars": "Seeded fixed world positions; translation causes parallax; dark-space distance/near fades",
+    "objects": "Unlit gradients/alpha or additive light; depth testing; modest shared geometry; retire reflection/transmission overhead when unused"
+  },
+  "acceptance": "REVIEW.md; numeric helper/archive tests do not approve visuals, sound or native smoothness"
+}

@@ -1,0 +1,38 @@
+{
+  "technical_status": "verified_with_limits",
+  "implementation": "complete; floor-only slow entry and finite thank-you finish",
+  "checks": {
+    "core_and_typescript": 138,
+    "build": "passed",
+    "runtime_integrity": "passed",
+    "browser_flows": "5 distinct entry/settings/retry/context/finite-finish checks passed across recorded runs; short-screen native hit tests and emulated primary touch passed",
+    "source_and_preview": "152 source/asset files; all 15 production bytes match the owned HTTP preview and remote-descended publication checkout",
+    "audio": "Exact unchanged MP3; one sample-zero start per capture, complete presented tail; all 16 audio windows passed; actual-master repeated-note stress peak0.801176, 0 clipped samples; mute peak0",
+    "captures": "Both full-page uninterrupted original-pace journeys contain actual stereo master, complete song and finite thank-you/confetti settle; no seek, replacement music, retiming or quality reduction"
+  },
+  "cadence_ms": {
+    "desktop": {
+      "median": 2499.899999999998,
+      "p95": 3149.899999999994,
+      "max": 3766.5000000000036
+    },
+    "portrait": {
+      "median": 1050,
+      "p95": 1216.699999999997,
+      "max": 2083.3000000000175
+    }
+  },
+  "renderer": "ANGLE SwiftShader; native NVIDIA context initialization resource-blocked; latest read-only sample291MiB free/11662MiB used",
+  "material_limits": [
+    "Software recording/rendering is visibly low cadence and shows visual/capture lag relative to the presentation log; smoothness and exact digital/physical AV alignment are NOT approved. The final recorded tail and static thank-you frame are present.",
+    "Hardware foreground performance, physical touch/zoom/browser/device coverage, human continuous motion/listening/timbre and exact owned-portfolio optical parity remain unverified.",
+    "Song timing/event candidates were preserved, not newly approved by listening.",
+    "No hosting deployment; public Pages continues the preceding release. Hermes/portfolio/profile untouched."
+  ],
+  "recovery": [
+    "recovery/before-slow-entry-finish-20261014",
+    "recovery/publication-before-slow-entry-finish-20261014"
+  ],
+  "capture_receipt": "capture-verification.json",
+  "human_review": "pending"
+}

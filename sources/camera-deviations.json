@@ -1,0 +1,65 @@
+{
+  "status": "explicit_deviations_not_1_to_1_approval",
+  "records": [
+    {
+      "subject": "song",
+      "reference": "Ellie Goulding Lights source210s",
+      "project": "Unchanged Around the World219.6657916667s",
+      "difference": "Shot roles mapped to existing authored chapter anchors; no uniform stretch. Listening/lyric/downbeat approval pending."
+    },
+    {
+      "subject": "world scale",
+      "reference": "480/66 terrain grid, own tall terrain and large light forms",
+      "project": "One.4125 scale; canonical3m/1.5m grid, unchanged raw14m Gaussian/swell terrain and approved bulbs",
+      "difference": "Rig ratios/lens match; whole image terrain, materials and motifs differ intentionally under preservation constraint."
+    },
+    {
+      "subject": "time integration",
+      "reference": "RAF-dependent launches and forward-Euler update",
+      "project": "Nominal cues, deterministic240Hz song ticks, partial tick render interpolation",
+      "difference": "Avoids frame overshoot; motion not identical to RAF stalls. Input transitions are sampled at actual presentation boundaries; <=one fixed tick input quantization."
+    },
+    {
+      "subject": "mobile",
+      "reference": "Fixed VFOV and aspect resize, mouse source control",
+      "project": "Same VFOV with primary touch hold/drag and focused keyboard, native pointer",
+      "difference": "Touch/keyboard accessibility is an adaptation. Physical phone unverified."
+    },
+    {
+      "subject": "reduced motion",
+      "reference": "No equivalent accessibility rig",
+      "project": "Immediate stationary safe24.75m/25VFOV, no bank/turbo; same lights/audio",
+      "difference": "Intentional accessibility deviation."
+    },
+    {
+      "subject": "opening",
+      "reference": "Mesh active at phase1~7, dots/stars beforehand",
+      "project": "One shared colour/depth/cap visibility at7; independent existing dot/star reveals",
+      "difference": "Different raw terrain/reveal envelopes and cap material; no underside housing during hidden-ground opening."
+    },
+    {
+      "subject": "stars",
+      "reference": "r42 fixed4-unit particles, dense world80\u2013230 source units",
+      "project": "World33\u201394.875m, source screen-height attenuation; restrained varied near/mid/far cores and fewer cells",
+      "difference": "Soft current LED language retained; no exact brightness/density claim."
+    },
+    {
+      "subject": "coverage",
+      "reference": "Forward-aware5x5 recycled source terrain tiles",
+      "project": "Guarded all-direction1344m canonical window, radial optical fade520\u2013600m, projected nested LOD",
+      "difference": "Original implementation equivalent for complete luminous field, not copied original tiles or its distant terrain."
+    },
+    {
+      "subject": "tail",
+      "reference": "Scene ends about210s",
+      "project": "Complete219.66579 audible tail, existing presented-end2.6s outro; no song auto-loop",
+      "difference": "Current recording/transport contract authoritative."
+    },
+    {
+      "subject": "comparison capture",
+      "reference": "One uninterrupted source path retains earlier gestures",
+      "project": "Development clips explicitly reset neutral prehistory per role",
+      "difference": "Lens/altitude/tilt/speed and normalized gesture comparison; later world heading/path differs. Human continuous match unapproved."
+    }
+  ]
+}

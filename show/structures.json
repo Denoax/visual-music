@@ -1,0 +1,94 @@
+{
+  "schema": "retrowave-structures-v1",
+  "clock": "existing AudioTransport.presentation",
+  "timing_status": "existing show-section anchors; not newly auditioned lyrics or phrase proof",
+  "active_hero_limit": 1,
+  "palette": "existing authored current palette; near-white highlights, low saturation body, black rests",
+  "sections": [
+    {
+      "id": "ridge-discovery",
+      "start": 25,
+      "end": 56,
+      "family": "mountain",
+      "asset": "retro_range",
+      "max_objects": 2,
+      "scale": 0.4,
+      "repeat_distance": 420,
+      "floor_dim_max": 0.6
+    },
+    {
+      "id": "folded-passage",
+      "start": 56,
+      "end": 75,
+      "family": "fin",
+      "asset": "folded_light_fin",
+      "max_objects": 4,
+      "scale": 0.5,
+      "repeat_distance": 300,
+      "floor_dim_max": 0.55
+    },
+    {
+      "id": "split-valley",
+      "start": 94,
+      "end": 123,
+      "family": "mountain",
+      "asset": "retro_saddle",
+      "max_objects": 2,
+      "scale": 0.4,
+      "repeat_distance": 480,
+      "floor_dim_max": 0.75
+    },
+    {
+      "id": "high-contours",
+      "start": 123,
+      "end": 139,
+      "family": "mountain",
+      "asset": "retro_range",
+      "max_objects": 1,
+      "scale": 0.5,
+      "repeat_distance": 500,
+      "floor_dim_max": 0.65
+    },
+    {
+      "id": "sheets-reprise",
+      "start": 159,
+      "end": 190,
+      "family": "fin",
+      "asset": "folded_light_fin",
+      "max_objects": 4,
+      "scale": 0.55,
+      "repeat_distance": 400,
+      "floor_dim_max": 0.65
+    },
+    {
+      "id": "ridge-return",
+      "start": 190,
+      "end": 210,
+      "family": "mountain",
+      "asset": "retro_range",
+      "max_objects": 1,
+      "scale": 0.45,
+      "repeat_distance": 500,
+      "floor_dim_max": 0.7
+    }
+  ],
+  "quiet_windows": [
+    [
+      0,
+      25
+    ],
+    [
+      75,
+      94
+    ],
+    [
+      139,
+      159
+    ],
+    [
+      210,
+      219.66579166666668
+    ]
+  ],
+  "notes": "Uniform model scale and placement refined against current 25/30/40-degree camera; section timings remain authored, not listening-approved."
+}

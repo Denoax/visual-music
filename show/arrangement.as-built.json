@@ -1,0 +1,395 @@
+{
+  "schema_version": 1,
+  "standing_skill": "$reference-led-design",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "status": "historical_superseded_by_global-lightshow.as-built.json",
+  "duration_seconds": 219.66579166666668,
+  "duration_policy": "Use current measured browser decode; adjust only final endpoint. Never rescale all cues.",
+  "inherits": "f340403 approved wave engine and nine-section wave amplitudes",
+  "approved_base_visual_review": true,
+  "new_arrangement_human_approved": false,
+  "codex_listening_reviewed": false,
+  "approved_beats": [],
+  "event_input": "inputs/show/events.json",
+  "event_status": "255 numerical candidates, not a complete approved beat grid",
+  "control_policy": {
+    "clock": "AudioTransport.visualPosition",
+    "low_attack_seconds": 0.045,
+    "low_release_seconds": 0.22,
+    "high_attack_seconds": 0.025,
+    "high_release_seconds": 0.18,
+    "sky_attack_seconds": 3,
+    "sky_release_seconds": 5,
+    "global_brightness_flash": false,
+    "per_frame_randomness": false,
+    "group_alternation": "Stable selected-event index; correct events after listening where possible."
+  },
+  "sections": [
+    {
+      "id": "opening",
+      "start_seconds": 0,
+      "end_seconds": 25,
+      "mode_id": "white_waves",
+      "transition_seconds": 0,
+      "visible_floor_fraction_target": 0.52,
+      "palette_srgb": [
+        "#FFFFFF"
+      ],
+      "palette_policy": "white",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#000000",
+        "energy_gain": 0,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Approved white waves, more deliberate dark gaps, attractive rolling ball. No added spectacle in the quiet opening.",
+      "boundary_status": "candidate_anchor_needs_song_audition"
+    },
+    {
+      "id": "first_rise",
+      "start_seconds": 25,
+      "end_seconds": 40,
+      "mode_id": "white_waves",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.62,
+      "palette_srgb": [
+        "#FFFFFF"
+      ],
+      "palette_policy": "white",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#000000",
+        "energy_gain": 0,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Establish A/B breathing and emitter-to-wave causality; keep the first substantial rise white.",
+      "boundary_status": "candidate_anchor_needs_song_audition"
+    },
+    {
+      "id": "led",
+      "start_seconds": 40,
+      "end_seconds": 75,
+      "mode_id": "neo_led",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.16,
+      "palette_srgb": [
+        "#66E9FF",
+        "#667CFF"
+      ],
+      "palette_policy": "wash_then_hold",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#10152D",
+        "energy_gain": 0.18,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Contour ribbons and broken LED strips transform the topology; cool horizon arrives slowly.",
+      "boundary_status": "candidate_anchor_needs_song_audition",
+      "palette_hold_after_seconds": 55
+    },
+    {
+      "id": "sphere_hold",
+      "start_seconds": 75,
+      "end_seconds": 106,
+      "mode_id": "sphere_matrix",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.12,
+      "palette_srgb": [
+        "#E7FAFF",
+        "#65DDFF",
+        "#777BFF"
+      ],
+      "palette_policy": "held_base",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#111D2B",
+        "energy_gain": 0.18,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Smooth sphere groups with alternating local accents; layout/base colours hold while breathing continues.",
+      "boundary_status": "candidate_anchor_needs_song_audition"
+    },
+    {
+      "id": "shape_switch",
+      "start_seconds": 106,
+      "end_seconds": 139,
+      "mode_id": "colour_shapes",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.2,
+      "palette_srgb": [
+        "#62E8FF",
+        "#FF6487",
+        "#B5F865",
+        "#A082FF"
+      ],
+      "palette_policy": "paired_phrase_switch",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#22102D",
+        "energy_gain": 0.18,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Circle -> diamond -> chevron and localized paired hue changes. Do not apply four-colour cycling to everything.",
+      "boundary_status": "candidate_anchor_needs_song_audition",
+      "motif_subcues": [
+        {
+          "name": "circle",
+          "start_seconds": 106
+        },
+        {
+          "name": "diamond",
+          "start_seconds": 117
+        },
+        {
+          "name": "chevron",
+          "start_seconds": 128
+        }
+      ],
+      "subcue_status": "new_proposed_subdivisions_not_reviewed_phrases"
+    },
+    {
+      "id": "glass",
+      "start_seconds": 139,
+      "end_seconds": 158,
+      "mode_id": "liquid_glass",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.09,
+      "palette_srgb": [
+        "#FFE0AD",
+        "#EA8EB7"
+      ],
+      "palette_policy": "held_base",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#24191B",
+        "energy_gain": 0.18,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "A few optical lens/gel forms, reduced point clutter, warm stable reflections; preserve wave response.",
+      "boundary_status": "candidate_anchor_needs_song_audition"
+    },
+    {
+      "id": "icons",
+      "start_seconds": 158,
+      "end_seconds": 175,
+      "mode_id": "overview_icons",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.14,
+      "palette_srgb": [
+        "#FFFFFF",
+        "#A9ECFF"
+      ],
+      "palette_policy": "held_base",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#05080F",
+        "energy_gain": 0.18,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "temporary_overview_then_return",
+      "direction": "Short overview of original icons and UP; reduced mode uses low framing.",
+      "boundary_status": "candidate_anchor_needs_song_audition",
+      "camera_cue_id": "overview_once"
+    },
+    {
+      "id": "bubbles",
+      "start_seconds": 175,
+      "end_seconds": 191,
+      "mode_id": "air_bubbles",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.34,
+      "palette_srgb": [
+        "#75E5FF",
+        "#9B7CFF",
+        "#64EACB"
+      ],
+      "palette_policy": "paired_group_switch",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#121D30",
+        "energy_gain": 0.18,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Strong return and low camera; alternating near/mid/far bubbles breathe above hills.",
+      "boundary_status": "candidate_anchor_needs_song_audition",
+      "subcue_status": "new_175_191_allocation_requires_listening"
+    },
+    {
+      "id": "beams",
+      "start_seconds": 191,
+      "end_seconds": 207,
+      "mode_id": "rave_lights",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.24,
+      "palette_srgb": [
+        "#79E8FF",
+        "#FF83C4",
+        "#FFD68C"
+      ],
+      "palette_policy": "held_base",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#26182E",
+        "energy_gain": 0.18,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Four to six soft sky beams; authored pair aiming and dark gaps. Keep near waves/cursor visible.",
+      "boundary_status": "candidate_anchor_needs_song_audition",
+      "subcue_status": "new_191_207_allocation_requires_listening"
+    },
+    {
+      "id": "last_crest",
+      "start_seconds": 207,
+      "end_seconds": 214,
+      "mode_id": "white_waves",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.56,
+      "palette_srgb": [
+        "#9AE9FF",
+        "#C291FF"
+      ],
+      "palette_policy": "held_base",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#111B28",
+        "energy_gain": 0.18,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Full wave finale through 214; optional single secondary ribbon layer, no premature energy fade.",
+      "boundary_status": "candidate_anchor_needs_song_audition",
+      "secondary_layer": "neo_led",
+      "maximum_dominant_layers": 2
+    },
+    {
+      "id": "end",
+      "start_seconds": 214,
+      "end_seconds": 219.66579166666668,
+      "mode_id": "white_waves",
+      "transition_seconds": 2.5,
+      "visible_floor_fraction_target": 0.12,
+      "palette_srgb": [
+        "#FFFFFF"
+      ],
+      "palette_policy": "fade",
+      "sky": {
+        "zenith_srgb": "#000000",
+        "horizon_srgb": "#000000",
+        "energy_gain": 0,
+        "transition_seconds": 4
+      },
+      "waves": "preserve_base_coefficients",
+      "camera": "approved_low",
+      "direction": "Use existing final fade to actual decoded end; retire cursor glints/optional geometry smoothly.",
+      "boundary_status": "candidate_anchor_needs_song_audition",
+      "terminal_fade": {
+        "start_seconds": 214,
+        "end_seconds": 219.66579166666668
+      }
+    }
+  ],
+  "camera_cues": [
+    {
+      "id": "overview_once",
+      "basis": "User-described reference passage; our original shot at a candidate quiet range",
+      "start_seconds": 158,
+      "lift_end_seconds": 162,
+      "icons_end_seconds": 168,
+      "up_end_seconds": 171,
+      "return_start_seconds": 171,
+      "return_end_seconds": 177,
+      "overview_height_initial_units": 96,
+      "overview_tilt_initial_degrees": 72,
+      "anchor": "nominal advancing route; no freeze/catch-up",
+      "curve": "C1/C2 eased with zero-velocity endpoints",
+      "reduced_motion": "No lift or dive; render motifs ahead at approved low framing",
+      "motifs": [
+        {
+          "name": "circle",
+          "start_seconds": 162,
+          "end_seconds": 164
+        },
+        {
+          "name": "diamond",
+          "start_seconds": 164,
+          "end_seconds": 166
+        },
+        {
+          "name": "chevron",
+          "start_seconds": 166,
+          "end_seconds": 168
+        },
+        {
+          "name": "up",
+          "start_seconds": 168,
+          "end_seconds": 171
+        }
+      ],
+      "breathing_return_seconds": 175,
+      "return_accent_status": "audition and correct; do not call it a reviewed beat"
+    }
+  ],
+  "baseline_visual_approval": "f340403 accepted by current user; new modes not yet approved",
+  "asbuilt_sources": [
+    "src/show/arrangement.ts",
+    "src/scene/modes.ts",
+    "src/scene/cursor.ts",
+    "src/scene/terrain.ts",
+    "src/scene/led-geometry.ts"
+  ],
+  "actual_geometry": {
+    "ball_radius_m": 1.2,
+    "ribbon_half_width_m": 0.16,
+    "history_max": 64,
+    "history_age_s": 1.6,
+    "glints_max": 8,
+    "glint_radius_max_m": 0.28,
+    "glint_life_s": 0.7,
+    "sphere_matrix_cap": 48,
+    "air_bubbles_cap": 72,
+    "lens_cap_desktop": 3,
+    "lens_cap_portrait": 2,
+    "lens_radius_max_m": 4.5,
+    "lens_scale": [
+      1,
+      1,
+      0.55
+    ],
+    "transmission": 0.96,
+    "thickness": 2.2,
+    "ior": 1.38,
+    "opacity": 1,
+    "morph_points": 384,
+    "beam_cap": 6,
+    "beam_height_m": 90,
+    "beam_radius_m": 12,
+    "overview_additional_height_m": 96,
+    "overview_full_return_s": 177,
+    "max_solid_bounding_radius_m": 4.5,
+    "led_height_above_triangle_m": 0.16
+  },
+  "timing_approval": "unreviewed candidates; no audition facility",
+  "runtime_end_seconds": 219.66579166666668,
+  "coherence": "LED triangle clipping, stable grid-aligned rows/cell IDs with zero-radius near/far recycling, whole current sphere/trace/spark support; all depth-tested",
+  "superseded_by": "show/correction.as-built.json and sources/grid-flight-reference-record.json",
+  "historical_status": "Prior ac250b7 cursor/material/camera direction rejected; retained as history, not active authority",
+  "current_scope_note": "Historical grid-flight record; current visual authority is show/global-lightshow.as-built.json and clearance.as-built.json. Physical waves, original transport and flight remain preserved."
+}

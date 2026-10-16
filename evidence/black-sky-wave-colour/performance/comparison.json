@@ -1,0 +1,613 @@
+{
+  "status": "MEASURED_WITH_LIMITS",
+  "method": "Same-boot native foreground, unchanged production quality, neutral input, 2s warmup +4s per section, 3repeats, no recording",
+  "harnessSha256": "deacd6de6b4c6ecd6620fa360d262ebdc2aec24d7ed25c924f00fe9061595c3e",
+  "bootId": "360ffb3d-8595-4c42-acaf-a0d4b92a4791",
+  "browser": "153.0.8010.12",
+  "renderer": {
+    "available": true,
+    "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL 4.5.0)",
+    "vendor": "Google Inc. (NVIDIA Corporation)",
+    "timerAvailable": true,
+    "pointSizeRange": [
+      1,
+      2047
+    ]
+  },
+  "conditions": {
+    "headless": false,
+    "software": false,
+    "deviceScaleFactor": 1,
+    "desktop": {
+      "width": 1280,
+      "height": 720
+    },
+    "portrait": {
+      "width": 390,
+      "height": 844
+    },
+    "warmupMs": 2000,
+    "measureMs": 4000,
+    "repetitions": 3,
+    "anchors": [
+      30,
+      84,
+      112,
+      184
+    ],
+    "input": "neutral pointer; no held input; same reset/seek and route per anchor",
+    "recording": false,
+    "quality": "production unchanged; native application defaults; no lowered tier/caps/bloom/resolution",
+    "browserArgs": [
+      "--no-sandbox",
+      "--enable-automation",
+      "--ozone-platform=x11",
+      "--use-gl=angle",
+      "--use-angle=gl"
+    ]
+  },
+  "sourceRuntime": {
+    "baseline": {
+      "indexSha256": "7b0118f5e1ae989144ec876593ff12f522e3a7a55bef7c1a8b63d4aee570d394",
+      "script": "./assets/main-DAkVDyxS.js",
+      "scriptSha256": "49eb10b94483cbdf175b9fc2d92bf993b4d2d4fbc7c56604b0eabccda328df92"
+    },
+    "candidate": {
+      "indexSha256": "8dfa93d3b44e054b01c021f3679819faaf5874048418f7a606f21fcfa0332364",
+      "script": "./assets/main-D8176OLB.js",
+      "scriptSha256": "f156e392d1b7d9c32d5eaed4e822b25d19b4124437042c17a1c9e659e632628e"
+    }
+  },
+  "rawFiles": {
+    "baseline": {
+      "path": "baseline-post-reboot.json",
+      "sha256": "8bcf77f7bff92bb526c808e01318acbd9dc46734f9e8d3729a4212d7e3b48b4d"
+    },
+    "candidate": {
+      "path": "candidate-post-reboot.json",
+      "sha256": "9724c5a929359952628a03908235d771ef7044be6d5e7abf8a288b1018a381ce"
+    }
+  },
+  "resources": {
+    "baseline": {
+      "before": {
+        "ok": true,
+        "value": "NVIDIA GeForce RTX 4070, 615.78.08, 12282 MiB, 10011 MiB, 1943 MiB, 33 %"
+      },
+      "after": {
+        "ok": true,
+        "value": "NVIDIA GeForce RTX 4070, 615.78.08, 12282 MiB, 10024 MiB, 1930 MiB, 38 %"
+      }
+    },
+    "candidate": {
+      "before": {
+        "ok": true,
+        "value": "NVIDIA GeForce RTX 4070, 615.78.08, 12282 MiB, 10014 MiB, 1940 MiB, 17 %"
+      },
+      "after": {
+        "ok": true,
+        "value": "NVIDIA GeForce RTX 4070, 615.78.08, 12282 MiB, 9774 MiB, 2180 MiB, 52 %"
+      }
+    }
+  },
+  "focusFailures": 0,
+  "runtimeErrors": [],
+  "limits": [
+    "Shared workstation GPU load is not isolated; unrelated apps/services were left running.",
+    "Foreground ownership was reasserted and sampled every250ms; not continuous observation between samples.",
+    "RAF cadence is not a GPU timing or physical presentation guarantee.",
+    "GPU samples are asynchronous non-disjoint elapsed query results, not one result per RAF.",
+    "Measurements do not establish human motion/listening, physical AV, mobile-device or subjective approval.",
+    "Earlier baseline-native/probe files are pre-reboot history and are excluded from this comparison."
+  ],
+  "viewports": {
+    "desktop": {
+      "baseline": {
+        "rafMs": {
+          "samples": 10679,
+          "median": 4.19999999999709,
+          "p95": 8.399999999997817,
+          "max": 45.799999999995634,
+          "over50Ms": 0
+        },
+        "gpuElapsedMs": {
+          "samples": 5850,
+          "median": 1.927168,
+          "p95": 2.547712,
+          "max": 4.658176,
+          "over50Ms": 0
+        },
+        "replicateGpuMediansMs": [
+          1.874944,
+          1.947648,
+          1.994752,
+          2.002944,
+          1.953792,
+          1.876992,
+          1.854464,
+          1.881088,
+          1.902592,
+          1.998848,
+          1.961984,
+          1.883136
+        ],
+        "recordCount": 12
+      },
+      "candidate": {
+        "rafMs": {
+          "samples": 11081,
+          "median": 4.19999999999709,
+          "p95": 4.30000000000291,
+          "max": 29.19999999999709,
+          "over50Ms": 0
+        },
+        "gpuElapsedMs": {
+          "samples": 4212,
+          "median": 3.17952,
+          "p95": 3.847168,
+          "max": 9.800704,
+          "over50Ms": 0
+        },
+        "replicateGpuMediansMs": [
+          3.050496,
+          3.393536,
+          3.405824,
+          3.13856,
+          3.032064,
+          3.418112,
+          3.376128,
+          3.18464,
+          3.013632,
+          3.163136,
+          3.36384,
+          3.07712
+        ],
+        "recordCount": 12
+      },
+      "sections": {
+        "30": {
+          "baseline": {
+            "rafMs": {
+              "samples": 2706,
+              "median": 4.19999999999709,
+              "p95": 8.30000000000291,
+              "max": 29.200000000000728,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1498,
+              "median": 1.913856,
+              "p95": 2.528256,
+              "max": 3.284992,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              1.874944,
+              1.953792,
+              1.902592
+            ],
+            "recordCount": 3
+          },
+          "candidate": {
+            "rafMs": {
+              "samples": 2763,
+              "median": 4.19999999999709,
+              "p95": 4.30000000000291,
+              "max": 29.19999999999709,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1137,
+              "median": 3.033088,
+              "p95": 3.596288,
+              "max": 9.800704,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              3.050496,
+              3.032064,
+              3.013632
+            ],
+            "recordCount": 3
+          },
+          "medianOfReplicateGpuMediansPercentChange": 59.3649085037675
+        },
+        "84": {
+          "baseline": {
+            "rafMs": {
+              "samples": 2732,
+              "median": 4.19999999999709,
+              "p95": 8.30000000000291,
+              "max": 20.900000000001455,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1446,
+              "median": 1.93536,
+              "p95": 2.623488,
+              "max": 4.190208,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              1.947648,
+              1.876992,
+              1.998848
+            ],
+            "recordCount": 3
+          },
+          "candidate": {
+            "rafMs": {
+              "samples": 2752,
+              "median": 4.19999999999709,
+              "p95": 4.30000000000291,
+              "max": 16.700000000000728,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 990,
+              "median": 3.373056,
+              "p95": 3.948544,
+              "max": 5.003264,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              3.393536,
+              3.418112,
+              3.163136
+            ],
+            "recordCount": 3
+          },
+          "medianOfReplicateGpuMediansPercentChange": 74.23764458464774
+        },
+        "112": {
+          "baseline": {
+            "rafMs": {
+              "samples": 2557,
+              "median": 4.19999999999709,
+              "p95": 12.400000000001455,
+              "max": 45.799999999995634,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1464,
+              "median": 1.944576,
+              "p95": 2.492416,
+              "max": 4.091904,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              1.994752,
+              1.854464,
+              1.961984
+            ],
+            "recordCount": 3
+          },
+          "candidate": {
+            "rafMs": {
+              "samples": 2799,
+              "median": 4.19999999999709,
+              "p95": 4.30000000000291,
+              "max": 20.799999999995634,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1022,
+              "median": 3.38432,
+              "p95": 3.895296,
+              "max": 4.780032,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              3.405824,
+              3.376128,
+              3.36384
+            ],
+            "recordCount": 3
+          },
+          "medianOfReplicateGpuMediansPercentChange": 72.07724425887265
+        },
+        "184": {
+          "baseline": {
+            "rafMs": {
+              "samples": 2684,
+              "median": 4.19999999999709,
+              "p95": 8.399999999997817,
+              "max": 20.80000000000291,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1442,
+              "median": 1.913856,
+              "p95": 2.54976,
+              "max": 4.658176,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              2.002944,
+              1.881088,
+              1.883136
+            ],
+            "recordCount": 3
+          },
+          "candidate": {
+            "rafMs": {
+              "samples": 2767,
+              "median": 4.19999999999709,
+              "p95": 4.30000000000291,
+              "max": 16.700000000000728,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1063,
+              "median": 3.126272,
+              "p95": 3.733504,
+              "max": 4.396032,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              3.13856,
+              3.18464,
+              3.07712
+            ],
+            "recordCount": 3
+          },
+          "medianOfReplicateGpuMediansPercentChange": 66.66666666666667
+        }
+      }
+    },
+    "portrait": {
+      "baseline": {
+        "rafMs": {
+          "samples": 10283,
+          "median": 4.19999999999709,
+          "p95": 12.400000000001455,
+          "max": 33.19999999999709,
+          "over50Ms": 0
+        },
+        "gpuElapsedMs": {
+          "samples": 6705,
+          "median": 0.969728,
+          "p95": 1.707008,
+          "max": 3.022848,
+          "over50Ms": 0
+        },
+        "replicateGpuMediansMs": [
+          0.807936,
+          0.989184,
+          0.96768,
+          0.95744,
+          0.833536,
+          0.987136,
+          0.976896,
+          0.965632,
+          0.78336,
+          0.98304,
+          0.982016,
+          0.96768
+        ],
+        "recordCount": 12
+      },
+      "candidate": {
+        "rafMs": {
+          "samples": 10312,
+          "median": 4.19999999999709,
+          "p95": 12.400000000008731,
+          "max": 37.5,
+          "over50Ms": 0
+        },
+        "gpuElapsedMs": {
+          "samples": 6419,
+          "median": 1.550336,
+          "p95": 2.217984,
+          "max": 4.396032,
+          "over50Ms": 0
+        },
+        "replicateGpuMediansMs": [
+          1.16736,
+          1.637376,
+          1.625088,
+          1.573888,
+          1.317888,
+          1.718272,
+          1.66912,
+          1.56672,
+          1.158144,
+          1.64352,
+          1.647616,
+          1.59744
+        ],
+        "recordCount": 12
+      },
+      "sections": {
+        "30": {
+          "baseline": {
+            "rafMs": {
+              "samples": 2582,
+              "median": 4.19999999999709,
+              "p95": 8.400000000001455,
+              "max": 33.19999999999709,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1657,
+              "median": 0.815104,
+              "p95": 1.650688,
+              "max": 3.022848,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              0.807936,
+              0.833536,
+              0.78336
+            ],
+            "recordCount": 3
+          },
+          "candidate": {
+            "rafMs": {
+              "samples": 2580,
+              "median": 4.19999999999709,
+              "p95": 12.39999999999418,
+              "max": 29.100000000000364,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1649,
+              "median": 1.217536,
+              "p95": 1.82272,
+              "max": 3.161088,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              1.16736,
+              1.317888,
+              1.158144
+            ],
+            "recordCount": 3
+          },
+          "medianOfReplicateGpuMediansPercentChange": 44.486692015209115
+        },
+        "84": {
+          "baseline": {
+            "rafMs": {
+              "samples": 2591,
+              "median": 4.19999999999709,
+              "p95": 8.30000000000291,
+              "max": 25,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1589,
+              "median": 0.987136,
+              "p95": 1.780736,
+              "max": 2.999296,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              0.989184,
+              0.987136,
+              0.98304
+            ],
+            "recordCount": 3
+          },
+          "candidate": {
+            "rafMs": {
+              "samples": 2636,
+              "median": 4.19999999999709,
+              "p95": 8.30000000000291,
+              "max": 24.89999999999418,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1508,
+              "median": 1.659904,
+              "p95": 2.33984,
+              "max": 3.841024,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              1.637376,
+              1.718272,
+              1.64352
+            ],
+            "recordCount": 3
+          },
+          "medianOfReplicateGpuMediansPercentChange": 66.49377593360997
+        },
+        "112": {
+          "baseline": {
+            "rafMs": {
+              "samples": 2552,
+              "median": 4.19999999999709,
+              "p95": 12.5,
+              "max": 29.200000000004366,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1808,
+              "median": 0.974848,
+              "p95": 1.599488,
+              "max": 2.935808,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              0.96768,
+              0.976896,
+              0.982016
+            ],
+            "recordCount": 3
+          },
+          "candidate": {
+            "rafMs": {
+              "samples": 2479,
+              "median": 4.19999999999709,
+              "p95": 12.5,
+              "max": 25.09999999999127,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1604,
+              "median": 1.646592,
+              "p95": 2.238464,
+              "max": 3.443712,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              1.625088,
+              1.66912,
+              1.647616
+            ],
+            "recordCount": 3
+          },
+          "medianOfReplicateGpuMediansPercentChange": 68.65828092243187
+        },
+        "184": {
+          "baseline": {
+            "rafMs": {
+              "samples": 2558,
+              "median": 4.19999999999709,
+              "p95": 12.5,
+              "max": 29,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1651,
+              "median": 0.964608,
+              "p95": 1.770496,
+              "max": 2.712576,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              0.95744,
+              0.965632,
+              0.96768
+            ],
+            "recordCount": 3
+          },
+          "candidate": {
+            "rafMs": {
+              "samples": 2617,
+              "median": 4.19999999999709,
+              "p95": 12.5,
+              "max": 37.5,
+              "over50Ms": 0
+            },
+            "gpuElapsedMs": {
+              "samples": 1658,
+              "median": 1.580032,
+              "p95": 2.270208,
+              "max": 4.396032,
+              "over50Ms": 0
+            },
+            "replicateGpuMediansMs": [
+              1.573888,
+              1.56672,
+              1.59744
+            ],
+            "recordCount": 3
+          },
+          "medianOfReplicateGpuMediansPercentChange": 62.99045599151643
+        }
+      }
+    }
+  }
+}

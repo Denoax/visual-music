@@ -1,0 +1,167 @@
+[
+  {
+    "path": "assets/portfolio-glass/src/experience/hub/HubScene.tsx",
+    "bytes": 24484,
+    "sha256": "f2e97b72a80d083cc18cc15898c008a28f88ed8c4fcd49c87664bb903a5ad66f",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "bdfb4366d70c9cfe8c81298c9cc31721518342ce",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/experience/hub/HubScene.tsx",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/experience/hub/HubScene.tsx"
+  },
+  {
+    "path": "assets/portfolio-glass/src/experience/hub/GlassField.ts",
+    "bytes": 1921,
+    "sha256": "f516f9456a01b4e9016650988f6d327e392281fe05eef486a7c5ac200be16b9e",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "52cb4f87acfa6ba6489d57e3c30219446f547d6d",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/experience/hub/GlassField.ts",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/experience/hub/GlassField.ts"
+  },
+  {
+    "path": "assets/portfolio-glass/src/experience/glass/GlassLayer.tsx",
+    "bytes": 11334,
+    "sha256": "832b217794e92e68db725c00c41db1de9ef705890387c3835b7a841c22dbaae8",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "e28045a612c93d2a7c65e1660e7c66a8c0255103",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/experience/glass/GlassLayer.tsx",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/experience/glass/GlassLayer.tsx"
+  },
+  {
+    "path": "assets/portfolio-glass/src/experience/glass/GlassDomMirror.ts",
+    "bytes": 8866,
+    "sha256": "e6cb1ff095366c6c7ede1f6992f411ef92d444dfe8ac26ff22438e1c0437c2b6",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "cea52b49da0b3160fcd9e9d1c9a252317583f3bf",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/experience/glass/GlassDomMirror.ts",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/experience/glass/GlassDomMirror.ts"
+  },
+  {
+    "path": "assets/portfolio-glass/src/app/SelectionHub.tsx",
+    "bytes": 28559,
+    "sha256": "fc5aa8f2b477e97ca4f15f7b37e329e75b74111c38bff9adade2d14317f7abb7",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "02aca68f1158a6ed7a047365195289fae1c7ceb5",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/app/SelectionHub.tsx",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/app/SelectionHub.tsx"
+  },
+  {
+    "path": "assets/portfolio-glass/src/app/rare/ProfileActivity.tsx",
+    "bytes": 8233,
+    "sha256": "e8321927e10fca014fa9ea548cc77f79d8250d6bf078e206d206b05f30940dc5",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "30fd61fffaec84175df7d28b84839a20dfcf171e",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/app/rare/ProfileActivity.tsx",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/app/rare/ProfileActivity.tsx"
+  },
+  {
+    "path": "assets/portfolio-glass/src/app/IdentityIntro.tsx",
+    "bytes": 11499,
+    "sha256": "bbce7746e8c3cc75bf1e52c432bffa6ce154637c94f38670cedede147922d985",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "f472cb5e8b9c35c6c94d2c31edf82b4b16de93dc",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/app/IdentityIntro.tsx",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/app/IdentityIntro.tsx"
+  },
+  {
+    "path": "assets/portfolio-glass/src/core/menuReel.ts",
+    "bytes": 3851,
+    "sha256": "cc53f6d24c7f37efc06d4f7429eeec97e018eafde6f0502ef0e694d5fbcd3ca3",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "568750e17a4a50405467ed0f5983f7faba4d4064",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/core/menuReel.ts",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/core/menuReel.ts"
+  },
+  {
+    "path": "assets/portfolio-glass/src/content/projects.ts",
+    "bytes": 4671,
+    "sha256": "f346a855595c951d2c035c241084769f9fbaa41f6b0715c373fa89ddf2cff064",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "f1bf2c90a3594010bb5732310c187a719a40fae4",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/content/projects.ts",
+    "reuse": "Owned source explicitly authorized; reference context, not a React replacement app",
+    "current_path": "sources/portfolio-glass-donor/src/content/projects.ts"
+  },
+  {
+    "path": "assets/portfolio-glass/src/styles/theme.css",
+    "bytes": 16982,
+    "sha256": "d5022b6fb417e83206cf000936f42a353e2256c55c2b6b553c0aa013e1676780",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "4680b937101dbefe4e999229b9d3b3b127265fe1",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/styles/theme.css",
+    "reuse": "Existing verified owned donor snapshot; retain applicable notices",
+    "current_path": "sources/portfolio-glass-donor/src/styles/theme.css"
+  },
+  {
+    "path": "assets/portfolio-glass/src/styles/v22.css",
+    "bytes": 7902,
+    "sha256": "cbb835c5e202683f618dca9e9ae118ad78fc9a4224543519c5cfac2e02febe22",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "884d66cad6bb22dbf97f489697208995085d21df",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/styles/v22.css",
+    "reuse": "Existing verified owned donor snapshot; retain applicable notices",
+    "current_path": "sources/portfolio-glass-donor/src/styles/v22.css"
+  },
+  {
+    "path": "assets/portfolio-glass/src/styles/global.css",
+    "bytes": 32155,
+    "sha256": "a0c85351cce4b1ec65e750d6adaca21fe8121ea5662566e4021945bdecec2650",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "03c0ecabcd953475fe01f81bfccc3cfbca324c0f",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/src/styles/global.css",
+    "reuse": "Existing verified owned donor snapshot; retain applicable notices",
+    "current_path": "sources/portfolio-glass-donor/src/styles/global.css"
+  },
+  {
+    "path": "assets/portfolio-glass/public/licenses/Rare-UI.txt",
+    "bytes": 1069,
+    "sha256": "462930f8d54c9e96b4de326336f499dc7da70e3e5f5d9b28adedbb0080ff9ea9",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "885e745d548a86d6f31a3e3ce916362896033e20",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/public/licenses/Rare-UI.txt",
+    "reuse": "Existing verified owned donor snapshot; retain applicable notices",
+    "current_path": "sources/portfolio-glass-donor/public/licenses/Rare-UI.txt"
+  },
+  {
+    "path": "assets/portfolio-glass/public/licenses/Rare-UI-usage.txt",
+    "bytes": 451,
+    "sha256": "cce0c61e1f3e33c40cb40f81aaf2d177fdccf9ed4d5f9fdefe57f5f4e4087d5c",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "d17a6a249103cb0df58403c41eea0a614208fe4b",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/public/licenses/Rare-UI-usage.txt",
+    "reuse": "Existing verified owned donor snapshot; retain applicable notices",
+    "current_path": "sources/portfolio-glass-donor/public/licenses/Rare-UI-usage.txt"
+  },
+  {
+    "path": "assets/portfolio-glass/public/licenses/Instrument-Sans-OFL.txt",
+    "bytes": 4538,
+    "sha256": "c27a3c53c3beed7f5c26853afa15991478ff7145d3754a36b0382f84e10c0d03",
+    "repository": "Denoax/portfolio",
+    "ref": "74d9326c71a5bcf21398e8bf25335b6823ab4a11",
+    "git_blob_sha": "9a39a8edc6fe70ee6e72d3db359cc6d7e981af50",
+    "source_url": "https://github.com/Denoax/portfolio/blob/74d9326c71a5bcf21398e8bf25335b6823ab4a11/public/licenses/Instrument-Sans-OFL.txt",
+    "reuse": "Existing verified owned donor snapshot; retain applicable notices",
+    "current_path": "sources/portfolio-glass-donor/public/licenses/Instrument-Sans-OFL.txt"
+  }
+]

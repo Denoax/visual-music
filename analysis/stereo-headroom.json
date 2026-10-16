@@ -1,0 +1,16 @@
+{
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "sample_peaks": [
+    1.1683064699172974,
+    1.168304204940796
+  ],
+  "samples_abs_gt_1": [
+    486,
+    489
+  ],
+  "stereo_rms": 0.3240317371741227,
+  "starting_music_gain_for_review": 0.6847518357547321,
+  "target_sample_peak": 0.8,
+  "status": "numerical_starting_point_not_listening_approval",
+  "note": "Floating-point decoder overshoots are measured. Keep stereo playback and calibrate actual browser output. No assertion about audible clipping or physical speaker loudness."
+}

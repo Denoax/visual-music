@@ -1,0 +1,37 @@
+{
+  "status": "inspected_actual_original_and_owned_donor_no_fidelity_approval",
+  "source_policy": "Inspected human references and supplied owned source; original Three.js/GLSL, no generated media or third-party Lights runtime/code import.",
+  "Lights": {
+    "url": "https://helloenjoy.itch.io/lights",
+    "active_url": "https://html-classic.itch.zone/html/1645328/lights/index.html",
+    "local_playback": "Foreground PLAY click with mouse hover/down/up. Actual35s continuous native Chromium capture and five active frames. Home isClosing/isLoaded flags do not represent the running view: experiencePlaying true and actual renderer shows the field. Earlier splash-only attempts are explicitly identified.",
+    "observations": [
+      "Low forward perspective across light/dark rolling ground and aligned white lights.",
+      "Large dark banks contrasted with luminous whites, a soft spatial glow and restrained black distance.",
+      "Several staged reveals rather than everything at full gain immediately.",
+      "World travel changes light spacing in perspective; ground moves without needing to add beat camera bob."
+    ],
+    "adapted": [
+      "Normal4.2m eye with current canonical safety passage, not old terrain-follow camera.",
+      "True-off banks/sparse LEDs and layered lamp/surface/star entry.",
+      "Original bounded local floor pools and closer star parallax."
+    ],
+    "excluded": "Original spheres/cursor/trail, copyrighted audio/textures and original rendering code are not runtime imports. Ours retains the approved wave foundation; this refinement awaits human review; no1:1 fidelity claim.",
+    "evidence": [
+      "evidence/lights-refinement/references/lights-local-motion.json",
+      "evidence/lights-refinement/references/lights-active-0.png",
+      "evidence/lights-refinement/references/lights-active-4.png"
+    ],
+    "limitations": "Native source playback was available; short source run rather than full-song source comparison. No reliable listening approval."
+  },
+  "portfolio": {
+    "url": "https://manimarami.com/",
+    "donor": "sources/portfolio-ui-donor",
+    "inspection": "Opened actual live Settings and bundled source. Instrument Sans24px heading,44px Close,380px pane,38x22switch and rail geometry; connected seams and ballistic slider maths reused. Owned UI adapted to BUMER controls via native DOM, not React migration.",
+    "rights": "Owned source supplied by user; Rare UI/OFL notices retained.",
+    "gap": "ReactGPU glass backing is adapted to DOM backdrop; optional UI soundbank inactive. Physical touch not reviewed."
+  },
+  "reference_media_in_runtime": false,
+  "human_visual_approval": false,
+  "listening_approval": false
+}

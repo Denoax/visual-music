@@ -1,0 +1,104 @@
+{
+  "schema": "bumer-lights-refinement-proposal-v1",
+  "baseline_commit": "4c1732a2c9931d2303fb6dd0d1820ebc9a2e5b43",
+  "status": "candidate score; not detected musical boundaries or approved beat alignment",
+  "audio": {
+    "path": "inputs/audio/around-the-world.mp3",
+    "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+    "documented_browser_duration_seconds": 219.6657916667,
+    "ffmpeg_duration_seconds": 219.6658125,
+    "runtime_duration_authority": "actual decoded buffer",
+    "automatic_loop": false
+  },
+  "beat_authority": "Current light-pulses.json/event/transport presentation clock; existing markers are candidates. Audition and correct without fabricating approval.",
+  "section_time_authority": "Starting bounds follow current arrangement; adjust to real phrases after listening. Numbers are not permission to stop the track.",
+  "final_activation": "all emitter head/halo/spill/accents gated across near/far/common nested IDs; independent scored strips have own dimmer",
+  "sections": [
+    {
+      "start_seconds": 0,
+      "end_seconds_candidate": 25,
+      "recipe": "entry-grid",
+      "palette": "white",
+      "intent": "Gradual low-view reveal; white sparse grid, separate glow and restrained far/near stars.",
+      "beats_per_handoff_or_epoch_candidate": 4
+    },
+    {
+      "start_seconds": 25,
+      "end_seconds_candidate": 40,
+      "recipe": "paired-banks",
+      "palette": "ice",
+      "intent": "Broad A/B rows with real off plateaus; slow2/4-beat trades, no opaque ground panels.",
+      "beats_per_handoff_or_epoch_candidate": 2
+    },
+    {
+      "start_seconds": 40,
+      "end_seconds_candidate": 75,
+      "recipe": "paired-lines",
+      "palette": "ice",
+      "intent": "A/B1/2-beat handoffs plus thin white/colour strips; physical waves carry accents.",
+      "beats_per_handoff_or_epoch_candidate": 1
+    },
+    {
+      "start_seconds": 75,
+      "end_seconds_candidate": 106,
+      "recipe": "seeded-dropout",
+      "palette": "violet",
+      "intent": "About28% active at a time; membership changes every2/4 beats, softly; black gaps.",
+      "beats_per_handoff_or_epoch_candidate": 4
+    },
+    {
+      "start_seconds": 106,
+      "end_seconds_candidate": 139,
+      "recipe": "theater-rainbow",
+      "palette": "rainbow",
+      "intent": "One ON/two OFF travelling rows/bands; ordered rainbow and low surface bleed.",
+      "beats_per_handoff_or_epoch_candidate": 2
+    },
+    {
+      "start_seconds": 139,
+      "end_seconds_candidate": 158,
+      "recipe": "grid-rest",
+      "palette": "ice",
+      "intent": "Readable fixed lattice rest, reduced activity, no unrelated hues; stable sparse membership.",
+      "beats_per_handoff_or_epoch_candidate": 4
+    },
+    {
+      "start_seconds": 158,
+      "end_seconds_candidate": 175,
+      "recipe": "loop-rings",
+      "palette": "warm",
+      "intent": "World-periodic light rings/white-centre strips over waves; bulbs and ground gains separate.",
+      "beats_per_handoff_or_epoch_candidate": 2
+    },
+    {
+      "start_seconds": 175,
+      "end_seconds_candidate": 195,
+      "recipe": "paired-banks",
+      "palette": "ice",
+      "intent": "Return to emphatic A/B exchange; switch axis at a phrase through a controlled dim transition.",
+      "beats_per_handoff_or_epoch_candidate": 1
+    },
+    {
+      "start_seconds": 195,
+      "end_seconds_candidate": 210,
+      "recipe": "seeded-dropout",
+      "palette": "violet",
+      "intent": "Second sparse phrase, limited closer stars; thin lines breathe, no camera shake.",
+      "beats_per_handoff_or_epoch_candidate": 2
+    },
+    {
+      "start_seconds": 210,
+      "end_seconds_candidate": 219.6657916667,
+      "recipe": "full-tail-grid",
+      "palette": "white",
+      "intent": "Simplify into soft sparse white/ice grid; remain visible until naturally presented audio end.",
+      "beats_per_handoff_or_epoch_candidate": 4
+    }
+  ],
+  "after_natural_presented_end": {
+    "hold_seconds": 0.2,
+    "visual_exit_seconds": 2.4,
+    "source": "bounded age owned by existing presentation clock; music remains ended"
+  },
+  "review": "Full-song listening, actual rendered OFF contrast, continuous motion, frame cost and device/AV checks remain required."
+}

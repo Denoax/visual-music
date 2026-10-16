@@ -1,0 +1,68 @@
+{
+  "scope": "Byte-identical approved production dist preserved before candidate rebuild",
+  "createdUtc": "2026-10-15T08:14:52.687100+00:00",
+  "source": "/home/mani/Downloads/bumer-exe/dist",
+  "baseline": "/home/mani/Downloads/bumer-exe-recovery-black-sky-20261015/baseline-dist-10b98cf",
+  "files": {
+    "analysis/features.json": {
+      "bytes": 1933215,
+      "sha256": "ef264a3b852c3661032374697312ccab1de175f6374712ab395a6f939ea372b4"
+    },
+    "analysis/mixed-microfeatures.json": {
+      "bytes": 1518666,
+      "sha256": "e1a00664285c3292d0976a9e7d4b5e01a6c78c315fe0ad25c668cbdc2e7d5ab2"
+    },
+    "analysis/track.json": {
+      "bytes": 1984,
+      "sha256": "2cba7f10c4908042905a834a32968166f91a2b1249e60db6642c9fa982e85b03"
+    },
+    "analysis/waveform.json": {
+      "bytes": 1256219,
+      "sha256": "1c08764445e4740ea7873584a9dad660e4c7f21b6fad0c235d9e5347918190fb"
+    },
+    "assets/THREE-LICENSE.txt": {
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    "assets/main-BxaAlymz.css": {
+      "bytes": 10466,
+      "sha256": "3006c9eda1762a94c5b8233d1d014be94962580f2f0c13132e8ad897adde5414"
+    },
+    "assets/main-DAkVDyxS.js": {
+      "bytes": 796405,
+      "sha256": "49eb10b94483cbdf175b9fc2d92bf993b4d2d4fbc7c56604b0eabccda328df92"
+    },
+    "audio/around-the-world.mp3": {
+      "bytes": 8892231,
+      "sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0"
+    },
+    "favicon.svg": {
+      "bytes": 211,
+      "sha256": "a4110bf9b51aca79d54a0039e74e9b948eba81053548877c6fe6b6beba1c8b6b"
+    },
+    "fonts/instrument-sans-latin-variable.woff2": {
+      "bytes": 30092,
+      "sha256": "2ee17598a98d8a59e4df8152d015bec9ab8e4d5672cc0ab42bef806b568e3971"
+    },
+    "index.html": {
+      "bytes": 6198,
+      "sha256": "7b0118f5e1ae989144ec876593ff12f522e3a7a55bef7c1a8b63d4aee570d394"
+    },
+    "licenses/Instrument-Sans-OFL.txt": {
+      "bytes": 4538,
+      "sha256": "c27a3c53c3beed7f5c26853afa15991478ff7145d3754a36b0382f84e10c0d03"
+    },
+    "licenses/Projected-Landscapes.txt": {
+      "bytes": 3092,
+      "sha256": "f4cafa97ed4b1430135b7e9cacc5fa79f4db08ea653b4fb78894ebb0d8dda926"
+    },
+    "licenses/Rare-UI-usage.txt": {
+      "bytes": 451,
+      "sha256": "cce0c61e1f3e33c40cb40f81aaf2d177fdccf9ed4d5f9fdefe57f5f4e4087d5c"
+    },
+    "licenses/Rare-UI.txt": {
+      "bytes": 1069,
+      "sha256": "462930f8d54c9e96b4de326336f499dc7da70e3e5f5d9b28adedbb0080ff9ea9"
+    }
+  }
+}

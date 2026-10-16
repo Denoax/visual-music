@@ -1,0 +1,57 @@
+
+Running 5 tests using 1 worker
+
+  ✘  1 tests/browser/site.spec.ts:18:1 › Silent real readiness, one Continue source and Settings-only music controls (43.5s)
+  ✓  2 tests/browser/site.spec.ts:63:1 › Settings keeps time running; native volume/mute, pause and focus remain usable (2.0m)
+  ✓  3 tests/browser/site.spec.ts:89:1 › Failed bytes remain retryable while graphics prepare; entry interruption never silently starts music (30.8s)
+  ✓  4 tests/browser/site.spec.ts:125:1 › WebGL restore preserves route and frozen music before deliberate resume (59.1s)
+  ✘  5 tests/browser/visual-return.spec.ts:3:1 › Presented completion fades to thank you; no ambient loop, confetti or automatic replay under reduced motion (34.7s)
+
+
+  1) tests/browser/site.spec.ts:18:1 › Silent real readiness, one Continue source and Settings-only music controls 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+      Array [
+    -   "Settings",
+    +   "
+    +         Settings
+    +       ",
+      ]
+
+      53 |     await page.locator("#menu-button,#replay,#credits-button,#play").count(),
+      54 |   ).toBe(0);
+    > 55 |   expect(await page.locator("button:visible").allTextContents()).toEqual([
+         |                                                                  ^
+      56 |     "Settings",
+      57 |   ]);
+      58 |   expect(requests.some((u) => /\/models\/|\/room\/|\/intro\//.test(u))).toBe(
+        at /home/mani/Downloads/bumer-exe/tests/browser/site.spec.ts:55:66
+
+    Error Context: test-results/site-Silent-real-readiness-b61c0-ettings-only-music-controls/error-context.md
+
+  2) tests/browser/visual-return.spec.ts:3:1 › Presented completion fades to thank you; no ambient loop, confetti or automatic replay under reduced motion 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 19.354053
+    Received:    19.341652999999997
+
+      40 |   );
+      41 |   expect(end.map((e: any) => e.kind)).toEqual(["graph_end", "presented_end"]);
+    > 42 |   expect(end[1].presentedContextSeconds).toBeGreaterThanOrEqual(
+         |                                          ^
+      43 |     end[0].presentedContextSeconds,
+      44 |   );
+      45 | });
+        at /home/mani/Downloads/bumer-exe/tests/browser/visual-return.spec.ts:42:42
+
+    Error Context: test-results/visual-return-Presented-co-8ec8e-replay-under-reduced-motion/error-context.md
+
+  2 failed
+    tests/browser/site.spec.ts:18:1 › Silent real readiness, one Continue source and Settings-only music controls 
+    tests/browser/visual-return.spec.ts:3:1 › Presented completion fades to thank you; no ambient loop, confetti or automatic replay under reduced motion 
+  3 passed (4.9m)

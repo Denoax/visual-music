@@ -1,0 +1,197 @@
+{
+  "schema": "production-reference-camera-v1",
+  "clock": "AudioTransport.presentation seconds",
+  "scale": {
+    "referenceTile": 480,
+    "referenceResolution": 66,
+    "projectCanonicalPitch": 3,
+    "uniformScale": 0.4125,
+    "status": "grid-based initial calibration, not measured pixel match"
+  },
+  "initial": {
+    "altitude": -40,
+    "vfov": 25,
+    "tilt": -9,
+    "cameraPitchX": -9,
+    "speed": 0,
+    "angle": 30,
+    "turbo": 1,
+    "roll": 0
+  },
+  "cues": [
+    {
+      "id": "opening",
+      "seconds": 0,
+      "duration": 8,
+      "target": {
+        "altitude": 60,
+        "vfov": 25,
+        "tilt": 9,
+        "speed": 0
+      },
+      "reference_seconds": 0,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "third-opening-beat",
+      "seconds": 8,
+      "duration": 1,
+      "target": {
+        "altitude": 60,
+        "vfov": 25,
+        "tilt": 9,
+        "speed": 150
+      },
+      "reference_seconds": 8,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "first-lift",
+      "seconds": 40,
+      "duration": 4,
+      "target": {
+        "altitude": 110,
+        "vfov": 30,
+        "tilt": 9,
+        "speed": 250
+      },
+      "reference_seconds": 40,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "low-return",
+      "seconds": 75,
+      "duration": 2,
+      "target": {
+        "altitude": 80,
+        "vfov": 30,
+        "tilt": 9,
+        "speed": 150
+      },
+      "reference_seconds": 72,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "second-rise",
+      "seconds": 94,
+      "duration": 4,
+      "target": {
+        "altitude": 120,
+        "vfov": 30,
+        "tilt": 13.5,
+        "speed": 200
+      },
+      "reference_seconds": 88,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "low-power",
+      "seconds": 106,
+      "duration": 4,
+      "target": {
+        "altitude": 80,
+        "vfov": 30,
+        "tilt": 9,
+        "speed": 250
+      },
+      "reference_seconds": 104,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "high-field",
+      "seconds": 123,
+      "duration": 4,
+      "target": {
+        "altitude": 200,
+        "vfov": 40,
+        "tilt": 27,
+        "speed": 200
+      },
+      "reference_seconds": 120,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "high-spectrum",
+      "seconds": 139,
+      "duration": 8,
+      "target": {
+        "altitude": 200,
+        "vfov": 40,
+        "tilt": 18,
+        "speed": 200
+      },
+      "reference_seconds": 136,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "brake",
+      "seconds": 156.75,
+      "duration": 3,
+      "target": {
+        "altitude": 200,
+        "vfov": 40,
+        "tilt": 18,
+        "speed": 0
+      },
+      "reference_seconds": 149.75,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "restart",
+      "seconds": 159,
+      "duration": 2,
+      "target": {
+        "altitude": 90,
+        "vfov": 30,
+        "tilt": 9,
+        "speed": 200
+      },
+      "reference_seconds": 152,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "renewed-rise",
+      "seconds": 175,
+      "duration": 4,
+      "target": {
+        "altitude": 130,
+        "vfov": 30,
+        "tilt": 13.5,
+        "speed": 200
+      },
+      "reference_seconds": 160,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "closing-flight",
+      "seconds": 190,
+      "duration": 4,
+      "target": {
+        "altitude": 100,
+        "vfov": 40,
+        "tilt": 9,
+        "speed": 200
+      },
+      "reference_seconds": 184,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    },
+    {
+      "id": "outro-rise",
+      "seconds": 210,
+      "duration": 8,
+      "target": {
+        "altitude": 200,
+        "vfov": 40,
+        "tilt": 27,
+        "speed": 100
+      },
+      "reference_seconds": 200,
+      "timing_status": "authored phrase-role anchor; listening approval pending"
+    }
+  ],
+  "nominalEnd": 210,
+  "tail_policy": "existing supplied song219.66579166666668s plus output-clock outro remains; do not end at reference210",
+  "runtime_sha256": "47119d6e77b41e51ef65fb2fc7fa46a2c3f7a75578a650f394b5df78137861a0",
+  "ground_visible_seconds": 7,
+  "listening_approved": false
+}

@@ -1,0 +1,43 @@
+{
+  "task": "03confettishower",
+  "status": "verified_with_limits",
+  "parent_commit": "757f96b8b18aeb335448944d12aee537f88c18e2",
+  "births": "sixcohorts over0\u2013.94s acrossupperviewport",
+  "counts": "36default/48maximum",
+  "all_deaths_before_confetti_age_seconds": 3.82,
+  "unchanged_lifecycle": "thankYouAtconfetti2.6..6.6; FINISH_SECONDS6.6; allparticlesexpirebeforeexisting4sconfetticutoff",
+  "unit_tests": "22focusedchecks passed",
+  "build": "passed",
+  "reduced_motion_finish": "browserpass; no confetticanvas orautomaticloop",
+  "desktop_portrait_actual_audio_tail": [
+    {
+      "view": "desktop",
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL ES 3.2)",
+      "complete_actual_tail": true,
+      "finite_finish_raf_zero": true,
+      "confetti_canvas_removed": true,
+      "diagnostic_offset_seconds": 212,
+      "media": {
+        "bytes": 4238891,
+        "sha256": "a78a11172cb80df1079d821d7d9a9b2a039fb775a9030f95cf29d79c8cb48ffc"
+      }
+    },
+    {
+      "view": "portrait",
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL ES 3.2)",
+      "complete_actual_tail": true,
+      "finite_finish_raf_zero": true,
+      "confetti_canvas_removed": true,
+      "diagnostic_offset_seconds": 212,
+      "media": {
+        "bytes": 1887098,
+        "sha256": "cb758b0fa7147a85402a4173d2010a33cb1ad202660d6c9b72bebd69d62dd855"
+      }
+    }
+  ],
+  "rendered_review": "Actual shower/settleframesinspected; fullcontinuous taildiagnosticsretained; finalfullsongcapturesonlyafterTask04",
+  "limits": [
+    "Diagnosticseeksarenotfullsongrecordings.",
+    "Humancontinuouslistening/motionandphysicalAVapprovalremainpending."
+  ]
+}

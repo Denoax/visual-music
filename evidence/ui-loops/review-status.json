@@ -1,0 +1,42 @@
+{
+  "technical_status": "verified_with_limits",
+  "four_serial_tasks": "verified_with_limits",
+  "build": "passed",
+  "tests": {
+    "core": 98,
+    "typescript": 59,
+    "total": 157
+  },
+  "source_build_preview_files": {
+    "source": 156,
+    "production": 15
+  },
+  "complete_actual_audio_captures": "Both full-song normal-speed journeys, actual stereo master, natural presented tail and settled thank-you verified",
+  "publication": "Source-publication snapshot; verified remote commit receipt is delivered in the complete local review",
+  "archive_clean_extraction": "External VERIFIED_EXTRACTION.json will be written only after actual successful clean extraction/build",
+  "limits": [
+    "human continuous listening/motion pending",
+    "physical devices/AV/AT/flash review pending",
+    "current uncaptured foreground GPU performance unmeasured",
+    "newest loader clip absent; declared ring fallback"
+  ],
+  "audio_window_checks": {
+    "passed": 16,
+    "minimum_correlation": 0.9929177041417266
+  },
+  "errors": 0,
+  "capture_scope": "Native NVIDIA headless GPU; desktop1280x720/portrait390x844,25fps full-page media. RAF intervals are capture cadence, not foreground GPU timing.",
+  "capture_cadence": {
+    "desktop": {
+      "median": 16.69999999999709,
+      "p95": 16.70000000001164,
+      "max": 33.400000000001455
+    },
+    "portrait": {
+      "median": 16.69999999999709,
+      "p95": 16.70000000001164,
+      "max": 83.30000000000291
+    }
+  },
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4070/PCIe/SSE2, OpenGL ES 3.2)"
+}

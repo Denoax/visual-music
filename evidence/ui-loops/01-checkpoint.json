@@ -1,0 +1,16 @@
+{
+  "task": "01 loader",
+  "status": "verified_with_limits",
+  "parent_commit": "1c86a4d317ebfc1512cbb5176c5ff08bc15cca70",
+  "build": "passed",
+  "core_and_typescript_tests": 151,
+  "browser": "Initial4pass; reproduced stale-response failure; fixed sourceboundary;4updated loader regressions pass; final5loader/site selected flows pass with recordings. Six distinct paths covered across final runs, including in-progressdecode.",
+  "runtime_identity": "01-runtime-identity.json",
+  "preserved_source_assets": 147,
+  "source_record": "sources/loader-loop-01/SOURCE_RECORD.md",
+  "rendered_review": "Desktop loading/ready and shortportrait frames inspected; continuous short page recordings retained; computed rotation/readiness checks passed.",
+  "limits": [
+    "Missing optional newest clip; declaredhuman-authoredRing2fallback.",
+    "Human continuous perceptual and physical device/AVapproval remain unverified."
+  ]
+}
