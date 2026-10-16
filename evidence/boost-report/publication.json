@@ -1,0 +1,19 @@
+{
+  "commit": "03be660aa3375a3350c0bcff45d7cb9d4ce20309",
+  "url": "https://github.com/Denoax/bumer-exe/commit/03be660aa3375a3350c0bcff45d7cb9d4ce20309",
+  "remote_main_sha": "03be660aa3375a3350c0bcff45d7cb9d4ce20309",
+  "verified_utc": "2026-10-16T05:20:35.376700+00:00",
+  "authorization": "User continued after the pending explicit question to push prepared boost commit03be660; previous approval rejection preserved historically.",
+  "normal_push": true,
+  "force_push": false,
+  "hosting_deployment": false,
+  "private": true,
+  "pages_unchanged_sha": "84b527230038ccaa957d27bb048847926b8befb4",
+  "source_match_files": 156,
+  "production_match_files": 15,
+  "remote_blobs_verified": {
+    "README.md": "641986138388c281e423bdae7e8f8c8ee65567d5",
+    "core/comfort-motion.mjs": "6926fc3424a6124e8bb95d698c6497161753ed12"
+  },
+  "scope": "2x held boost, unchanged normal pace/lens/camera score and smooth attack/release time constants;159tests and4browsercases previously passed."
+}

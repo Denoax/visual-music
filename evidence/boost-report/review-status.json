@@ -30,8 +30,10 @@
     "Human perceived quality, physical-device/AV and foreground performance approval remain pending."
   ],
   "publication": {
-    "status": "not pushed",
-    "automatic_review": "rejected remote main update without explicit current authorization",
-    "local_source_and_preview": "verified"
+    "status": "pushed and verified",
+    "commit": "03be660aa3375a3350c0bcff45d7cb9d4ce20309",
+    "remote_main_sha": "03be660aa3375a3350c0bcff45d7cb9d4ce20309",
+    "hosting_deployment": false,
+    "previous_approval_rejection": "Historical; resolved by user continuation after the explicit pending push question."
   }
 }
